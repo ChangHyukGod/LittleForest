@@ -118,7 +118,7 @@
             </ul>
                 <!-- 우측 아이콘 -->
                 <div class="d-flex">
-                    <a href="#" class="nav-link">Language | 한국어</a>
+                    <a href="/basic/login" class="nav-link">Language | 한국어</a>
                     <a href="/basic/mypage" class="nav-link icon">
                         <i class="bi bi-person"></i> <!-- 사용자 아이콘 -->
                     </a>
