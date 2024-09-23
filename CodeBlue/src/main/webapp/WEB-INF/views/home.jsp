@@ -7,14 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+</style>
 </head>
 <body>
    <jsp:include page="/common/header.jsp"></jsp:include>
-
    <!-- 본문 -->
    <div class="container">
       <form>
-
          <div class="row row-cols-md-4 g-4 mt-4 mb-4">
             <div class="col">
                <div class="card h-100">

@@ -51,8 +51,8 @@
                     <a href="#">이용약관</a> | 
                     <a href="#">고객센터</a> | 
                     <a href="#">공지사항</a> <br>
-                    <a href="#">회원가입</a> | 
-                    <a href="#">마이페이지</a> | 
+                    <a href="/register">회원가입</a> | 
+                    <a href="/basic/mypage">마이페이지</a> | 
                     <a href="#">장바구니</a> | 
                     <a href="#">위시리스트</a>
                 </div>

@@ -3,7 +3,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>gameinfo</title>
 </head>
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
@@ -13,7 +13,7 @@
 <form>
 
 <!-- (1) 게임이미지 + 정보테이블 + 버튼 -->
-<div class="container" style="display:flex; gap:130px; margin-top:20px;">
+<div class="container" style="display:flex; gap:80px; margin-top:20px;">
 
 <!-- 게임동영상 -->
 <div style="width:800px; height:400px">
@@ -23,9 +23,10 @@
 </div>
 
 	<!-- 사이드바 1 : 이미지, 게임정보 및 장바구니, 구매하기 -->
-	<div class="card" style="width:25rem;">
+	<div class="card" style="width:30rem;">
 	<!-- 게임이미지 -->
-	<img src="/resources/images/stardewvalley.jpg" class="card-img-left">
+	<img src="resources/resources/images/스타듀밸리.jpg" class="card-img-left"
+	style="height: 155px;">
 		<div class="card-body">
 			<h5 class="card-title">스타듀밸리</h5>
 			<p class="card-text">\16,000</p>
@@ -54,9 +55,9 @@
 		  </tbody>
 		</table>
 		<!-- 장바구니, 구매하기 버튼 -->
-		<div class="card-body" style="margin-left:100px;">
-			<a href="#" class="btn btn-primary">장바구니</a>
-			<a href="#" class="btn btn-success">구매하기</a>
+		<div class="card-body" style="margin-left:150px;">
+			<a href="/shoppingbasket" class="btn btn-primary">장바구니</a>
+			<a href="/paymentpage" class="btn btn-success">구매하기</a>
 		</div>
 	</div>
 </div>
@@ -64,65 +65,89 @@
 
 <!-- (2) 게임 소개글 + 시스템 요구사양 -->
 <div class="container" style="display:flex; gap:10px; margin-top:20px;">
+
 	<!-- 게임 소개글 : 좌측정렬 -->
 	<div class="card float-left" style="width: 50rem; height: 20rem;">
-	  <div class="card-body">
-	    스타듀밸리 소개글
-	  </div>
+	<!-- 정보소개글 입력란 데이터 불러오기? -->
+	  <!-- <div class="card-body">스타듀밸리 소개글</div> -->
+	  <textarea class="form-control" id="exampleFormControlTextarea1" rows="13"></textarea>
 	</div>
+
+<!-- 사이드바 2 : 시스템 요구사항, 우측정렬 -->		 
+	<div class="card" style="width: 30rem;">
 	
-	<!-- 사이드바 2 : 시스템 요구사항, 우측정렬 -->
-	<div class="card float-right" style="width: 30rem;">
-		<table class="table">
+	<ul class="nav nav-tabs" id="myTab" role="tablist">
+	  <li class="nav-item" role="presentation">
+	    <button class="nav-link active" id="Windows-tab" data-bs-toggle="tab" data-bs-target="#Windows-tab-pane"
+	    type="button" role="tab" aria-controls="Windows-tab-pane" aria-selected="true">Windows</button>
+	  </li>
+	  <li class="nav-item" role="presentation">
+	    <button class="nav-link" id="macOS-tab" data-bs-toggle="tab" data-bs-target="#macOS-tab-pane" 
+	    type="button" role="tab" aria-controls="macOS-tab-pane" aria-selected="false">macOS</button>
+	  </li>
+	</ul>
 		
-			<thead>
-		<nav class="navbar navbar-expand-lg bg-light">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="#">요구사항</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link active" href="#">Windows</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">macOS</a>
-					</li>
-				</ul>
-			</div>
-			</div>
-		</nav>
-			</thead>
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="Windows-tab-pane" role="tabpanel" aria-labelledby="Windows-tab" tabindex="0">
+				<table class="table">				
+				<tbody>
+				<tr>
+					<th>운영체제</th>
+					<td>Windows Vista or greater</td>
+				</tr>
 			
-			<tbody>
-			<tr>
-				<th>운영체제</th>
-				<td>Windows Vista or greater</td>
-			</tr>
-			<tr>
-				<th>프로세서</th>
-				<td>2 Ghz</td>
-			</tr>
-			<tr>
-				<th>메모리</th>
-				<td>2 GB RAM</td>
-			</tr>
-			<tr>
-				<th>그래픽</th>
-				<td>256 mb video memory, shader model 3.0+</td>
-			</tr>
-			<tr>
-				<th>DirectX</th>
-				<td>버전 10</td>
-			</tr>
-			<tr>
-				<th>저장공간</th>
-				<td>500 MB 사용 가능 공간</td>
-			</tr>
-			</tbody>
-		</table>
+				<tr>
+					<th>프로세서</th>
+					<td>2 Ghz</td>
+				</tr>
+				<tr>
+					<th>메모리</th>
+					<td>2 GB RAM</td>
+				</tr>
+				<tr>
+					<th>그래픽</th>
+					<td>256 mb video memory, shader model 3.0+</td>
+				</tr>
+				<tr>
+					<th>DirectX</th>
+					<td>버전 10</td>
+				</tr>
+				<tr>
+					<th>저장공간</th>
+					<td>500 MB 사용 가능 공간</td>
+				</tr>
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="tab-pane fade" id="macOS-tab-pane" role="tabpanel" aria-labelledby="macOS-tab" tabindex="0">
+				<table class="table">				
+				<tbody>
+				<tr>
+					<th>운영체제</th>
+					<td>Mac OSX 10.10+</td>
+				</tr>
+			
+				<tr>
+					<th>프로세서</th>
+					<td>2 Ghz</td>
+				</tr>
+				<tr>
+					<th>메모리</th>
+					<td>2 GB RAM</td>
+				</tr>
+				<tr>
+					<th>그래픽</th>
+					<td>256 mb video memory, OpenGL 2</td>
+				</tr>
+				<tr>
+					<th>저장공간</th>
+					<td>500 MB 사용 가능 공간</td>
+				</tr>
+				</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
 </div>
 
