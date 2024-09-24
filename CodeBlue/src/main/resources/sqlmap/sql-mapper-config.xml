@@ -12,7 +12,7 @@
     </settings>
     
     <!-- 별명 지정 -->
-<!--     <typeAliases> -->
+    <typeAliases>
 <!--         <typeAlias type="com.simplecoding.repositoryexam.vo.common.Criteria" alias="Criteria"/> -->
 <!--         <typeAlias type="com.simplecoding.repositoryexam.vo.basic.DeptVO" alias="DeptVO"/> -->
 <!--         <typeAlias type="com.simplecoding.repositoryexam.vo.basic.EmpVO" alias="EmpVO"/> -->
@@ -20,7 +20,8 @@
 <!--         <typeAlias type="com.simplecoding.repositoryexam.vo.advanced.FileDbVO" alias="FileDbVO"/> -->
 <!--         <typeAlias type="com.simplecoding.repositoryexam.vo.advanced.GalleryVO" alias="GalleryVO"/> -->
 <!--         <typeAlias type="com.simplecoding.repositoryexam.vo.auth.MemberVO" alias="MemberVO"/> -->
-<!--     </typeAliases> -->
+        <typeAlias type="com.simplecoding.repositoryexam.vo.auth.MembersVO" alias="MembersVO"/>
+    </typeAliases>
 
 </configuration>
 
