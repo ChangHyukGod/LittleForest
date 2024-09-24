@@ -21,20 +21,18 @@ public class HomeController {
 		return "/basic/mypage";
 	}
 	
-	@GetMapping("/basic/faqmain")
+	@GetMapping("/basic/FaqMain")
 	public String faqmain() {
-		return "/basic/faqmain";
+		return "/basic/FaqMain";
 	}
 	
-	@GetMapping("/shoppingbasket")
-	public String shoppingbasket() {
-		return "/payment/shoppingbasket";
+	@GetMapping("/basic/login")
+	public String login() {
+		return "/basic/login";
 	}
-	
-	@GetMapping("/paymentpage")
-	public String paymentpage() {
-		return "/payment/paymentpage";
+	@GetMapping("/basic/register")
+	public String register() {
+		return "/basic/register";
 	}
-	
 	
 }
