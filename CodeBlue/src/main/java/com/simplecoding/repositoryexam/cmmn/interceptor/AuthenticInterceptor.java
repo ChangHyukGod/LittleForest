@@ -27,9 +27,9 @@ public class AuthenticInterceptor extends HandlerInterceptorAdapter {
 		// TODO : 세션에 id/password(memberVO) 있으면 그 화면 이동시키고,
 //					없으면 로그인페이지로 강제이동 
 //		세션에서 memberVO 가져오기 
-	      MembersVO memberVO = (MembersVO) WebUtils.getSessionAttribute(request, "membersVO");
+	      MembersVO membersVO = (MembersVO) WebUtils.getSessionAttribute(request, "membersVO");
 	      
-	      if(memberVO!=null){
+	      if(membersVO!=null){
 //	    	  세션에 memberVO 있으면(회원이면) 그 화면 이동
 	         return true;
 	      }else{

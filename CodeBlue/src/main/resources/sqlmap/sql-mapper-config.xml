@@ -21,6 +21,8 @@
 <!--         <typeAlias type="com.simplecoding.repositoryexam.vo.advanced.GalleryVO" alias="GalleryVO"/> -->
 <!--         <typeAlias type="com.simplecoding.repositoryexam.vo.auth.MemberVO" alias="MemberVO"/> -->
         <typeAlias type="com.simplecoding.repositoryexam.vo.auth.MembersVO" alias="MembersVO"/>
+        <typeAlias type="com.simplecoding.repositoryexam.vo.basic.MainVO" alias="MainVO"/>
+        <typeAlias type="com.simplecoding.repositoryexam.vo.common.Criteria" alias="Criteria"/>
     </typeAliases>
 
 </configuration>

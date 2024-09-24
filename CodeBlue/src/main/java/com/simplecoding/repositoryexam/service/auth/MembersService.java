@@ -14,4 +14,5 @@ import com.simplecoding.repositoryexam.vo.auth.MembersVO;
 public interface MembersService {
 	public MembersVO authenticateMembers(MembersVO membersVO) throws Exception;
 	public void registerMembers(MembersVO membersVO) throws Exception;
+
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.simplecoding.repositoryexam.mapper.basic.MainMapper">
+
+   <select id="selectMainList" parameterType="Criteria" resultType="MainVO">
+      SELECT * FROM MAIN_TABLE
+      WHERE FILE_TITLE LIKE '%'|| #{searchKeyword} ||'%'
+   <!--    OFFSET #{firstIndex} ROWS
+      FETCH NEXT #{recordCountPerPage} ROWS ONLY -->
+   </select>
+   
+   <insert id="insert" parameterType="MainVO">
+      INSERT INTO MAIN_TABLE(UUID, FILE_TITLE, FILE_CONTENT, FILE_DATA, FILE_URL, INSERT_TIME, PRICE, GENRE, COMPANY,
+      RANK, NALZZA, INFO, VIDEO, WIN_OPERATION, WIN_PROCESS, WIN_MEMORY, WIN_GRAPHIC, WIN_DIRECTX, WIN_STORAGE,
+      MAC_OPERATION, MAC_PROCESS, MAC_MEMORY, MAC_GRAPHIC, MAC_STORAGE)
+      VALUES(#{uuid},#{fileTitle},#{fileContent}, #{fileData}, #{fileUrl}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), #{price},
+      #{genre}, #{company}, #{rank}, #{nalzza}, #{info}, #{video}, #{winOperation}, #{winProcess}, #{winMemory}, #{winGraphic},
+      #{winDirectX}, #{winStorage}, #{macOperation}, #{macProcess}, #{macMemory}, #{macGraphic}, #{macStorage})
+   </insert>
+   
+   <select id="selectMain" parameterType="String" resultType="MainVO">
+      SELECT * FROM MAIN_TABLE WHERE UUID = #{uuid}
+   </select>
+   
+</mapper>

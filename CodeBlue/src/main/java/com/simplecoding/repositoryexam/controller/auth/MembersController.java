@@ -3,14 +3,20 @@
  */
 package com.simplecoding.repositoryexam.controller.auth;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.simplecoding.repositoryexam.service.auth.MembersService;
 
@@ -67,9 +73,8 @@ public class MembersController {
 		return "redirect:/login";
 	}
 	
-	@PostMapping("register/addition")
+	@PostMapping("/register/addition")
 	public String register(@ModelAttribute MembersVO membersVO) throws Exception{
-		log.info("테스트 : " + membersVO);
 		
 		MembersVO memberVO2 = membersService.authenticateMembers(membersVO);
 		
@@ -77,6 +82,16 @@ public class MembersController {
 			throw new Exception("이미 가입되었습니다.");
 		}
 		membersService.registerMembers(membersVO);
-		return "redirect:/login";
+		return "redirect:/register";
 	}
+	
+	@GetMapping("/test")
+	private String test(@RequestParam String username, Model model) {
+		// TODO Auto-generated method stub
+		log.info("테스트" + username);
+		
+		return "redirect:/register";
+		
+	}
+	
 }

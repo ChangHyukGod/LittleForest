@@ -5,6 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+
+<script type="text/javascript">
+ function fn_check(event){
+		document.listForm.method = "get";
+		document.listForm.action = "/test";
+		document.listForm.submit();
+
+ }
+</script>
+
 <style>
   <style>
 body {
@@ -180,7 +190,6 @@ body {
  				<div class="card-body">
     				<h4 class="text-center mb-6 fw-bold fs-2">회원가입</h4>
     				<hr class="underline">
-					<form action="/register" method="POST">
 						<div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px;">
 			   				 <p style="color: black; margin: 0; width: 150px;">회원구분<b class="text-danger"> *</b></p>
 			  			<div style="margin-left: 10px;">
@@ -216,47 +225,84 @@ body {
 	        </div>
 
 <!-- 아이디 -->
-<div class="form-group" style="margin: 10px 0 10px 0;">  
-    <label for="username"></label>
-    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
-        <p class="input-label" style="margin: 0;">아이디<b class="text-danger"> *</b></p>
-        <div style="margin-left: 10px; display: flex; align-items: center;">
-            <input type="text" id="username" name="username" class="form-control" placeholder="" required style="margin: 0;">
-            <p style="margin: 0 0 0 15px; font-size: 12px; white-space: nowrap;">(영문소문자/숫자, 4~16자)</p>
+	<form id="listForm" name="listForm" action="/register/addition" method="post">
+        <!-- 아이디 입력란 -->
+        <div class="form-group" style="margin: 10px 0 10px 0;">  
+            <label for="username"></label>
+            <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
+                <p class="input-label" style="margin: 0;">아이디<b class="text-danger"> *</b></p>
+                <div style="margin-left: 10px; display: flex; align-items: center;">
+                    <input type="text" 
+                        id="username"
+                        name="username" 
+                        class="form-control" 
+                        placeholder="" 
+                        required 
+                        style="margin: 0;">
+                        <button type="button" style="margin-left: 10px;" class="btn btn-primary" onclick="fn_check(event)">중복 확인</button>
+                    	<p id="idCheckMessage" style="margin: 0 0 0 15px; font-size: 10px; color: red; display: none;"></p>
+                    <p style="margin: 0 0 0 15px; font-size: 12px; white-space: nowrap;">(영문소문자/숫자, 4~16자)</p>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    	
+        <!-- 실선 추가 -->
+        <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 0;"> 
 
-<!-- 실선 추가 -->
-<hr style="border: 1px solid #BDBDBD; width: 100%; margin: 0;"> 
-
-<!-- 비밀번호 -->
-<div class="form-group" style="margin: 10px 0 10px 0;">  
-    <label for="password"></label>
-    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
-        <p class="input-label" style="margin: 0;">비밀번호<b class="text-danger"> *</b></p>
-        <div style="margin-left: 10px; display: flex; align-items: center;">
-            <input type="password" id="password" name="password" class="form-control" placeholder="" required style="margin: 0;">
-            <p style="margin: 0 0 0 15px; font-size: 12px; white-space: nowrap;">(8~16자의 영문 대/소문자, 숫자, 특수문자)</p>
+        <!-- 비밀번호 입력란 -->
+        <div class="form-group" style="margin: 10px 0 10px 0;">  
+            <label for="password"></label>
+            <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
+                <p class="input-label" style="margin: 0;">비밀번호<b class="text-danger"> *</b></p>
+                <div style="margin-left: 10px; display: flex; align-items: center;">
+                    <input type="password" 
+                        id="password" 
+                        name="password" 
+                        class="form-control" 
+                        placeholder="" 
+                        required 
+                        style="margin: 0;">
+                    <p style="margin: 0 0 0 15px; font-size: 12px; white-space: nowrap;">(8~16자의 영문 대/소문자, 숫자, 특수문자)</p>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
+        <!-- 실선 추가 -->
+        <hr style="border: 1px solid #BDBDBD; width: 100%; margin:10px 0 10px 0;"> 
 
-<!-- 실선 추가 -->
-<hr style="border: 1px solid #BDBDBD; width: 100%; margin:10px 0 10px 0;">
-
-<!-- 비밀번호 확인 -->
-<div class="form-group" style="margin: 0;"> 
-    <label for="password"></label>
-    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
-        <p class="input-label" style="margin: 0;">비밀번호 확인<b class="text-danger"> *</b></p>
-        <div style="margin-left: 10px; display: flex; align-items: center;">
-            <input type="password" id="uspassworder" name="password" class="form-control" placeholder="" required style="margin: 0;"> 
+        <!-- 비밀번호 확인 입력란 -->
+        <div class="form-group" style="margin: 0;"> 
+            <label for="confirmPassword"></label>
+            <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
+                <p class="input-label" style="margin: 0;">비밀번호 확인<b class="text-danger"> *</b></p>
+                <div style="margin-left: 10px; display: flex; align-items: center;">
+                    <input type="password" 
+                        id="confirmPassword" 
+                        name="confirmPassword" 
+                        class="form-control" 
+                        placeholder="" 
+                        required 
+                        style="margin: 0;"> 
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
+        <p id="passwordError" style="color: red; display: none;">비밀번호가 일치하지 않습니다.</p>
+        
+        <script>
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const passwordError = document.getElementById('passwordError');
+            
+            confirmPasswordInput.addEventListener('input', function() {
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    passwordError.style.display = 'block';
+                } else {
+                    passwordError.style.display = 'none';
+                }
+            });
+        </script>
+    </form>
 <!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 10px 0 10px 0;">
 
@@ -266,7 +312,9 @@ body {
     <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
         <p class="input-label" style="margin: 0;">이름<b class="text-danger"> *</b></p>
         <div style="margin-left: 10px; display: flex; align-items: center;">
-            <input type="text" id="username" name="username" class="form-control" placeholder="" required style="margin: 0;"> 
+            <input type="text" 
+            id="username2" 
+            name="username2" class="form-control" placeholder="" required style="margin: 0;"> 
         </div>
     </div>
 </div>
@@ -431,8 +479,7 @@ body {
 </div>
 		</div>
 	</div>
-	</div>	
-			</form> 
+	</div>
 </div>
 </div>
 

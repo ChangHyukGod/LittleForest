@@ -45,6 +45,11 @@ public class MembersServiceImpl implements MembersService{
 		membersVO.setPassword(hashedPassword);
 		memberMapper.register(membersVO);
 	}
+
+
+
+
+
 	
 	
 }

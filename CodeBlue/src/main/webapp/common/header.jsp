@@ -46,9 +46,9 @@
         .navbar-nav .nav-link {
             margin-right: 15px;
         }
-        .navbar-nav{
-        	margin-left: 1200px;
-        }
+		.navbar-nav {
+    		margin-left: 70%; /* 화면 크기에 따라 마진이 유동적으로 조정됩니다 */
+		}
         .navbar-brand img {
             width: 50px; /* 로고 크기 조정 */
         }
@@ -91,6 +91,15 @@
 	 <%-- 메뉴 시작 --%>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <c:choose>
+	   			<c:when test="${sessionScope.memberVO != null}">
+					<c:if test="${sessionScope.memberVO.admin == 1}">
+	  					<li class="nav-item">
+  							<a href="main/addition" class="nav-link">MAIN_ADD</a>
+						</li>
+ 					</c:if>
+				</c:when>
+			</c:choose>
                 <li class="nav-item">
                     <a class="nav-link" href="#">BEST</a>
                 </li>
@@ -119,15 +128,22 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="">공지사항</a></li>
-                        <li><a class="dropdown-item" href="/basic/faqmain">FAQ</a></li>
+                        <li><a class="dropdown-item" href="/faq">FAQ</a></li>
                         <li><a class="dropdown-item" href="">1:1문의</a></li>
-                        <li><a class="dropdown-item" href="">Add Faq</a></li>
+				        <c:choose>
+				            <c:when test="${sessionScope.memberVO != null}">
+				                <c:if test="${sessionScope.memberVO.admin == 1}">
+				                    <li class="nav-item">
+				                        <a href="/faqlogin" class="dropdown-item">Faq Add</a>
+				                    </li>
+				                </c:if>
+				            </c:when>
+				        </c:choose>
                     </ul>
                 </li>
             </ul>
                 <!-- 우측 아이콘 -->
                 <div class="d-flex">
-<<<<<<< Updated upstream
                      <div class="dropdown"> <!-- 드롭다운을 위한 div 추가 -->
         				<a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             				<i class="bi bi-person"></i> <!-- 사용자 아이콘 -->
@@ -138,6 +154,9 @@
         							<li><a class="dropdown-item" href="/login">로그인</a></li>
     								</c:when>
     							<c:otherwise>
+    								<li class="dropdown-item"> 
+                						<strong>${sessionScope.memberVO.membername} 님<br> 안녕하세요</strong>
+            						</li>
         							<li class="nav-item">
             							<a href="/logout" class="dropdown-item">로그아웃</a>
         							</li>
@@ -145,7 +164,7 @@
 							</c:choose>
             				<c:choose>
    								<c:when test="${sessionScope.memberVO == null}">
-        							<li><a class="dropdown-item" href="/regiser">회원가입</a></li>
+        							<li><a class="dropdown-item" href="/register">회원가입</a></li>
     								</c:when>
     							<c:otherwise>
         							<li class="nav-item">
@@ -157,14 +176,6 @@
         					</ul>
     				</div>
                     <a href="/shoppingbasket" class="nav-link icon">
-=======
-                    <a href="/basic/login" class="nav-link">로그인</a>
-                    <a href="/basic/mypage" class="nav-link icon">
-                        <i class="bi bi-person"></i> <!-- 사용자 아이콘 -->
-                    </a>
-                    
-                    <a href="#" class="nav-link icon">
->>>>>>> Stashed changes
                         <i class="bi bi-cart"></i> <!-- 장바구니 아이콘 -->
                         <span class="icon-badge">0</span> <!-- 장바구니 배지 -->
                     </a>

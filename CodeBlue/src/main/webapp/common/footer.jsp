@@ -60,9 +60,9 @@
             <div class="row">
                 <!-- 소셜 아이콘 -->
                 <div class="col-lg-6 social-icons">
-                    <a href="#"><img src="path_to_facebook_icon.png" alt="Facebook"></a>
-                    <a href="#"><img src="path_to_instagram_icon.png" alt="Instagram"></a>
-                    <a href="#"><img src="path_to_youtube_icon.png" alt="YouTube"></a>
+                    <a href="#"><img src="#" alt="Facebook"></a>
+                    <a href="#"><img src="#" alt="Instagram"></a>
+                    <a href="#"><img src="#" alt="YouTube"></a>
                 </div>
                 <!-- 저작권 정보 -->
                 <div class="col-lg-6 text-end">

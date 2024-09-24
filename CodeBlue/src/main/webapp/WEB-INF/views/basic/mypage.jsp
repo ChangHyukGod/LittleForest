@@ -10,11 +10,10 @@
             font-family: Arial, sans-serif;
         }
         .left-align {
-       		margin: 50px 100px 100px 120px;
             text-align: left;
             padding: 50px;
             width: 300px;
-            float: left;
+              float: left;
             
             }
             
@@ -26,74 +25,63 @@
 		.left-align p { 
 		    margin-bottom: 10px;
 		}
-		
             
 
-  .header {
-	margin: 100px 100px 0 600px;
-    padding: 0px;
+     .header {
+    margin-left: 30px;
     background-color: #bae4ae;
+    padding: 0px;
+    margin :0px;
     color: white;
     display: flex;
     flex-direction: column; /* 세로 방향으로 나열 */
     justify-content: center; /* 세로 중앙 정렬 */
     align-items: center; /* 수평 중앙 정렬 */
+    margin: 100px;
     width: 800px;
-    border: 1px solid brown;
+    border: 2px solid brown;
     border-radius: 5px;
-    height: auto;
+    height: 100px; /* 원하는 높이 설정 */
+}
+
+.top, .bottom {
+    width: 100%; /* 너비를 전체로 설정 */
+    text-align: center; /* 텍스트 중앙 정렬 */
 }
 
 .top {
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid brown;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    padding :10px;
+    padding: 10px; /* 여백 추가 */
+    background-color: rgba(255, 255, 255, 0.2); /* 배경색 조정 */
 }
 
 .bottom {
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    background-color: white;
-    color: black;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    margin-top: 0; 
-    padding :10px;
+padding : 10px; /* 여백 추가 */
+    background-color: white; /* 배경색 조정 */
+    color:black;
+    border-bottom:2px solid black;
+       border-radius: 5px;
 }
 
 
-
         .header .welcome {
-            font-size: 20px;
-        }
-        .header .info {
             font-size: 18px;
         }
-        .header .info span {
-            margin-left: 24px;
+        .header .info {
+            font-size: 14px;
         }
-        .custom-success {
-  		  color: #bae4ae;
-  		  }
-        
+        .header .info span {
+            margin-left: 20px;
+        }
         .order-status {
-        	margin: 80px 100px 0 600px;
 
         }
         .order-status .title {
-			font-weight: bold;
-			font-size : 18px;
+            font-weight: bold;
         }
         
-        .status-container {           
-        margin-top : 20px;
-        display: flex;
+        .status-container {
+            margin:100px;
+            display: flex;
             justify-content: space-around;
             padding: 20px;
             background-color: #f4f4f4;
@@ -104,51 +92,41 @@
             text-align: center;
             width: 100px;
         }
-        
-        
         .status-box h3 {
             margin: 10px 0;
-            font-size :30px;
-            font-weight: bold;
-
-            
         }
         .status-box span {
-            font-size: 15px;
+            font-size: 12px;
             color: #666;
         }
-
-        .next {
-        font-size : 50px;
-        color : #BDBDBD;
+        .status-complete {
+            color: green;
         }
         
         .interest{
-        	font-weight: bold;
-       		margin-top :70px;
             padding: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width:800px;
+            margin-left:300px;
+            width:600px;
    			border-bottom: 1px solid black;
         }
          .interest .inter {
-            font-size: 20px;
+            font-size: 18px;
         }
         .interest .est {
             font-size: 14px;
         }
 		 .circle {
-		 	margin: 100px 100px 0 320px;
-            width: 150px;
+             width: 150px;
 		    height: 150px;
 		    border: 2px solid black;
 		    border-radius: 50%;
 		    display: flex;
 		    justify-content: center;
 		    align-items: center;
-
+		    margin-left:700px;
         }
         .exclamation {
             font-size: 48px;
@@ -159,15 +137,9 @@
         .text {
             font-size: 20px;
             float:center;
-            margin: 43px 100px 100px 300px;
+            margin-left:400px;
         }       
         
-        .underline {
-         width:800px;
-   		border-bottom: 1px solid black;
-   		margin-bottom:100px;
-        }
-       
 
     </style>
 </head>
@@ -177,7 +149,6 @@
 
 	 <div class="left-align">
         <h2 class="fw-semibold"> 마이페이지 </h2>
-        </br>
         <h4 class="fw-medium"> 마이쇼핑 </h4>
         <p class="text-success"> 주문/배송 조회 </p>
         <p> 관심상품 </p>
@@ -193,47 +164,47 @@
     <!-- 상단 사용자 정보 -->
     <div class="header">
         <div class="top">
-            <img src="${pageContext.request.contextPath}/resources/images/qfqf.jpg" alt="| " style="border-radius: 50%; width: 40px; height: 40px;">
+            <img src="${pageContext.request.contextPath}/resources/images/126748728_1.jpg" alt="| " style="border-radius: 50%; width: 40px; height: 40px;">
             <span class="fw-bold">[Family] 회원 ㅇ3ㅇ님 반갑습니다.</span>
         </div>
        <div class="bottom">
-	    <span>포인트 &nbsp;  <strong class="custom-success"> &nbsp; 0 &nbsp;  </strong> P &nbsp; &nbsp;</span>
-	    <span>쿠폰  &nbsp; <strong class="custom-success"> &nbsp; 0 &nbsp; </strong> 개 &nbsp; &nbsp;</span>
-	    <span>예치금 &nbsp;  <strong class="custom-success"> &nbsp; 0  &nbsp;</strong> 원</span>
+	    <span>포인트 <strong class="text-black">0</strong> P</span>
+	    <span>쿠폰 <strong class="text-black">0</strong> 개</span>
+	    <span>예치금 <strong class="text-black">0</strong> 원</span>
 	  </div>
     </div>
 
     <!-- 주문/배송 조회 -->
     <div class="order-status">
-        <div class="title">주문/배송 조회</div>
+        <div class="title" style="margin-left:10px;">주문/배송 조회</div>
         <div class="status-container">
             <div class="status-box">
                 <h3>0</h3>
                 <span>주문접수</span>
             </div>
             <div>
-                <p class="next">></p>
+                <h1>></h1>
             </div>
             <div class="status-box">
                 <h3>0</h3>
                 <span>결제완료</span>
             </div>
             <div>
-                <p class="next">></p>
+                <h1>></h1>
             </div>
             <div class="status-box">
                 <h3>0</h3>
                 <span>배송준비중</span>
             </div>
              <div>
-                <p class="next">></p>
+                <h1>></h1>
              </div>
             <div class="status-box">
                 <h3>0</h3>
                 <span>배송중</span>
             </div>
             <div>
-                <p class="next">></p>
+                <h1>></h1>
             </div>
             <div class="status-box">
                 <h3>0</h3>
@@ -253,7 +224,6 @@
         <div class="exclamation">!</div>
         </div>
    		<div class="text">관심 상품이 없습니다.</div>
-   		<div class="underline"></div>
     </div>
   
 
