@@ -56,8 +56,13 @@
 		</table>
 		<!-- 장바구니, 구매하기 버튼 -->
 		<div class="card-body" style="margin-left:150px;">
+<<<<<<< Updated upstream
 			<a href="/shoppingbasket" class="btn btn-primary">장바구니</a>
 			<a href="/paymentpage" class="btn btn-success">구매하기</a>
+=======
+			<a href="#" class="btn btn-primary">장바구니</a>
+			<a href="#" class="btn btn-success">구매하기</a>
+>>>>>>> Stashed changes
 		</div>
 	</div>
 </div>

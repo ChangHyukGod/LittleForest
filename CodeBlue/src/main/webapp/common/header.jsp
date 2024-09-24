@@ -127,6 +127,7 @@
             </ul>
                 <!-- 우측 아이콘 -->
                 <div class="d-flex">
+<<<<<<< Updated upstream
                      <div class="dropdown"> <!-- 드롭다운을 위한 div 추가 -->
         				<a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             				<i class="bi bi-person"></i> <!-- 사용자 아이콘 -->
@@ -156,6 +157,14 @@
         					</ul>
     				</div>
                     <a href="/shoppingbasket" class="nav-link icon">
+=======
+                    <a href="/basic/login" class="nav-link">로그인</a>
+                    <a href="/basic/mypage" class="nav-link icon">
+                        <i class="bi bi-person"></i> <!-- 사용자 아이콘 -->
+                    </a>
+                    
+                    <a href="#" class="nav-link icon">
+>>>>>>> Stashed changes
                         <i class="bi bi-cart"></i> <!-- 장바구니 아이콘 -->
                         <span class="icon-badge">0</span> <!-- 장바구니 배지 -->
                     </a>

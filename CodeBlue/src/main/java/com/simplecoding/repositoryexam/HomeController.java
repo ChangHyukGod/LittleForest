@@ -34,5 +34,12 @@ public class HomeController {
 	public String register() {
 		return "/basic/register";
 	}
+<<<<<<< Updated upstream
+=======
+	@GetMapping("/basic/home")
+	public String home() {
+		return "/basic/home";
+	}
+>>>>>>> Stashed changes
 	
 }
