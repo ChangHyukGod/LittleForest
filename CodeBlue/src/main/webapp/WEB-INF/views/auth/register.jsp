@@ -7,12 +7,12 @@
 <title>회원가입</title>
 
 <script type="text/javascript">
- function fn_check(event){
-		document.listForm.method = "get";
-		document.listForm.action = "/test";
-		document.listForm.submit();
+//  function fn_check(event){
+// 		document.listForm.method = "get";
+// 		document.listForm.action = "/test";
+// 		document.listForm.submit();
 
- }
+//  }
 </script>
 
 <style>
@@ -302,7 +302,7 @@ body {
                 }
             });
         </script>
-    </form>
+    
 <!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 10px 0 10px 0;">
 
@@ -313,8 +313,23 @@ body {
         <p class="input-label" style="margin: 0;">이름<b class="text-danger"> *</b></p>
         <div style="margin-left: 10px; display: flex; align-items: center;">
             <input type="text" 
-            id="username2" 
-            name="username2" class="form-control" placeholder="" required style="margin: 0;"> 
+            id="membername" 
+            name="membername" class="form-control" placeholder="" required style="margin: 0;"> 
+        </div>
+    </div>
+</div>
+
+<!-- 실선 추가 -->
+<hr style="border: 1px solid #BDBDBD; width: 100%; margin: 10px 0 10px 0;">
+
+<div class="form-group" style="margin: 0;">  
+    <label for="username"></label>
+    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
+        <p class="input-label" style="margin: 0;">나이<b class="text-danger"> *</b></p>
+        <div style="margin-left: 10px; display: flex; align-items: center;">
+            <input type="text" 
+            id="age" 
+            name="age" class="form-control" placeholder="" required style="margin: 0;"> 
         </div>
     </div>
 </div>
@@ -475,13 +490,18 @@ body {
 		
 		
 		<div class="text-center">
-<button type="submit" class="btn btn-success btn-block" style="padding: 10px 40px; font-size: 16px; margin-bottom: 25px;" onclick="location.href='/basic/register'">회원가입</button>
-</div>
+		<button type="submit" class="btn btn-success btn-block" style="padding: 10px 40px; font-size: 16px; margin-bottom: 25px;" onclick="location.href='/basic/register'">회원가입</button>
 		</div>
+</form>
+		</div>
+		
 	</div>
+	
 	</div>
+	
 </div>
 </div>
+
 
 
 
