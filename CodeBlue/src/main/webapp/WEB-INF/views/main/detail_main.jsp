@@ -5,7 +5,9 @@
 <head>
    <title>gameinfo</title>
    <script type="text/javascript" defer="defer">
-      function fn_buy() {
+      function fn_buy(uuid) {
+        document.detailForm.uuid.value = uuid;
+        
          document.detailForm.action = "/main/buy";
          
          document.detailForm.submit();
@@ -16,7 +18,11 @@
 <jsp:include page="/common/header.jsp"></jsp:include>
 
 <div class="container">
-  <form action="detailForm" name="detailForm" method="post">
+  <form action="detailForm" name="detailForm" method="get">
+     <!-- uuid 전송(***) -->
+   <input type="hidden" name="uuid" value="${detail.uuid}">
+<!-- 전체 세로정렬 -->
+<div class="container" style="display:flex-direction:row; gap:20px;">
 
 <!-- (1) 게임이미지 + 정보테이블 + 버튼 -->
 <div class="container" style="display:flex; gap:80px; margin-top:20px;">
@@ -61,9 +67,9 @@
         </tbody>
       </table>
       <!-- 장바구니, 구매하기 버튼 -->
-      <div class="card-body" style="margin-left:150px;">
+      <div class="card-body" style="margin-left:130px;">
          <a href="#" class="btn btn-primary">장바구니</a>
-         <a href="#" class="btn btn-success" onclick="fn_buy()">구매하기</a>
+         <a href="#" class="btn btn-success" onclick="fn_buy('<c:out value="${detail.uuid}"></c:out>')">구매하기</a>
       </div>
    </div>
 </div>
@@ -155,9 +161,12 @@
          </div>
       </div>
    </div>
-   
   </div>
+  
+</div>
+  
 </form>
+</div>
 
 <jsp:include page="/common/footer.jsp"></jsp:include>
 </body>

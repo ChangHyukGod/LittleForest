@@ -49,6 +49,12 @@
         .price {
             color: #888;
         }
+        .coupon {
+        	color: #888;
+        }
+        .order {
+        	color: black;
+        }
         .btn {
             background-color: #28a745; 
             color: white;
@@ -66,6 +72,7 @@
             font-size: 20px;
             font-weight: bold;
             margin-top: 20px;
+            color: black;
         }
         .summary {
             margin-top: 20px;
@@ -90,7 +97,7 @@
     </div>
     
     <div class="product">
-        <img src="https://via.placeholder.com/100" alt="백영웅전">
+        <img src="https://via.placeholder.com/100" alt="게임2">
         <div class="details">
             <div class="title">게임2</div>
             <div class="price">상품 금액: ₩</div>
@@ -104,7 +111,7 @@
     <div class="summary">
         <div class="total price">총 상품 금액: ₩</div>
         <div class="total discount">총 할인 금액: ₩</div>
-        <div class="total coupon discount">쿠폰 할인: ₩</div>
+        <div class="total coupon discount">총 쿠폰 할인: ₩</div>
         <div class="total order price">총 주문 금액: ₩</div>
     </div>
 

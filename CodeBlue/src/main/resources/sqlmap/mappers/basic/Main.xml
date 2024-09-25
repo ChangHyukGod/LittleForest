@@ -4,7 +4,7 @@
 
    <select id="selectMainList" parameterType="Criteria" resultType="MainVO">
       SELECT * FROM MAIN_TABLE
-      WHERE FILE_TITLE LIKE '%'|| #{searchKeyword} ||'%'
+      WHERE GENRE LIKE '%'|| #{searchKeyword} ||'%'
    <!--    OFFSET #{firstIndex} ROWS
       FETCH NEXT #{recordCountPerPage} ROWS ONLY -->
    </select>
