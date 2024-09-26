@@ -58,7 +58,7 @@
             <div class="row">
                 <!-- 저작권 정보 -->
                 <div class="col-lg-12 d-flex justify-content-end">
-                    <p>&copy; 2021. Netmarble Corp. All Rights Reserved.</p>
+                    <p>&copy; 2024. Codeblue Corp. All Rights Reserved.</p>
                 </div>
             </div>
         </div>
