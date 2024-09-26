@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -164,7 +166,7 @@
         <div class="header">
             <div class="top">
                 <img src="${pageContext.request.contextPath}/resources/images/qfqf.jpg" alt="| " style="border-radius: 50%; width: 40px; height: 40px;">
-                <span class="fw-bold">[Family] 회원 ㅇ3ㅇ님 반갑습니다.</span>
+                <span class="fw-bold">[Family] 회원 ${sessionScope.memberVO.membername}님 반갑습니다.</span>
             </div>
             <div class="bottom">
                 <span>포인트 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> P &nbsp; &nbsp;</span>
@@ -209,13 +211,15 @@
                 </div>
 
               <!-- 아이디 -->
+              
+
 <div class="form-group" style="margin: -10px 0 10px 0;">  
     <label for="username"></label>
     <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
         <p class="input-label" style="margin: 0;">아이디<b class="text-danger"> *</b></p>
         <div style="margin-left: 10px; display: flex; align-items: center;">
 
-            <input class="form-control" type="text" value="abc123!" aria-label="readonly input example" readonly>
+            <input class="form-control" type="text" value="<c:out value="${sessionScope.memberVO.username}"/>" aria-label="readonly input example" readonly>
             <p style="margin: 0 0 0 15px; font-size: 12px; white-space: nowrap;">(영문소문자/숫자, 4~16자)</p>
         </div>
     </div>
@@ -257,7 +261,7 @@
     <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
         <p class="input-label" style="margin: 0;">이름<b class="text-danger"> *</b></p>
         <div style="margin-left: 10px; display: flex; align-items: center;">
-           <input class="form-control" type="text" value="박창혁" aria-label="readonly input example" readonly>
+           <input class="form-control" type="text" value="${sessionScope.memberVO.membername}" aria-label="readonly input example" readonly>
         </div>
     </div>
 </div>
@@ -312,7 +316,7 @@
     <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
         <p class="input-label" style="margin: 0;">이메일<b class="text-danger"> *</b></p>
         <div style="margin-left: 10px; display: flex; align-items: center;">
-            <input class="form-control" type="text" value="abc123!@naver.com" aria-label="readonly input example" readonly>
+            <input class="form-control" type="text" value="${sessionScope.memberVO.email}" aria-label="readonly input example" readonly>
         </div>
     </div>
 </div>
@@ -344,7 +348,7 @@
 	            <span>추가정보</span>
 	        </div>
 	        </div>
-	
+
 <div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top:10px;">
     <p style="color: black; margin: 0; width: auto; white-space: nowrap;">만 14세 이상입니다.<b class="text-danger"> *</b></p>
     <div style="margin-left: 10px; display: flex; align-items: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

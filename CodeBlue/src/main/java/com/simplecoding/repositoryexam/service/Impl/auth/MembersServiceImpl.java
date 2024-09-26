@@ -3,6 +3,8 @@
  */
 package com.simplecoding.repositoryexam.service.Impl.auth;
 
+import java.util.List;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.simplecoding.repositoryexam.mapper.auth.MemberMapper;
 import com.simplecoding.repositoryexam.service.auth.MembersService;
 import com.simplecoding.repositoryexam.vo.auth.MembersVO;
+import com.simplecoding.repositoryexam.vo.common.Criteria;
 
 /**
   * @fileName : MembersServiceImpl.java
@@ -20,6 +23,7 @@ import com.simplecoding.repositoryexam.vo.auth.MembersVO;
 @Service
 public class MembersServiceImpl implements MembersService{
 	
+
 	@Autowired
 	MemberMapper memberMapper;
 

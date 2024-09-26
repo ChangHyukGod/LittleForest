@@ -15,14 +15,16 @@
  							Password, 
  							MemberName, 
  							Age, 
- 							PhoneNumber ) 
+ 							PhoneNumber,
+ 							Email ) 
 		
 		VALUES (member_seq.NEXTVAL,
 		 		#{username}, 
 		 		#{password}, 
 		 		#{membername}, 
 		 		#{age}, 
-		 		#{phonenumber})
+		 		#{phonenumber},
+		 		#{email})
  	</insert>
 	
 

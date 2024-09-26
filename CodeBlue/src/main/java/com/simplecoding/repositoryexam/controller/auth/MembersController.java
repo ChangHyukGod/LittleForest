@@ -4,6 +4,7 @@
 package com.simplecoding.repositoryexam.controller.auth;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.simplecoding.repositoryexam.service.auth.MembersService;
 
 import com.simplecoding.repositoryexam.vo.auth.MembersVO;
+import com.simplecoding.repositoryexam.vo.common.Criteria;
 
 import lombok.extern.log4j.Log4j;
 
@@ -94,9 +96,10 @@ public class MembersController {
 		
 	}
 	
+//	회원가입 화면
 	@GetMapping("/infofix")
 	public String infofix() {
-		return "/auth/infofix";
+		return "auth/infofix";
 	}
 	
 }

@@ -3,7 +3,10 @@
  */
 package com.simplecoding.repositoryexam.service.auth;
 
+import java.util.List;
+
 import com.simplecoding.repositoryexam.vo.auth.MembersVO;
+import com.simplecoding.repositoryexam.vo.common.Criteria;
 
 /**
   * @fileName : MembersService.java
