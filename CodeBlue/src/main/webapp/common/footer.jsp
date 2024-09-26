@@ -1,4 +1,4 @@
-<%--
+<%-- 
   Created by IntelliJ IDEA.
   User: GGG
   Date: 2024-03-13
@@ -40,32 +40,24 @@
             <div class="row">
                 <!-- 상호명 및 사업자 정보 -->
                 <div class="col-lg-6 mb-3">
-                    <strong>상호명:</strong> 코드블루 주식회사 <br>
-                    <strong>사업자등록번호:</strong> 105-87-64746<br>
-                    <strong>주소:</strong> 서울특별시 구로구 디지털로26길 38 (구로동) G-TOWER<br>
-                    <strong>고객센터:</strong> 1670-2451 (평일 10시~18시) | <strong>이메일:</strong> stores@netmarble.com
+                    <strong>상호명:</strong> 코드블루 <br>
+                    <strong>사업자등록번호:</strong> 000-00-00000<br>
+                    <strong>주소:</strong> 부산광역시 <br>
+                    <strong>고객센터:</strong> 0000-0000 (평일 10시~18시) | <strong>이메일:</strong> abc123@codeblue.com
                 </div>
                 <!-- 고객지원 링크 -->
-                <div class="col-lg-6 mb-3" text-end>
-                    <a href="#">개인정보처리방침</a> | 
+                <div class="col-lg-6 mb-3 text-end">
                     <a href="#">이용약관</a> | 
                     <a href="#">고객센터</a> | 
                     <a href="#">공지사항</a> <br>
                     <a href="/register">회원가입</a> | 
                     <a href="/basic/mypage">마이페이지</a> | 
-                    <a href="#">장바구니</a> | 
-                    <a href="#">위시리스트</a>
+                    <a href="#">장바구니</a>
                 </div>
             </div>
             <div class="row">
-                <!-- 소셜 아이콘 -->
-                <div class="col-lg-6 social-icons">
-                    <a href="#"><img src="#" alt="Facebook"></a>
-                    <a href="#"><img src="#" alt="Instagram"></a>
-                    <a href="#"><img src="#" alt="YouTube"></a>
-                </div>
                 <!-- 저작권 정보 -->
-                <div class="col-lg-6 text-end">
+                <div class="col-lg-12 d-flex justify-content-end">
                     <p>&copy; 2021. Netmarble Corp. All Rights Reserved.</p>
                 </div>
             </div>

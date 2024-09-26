@@ -94,4 +94,9 @@ public class MembersController {
 		
 	}
 	
+	@GetMapping("/infofix")
+	public String infofix() {
+		return "/auth/infofix";
+	}
+	
 }

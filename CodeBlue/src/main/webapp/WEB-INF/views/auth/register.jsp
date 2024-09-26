@@ -343,7 +343,7 @@ body {
     <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
         <p class="input-label" style="margin: 0;">휴대전화 (선택)</p>
         <div style="margin-left: 10px; display: flex; align-items: center;">
-            <select class="form-select form-select-sm" aria-label="번호 선택" style="width: 100px; margin-right: 5px; margin: 0;">
+            <select class="form-select form-select-sm" name="phone_part1" aria-label="번호 선택" style="width: 100px; margin-right: 5px; margin: 0;">
                 <option value="010" selected>010</option>
                 <option value="011">011</option>
                 <option value="016">016</option>
@@ -352,9 +352,9 @@ body {
                 <option value="019">019</option>
             </select>
             <span style="margin: 0 5px;">-</span>
-            <input class="form-control form-control-sm" type="text" placeholder="" aria-label="번호 입력" style="width: 100px; margin: 0;">
+            <input class="form-control form-control-sm" name="phone_part2" type="text" placeholder="" aria-label="번호 입력" style="width: 100px; margin: 0;">
             <span style="margin: 0 5px;">-</span>
-            <input class="form-control form-control-sm" type="text" placeholder="" aria-label="번호 입력" style="width: 100px; margin: 0;">
+            <input class="form-control form-control-sm" name="phone_part3" type="text" placeholder="" aria-label="번호 입력" style="width: 100px; margin: 0;">
         </div>
     </div>
 </div>
@@ -490,7 +490,9 @@ body {
 		
 		
 		<div class="text-center">
-		<button type="submit" class="btn btn-success btn-block" style="padding: 10px 40px; font-size: 16px; margin-bottom: 25px;" onclick="location.href='/basic/register'">회원가입</button>
+		<button type="submit" class="btn btn-success btn-block" style="padding: 10px 40px; font-size: 16px; margin-bottom: 25px;" >
+		회원가입
+		</button>
 		</div>
 </form>
 		</div>
@@ -501,11 +503,6 @@ body {
 	
 </div>
 </div>
-
-
-
-
-
       <jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 </html>
