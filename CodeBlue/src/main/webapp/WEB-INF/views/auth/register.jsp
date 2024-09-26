@@ -250,7 +250,7 @@ body {
                         placeholder="" 
                         required 
                         style="margin: 0;">
-<button type="button" style="margin-left: 10px; height: 30px; display: flex; align-items: center; justify-content: center;" class="btn btn-success" onclick="fn_check(event)">중복 확인</button>
+						<button type="button" style="margin-left: 10px; height: 30px; display: flex; align-items: center; justify-content: center;" class="btn btn-success" onclick="fn_check(event)">중복 확인</button>
                     	<p id="idCheckMessage" style="margin: 0 0 0 15px; font-size: 10px; color: red; display: none;"></p>
                     <p style="margin: 0 0 0 15px; font-size: 12px; white-space: nowrap;">(영문소문자/숫자, 4~16자)</p>
                 </div>
