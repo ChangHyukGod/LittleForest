@@ -69,6 +69,8 @@
                 </div>
             </div>
         </div>
+        
+        
     </div>
     <%--    꼬리말--%>
     <jsp:include page="/common/footer.jsp" />
