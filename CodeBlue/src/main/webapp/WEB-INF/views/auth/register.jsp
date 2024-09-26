@@ -7,13 +7,24 @@
 <title>회원가입</title>
 
 <script type="text/javascript">
-//  function fn_check(event){
-// 		document.listForm.method = "get";
-// 		document.listForm.action = "/test";
-// 		document.listForm.submit();
+ function fn_check(event){
+	    // 각각의 입력 필드에서 값을 가져오기
+	    var phonePart1 = document.getElementById("phone_part1").value;
+	    var phonePart2 = document.getElementById("phone_part2").value;
+	    var phonePart3 = document.getElementById("phone_part3").value;
 
-//  }
+	    // 전체 전화번호를 결합
+	    var fullPhoneNumber = phonePart1 + "-" + phonePart2 + "-" + phonePart3;
+
+	    // 숨겨진 필드에 결합된 전화번호 값을 설정
+	    document.getElementById("fullPhoneNumber").value = fullPhoneNumber;
+
+	    // 폼 제출을 진행
+	    return true;
+
+ }
 </script>
+
 
 <style>
   <style>

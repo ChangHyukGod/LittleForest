@@ -9,6 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <style>
+        body {
+            background-color: #ffffff; /* 배경색을 흰색으로 설정 */
+        }
         .navbar {
             display: flex;
             justify-content: space-between; /* 좌우 아이콘 배치 */
@@ -23,7 +26,6 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%); /* 로고를 정확히 가운데 배치 */
-
         }
         .navbar-brand img {
             width: 200px; /* 로고 크기 조정 */
@@ -68,7 +70,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
             <!-- 메뉴 아이콘 드롭다운 -->
             <div class="dropdown"> <!-- 메뉴 아이콘 -->
@@ -85,7 +87,7 @@
 
             <!-- 로고 (정중앙) -->
             <a class="navbar-brand" href="/">
-                <img src="/resources/images/logo1.PNG" alt="로고">
+                <img src="/resources/images/logo1.png" alt="로고">
             </a>
 
             <!-- 우측 아이콘 -->

@@ -32,4 +32,5 @@ public class MembersVO extends Criteria{
 	private String username;
 	private String password;
 	private int admin;
+	private String email;
 }
