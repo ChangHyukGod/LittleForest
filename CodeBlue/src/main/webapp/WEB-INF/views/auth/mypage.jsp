@@ -1,85 +1,116 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>마이페이지</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+    <style>
+         body {
+    font-size: 12px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    margin: 0;
+}
+
+.container {
+    width: 90%; 
+   display: flex;
+}
+
+.main-content {
+    flex-grow: 1; 
+     display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    margin-left:-115px;
+}
+
+.left-align {
+      margin: 30px 20px 0 -200px; 
+        text-align: left !important;
+        padding: 50px;
+        width: 300px;
+        align-self: flex-start; 
         }
-        .left-align {
-            text-align: left;
-            padding: 50px;
-            width: 300px;
-              float: left;
-            
-            }
-            
+
         .left-align h4 {
-    		margin-top: 50px; 
-   			margin-bottom: 20px; 
-			}
+            margin-top: 50px; 
+            margin-bottom: 20px; 
+        }
 
-		.left-align p { 
-		    margin-bottom: 10px;
-		}
-            
+        .left-align p { 
+            margin-bottom: 10px;
+        }
+        
 
-  .header {
-	margin: 100px 100px 100px 500px;
-    padding: 0px;
+.title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 10px; 
+
+
+}
+
+.header {
+    margin: 50px 0; 
+    padding: 0;
     background-color: #bae4ae;
     color: white;
     display: flex;
-    flex-direction: column; /* 세로 방향으로 나열 */
-    justify-content: center; /* 세로 중앙 정렬 */
-    align-items: center; /* 수평 중앙 정렬 */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 800px;
-    border: 2px solid brown;
+    border: 1px solid brown;
     border-radius: 5px;
-    height: auto;
 }
 
-.top {
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid brown;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
+        .top {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid brown;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
 
-.bottom {
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    background-color: white;
-    color: black;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    margin-top: 0; 
-}
-
-
+        .bottom {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: white;
+            color: black;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
 
         .header .welcome {
+            font-size: 20px;
+        }
+
+        .header .info {
             font-size: 18px;
         }
-        .header .info {
-            font-size: 14px;
-        }
+
         .header .info span {
-            margin-left: 20px;
+            margin-left: 24px;
         }
-        .order-status {
+
+        . .order-status {
         	margin: 100px 100px 100px 500px;
 
         }
-        .order-status .title {
-
+        .order-status .search {
+ 			font-size: 18px;
             font-weight: bold;
         }
         
@@ -131,8 +162,6 @@
 		    display: flex;
 		    justify-content: center;
 		    align-items: center;
-/* 		    margin-top : 50px;
-		    margin: 50px auto; */
         }
         .exclamation {
             font-size: 48px;
@@ -149,6 +178,7 @@
         .underline {
          width:800px;
    		border-bottom: 1px solid black;
+   		margin-bottom:100px;
         }
         
         
@@ -157,11 +187,10 @@
     </style>
 </head>
 <body>
-<%--    머리말 --%>
-<jsp:include page="/common/header.jsp" />
 
-	 <div class="left-align">
-        <h2 class="fw-semibold"> 마이페이지 </h2>
+<jsp:include page="/common/header.jsp" />
+    <div class="container">
+    <div class="left-align">
         <h4 class="fw-medium"> 마이쇼핑 </h4>
         <p class="text-success"> 주문/배송 조회 </p>
         <p> 관심상품 </p>
@@ -172,24 +201,29 @@
         <p> FAQ </p>
         <p> 1:1 문의 </p>
     </div> 
-    
-    <div>
-    <!-- 상단 사용자 정보 -->
-    <div class="header">
-        <div class="top">
-            <img src="${pageContext.request.contextPath}/resources/images/qfqf.jpg" alt="| " style="border-radius: 50%; width: 40px; height: 40px;">
-            <span class="fw-bold">[Family] 회원 ㅇ3ㅇ님 반갑습니다.</span>
-        </div>
-       <div class="bottom">
-	    <span>포인트 &nbsp;  <strong class="text-black"> &nbsp; 0 &nbsp;  </strong> P &nbsp; &nbsp;</span>
-	    <span>쿠폰  &nbsp; <strong class="text-black"> &nbsp; 0 &nbsp; </strong> 개 &nbsp; &nbsp;</span>
-	    <span>예치금 &nbsp;  <strong class="text-black"> &nbsp; 0  &nbsp;</strong> 원</span>
-	  </div>
-    </div>
 
-    <!-- 주문/배송 조회 -->
+    
+    
+<div class="main-content">
+        <p class="title">마이페이지</p>
+    
+   
+        <!-- 상단 사용자 정보 -->
+        <div class="header">
+            <div class="top">
+                <img src="${pageContext.request.contextPath}/resources/images/qfqf.jpg" alt="| " style="border-radius: 50%; width: 40px; height: 40px;">
+                <span class="fw-bold">[Family] 회원 ${sessionScope.memberVO.membername}님 반갑습니다.</span>
+            </div>
+            <div class="bottom">
+                <span>포인트 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> P &nbsp; &nbsp;</span>
+                <span>쿠폰 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> 개 &nbsp; &nbsp;</span>
+                <span>예치금 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> 원</span>
+            </div>
+        </div>
+<br>
+         <!-- 주문/배송 조회 -->
     <div class="order-status">
-        <div class="title">주문/배송 조회</div>
+        <div class="search">주문/배송 조회</div>
         <div class="status-container">
             <div class="status-box">
                 <h3>0</h3>
@@ -239,10 +273,9 @@
    		<div class="text">관심 상품이 없습니다.</div>
    		<div class="underline"></div>
     </div>
-  
+  </div>
+  </div>
 
-
-    </div>
 <jsp:include page="/common/footer.jsp" />
 </body>
 </html>
