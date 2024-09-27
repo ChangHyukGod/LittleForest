@@ -27,40 +27,42 @@
 		}
             
 
-     .header {
-    margin-left: 30px;
-    background-color: #bae4ae;
+  .header {
+	margin: 100px 100px 100px 500px;
     padding: 0px;
-    margin :0px;
+    background-color: #bae4ae;
     color: white;
     display: flex;
     flex-direction: column; /* 세로 방향으로 나열 */
     justify-content: center; /* 세로 중앙 정렬 */
     align-items: center; /* 수평 중앙 정렬 */
-    margin: 100px;
     width: 800px;
     border: 2px solid brown;
     border-radius: 5px;
-    height: 100px; /* 원하는 높이 설정 */
-}
-
-.top, .bottom {
-    width: 100%; /* 너비를 전체로 설정 */
-    text-align: center; /* 텍스트 중앙 정렬 */
+    height: auto;
 }
 
 .top {
-    padding: 10px; /* 여백 추가 */
-    background-color: rgba(255, 255, 255, 0.2); /* 배경색 조정 */
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid brown;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .bottom {
-padding : 10px; /* 여백 추가 */
-    background-color: white; /* 배경색 조정 */
-    color:black;
-    border-bottom:2px solid black;
-       border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-top: 0; 
 }
+
 
 
         .header .welcome {
@@ -73,15 +75,17 @@ padding : 10px; /* 여백 추가 */
             margin-left: 20px;
         }
         .order-status {
+        	margin: 100px 100px 100px 500px;
 
         }
         .order-status .title {
+
             font-weight: bold;
         }
         
-        .status-container {
-            margin:100px;
-            display: flex;
+        .status-container {           
+        margin-top : 20px;
+        display: flex;
             justify-content: space-around;
             padding: 20px;
             background-color: #f4f4f4;
@@ -104,12 +108,12 @@ padding : 10px; /* 여백 추가 */
         }
         
         .interest{
+       		margin-top :70px;
             padding: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-left:300px;
-            width:600px;
+            width:800px;
    			border-bottom: 1px solid black;
         }
          .interest .inter {
@@ -119,14 +123,16 @@ padding : 10px; /* 여백 추가 */
             font-size: 14px;
         }
 		 .circle {
-             width: 150px;
+		 	margin: 100px 100px 0 320px;
+            width: 150px;
 		    height: 150px;
 		    border: 2px solid black;
 		    border-radius: 50%;
 		    display: flex;
 		    justify-content: center;
 		    align-items: center;
-		    margin-left:700px;
+/* 		    margin-top : 50px;
+		    margin: 50px auto; */
         }
         .exclamation {
             font-size: 48px;
@@ -137,8 +143,15 @@ padding : 10px; /* 여백 추가 */
         .text {
             font-size: 20px;
             float:center;
-            margin-left:400px;
+            margin: 43px 100px 100px 300px;
         }       
+        
+        .underline {
+         width:800px;
+   		border-bottom: 1px solid black;
+        }
+        
+        
         
 
     </style>
@@ -164,19 +177,19 @@ padding : 10px; /* 여백 추가 */
     <!-- 상단 사용자 정보 -->
     <div class="header">
         <div class="top">
-            <img src="${pageContext.request.contextPath}/resources/images/126748728_1.jpg" alt="| " style="border-radius: 50%; width: 40px; height: 40px;">
+            <img src="${pageContext.request.contextPath}/resources/images/qfqf.jpg" alt="| " style="border-radius: 50%; width: 40px; height: 40px;">
             <span class="fw-bold">[Family] 회원 ㅇ3ㅇ님 반갑습니다.</span>
         </div>
        <div class="bottom">
-	    <span>포인트 <strong class="text-black">0</strong> P</span>
-	    <span>쿠폰 <strong class="text-black">0</strong> 개</span>
-	    <span>예치금 <strong class="text-black">0</strong> 원</span>
+	    <span>포인트 &nbsp;  <strong class="text-black"> &nbsp; 0 &nbsp;  </strong> P &nbsp; &nbsp;</span>
+	    <span>쿠폰  &nbsp; <strong class="text-black"> &nbsp; 0 &nbsp; </strong> 개 &nbsp; &nbsp;</span>
+	    <span>예치금 &nbsp;  <strong class="text-black"> &nbsp; 0  &nbsp;</strong> 원</span>
 	  </div>
     </div>
 
     <!-- 주문/배송 조회 -->
     <div class="order-status">
-        <div class="title" style="margin-left:10px;">주문/배송 조회</div>
+        <div class="title">주문/배송 조회</div>
         <div class="status-container">
             <div class="status-box">
                 <h3>0</h3>
@@ -224,6 +237,7 @@ padding : 10px; /* 여백 추가 */
         <div class="exclamation">!</div>
         </div>
    		<div class="text">관심 상품이 없습니다.</div>
+   		<div class="underline"></div>
     </div>
   
 

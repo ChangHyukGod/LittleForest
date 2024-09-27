@@ -1,9 +1,37 @@
 
 CodeBlue/.classpath
 CodeBlue/target/m2e-wtp/web-resources/META-INF/maven/com.simpleconding.repositoryexam/RepositoryExam/pom.properties
-CodeBlue/target/m2e-wtp/web-resources/META-INF/maven/com.simpleconding.repositoryexam/RepositoryExam/pom.properties
-CodeBlue/target/m2e-wtp/web-resources/META-INF/maven/com.simpleconding.repositoryexam/RepositoryExam/pom.properties
-CodeBlue/target/classes/com/simplecoding/repositoryexam/controller/basic/GameInfoController.class
-CodeBlue/target/classes/com/simplecoding/repositoryexam/controller/basic/AllgameController.class
-CodeBlue/target/m2e-wtp/web-resources/META-INF/maven/com.simpleconding.repositoryexam/RepositoryExam/pom.properties
-CodeBlue/target/classes/com/simplecoding/repositoryexam/controller/basic/GameInfoController.class
+CodeBlue/target/classes/com/simplecoding/repositoryexam/controller/auth/MembersController.class
+CodeBlue/target/classes/com/simplecoding/repositoryexam/controller/auth/MembersController.class
+CodeBlue/target/classes/com/simplecoding/repositoryexam/HomeController.class
+CodeBlue/target/classes/com/simplecoding/repositoryexam/controller/auth/MembersController.class
+# Directories #
+/build/
+/bin/
+target/
+
+# OS Files #
+.DS_Store
+  
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.db
+      
+# Eclipse #
+.project
+.metadata
+.classpath
+.settings/
+.loadpath
+
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+local.properties
+/src/main/resources/rebel.xml
