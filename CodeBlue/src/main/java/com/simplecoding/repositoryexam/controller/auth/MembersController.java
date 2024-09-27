@@ -55,8 +55,11 @@ public class MembersController {
 	}
 
 	// 로그인 진행 : 로그인 버튼 클릭시 실행 : 보안(post) get방식(id/password 노출)
-	@PostMapping("loginProcess")
-	public String login(@ModelAttribute MembersVO loginVO, HttpServletRequest request) throws Exception {
+
+	@PostMapping("/loginProcess")
+	public String login(@ModelAttribute MembersVO loginVO,
+			HttpServletRequest request
+	)throws Exception{
 
 		MembersVO membersVO = membersService.authenticateMembers(loginVO);
 
