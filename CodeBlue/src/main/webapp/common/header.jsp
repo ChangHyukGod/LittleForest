@@ -17,7 +17,7 @@
             justify-content: space-between; /* 좌우 아이콘 배치 */
             align-items: center;
             position: relative;
-            height: 150px; /* 배너 높이를 키움 */
+            height: 120px; /* 배너 높이를 키움 */
         }
         .menu-icon {
             margin-left: 10px;
@@ -136,7 +136,9 @@
                             </c:when>
                             <c:otherwise>
                                 <li class="dropdown-item">
-                                    <strong>${sessionScope.memberVO.membername} 님<br> 안녕하세요</strong>
+                                	<a href="/mypage" style="display:block;">
+                                    	<strong>${sessionScope.memberVO.membername} 님<br> 안녕하세요</strong>
+                                	</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/logout" class="dropdown-item">로그아웃</a>
@@ -188,8 +190,10 @@
                         </div>
                     </div>
                 </div>
+            </ul>
             </div>
         </div>
+      </div>
     </nav>
 </body>
 </html>

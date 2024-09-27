@@ -49,7 +49,7 @@
                 <div class="col-lg-6 mb-3 text-end">
                     <a href="#">이용약관</a> | 
                     <a href="#">고객센터</a> | 
-                    <a href="#">공지사항</a> <br>
+                    <a href="/allgame">전체게임</a> <br>
                     <a href="/register">회원가입</a> | 
                     <a href="/basic/mypage">마이페이지</a> | 
                     <a href="#">장바구니</a>
