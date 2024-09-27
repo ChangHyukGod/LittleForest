@@ -175,15 +175,15 @@
                             </div>
                             <div class="modal-body">
                                 <form>
-                                    <div class="mb-3">
-                                        <label for="searchInput" class="form-label">검색어를 입력하세요</label>
-                                        <input type="text" class="form-control" id="searchInput" placeholder="검색...">
-                                    </div>
+                                    <div class="mb-3" style="border: none; border-bottom: 1px solid ;">
+                        <input type="text" class="form-control" id="searchInput" placeholder="검색어를 입력하세요." style="border: none; border-bottom: 2px solid black; border-radius: 0; box-shadow: none;">
+				</div>
+
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                                <button type="button" class="btn btn-primary">검색</button>
+                                <button type="button" class="btn btn-success" data-bs-dismiss="modal">닫기</button>
+                                <button type="button" class="btn btn-outline-success">검색</button>
                             </div>
                         </div>
                     </div>
