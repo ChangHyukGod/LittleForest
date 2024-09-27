@@ -8,20 +8,38 @@
     <meta charset="UTF-8">
     <title>마이페이지</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-            padding: 0px; /* 양옆 여백 추가 */
+    <style>
+       body {
+    font-size: 12px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    margin: 0;
+}
+
+.container {
+    width: 90%; 
+   display: flex;
+}
+.main-content {
+    flex-grow: 1; /* 나머지 콘텐츠가 가능한 공간을 차지하게 함 */
+     display: flex;
+    flex-direction: column; /* 수직 방향 정렬 */
+    align-items: center; /* 중앙 정렬 */
+    margin-left:-115px;
+}
+
+.left-align {
+      margin: 30px 20px 0 -200px; /* 오른쪽 여백 조정 */
+        text-align: left !important;
+        padding: 50px;
+        width: 300px;
+        align-self: flex-start; 
         }
 
-        .left-align {
-            margin: 50px 80px 100px 60px;
-            text-align: left;
-            padding: 50px;
-            width: 300px;
-            float: left;
-        }
-            
+
         .left-align h4 {
             margin-top: 50px; 
             margin-bottom: 20px; 
@@ -34,7 +52,8 @@
         .card-body {
             width: 800px; 
             padding: 10px; /* 내부 여백 조정 */
-            margin-left:195px;
+            margin :0;
+
         }
             
 .title {
@@ -43,7 +62,7 @@
     margin-top: 30px;
     margin-bottom: 10px; /* 여백 조정 */
 
-    margin-left:460px;
+
 }
 
      .underline {
@@ -53,7 +72,7 @@
      }
 
 .header {
-    margin: 50px 100px 20px 195px; /* 좌우 마진을 auto로 설정하여 중앙 정렬 */
+    margin: 50px 0; /* 좌우 마진을 auto로 설정하여 중앙 정렬 */
     padding: 0;
     background-color: #bae4ae;
     color: white;
@@ -111,7 +130,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid black;
     width: 100%; 
   }
 
@@ -146,7 +164,7 @@
 <body>
 
 <jsp:include page="/common/header.jsp" />
-
+    <div class="container">
     <div class="left-align">
         <h4 class="fw-medium"> 마이쇼핑 </h4>
         <p class="text-success"> 주문/배송 조회 </p>
@@ -158,8 +176,9 @@
         <p> FAQ </p>
         <p> 1:1 문의 </p>
     </div> 
+
     
-    <div style="margin-left: 295px;">
+<div class="main-content">
         <p class="title">회원 정보 수정</p>
     
         <!-- 상단 사용자 정보 -->
@@ -185,7 +204,7 @@
                     <div style="margin-left: 10px;">
                         <b>인증됨</b>
                         <br>
-                        <div style="display: inline-flex; gap: 50px; align-items: center;">
+                        <div style="display: inline-flex; gap: 50px; align-items: center; margin-top:7px;">
                             <div>
                                   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
                                 <label class="form-check-label" for="flexRadioDefault1">이메일 인증</label>
@@ -198,22 +217,24 @@
                     </div>
                 </div>
 
-                <hr style="border: 1px solid #BDBDBD; width: 100%; margin-top: 2px;">
+                <hr style="border: 1px solid #BDBDBD; width: 100%; margin-top: 2px; margin-bottom :55px;">
 
                 <!-- 기본 정보 -->
-                <div class="basic" style="margin-bottom: -13px;"> 
+                <div class="basic"> 
                     <div class="ba">
                         <span>기본정보</span>
                     </div>
+           
                     <div class="sic">
                         <span><b class="text-danger"> *</b>필수입력사항</span>
                     </div>
                 </div>
+                
+                <hr class="underline">
 
               <!-- 아이디 -->
               
-
-<div class="form-group" style="margin: -10px 0 10px 0;">  
+<div class="form-group" style="margin: -20px 0 10px 0;">  
     <label for="username"></label>
     <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
         <p class="input-label" style="margin: 0;">아이디<b class="text-danger"> *</b></p>
@@ -348,6 +369,7 @@
 	            <span>추가정보</span>
 	        </div>
 	        </div>
+	        <hr class="underline">
 
 <div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top:10px;">
     <p style="color: black; margin: 0; width: auto; white-space: nowrap;">만 14세 이상입니다.<b class="text-danger"> *</b></p>
@@ -356,6 +378,7 @@
         <label class="form-check-label" for="flexRadioDefault1" style="margin-left: 5px;">네</label>
     </div>
 </div>
+
 <br>
 <br>
 
@@ -364,11 +387,12 @@
     <button type="submit" class="btn btn-outline-success" style="padding: 10px 40px; font-size: 14px; width: 180px; margin-bottom: 50px; margin-left:5px;">취소</button>
 </div>
 
-
+</div>
 	
 			</form>
 			</div>
 			</div>
+		
 
 
 <jsp:include page="/common/footer.jsp" />
