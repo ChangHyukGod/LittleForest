@@ -53,7 +53,7 @@
      }
 
 .header {
-    margin: 50px 100px 20px 200px; /* 좌우 마진을 auto로 설정하여 중앙 정렬 */
+    margin: 50px 100px 20px 195px; /* 좌우 마진을 auto로 설정하여 중앙 정렬 */
     padding: 0;
     background-color: #bae4ae;
     color: white;
