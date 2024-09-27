@@ -7,7 +7,8 @@
 <title>회원가입</title>
 
 <script type="text/javascript">
-function fn_check(event) {
+function phone_check(event) {
+	event.preventDefault(); // 폼 제출 기본 동작 방지
     // 각각의 입력 필드에서 값을 가져오기
     var phonePart1 = document.getElementById("phone_part1").value.trim();
     var phonePart2 = document.getElementById("phone_part2").value.trim();
@@ -32,8 +33,7 @@ function fn_check(event) {
 
     console.log("합쳐진 전화번호:", fullPhoneNumber); // 디버그 로그
 
-    // 폼 제출을 진행
-    return true;
+    document.getElementById("listForm").submit();
 }
  
  document.addEventListener('DOMContentLoaded', function() {
@@ -303,7 +303,7 @@ body {
 	        </div>
 
 <!-- 아이디 -->
-	<form id="listForm" name="listForm" action="/register/addition" method="post" onsubmit="return fn_check(event);">
+	<form id="listForm" name="listForm" action="/register/addition" method="post" onsubmit="phone_check(event)">
         <!-- 아이디 입력란 -->
         <div class="form-group" style="margin: 10px 0 10px 0;">  
             <label for="username"></label>
