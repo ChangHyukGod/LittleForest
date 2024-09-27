@@ -7,22 +7,34 @@
 <title>회원가입</title>
 
 <script type="text/javascript">
- function fn_check(event){
-	    // 각각의 입력 필드에서 값을 가져오기
-	    var phonePart1 = document.getElementById("phone_part1").value;
-	    var phonePart2 = document.getElementById("phone_part2").value;
-	    var phonePart3 = document.getElementById("phone_part3").value;
+function fn_check(event) {
+    // 각각의 입력 필드에서 값을 가져오기
+    var phonePart1 = document.getElementById("phone_part1").value.trim();
+    var phonePart2 = document.getElementById("phone_part2").value.trim();
+    var phonePart3 = document.getElementById("phone_part3").value.trim();
 
-	    // 전체 전화번호를 결합
-	    var fullPhoneNumber = phonePart1 + "-" + phonePart2 + "-" + phonePart3;
+    // 유효성 검사
+    if (!phonePart1 || !phonePart2 || !phonePart3) {
+        alert("모든 전화번호 필드를 입력해주세요.");
+        return false; // 폼 전송 중지
+    }
 
-	    // 숨겨진 필드에 결합된 전화번호 값을 설정
-	    document.getElementById("fullPhoneNumber").value = fullPhoneNumber;
+    if (!/^\d+$/.test(phonePart1) || !/^\d+$/.test(phonePart2) || !/^\d+$/.test(phonePart3)) {
+        alert("전화번호는 숫자만 입력할 수 있습니다.");
+        return false;
+    }
 
-	    // 폼 제출을 진행
-	    return true;
+    // 전체 전화번호를 결합
+    var fullPhoneNumber = phonePart1 + "-" + phonePart2 + "-" + phonePart3;
 
- }
+    // 숨겨진 필드에 결합된 전화번호 값을 설정
+    document.getElementById("phonenumber").value = fullPhoneNumber;
+
+    console.log("합쳐진 전화번호:", fullPhoneNumber); // 디버그 로그
+
+    // 폼 제출을 진행
+    return true;
+}
  
  document.addEventListener('DOMContentLoaded', function() {
      function fn_check(event) {
@@ -291,7 +303,7 @@ body {
 	        </div>
 
 <!-- 아이디 -->
-	<form id="listForm" name="listForm" action="/register/addition" method="post">
+	<form id="listForm" name="listForm" action="/register/addition" method="post" onsubmit="return fn_check(event);">
         <!-- 아이디 입력란 -->
         <div class="form-group" style="margin: 10px 0 10px 0;">  
             <label for="username"></label>
@@ -396,7 +408,7 @@ body {
     <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
         <p class="input-label" style="margin: 0;">휴대전화 (선택)</p>
         <div style="margin-left: 10px; display: flex; align-items: center;">
-            <select class="form-select form-select-sm" name="phone_part1" aria-label="번호 선택" style="width: 100px; margin-right: 5px; margin: 0;">
+            <select class="form-select form-select-sm" name="phone_part1" id="phone_part1" aria-label="번호 선택" style="width: 100px; margin-right: 5px; margin: 0;">
                 <option value="010" selected>010</option>
                 <option value="011">011</option>
                 <option value="016">016</option>
@@ -405,12 +417,14 @@ body {
                 <option value="019">019</option>
             </select>
             <span style="margin: 0 5px;">-</span>
-            <input class="form-control form-control-sm" name="phone_part2" type="text" placeholder="" aria-label="번호 입력" style="width: 100px; margin: 0;">
+            <input class="form-control form-control-sm" name="phone_part2" id="phone_part2" type="text" placeholder="" aria-label="번호 입력" style="width: 100px; margin: 0;">
             <span style="margin: 0 5px;">-</span>
-            <input class="form-control form-control-sm" name="phone_part3" type="text" placeholder="" aria-label="번호 입력" style="width: 100px; margin: 0;">
+            <input class="form-control form-control-sm" name="phone_part3" id="phone_part3" type="text" placeholder="" aria-label="번호 입력" style="width: 100px; margin: 0;">
         </div>
     </div>
 </div>
+
+ <input type="hidden" id="phonenumber" name="phonenumber">
 
 <!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 5px 0 5px 0;">
