@@ -176,7 +176,7 @@
                             <div class="modal-body">
                                 <form>
                                     <div class="mb-3" style="border: none; border-bottom: 1px solid ;">
-                        <input type="text" class="form-control" id="searchInput" placeholder="검색어를 입력하세요." style="border: none; border-bottom: 2px solid black; border-radius: 0; box-shadow: none;">
+                        <input type="text" class="form-control" id="searchInput" placeholder="검색어를 입력하세요." style="border: none; border-radius: 0; box-shadow: none;">
 				</div>
 
                                 </form>
