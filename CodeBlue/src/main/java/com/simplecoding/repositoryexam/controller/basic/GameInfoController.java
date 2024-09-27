@@ -3,6 +3,8 @@
  */
 package com.simplecoding.repositoryexam.controller.basic;
 
+import org.springframework.web.bind.annotation.GetMapping;
+
 /**
   * @fileName : GameInfoController.java
   * @author : KTE
