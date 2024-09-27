@@ -202,16 +202,16 @@
     <div class="container">
 <div class="left-align">
     <h4 class="fw-medium"> 마이쇼핑 </h4>
-    <button class="btn left-align-button" onclick="location.href='';">주문/배송 조회</button>
-    <button class="btn left-align-button" onclick="location.href='';">관심상품</button>
+    <button class="btn left-align-button" onclick="location.href='주문배송조회.jsp';">주문/배송 조회</button>
+    <button class="btn left-align-button" onclick="location.href='관심상품.jsp';">관심상품</button>
     <h4 class="fw-medium"> 나의 정보 </h4>
-    <button class="btn left-align-button" onclick="location.href='/auth/infofix';">회원정보 수정</button>
+    <button class="btn left-align-button" onclick="location.href='/infofix';">회원정보 수정</button>
     <h4 class="fw-medium"> 고객센터 </h4>
-    <button class="btn left-align-button" onclick="location.href='';">공지사항</button>
+    <button class="btn left-align-button" onclick="location.href='공지사항.jsp';">공지사항</button>
     <br>
-    <button class="btn left-align-button" onclick="location.href='';">FAQ</button>
+    <button class="btn left-align-button" onclick="location.href='/FAQ';">FAQ</button>
     <br>
-    <button class="btn left-align-button" onclick="location.href='';">1:1 문의</button>
+    <button class="btn left-align-button" onclick="location.href='문의.jsp';">1:1 문의</button>
 </div>
 
     
