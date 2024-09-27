@@ -5,6 +5,12 @@
     <title>로그인 페이지</title>
     <!-- 부트스트랩 CSS 링크 필요 -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript">
+    function go_register() {
+        // 원하는 주소로 이동
+        document.location.href = "/register"; // 변경하고자 하는 URL로 수정
+    }
+    </script>
     <style>
 
  	body {
@@ -62,7 +68,10 @@
                             <button type="submit" class="btn btn-success btn-block">로그인</button>
                         </form>
                         <div class="text-center">
-                            <button type="submit" class="btn  btn-outline-success btn-block">회원가입</button>
+                            <button type="button" 
+                            		class="btn  btn-outline-success btn-block"
+                            		onclick="go_register()"
+                            >회원가입</button>
                         </div>
                        </div>
                     </div>

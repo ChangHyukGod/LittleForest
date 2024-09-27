@@ -54,6 +54,12 @@ public class MembersController {
 		return "auth/register";
 	}
 
+	//	마이페이지 화면
+	@GetMapping("/mypage")
+	public String myPage() {
+		return "auth/mypage";
+	}
+
 	// 로그인 진행 : 로그인 버튼 클릭시 실행 : 보안(post) get방식(id/password 노출)
 
 	@PostMapping("/loginProcess")
