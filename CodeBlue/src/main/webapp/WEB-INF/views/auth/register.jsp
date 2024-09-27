@@ -23,6 +23,61 @@
 	    return true;
 
  }
+ 
+ document.addEventListener('DOMContentLoaded', function() {
+     function fn_check(event) {
+         var username = document.getElementById('username').value.trim();
+         if (!username) {
+             alert('아이디를 입력하세요.');
+             return;
+         }
+         console.log("Username:", username); 
+
+         // URL 작성 시 JavaScript에서 처리하도록 수정
+         fetch('/auth/check-username?username=' + encodeURIComponent(username))
+             .then(response => {
+                 if (!response.ok) {
+                     throw new Error("Network response was not ok");
+                 }
+                 return response.text();
+             })
+             .then(data => {
+            	 console.log("Received data:", data); // 데이터 출력
+                 alert(data);
+             })
+             .catch(error => {
+                 alert('이미 사용 중인 아이디입니다.');
+             });
+     }
+
+     // 메시지를 표시하는 함수
+     function showMessage(message) {
+         console.log("Show message:", message); // 추가된 로그
+         var messageDiv = document.getElementById('idCheckMessage');
+         messageDiv.innerText = message; // 서버에서 받아온 메시지로 내용 설정
+         messageDiv.style.display = 'block'; // 메시지 표시
+     }
+
+     // 버튼 클릭 이벤트 리스너 추가
+     const checkUsernameButton = document.getElementById('checkUsernameButton');
+     if (checkUsernameButton) {
+         checkUsernameButton.addEventListener('click', fn_check);
+     } else {
+         console.error("checkUsernameButton 요소를 찾을 수 없습니다.");
+     }
+
+     const passwordInput = document.getElementById('password');
+     const confirmPasswordInput = document.getElementById('confirmPassword');
+     const passwordError = document.getElementById('passwordError');
+
+     confirmPasswordInput.addEventListener('input', function() {
+         if (passwordInput.value !== confirmPasswordInput.value) {
+             passwordError.style.display = 'block';
+         } else {
+             passwordError.style.display = 'none';
+         }
+     });
+ });
 </script>
 
 
@@ -250,8 +305,10 @@ body {
                         placeholder="" 
                         required 
                         style="margin: 0;">
-						<button type="button" style="margin-left: 10px; height: 30px; display: flex; align-items: center; justify-content: center;" class="btn btn-success" onclick="fn_check(event)">중복 확인</button>
-                    	<p id="idCheckMessage" style="margin: 0 0 0 15px; font-size: 10px; color: red; display: none;"></p>
+						<button type="button"  id="checkUsernameButton" style="margin-left: 10px; font-size:12px;" class="btn btn-success" onclick="fn_check(event)">중복 확인</button>
+                    <div class="tooltip">
+                        <span class="tooltiptext" id="idCheckMessage" style="display: none;"></span>
+                    </div>
                     <p style="margin: 0 0 0 15px; font-size: 12px; white-space: nowrap;">(영문소문자/숫자, 4~16자)</p>
                 </div>
             </div>
@@ -299,21 +356,6 @@ body {
         </div>
 
         <p id="passwordError" style="color: red; display: none;">비밀번호가 일치하지 않습니다.</p>
-        
-        <script>
-            const passwordInput = document.getElementById('password');
-            const confirmPasswordInput = document.getElementById('confirmPassword');
-            const passwordError = document.getElementById('passwordError');
-            
-            confirmPasswordInput.addEventListener('input', function() {
-                if (passwordInput.value !== confirmPasswordInput.value) {
-                    passwordError.style.display = 'block';
-                } else {
-                    passwordError.style.display = 'none';
-                }
-            });
-        </script>
-    
 <!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 10px 0 10px 0;">
 
