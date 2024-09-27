@@ -34,7 +34,7 @@
         .card-body {
             width: 800px; 
             padding: 10px; /* 내부 여백 조정 */
-            margin-left:200px;
+            margin-left:195px;
         }
             
 .title {
@@ -43,7 +43,7 @@
     margin-top: 30px;
     margin-bottom: 10px; /* 여백 조정 */
 
-    margin-left:490px;
+    margin-left:460px;
 }
 
      .underline {
@@ -159,7 +159,7 @@
         <p> 1:1 문의 </p>
     </div> 
     
-    <div style="margin-left: 350px;">
+    <div style="margin-left: 295px;">
         <p class="title">회원 정보 수정</p>
     
         <!-- 상단 사용자 정보 -->
@@ -360,8 +360,8 @@
 <br>
 
 <div class="text-center">
-    <button type="submit" class="btn btn-success" style="padding: 10px 40px; font-size: 14px; width: 180px; margin-bottom: 25px; margin-right:5px;">회원정보 수정</button>
-    <button type="submit" class="btn btn-outline-success" style="padding: 10px 40px; font-size: 14px; width: 180px; margin-bottom: 25px; margin-left:5px;">취소</button>
+    <button type="submit" class="btn btn-success" style="padding: 10px 40px; font-size: 14px; width: 180px; margin-bottom: 50px; margin-right:5px;">회원정보 수정</button>
+    <button type="submit" class="btn btn-outline-success" style="padding: 10px 40px; font-size: 14px; width: 180px; margin-bottom: 50px; margin-left:5px;">취소</button>
 </div>
 
 
