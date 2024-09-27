@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
   */
 @Controller
 public class ShoppingbasketController {
-	@GetMapping("/shoppingbasket")
+	@GetMapping("/cart")
 	public String shoppingbasket() {
-		return "/payment/shoppingbasket";
+		return "/payment/cart";
 	}
 }

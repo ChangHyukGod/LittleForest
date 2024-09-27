@@ -157,7 +157,7 @@
                     </ul>
                 </div>
 
-                <a href="/shoppingbasket" class="nav-link icon">
+                <a href="/cart" class="nav-link icon">
                     <i class="bi bi-cart"></i>
                 </a>
                 
