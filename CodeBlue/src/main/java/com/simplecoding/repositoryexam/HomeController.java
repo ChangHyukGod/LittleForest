@@ -116,5 +116,12 @@ public class HomeController{
 
 		return "payment/pay_page";
 	}
-
+	
+//	(3) 장바구니 페이지 생성
+	@GetMapping("/main/cart")
+	public String goCart(@RequestParam String uuid, Model model){
+		MainVO mainVO3 = mainService.selectMain(uuid);
+		model.addAttribute("cart", mainVO3);
+		return "payment/cart";
+	}
 }
