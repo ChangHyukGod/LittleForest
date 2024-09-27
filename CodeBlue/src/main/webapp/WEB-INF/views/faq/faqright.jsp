@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAQ 계정관리</title>
+<title>FAQ 권리보호</title>
 </head>
 <style>
 .title-box {
