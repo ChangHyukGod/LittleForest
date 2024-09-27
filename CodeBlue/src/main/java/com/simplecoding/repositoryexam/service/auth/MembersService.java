@@ -17,5 +17,6 @@ import com.simplecoding.repositoryexam.vo.common.Criteria;
 public interface MembersService {
 	public MembersVO authenticateMembers(MembersVO membersVO) throws Exception;
 	public void registerMembers(MembersVO membersVO) throws Exception;
+	boolean isUsernameDuplicate(String name);
 
 }
