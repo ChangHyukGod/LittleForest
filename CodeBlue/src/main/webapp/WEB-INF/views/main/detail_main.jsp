@@ -1,17 +1,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page session="false" %>
 <html>
 <head>
    <title>gameinfo</title>
    <script type="text/javascript" defer="defer">
       function fn_buy(uuid) {
         document.detailForm.uuid.value = uuid;
-        
-         document.detailForm.action = "/main/buy";
-         
-         document.detailForm.submit();
+        document.detailForm.action = "/main/buy";
+        document.detailForm.submit();
       }
+      
+      function fn_cart(uuid) {
+    	  document.detailForm.uuid.value = uuid;
+          document.detailForm.action = "/main/cart";
+          document.detailForm.submit();
+       }
    </script>
 </head>
 <body>
@@ -29,7 +32,7 @@
 
 <!-- 게임동영상 -->
 <div style="width:800px; height:400px">
-  <video class="embed-responsive" controls>
+  <video class="embed-responsive" controls Autoplay>
     <source src="<c:out value="${detail.video}"/>" type="video/mp4">
   </video>
 </div>
@@ -68,7 +71,7 @@
       </table>
       <!-- 장바구니, 구매하기 버튼 -->
       <div class="card-body" style="margin-left:130px;">
-         <a href="#" class="btn btn-primary">장바구니</a>
+         <a href="#" class="btn btn-primary" onclick="fn_cart('<c:out value="${detail.uuid}"></c:out>')">장바구니</a>
          <a href="#" class="btn btn-success" onclick="fn_buy('<c:out value="${detail.uuid}"></c:out>')">구매하기</a>
       </div>
    </div>

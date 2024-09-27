@@ -1,6 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,18 +38,6 @@
 <jsp:include page="/common/header.jsp"></jsp:include>
 <div class="container">
 <form>
-<!-- 결제 상품 정보 : 상품 이미지, 상품명, 수량, 가격 -->
-<!-- 주문자 정보 : 성명, 전화번호, (기타) 가입 이메일 -->
-<!-- 쿠폰 / 포인트 : 쿠폰적용 버튼, 쿠폰 드롭다운, 
-                     쿠폰번호 입력란, 번호확인 버튼 -->
-                     
-<!-- 사이드바 -->
-<!-- 최종 결제금액 : 상품가격, 쿠폰 할인내역, 총 결제금액 -->
-<!-- 결제 방법 : 신용카드, 무통장 입금 => 탭기능(+라이오버튼 디자인), 드롭다운 메뉴
-               1) 신용카드 : 은행선택, 할부선택
-               2) 무통장입금 : [농협은행 : 0000-000-000 예금주명] 선택, 입금자명 입력란,
-                               00일 00시까지 입금확인 시 구매확정 안내문구 -->
-<!-- 구매조건 확인 및 결제진행 동의 : 체크박스 + 결제하기 버튼 -->
 
 <!-- (1), (2) div박스 가로정렬 -->
 <div class="container" style="display:flex; gap:20px;">
@@ -101,13 +88,13 @@
       
       <tbody>
          <tr>
-            <th>주문자 성명</th>
+            <th>성명 : ${sessionScope.memberVO.membername}</th>
          </tr>
          <tr>
-            <th>주문자 전화번호</th>
+            <th>주문자 전화번호 : ${sessionScope.memberVO.phonenumber}</th>
          </tr>
          <tr>
-            <th>주문자 이메일 주소</th>
+            <th>주문자 이메일 주소 : ${sessionScope.memberVO.memberid}</th>
          </tr>
       </tbody>
    </table>
@@ -268,3 +255,4 @@
 
 <jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
+</html>
