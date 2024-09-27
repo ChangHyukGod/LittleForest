@@ -7,7 +7,7 @@
 <title>회원가입</title>
 
 <script type="text/javascript">
-function phone_check(event) {
+function all_check(event) {
 	event.preventDefault(); // 폼 제출 기본 동작 방지
     // 각각의 입력 필드에서 값을 가져오기
     var phonePart1 = document.getElementById("phone_part1").value.trim();
@@ -303,7 +303,7 @@ body {
 	        </div>
 
 <!-- 아이디 -->
-	<form id="listForm" name="listForm" action="/register/addition" method="post" onsubmit="phone_check(event)">
+	<form id="listForm" name="listForm" action="/register/addition" method="post" onsubmit="all_check(event)">
         <!-- 아이디 입력란 -->
         <div class="form-group" style="margin: 10px 0 10px 0;">  
             <label for="username"></label>
@@ -317,7 +317,13 @@ body {
                         placeholder="" 
                         required 
                         style="margin: 0;">
-						<button type="button"  id="checkUsernameButton" style="margin-left: 10px; font-size:12px;" class="btn btn-success" onclick="fn_check(event)">중복 확인</button>
+						<button type="button"  
+								id="checkUsernameButton" 
+								style="margin-left: 10px; 
+								font-size:12px;" 
+								class="btn btn-success" 
+								onclick="fn_check(event)"
+								>중복 확인</button>
                     <div class="tooltip">
                         <span class="tooltiptext" id="idCheckMessage" style="display: none;"></span>
                     </div>
@@ -341,7 +347,8 @@ body {
                         class="form-control" 
                         placeholder="" 
                         required 
-                        style="margin: 0;">
+                        style="margin: 0;"
+                        maxlength="16">
                     <p style="margin: 0 0 0 15px; font-size: 12px; white-space: nowrap;">(8~16자의 영문 대/소문자, 숫자, 특수문자)</p>
                 </div>
             </div>
@@ -362,7 +369,8 @@ body {
                         class="form-control" 
                         placeholder="" 
                         required 
-                        style="margin: 0;"> 
+                        style="margin: 0;"
+                        maxlength="4"> 
                 </div>
             </div>
         </div>
@@ -417,9 +425,25 @@ body {
                 <option value="019">019</option>
             </select>
             <span style="margin: 0 5px;">-</span>
-            <input class="form-control form-control-sm" name="phone_part2" id="phone_part2" type="text" placeholder="" aria-label="번호 입력" style="width: 100px; margin: 0;">
+            <input class="form-control form-control-sm" 
+            		name="phone_part2" 
+            		id="phone_part2" 
+            		type="text" 
+            		placeholder="" 
+            		aria-label="번호 입력" 
+            		style="width: 100px; 
+            		margin: 0;"
+            		maxlength="4">
             <span style="margin: 0 5px;">-</span>
-            <input class="form-control form-control-sm" name="phone_part3" id="phone_part3" type="text" placeholder="" aria-label="번호 입력" style="width: 100px; margin: 0;">
+            <input class="form-control form-control-sm" 
+            		name="phone_part3" 
+            		id="phone_part3" 
+            		type="text" 
+            		placeholder="" 
+            		aria-label="번호 입력" 
+            		style="width: 100px; 
+            		margin: 0;"
+            		maxlength="4">
         </div>
     </div>
 </div>
