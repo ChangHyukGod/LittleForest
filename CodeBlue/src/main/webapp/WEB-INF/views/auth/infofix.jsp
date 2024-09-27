@@ -17,27 +17,31 @@
     align-items: center; 
     height: 100vh; 
     margin: 0;
-}
+	}
+	
+	.container {
+	    width: 90%; 
+	   display: flex;
+	}
+	.main-content {
+	    flex-grow: 1; 
+	     display: flex;
+	    flex-direction: column; 
+	    align-items: center; 
+	    margin-left:-115px;
+	}
 
-.container {
-    width: 90%; 
-   display: flex;
-}
-.main-content {
-    flex-grow: 1; /* 나머지 콘텐츠가 가능한 공간을 차지하게 함 */
-     display: flex;
-    flex-direction: column; /* 수직 방향 정렬 */
-    align-items: center; /* 중앙 정렬 */
-    margin-left:-115px;
-}
-
-.left-align {
-      margin: 30px 20px 0 -200px; /* 오른쪽 여백 조정 */
+	.left-align {
+		position: sticky; /* 스크롤 시 고정되는 속성 */
+	    top: 0; /
+		z-index: 100;
+     	margin: 30px 20px 0 -200px; 
         text-align: left !important;
         padding: 50px;
         width: 300px;
         align-self: flex-start; 
         }
+
 
 
         .left-align h4 {
@@ -48,6 +52,37 @@
         .left-align p { 
             margin-bottom: 10px;
         }
+    .left-align-button {
+	    background-color: #4CAF50; 
+	    border: none; 
+	    text-align: center; 
+	    text-decoration: none; /
+	    display: block;
+	    margin: 5px 0; 
+	    cursor: pointer; 
+	    transition: background-color 0.3s; 
+	    margin-left: -12px; 
+	    outline: none; 
+	    box-shadow: none; 
+	}
+	
+
+	.left-align-button:focus {
+	    outline: none; 
+	    box-shadow: none; 
+	}
+	
+
+	.left-align-button:active {
+	    outline: none; 
+	    box-shadow: none;
+	}
+	
+	.left-align-button:hover {
+	    background-color: #45a049; 
+	    color: yellow;
+	    outline: none; 
+	}
         
         .card-body {
             width: 800px; 
@@ -165,17 +200,19 @@
 
 <jsp:include page="/common/header.jsp" />
     <div class="container">
-    <div class="left-align">
-        <h4 class="fw-medium"> 마이쇼핑 </h4>
-        <p class="text-success"> 주문/배송 조회 </p>
-        <p> 관심상품 </p>
-        <h4 class="fw-medium"> 나의 정보 </h4>
-        <p> 회원정보 수정 </p>
-        <h4 class="fw-medium"> 고객센터 </h4>
-        <p> 공지사항 </p>
-        <p> FAQ </p>
-        <p> 1:1 문의 </p>
-    </div> 
+<div class="left-align">
+    <h4 class="fw-medium"> 마이쇼핑 </h4>
+    <button class="btn left-align-button" onclick="location.href='주문배송조회.jsp';">주문/배송 조회</button>
+    <button class="btn left-align-button" onclick="location.href='관심상품.jsp';">관심상품</button>
+    <h4 class="fw-medium"> 나의 정보 </h4>
+    <button class="btn left-align-button" onclick="location.href='/infofix';">회원정보 수정</button>
+    <h4 class="fw-medium"> 고객센터 </h4>
+    <button class="btn left-align-button" onclick="location.href='공지사항.jsp';">공지사항</button>
+    <br>
+    <button class="btn left-align-button" onclick="location.href='/FAQ';">FAQ</button>
+    <br>
+    <button class="btn left-align-button" onclick="location.href='문의.jsp';">1:1 문의</button>
+</div>
 
     
 <div class="main-content">
