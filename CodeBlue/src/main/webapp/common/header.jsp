@@ -92,6 +92,19 @@
 
             <!-- 우측 아이콘 -->
             <div class="d-flex">
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <c:choose>
+	   			<c:when test="${sessionScope.memberVO != null}">
+					<c:if test="${sessionScope.memberVO.admin == 1}">
+	  					<li class="nav-item">
+  							<a href="main/addition" class="nav-link">MAIN_ADD</a>
+						</li>
+ 					</c:if>
+				</c:when>
+			</c:choose>
+            
                 <div class="dropdown"> <!-- 고객센터 아이콘 -->
                     <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-headset"></i>

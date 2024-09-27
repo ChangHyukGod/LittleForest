@@ -46,7 +46,7 @@
                         <h4 class=" text-center mb-6 fw-bold fs-1">로그인</h4>
                         <p class="text-center mt-5 mb-5"> Little Forest의 회원으로 로그인 하시면<br>다양한 서비스를 이용하실 수 있습니다.</p>
                         <!-- Login Form -->
-                        <form action="loginProcess.jsp" method="POST">
+                        <form action="/loginProcess" method="POST">
                             <div class="form-group">
                                 <label for="username"></label>
 								<input type="text" id="username" name="username" class="form-control" placeholder="아이디" required style="height: 50px; background-color: #F6F6F6; color: #333;">
@@ -67,6 +67,9 @@
                        </div>
                     </div>
                 </div>
+
+
+                
             </div>
         </div>
         

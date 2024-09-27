@@ -50,6 +50,11 @@ public class MembersServiceImpl implements MembersService{
 		memberMapper.register(membersVO);
 	}
 
+	@Override
+	public boolean isUsernameDuplicate(String username) {
+        return memberMapper.countByUsername(username) > 0;
+    }
+
 
 
 

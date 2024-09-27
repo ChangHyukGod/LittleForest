@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAQ Page</title>
+<title>FAQ 이메일</title>
 </head>
 <style>
 .title-box {
@@ -36,7 +36,7 @@
 	<jsp:include page="/common/header.jsp" />
 	<div class="title-box">
 		<div class="title">
-			[Little Forest] 메일 양식 <i class="bi bi-envelope-at"></i>
+			[Little Forest] 문의 메일 양식 <i class="bi bi-envelope-at"></i>
 		</div>
 	</div>
 	<div class="container mt-5" id="big-box">
