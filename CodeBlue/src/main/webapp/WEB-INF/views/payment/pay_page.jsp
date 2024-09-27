@@ -94,7 +94,7 @@
             <th>주문자 전화번호 : ${sessionScope.memberVO.phonenumber}</th>
          </tr>
          <tr>
-            <th>주문자 이메일 주소 : ${sessionScope.memberVO.memberid}</th>
+            <th>주문자 이메일 주소 : ${sessionScope.memberVO.email}</th>
          </tr>
       </tbody>
    </table>

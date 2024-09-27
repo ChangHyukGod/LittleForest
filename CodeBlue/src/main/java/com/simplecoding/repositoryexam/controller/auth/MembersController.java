@@ -84,7 +84,7 @@ public class MembersController {
 			throw new Exception("이미 가입되었습니다.");
 		}
 		membersService.registerMembers(membersVO);
-		return "redirect:/register";
+		return "redirect:/login";
 	}
 	
 	@GetMapping("/test")
