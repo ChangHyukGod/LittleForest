@@ -17,7 +17,7 @@
             justify-content: space-between; /* 좌우 아이콘 배치 */
             align-items: center;
             position: relative;
-            height: 120px; /* 배너 높이를 키움 */
+            height: 150px; /* 배너 높이를 키움 */
         }
         .menu-icon {
             margin-left: 10px;
@@ -96,14 +96,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <c:choose>
-	   			<c:when test="${sessionScope.memberVO != null}">
-					<c:if test="${sessionScope.memberVO.admin == 1}">
-	  					<li class="nav-item">
-  							<a href="main/addition" class="nav-link">MAIN_ADD</a>
-						</li>
- 					</c:if>
-				</c:when>
-			</c:choose>
+               <c:when test="${sessionScope.memberVO != null}">
+               <c:if test="${sessionScope.memberVO.admin == 1}">
+                    <li class="nav-item">
+                       <a href="main/addition" class="nav-link">MAIN_ADD</a>
+                  </li>
+                </c:if>
+            </c:when>
+         </c:choose>
             
                 <div class="dropdown"> <!-- 고객센터 아이콘 -->
                     <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -136,9 +136,7 @@
                             </c:when>
                             <c:otherwise>
                                 <li class="dropdown-item">
-                                	<a href="/mypage" style="display:block;">
-                                    	<strong>${sessionScope.memberVO.membername} 님<br> 안녕하세요</strong>
-                                	</a>
+                                    <strong>${sessionScope.memberVO.membername} 님<br> 안녕하세요</strong>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/logout" class="dropdown-item">로그아웃</a>
@@ -159,9 +157,11 @@
                     </ul>
                 </div>
 
-                <a href="/shoppingbasket" class="nav-link icon">
-                    <i class="bi bi-cart"></i>
-                </a>
+               <a href="/main/cart" class="nav-link icon">
+                <i class="bi bi-cart"></i>
+                <span id="cart-count">${cartCount}</span> <!-- cartCount 사용 -->
+            </a>
+
                 
                 <a href="#" class="nav-link icon" data-bs-toggle="modal" data-bs-target="#searchModal">
                     <i class="bi bi-search"></i>
@@ -177,23 +177,21 @@
                             </div>
                             <div class="modal-body">
                                 <form>
-                                    <div class="mb-3" style="border: none; border-bottom: 1px solid ;">
-                        <input type="text" class="form-control" id="searchInput" placeholder="검색어를 입력하세요." style="border: none; border-radius: 0; box-shadow: none;">
-				</div>
-
+                                    <div class="mb-3">
+                                        <label for="searchInput" class="form-label">검색어를 입력하세요</label>
+                                        <input type="text" class="form-control" id="searchInput" placeholder="검색...">
+                                    </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-success" data-bs-dismiss="modal">닫기</button>
-                                <button type="button" class="btn btn-outline-success">검색</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                                <button type="button" class="btn btn-primary">검색</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </ul>
             </div>
         </div>
-      </div>
     </nav>
 </body>
 </html>

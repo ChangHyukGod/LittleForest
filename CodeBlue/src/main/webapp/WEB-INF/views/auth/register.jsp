@@ -370,7 +370,7 @@ body {
                         placeholder="" 
                         required 
                         style="margin: 0;"
-                        maxlength="4"> 
+                        maxlength="16"> 
                 </div>
             </div>
         </div>
