@@ -117,8 +117,8 @@
 		</div>
 		<div class="title">무엇을 도와드릴까요?</div>
 		<div class="search_box">
-			<form class="d-flex search_bar" action="/faqsearch" method="get">
-				<input class="form-control me-2 search_text" name="query" type="search" placeholder="궁금한 것을 물어보세요" aria-label="Search">
+			<form class="d-flex search_bar" method="get" action="/faqlogin">
+				<input class="form-control me-2 search_text" name="searchKeyword" type="search" placeholder="궁금한 것을 물어보세요" aria-label="Search">
 				<button class="btn btn-outline-success search_glass" type="submit">
 					<i class="bi bi-search"></i>
 				</button>
@@ -150,6 +150,7 @@
 				<ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="fn_egov_link_page" />
 				<input type="hidden" id="pageIndex" name="pageIndex" />
 			</div>
+			<a href="/faq">FAQ 메인으로 돌아가기</a>
 		</form>
 	</div>
 	<jsp:include page="/common/footer.jsp" />

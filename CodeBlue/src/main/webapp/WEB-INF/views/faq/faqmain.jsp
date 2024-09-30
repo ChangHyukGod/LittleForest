@@ -30,7 +30,7 @@ function fnMovetoMail() {
 	document.mailForm.submit();
 }
 function fnMovetoLogin() {
-	document.oneLineHelp.action="/faqlogin";
+	document.oneLineHelp.action="/faqlogin?searchKeyword=비밀";
 	document.oneLineHelp.submit();
 }
 function fnMovetouselimited() {
@@ -48,6 +48,11 @@ function fnMovetoright() {
 function fnMovetoDirect(){
 	document.directForm.action="/faqdirect";
 	document.directForm.submit();
+}
+function fn_search() {
+	document.listForm.pageIndex.value = 1;
+	document.listForm.action = "/faq/faqlogin";
+	document.listForm.submit();
 }
 </script>
 <style>
@@ -311,18 +316,14 @@ function fnMovetoDirect(){
 				<div class="secondtitle">검색을 통해 빠르게 문제를 찾아보세요</div>
 				<!-- 검색창 -->
 				<div class="search_box">
-					<form class="d-flex search_bar" method="get">
-						<input class="form-control me-2 search_text" name="query" type="search" placeholder="궁금한 것을 물어보세요" aria-label="Search">
-						<button class="btn btn-outline-success search_glass" type="submit" onclick="fn_search()">
+					<form class="d-flex search_bar" method="get" action="/faqlogin">
+						<input class="form-control me-2 search_text" name="searchKeyword" type="search" placeholder="궁금한 것을 물어보세요" aria-label="Search">
+						<button class="btn btn-outline-success search_glass" type="submit">
 							<i class="bi bi-search"></i>
 						</button>
 					</form>
 				</div>
 				<br>
-				<button type="button" class="btn btn-outline-success" id="card_button-2" onclick="fnMovetoLogin()">#계정관리</button>
-				<button type="button" class="btn btn-outline-info" id="card_button-2" onclick="fnMovetouselimited()">#이용제한</button>
-				<button type="button" class="btn btn-outline-warning" id="card_button-2" onclick="fnMovetobuy()">#결제/환불</button>
-				<button type="button" class="btn btn-outline-danger" id="card_button-2" onclick="fnMovetoright()">#권리보호</button>
 			</div>
 		</div>
 		<!-- 두 번째 배너 -->
@@ -606,7 +607,8 @@ function fnMovetoDirect(){
 							<i class="bi bi-chat-dots"></i>
 							<div class="modal-answer-box">계정 비밀번호를 잊으셨다면, 로그인 페이지에서 '비밀번호 찾기' 버튼을 클릭하세요. 등록된 이메일이나 전화번호를 통해 비밀번호 재설정 링크를 받으실 수 있습니다.</div>
 						</div>
-						<button type="button" class="btn btn-outline-success" id="card_button" onclick="fnMovetoLogin()">#계정관리</button>
+						<a href="/faqlogin?searchKeyword=비밀" class="btn btn-outline-success" id="card_button">#계정관리</a>
+
 					</div>
 				</div>
 			</div>
@@ -623,7 +625,7 @@ function fnMovetoDirect(){
 							<i class="bi bi-chat-dots"></i>
 							<div class="modal-answer-box">보안 문제로 계정이 잠긴 경우, 계정 복구 절차를 통해 인증을 받으시면 해제 가능합니다. 계정 복구 페이지에서 본인 확인 절차를 진행해주세요.</div>
 						</div>
-						<button type="button" class="btn btn-outline-success" id="card_button" onclick="fnMovetoLogin()">#계정관리</button>
+						<a href="/faqlogin?searchKeyword=비밀" class="btn btn-outline-success" id="card_button">#계정관리</a>
 					</div>
 				</div>
 			</div>
@@ -640,7 +642,7 @@ function fnMovetoDirect(){
 							<i class="bi bi-chat-dots"></i>
 							<div class="modal-answer-box">회원 정보 변경은 '내 계정' 페이지에서 가능합니다. 개인정보 수정 메뉴로 이동하여 이메일, 비밀번호, 연락처 등을 수정할 수 있습니다.</div>
 						</div>
-						<button type="button" class="btn btn-outline-success" id="card_button" onclick="fnMovetoLogin()">#계정관리</button>
+						<a href="/faqlogin?searchKeyword=비밀" class="btn btn-outline-success" id="card_button">#계정관리</a>
 					</div>
 				</div>
 			</div>
@@ -657,7 +659,7 @@ function fnMovetoDirect(){
 							<i class="bi bi-chat-dots"></i>
 							<div class="modal-answer-box">계정을 탈퇴하시면 관련 데이터는 일정 기간 후 완전히 삭제됩니다. 법적으로 보관이 필요한 정보는 해당 기간 동안 안전하게 보관됩니다.</div>
 						</div>
-						<button type="button" class="btn btn-outline-success" id="card_button" onclick="fnMovetoLogin()">#계정관리</button>
+						<a href="/faqlogin?searchKeyword=비밀" class="btn btn-outline-success" id="card_button">#계정관리</a>
 					</div>
 				</div>
 			</div>
@@ -674,7 +676,7 @@ function fnMovetoDirect(){
 							<i class="bi bi-chat-dots"></i>
 							<div class="modal-answer-box">계정 탈퇴 후 복구는 불가능합니다. 탈퇴 전에 중요한 데이터를 미리 백업해두세요.</div>
 						</div>
-						<button type="button" class="btn btn-outline-success" id="card_button" onclick="fnMovetoLogin()">#계정관리</button>
+						<a href="/faqlogin?searchKeyword=비밀" class="btn btn-outline-success" id="card_button">#계정관리</a>
 					</div>
 				</div>
 			</div>
@@ -691,8 +693,7 @@ function fnMovetoDirect(){
 							<i class="bi bi-chat-dots"></i>
 							<div class="modal-answer-box">계정이 도용된 경우 즉시 비밀번호를 변경하고 2단계 인증을 설정하세요.</div>
 						</div>
-						<button type="button" class="btn btn-outline-success" id="card_button" onclick="fnMovetoLogin()">#계정관리</button>
-						<button type="button" class="btn btn-outline-info" id="card_button_2" onclick="fnMovetouselimited">#이용제한</button>
+						<a href="/faqlogin?searchKeyword=비밀" class="btn btn-outline-success" id="card_button">#계정관리</a> <a href="/faqlogin?searchKeyword=계정" class="btn btn-outline-info" id="card_button_2" onclick="fnMovetouselimited">#이용제한</a>
 					</div>
 				</div>
 			</div>
@@ -709,7 +710,7 @@ function fnMovetoDirect(){
 							<i class="bi bi-chat-dots"></i>
 							<div class="modal-answer-box">2단계 인증 설정은 '내 계정'의 보안 설정에서 가능합니다. 이메일이나 인증 앱을 통해 추가 인증 단계를 설정하여 보안을 강화할 수 있습니다.</div>
 						</div>
-						<button type="button" class="btn btn-outline-success" id="card_button" onclick="fnMovetoLogin()">#계정관리</button>
+						<a href="/faqlogin?searchKeyword=비밀" class="btn btn-outline-success" id="card_button">#계정관리</a>
 					</div>
 				</div>
 			</div>
@@ -726,7 +727,7 @@ function fnMovetoDirect(){
 							<i class="bi bi-chat-dots"></i>
 							<div class="modal-answer-box">계정의 이메일 주소 변경은 '내 계정' 페이지에서 가능합니다. 새로운 이메일 주소로 변경한 후, 인증 메일을 통해 확인 절차를 완료해 주세요.</div>
 						</div>
-						<button type="button" class="btn btn-outline-success" id="card_button" onclick="fnMovetoLogin()">#계정관리</button>
+						<a href="/faqlogin?searchKeyword=비밀" class="btn btn-outline-success" id="card_button">#계정관리</a>
 					</div>
 				</div>
 			</div>
@@ -747,7 +748,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">계정이 제한된 경우, 이용 제한 사유는 이메일 또는 알림을 통해 전달됩니다. 또한, '내 계정' 페이지에서 이용 제한 상세 사유를 확인할 수 있습니다.</div>
 							</div>
-							<button type="button" class="btn btn-outline-info" id="card_button" onclick="fnMovetouselimited()">#이용제한</button>
+							<a href="/faqlogin?searchKeyword=계정" class="btn btn-outline-info" id="card_button_2" onclick="fnMovetouselimited">#이용제한</a>
 						</div>
 					</div>
 				</div>
@@ -764,7 +765,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">이용 제한 해제는 '고객센터'를 통해 요청할 수 있습니다. 제한 사유를 충분히 확인하고 관련 서류나 정보가 필요할 수 있습니다.</div>
 							</div>
-							<button type="button" class="btn btn-outline-info" id="card_button" onclick="fnMovetouselimited()">#이용제한</button>
+							<a href="/faqlogin?searchKeyword=계정" class="btn btn-outline-info" id="card_button_2" onclick="fnMovetouselimited">#이용제한</a>
 						</div>
 					</div>
 				</div>
@@ -781,7 +782,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">비정상적인 활동으로 인해 계정이 제한된 경우, 본인 인증 절차를 거쳐 제한 해제를 요청할 수 있습니다. 이 과정에서는 추가 보안 인증이 필요할 수 있습니다.</div>
 							</div>
-							<button type="button" class="btn btn-outline-info" id="card_button" onclick="fnMovetouselimited()">#이용제한</button>
+							<a href="/faqlogin?searchKeyword=계정" class="btn btn-outline-info" id="card_button_2" onclick="fnMovetouselimited">#이용제한</a>
 						</div>
 					</div>
 				</div>
@@ -798,7 +799,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">다른 사람이 계정을 이용해 제한된 경우, 즉시 고객센터에 신고하고 비밀번호를 변경하세요. 추가로 2단계 인증을 설정하는 것이 좋습니다.</div>
 							</div>
-							<button type="button" class="btn btn-outline-info" id="card_button" onclick="fnMovetouselimited()">#이용제한</button>
+							<a href="/faqlogin?searchKeyword=계정" class="btn btn-outline-info" id="card_button_2" onclick="fnMovetouselimited">#이용제한</a>
 						</div>
 					</div>
 				</div>
@@ -815,7 +816,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">부적절한 게시물로 인한 이용 제한은 해당 게시물의 삭제 및 커뮤니티 가이드라인 준수 여부에 따라 해제가 가능합니다. 필요 시 수정된 게시물로 재심사를 요청할 수 있습니다.</div>
 							</div>
-							<button type="button" class="btn btn-outline-info" id="card_button" onclick="fnMovetouselimited()">#이용제한</button>
+							<a href="/faqlogin?searchKeyword=계정" class="btn btn-outline-info" id="card_button_2" onclick="fnMovetouselimited">#이용제한</a>
 						</div>
 					</div>
 				</div>
@@ -832,7 +833,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">이용 제한이 장기적으로 지속되면 계정은 자동으로 비활성화될 수 있습니다. 비활성화 전 경고 메시지가 발송되며, 계정 복구 절차를 안내받게 됩니다.</div>
 							</div>
-							<button type="button" class="btn btn-outline-info" id="card_button" onclick="fnMovetouselimited()">#이용제한</button>
+							<a href="/faqlogin?searchKeyword=계정" class="btn btn-outline-info" id="card_button_2" onclick="fnMovetouselimited">#이용제한</a>
 						</div>
 					</div>
 				</div>
@@ -854,7 +855,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">결제 내역은 '내 계정' 페이지의 '구매 내역' 섹션에서 확인 가능합니다. 결제 날짜, 금액, 결제 수단을 한눈에 볼 수 있습니다.</div>
 							</div>
-							<button type="button" class="btn btn-outline-warning" id="card_button" onclick="fnMovetobuy()">#결제/환불</button>
+							<a href="/faqlogin?searchKeyword=결제" class="btn btn-outline-warning" id="card_button" onclick="fnMovetobuy()">#결제/환불</a>
 						</div>
 					</div>
 				</div>
@@ -873,7 +874,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">환불 요청은 '내 계정'에서 주문 내역을 선택한 후, 환불 신청 버튼을 클릭하여 진행할 수 있습니다. 환불 처리는 약 5~7일이 소요됩니다.</div>
 							</div>
-							<button type="button" class="btn btn-outline-warning" id="card_button" onclick="fnMovetobuy()">#결제/환불</button>
+							<a href="/faqlogin?searchKeyword=결제" class="btn btn-outline-warning" id="card_button" onclick="fnMovetobuy()">#결제/환불</a>
 						</div>
 					</div>
 				</div>
@@ -892,7 +893,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">구매 후 환불 가능한 기간은 보통 7일 이내입니다. 단, 디지털 콘텐츠나 개인화된 상품의 경우 환불이 제한될 수 있습니다.</div>
 							</div>
-							<button type="button" class="btn btn-outline-warning" id="card_button" onclick="fnMovetobuy()">#결제/환불</button>
+							<a href="/faqlogin?searchKeyword=결제" class="btn btn-outline-warning" id="card_button" onclick="fnMovetobuy()">#결제/환불</a>
 						</div>
 					</div>
 				</div>
@@ -911,7 +912,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">환불 처리가 지연될 수 있는 이유는 결제 수단에 따라 다릅니다. 카드사의 확인 절차가 필요하거나, 공휴일이 포함된 경우 시간이 더 걸릴 수 있습니다.</div>
 							</div>
-							<button type="button" class="btn btn-outline-warning" id="card_button" onclick="fnMovetobuy()">#결제/환불</button>
+							<a href="/faqlogin?searchKeyword=결제" class="btn btn-outline-warning" id="card_button" onclick="fnMovetobuy()">#결제/환불</a>
 						</div>
 					</div>
 				</div>
@@ -930,7 +931,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">부분 환불은 구매하신 상품 중 일부만 환불을 원하실 경우 가능합니다. 다만, 일부 상품은 부분 환불이 불가할 수 있으니 확인 후 신청 바랍니다.</div>
 							</div>
-							<button type="button" class="btn btn-outline-warning" id="card_button" onclick="fnMovetobuy()">#결제/환불</button>
+							<a href="/faqlogin?searchKeyword=결제" class="btn btn-outline-warning" id="card_button" onclick="fnMovetobuy()">#결제/환불</a>
 						</div>
 					</div>
 				</div>
@@ -949,7 +950,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">결제 오류가 발생한 경우, 먼저 결제 수단의 잔액 및 정보를 확인해보세요. 문제가 지속되면 고객센터로 문의하여 도움을 받으실 수 있습니다.</div>
 							</div>
-							<button type="button" class="btn btn-outline-warning" id="card_button" onclick="fnMovetobuy()">#결제/환불</button>
+							<a href="/faqlogin?searchKeyword=결제" class="btn btn-outline-warning" id="card_button" onclick="fnMovetobuy()">#결제/환불</a>
 						</div>
 					</div>
 				</div>
@@ -968,7 +969,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">환불 금액이 입금되지 않은 경우, 결제 수단에 따라 최대 7일까지 소요될 수 있습니다. 7일 이후에도 입금이 확인되지 않으면 고객센터에 문의해 주세요.</div>
 							</div>
-							<button type="button" class="btn btn-outline-warning" id="card_button" onclick="fnMovetobuy()">#결제/환불</button>
+							<a href="/faqlogin?searchKeyword=결제" class="btn btn-outline-warning" id="card_button" onclick="fnMovetobuy()">#결제/환불</a>
 						</div>
 					</div>
 				</div>
@@ -990,7 +991,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">저작권 침해를 발견하면, 해당 플랫폼의 신고 기능을 통해 신고하거나, 고객센터에 접수할 수 있습니다.</div>
 							</div>
-							<button type="button" class="btn btn-outline-danger" id="card_button" onclick="fnMovetoright()">#권리보호</button>
+							<a href="/faqlogin?searchKeyword=무단" class="btn btn-outline-danger" id="card_button" onclick="fnMovetoright()">#권리보호</a>
 						</div>
 					</div>
 				</div>
@@ -1009,7 +1010,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">저작권 보호가 필요한 경우, 관련 기관에 신청하거나 서비스 내 저작권 보호 센터에서 요청할 수 있습니다.</div>
 							</div>
-							<button type="button" class="btn btn-outline-danger" id="card_button" onclick="fnMovetoright()">#권리보호</button>
+							<a href="/faqlogin?searchKeyword=무단" class="btn btn-outline-danger" id="card_button" onclick="fnMovetoright()">#권리보호</a>
 						</div>
 					</div>
 				</div>
@@ -1028,7 +1029,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">불법 콘텐츠가 발견되면, 고객센터에 신고 양식을 작성하고 증거를 첨부해 제출하면 됩니다.</div>
 							</div>
-							<button type="button" class="btn btn-outline-danger" id="card_button" onclick="fnMovetoright()">#권리보호</button>
+							<a href="/faqlogin?searchKeyword=무단" class="btn btn-outline-danger" id="card_button" onclick="fnMovetoright()">#권리보호</a>
 						</div>
 					</div>
 				</div>
@@ -1047,7 +1048,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">저작물 사용 허가를 위해 저작권자에게 직접 연락하거나, 저작권 관리 기관을 통해 협의하면 됩니다.</div>
 							</div>
-							<button type="button" class="btn btn-outline-danger" id="card_button" onclick="fnMovetoright()">#권리보호</button>
+							<a href="/faqlogin?searchKeyword=무단" class="btn btn-outline-danger" id="card_button" onclick="fnMovetoright()">#권리보호</a>
 						</div>
 					</div>
 				</div>
@@ -1066,7 +1067,7 @@ function fnMovetoDirect(){
 								<i class="bi bi-chat-dots"></i>
 								<div class="modal-answer-box">콘텐츠가 무단 사용되었을 경우, 상대방에게 경고를 보내거나 법적 조치를 취할 수 있습니다.</div>
 							</div>
-							<button type="button" class="btn btn-outline-danger" id="card_button" onclick="fnMovetoright()">#권리보호</button>
+							<a href="/faqlogin?searchKeyword=무단" class="btn btn-outline-danger" id="card_button" onclick="fnMovetoright()">#권리보호</a>
 						</div>
 					</div>
 				</div>

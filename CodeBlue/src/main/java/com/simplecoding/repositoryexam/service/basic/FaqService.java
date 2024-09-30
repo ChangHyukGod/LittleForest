@@ -17,5 +17,5 @@ public interface FaqService {
     // 전체 FAQ 개수 가져오기
     List<?> selectFaqList(Criteria searchVO) throws Exception;
 
-    int selectFaqListTotCnt(Criteria searchVO);
+    int selectFaqListTotCnt(Criteria searchVO) throws Exception;
 }
