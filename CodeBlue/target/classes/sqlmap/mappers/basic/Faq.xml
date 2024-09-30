@@ -11,8 +11,8 @@
 	<select id="selectFaqlist" parameterType="Criteria"
 		resultType="FaqVO">
 		SELECT * FROM FAQ
-		WHERE question LIKE '%' || #{keyword} || '%'
-		OR answer LIKE '%' || #{keyword} || '%'
+		WHERE question LIKE '%' || #{searchKeyword} || '%'
+		OR answer LIKE '%' || #{searchKeyword} || '%'
 		<!-- SELECT * FROM FAQ WHERE question LIKE '%'|| #{searchKeyword} ||'%' 
 			OFFSET #{firstIndex} ROWS FETCH NEXT #{recordCountPerPage} ROWS ONLY -->
 	</select>
