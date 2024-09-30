@@ -99,7 +99,7 @@
                <c:when test="${sessionScope.memberVO != null}">
                <c:if test="${sessionScope.memberVO.admin == 1}">
                     <li class="nav-item">
-                       <a href="main/addition" class="nav-link">MAIN_ADD</a>
+                       <a href="/main/addition" class="nav-link">MAIN_ADD</a>
                   </li>
                 </c:if>
             </c:when>

@@ -60,6 +60,8 @@ public class FaqController {
 
     @GetMapping("/faqlogin")
     public String faqList(@ModelAttribute("searchVO") Criteria searchVO, Model model) throws Exception {
+	// 디버그용 로그 추가
+	System.out.println("Search Keyword: " + searchVO.getSearchKeyword());
 
 	searchVO.setPageUnit(40);
 	searchVO.setPageSize(4);
@@ -71,13 +73,16 @@ public class FaqController {
 	searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
 	searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
+	// 검색어가 올바르게 설정되어 있는지 확인
+	System.out.println("Criteria Object: " + searchVO.toString());
+
 	List<?> faqs = faqService.selectFaqList(searchVO);
 	model.addAttribute("faqs", faqs);
-	int totcnt = faqService.selectFaqListTotCnt(searchVO);
-	paginationInfo.setTotalRecordCount(totcnt);
+
+	int totCnt = faqService.selectFaqListTotCnt(searchVO);
+	paginationInfo.setTotalRecordCount(totCnt);
 	model.addAttribute("paginationInfo", paginationInfo);
 
-	return "faq/faqlogin"; // 해당 JSP 파일 이름
+	return "faq/faqlogin"; // JSP 파일 경로에 맞게 수정
     }
-
 }
