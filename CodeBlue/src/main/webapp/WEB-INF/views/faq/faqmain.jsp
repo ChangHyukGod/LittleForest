@@ -20,7 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
+function fn_search() {
+	document.listForm.pageIndex.value=1;
+	document.listForm.action="/faq/faqlogin";
+	document.listForm.submit();
+}
 function fnMovetoMail() {
 	document.mailForm.action="/faqemail";
 	document.mailForm.submit();
@@ -145,6 +149,14 @@ function fnMovetoDirect(){
 	height: auto;
 	font-size: 11px;
 	margin: -10px 0 20px 35px
+}
+
+#card_button-2 {
+	width: auto;
+	height: auto;
+	font-size: 15px;
+	margin: 0 0 0 55px;
+	top: 10%;
 }
 
 #card_button_2 {
@@ -299,13 +311,18 @@ function fnMovetoDirect(){
 				<div class="secondtitle">검색을 통해 빠르게 문제를 찾아보세요</div>
 				<!-- 검색창 -->
 				<div class="search_box">
-					<form class="d-flex search_bar">
-						<input class="form-control me-2 search_text" type="search" placeholder="궁금한 것을 물어보세요" aria-label="Search">
-						<button class="btn btn-outline-success search_glass" type="submit">
+					<form class="d-flex search_bar" method="get">
+						<input class="form-control me-2 search_text" name="query" type="search" placeholder="궁금한 것을 물어보세요" aria-label="Search">
+						<button class="btn btn-outline-success search_glass" type="submit" onclick="fn_search()">
 							<i class="bi bi-search"></i>
 						</button>
 					</form>
 				</div>
+				<br>
+				<button type="button" class="btn btn-outline-success" id="card_button-2" onclick="fnMovetoLogin()">#계정관리</button>
+				<button type="button" class="btn btn-outline-info" id="card_button-2" onclick="fnMovetouselimited()">#이용제한</button>
+				<button type="button" class="btn btn-outline-warning" id="card_button-2" onclick="fnMovetobuy()">#결제/환불</button>
+				<button type="button" class="btn btn-outline-danger" id="card_button-2" onclick="fnMovetoright()">#권리보호</button>
 			</div>
 		</div>
 		<!-- 두 번째 배너 -->

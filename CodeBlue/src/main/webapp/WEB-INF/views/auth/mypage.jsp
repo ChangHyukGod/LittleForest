@@ -225,6 +225,7 @@
 <jsp:include page="/common/header.jsp" />
     <div class="container">
 <div class="left-align">
+<button class="btn left-align-button font-weight-bold" style="font-size: 30px;" onclick="location.href='/mypage';">마이페이지</button>
     <h4 class="fw-medium"> 마이쇼핑 </h4>
     <button class="btn left-align-button" onclick="location.href='주문배송조회.jsp';">주문/배송 조회</button>
     <button class="btn left-align-button" onclick="location.href='관심상품.jsp';">관심상품</button>
