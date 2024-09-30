@@ -147,8 +147,6 @@ public class HomeController{
            cart = new ArrayList<>();
        }
 
-       
-       
        // 이미 장바구니에 있는지 확인
        if (cart.contains(uuid)) {
            return ResponseEntity.ok("이미 장바구니에 있는 게임입니다.");
@@ -190,7 +188,8 @@ public class HomeController{
            return ResponseEntity.ok("장바구니에 해당 아이템이 없습니다."); // 오류 메시지
        }
    }
-
+   
+   
 
 
    

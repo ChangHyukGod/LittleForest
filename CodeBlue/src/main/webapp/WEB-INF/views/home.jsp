@@ -163,29 +163,37 @@
             }
         });
         
+      // 실시간 장바구니에 데이터 수 계산
+     function updateCartCount() {
+         const cartCountElement = document.getElementById('cartCount');
+         const currentCount = parseInt(cartCountElement.innerText) || 0; // 현재 카운트를 가져옵니다.
+         cartCountElement.innerText = currentCount + 1; // 카운트를 1 증가시킵니다.
+     }
+        
      // 장바구니에 추가
     function fn_cart(uuid) {
-       const xhr = new XMLHttpRequest();
-       
-       xhr.open("POST", "/main/addToCart", true);
-       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-       xhr.setRequestHeader("Accept-Charset", "utf-8"); // 추가된 부분
-   
-       xhr.onload = function () {
-           if (xhr.status === 200) {
-               const responseMessage = xhr.responseText; // 서버에서 받은 메시지
-               alert(responseMessage); // 메시지를 알림으로 표시
-           }
-       };
-       
-       xhr.send("uuid=" + uuid);
-   }
-
-
-
-
-
-
+	    const xhr = new XMLHttpRequest();
+	    
+	    xhr.open("POST", "/main/addToCart", true);
+	    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	    xhr.setRequestHeader("Accept-Charset", "utf-8");
+	
+	    xhr.onload = function () {
+	        if (xhr.status === 200) {
+	            const responseMessage = xhr.responseText; // 서버에서 받은 메시지
+	            alert(responseMessage); // 메시지를 알림으로 표시
+	
+	            // 장바구니 카운트 업데이트
+	            if (responseMessage === "장바구니에 추가되었습니다!") {
+	                updateCartCount(); // 카운트 업데이트
+	            }
+	        }
+	    };
+	
+	    xhr.send("uuid=" + uuid);
+	}
+     
+     
     </script>
 </head>
 <body>
@@ -203,7 +211,7 @@
    
        <div class="carousel-inner" style="height: 400px;">
            <div class="carousel-item active">
-               <img src="/resources/images/팰월드.jpg" class="d-block" alt="건담">
+               <img src="/resources/images/stardewvalley.jpg" class="d-block" alt="건담">
            </div>
            <div class="carousel-item">
                <img src="/resources/images/엘든링.jpg" class="d-block" alt="엘든링">
@@ -333,7 +341,7 @@
                          <p class="card-text"><c:out value="${data.genre}" /></p>
                          <div class="d-flex justify-content-center mt-auto"> <!-- 수평 중앙 정렬 -->
                             <button class="btn btn-outline-primary btn-sm me-2" type="button" onclick="fn_buy('<c:out value="${data.uuid}"></c:out>')">구매하기</button>
-                            <button class="btn btn-outline-dark btn-sm" type="button" onclick="fn_cart('<c:out value="${data.uuid}"></c:out>')">장바구니 추가</button>
+                            <button class="btn btn-outline-dark btn-sm" type="button" onclick="fn_cart('<c:out value="${data.uuid}"></c:out>')">장바구니에 추가</button>
                         </div>
                      </div>
                         </div>
