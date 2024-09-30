@@ -48,24 +48,18 @@
 		});
 	});
 	
-	
 //	사이드바 예시
-const sidebar = document.getElementById('sidebar');
+	window.addEventListener('scroll', () => {
+        const sidebar = document.getElementById('sidebar');
+        const scrollY = window.scrollY;
 
-// 사이드바 열기
-function openSidebar() {
-    sidebar.style.right = '0'; // 오른쪽 위치를 0으로 변경
-}
-
-// 사이드바 닫기
-function closeSidebar() {
-    sidebar.style.right = '-300px'; // 다시 화면 밖으로 이동
-}
-
-// 사이드바 열기 버튼
-document.getElementById('open-sidebar-btn').addEventListener('click', openSidebar);
-
-// 사이드바 닫기 버튼 (사이드바 내에 닫기 버튼 추가 가능)
+        // 스크롤에 따라 사이드바 위치 조정
+        if (scrollY > 100) {
+            sidebar.style.transform = 'translateY(' + (scrollY - 100) + 'px)';
+        } else {
+            sidebar.style.transform = 'translateY(0)';
+        }
+    });
 
 </script>
 </head>
@@ -88,7 +82,7 @@ document.getElementById('open-sidebar-btn').addEventListener('click', openSideba
 		<c:forEach var="item" items="${cartItems}">
 		
 		<!-- 1) 상품 목록 카드 -->
-		<div class="card" style="width: 50rem; padding:10px 0px 0px 20px; margin-top:10px;">
+		<div class="card" style="width: 60rem; padding:10px 0px 0px 20px; margin-top:10px;">
 			<!-- 체크박스 추가 -->
 			<div><input type="checkbox" class="item-checkbox" value="${item.uuid}"></div>
 			<!-- 카드 안 가로정렬 -->
@@ -126,7 +120,7 @@ document.getElementById('open-sidebar-btn').addEventListener('click', openSideba
 </div> <!-- (1) 우측박스 닫는태그 -->
 
 <!-- (2) 좌측 박스 -->
-<div class="container" style="display: flex-direction:row;">
+<%-- <div class="sidebar" style="display: flex-direction:row; position: sticky; top: 0;">
 	<!-- 3) 결제 예상 금액 -->
 	<div class="card" style="width:16rem; padding:20px 0px 0px 20px; margin-top:10px;">
 		<div>
@@ -140,21 +134,20 @@ document.getElementById('open-sidebar-btn').addEventListener('click', openSideba
 			<a href="/" class="btn btn-success">홈으로 이동</a>
 		</div>
 	</div>  <!-- 3) 닫는태그 -->
-</div>  <!-- (2) 좌측박스 닫는태그 -->
+</div> --%>  <!-- (2) 좌측박스 닫는태그 -->
 
 <!-- 사이드바 예시 -->
-<div class="sidebar" id="sidebar" style="position: absolute; top: 0; right: -300px; width: 300px; height: 100%; background-color: white; box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); transition: right 0.3s ease; z-index: 1000;">
-    <div class="card" style="padding: 20px;">
-        <h4>결제 예상 금액</h4>
-        <h5>\16,000원</h5>
-        <div class="button-group" style="display: flex; gap: 15px; margin-top: 20px;">
-            <a href="/main/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
-            <a href="/" class="btn btn-success">홈으로 이동</a>
-        </div>
-    </div>
+<div class="sidebar" id="sidebar" style="position: fixed; top: 250px; right: 100px; width: 16rem;
+background-color: white; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); padding:20px 0px 0px 20px; margin-top:10px;
+transition: transform 0.3s ease; z-index: 1000;">
+    <h4 style="margin: 0 0 10px;">결제 예상 금액</h4>
+    <h5 style="margin: 0;">\16,000원</h5>
+    <br/>
+    <div class="button-group" style="display: flex; gap: 15px; margin-bottom:20px;">
+			<a href="/main/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
+			<a href="/" class="btn btn-success">홈으로 이동</a>
+	</div>
 </div>
-
-<button id="open-sidebar-btn" style="margin: 20px;">사이드바 열기</button>
 <!-- 사이드바 예시 -->
 
 
