@@ -20,7 +20,7 @@
             height: 120px; /* 배너 높이를 키움 */
         }
         .menu-icon {
-            margin-left: 10px;
+            margin-left: 25px;
         }
         .navbar-brand {
             position: absolute;

@@ -68,7 +68,9 @@
           flex-direction: column;
           justify-content: space-between; /* 카드 내용이 고르게 배치되도록 설정 */
           height: 300px; /* 카드 높이를 고정합니다. */
-      }            
+      }    
+      
+              
     </style>
     
     <script type="text/javascript" defer="defer">
@@ -167,6 +169,8 @@
 </head>
 <body>
     <jsp:include page="/common/header.jsp"></jsp:include>
+    
+    
     <!-- 배너 -->
    <div id="carouselExampleIndicators" class="carousel slide mb-3" data-bs-ride="true" style="width: 100%; margin: 0 auto;">
        <div class="carousel-indicators">
@@ -176,6 +180,8 @@
            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3"></button>
            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 3"></button>
        </div>
+       
+       
    
        <div class="carousel-inner" style="height: 400px;">
            <div class="carousel-item active">
