@@ -11,10 +11,20 @@
       }
       
       function fn_cart(uuid) {
-    	  document.detailForm.uuid.value = uuid;
-          document.detailForm.action = "/main/cart";
-          document.detailForm.submit();
-       }
+  	    const xhr = new XMLHttpRequest();
+  	    xhr.open("POST", "/main/addToCart", true);
+  	    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  	    xhr.setRequestHeader("Accept-Charset", "utf-8"); // 추가된 부분
+  	
+  	    xhr.onload = function () {
+  	        if (xhr.status === 200) {
+  	            const responseMessage = xhr.responseText; // 서버에서 받은 메시지
+  	            alert(responseMessage); // 메시지를 알림으로 표시
+  	        }
+  	    };
+  	    
+  	    xhr.send("uuid=" + uuid);
+  	}
    </script>
 </head>
 <body>
@@ -23,7 +33,7 @@
 <div class="container">
   <form action="detailForm" name="detailForm" method="get">
      <!-- uuid 전송(***) -->
-   <input type="hidden" name="uuid" value="${detail.uuid}">
+   <input type="hidden" name="uuid">
 <!-- 전체 세로정렬 -->
 <div class="container" style="display:flex-direction:row; gap:20px;">
 
@@ -71,8 +81,8 @@
       </table>
       <!-- 장바구니, 구매하기 버튼 -->
       <div class="card-body" style="margin-left:130px;">
-         <a href="#" class="btn btn-primary" onclick="fn_cart('<c:out value="${detail.uuid}"></c:out>')">장바구니</a>
-         <a href="#" class="btn btn-success" onclick="fn_buy('<c:out value="${detail.uuid}"></c:out>')">구매하기</a>
+         <a href="#" class="btn btn-primary" onclick="fn_buy('<c:out value="${detail.uuid}"></c:out>')">구매하기</a>
+         <a href="#" class="btn btn-dark" onclick="fn_cart('<c:out value="${detail.uuid}"></c:out>')">장바구니에 추가</a>
       </div>
    </div>
 </div>

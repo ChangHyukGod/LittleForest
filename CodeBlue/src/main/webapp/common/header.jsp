@@ -157,9 +157,10 @@
                     </ul>
                 </div>
 
-                <a href="/shoppingbasket" class="nav-link icon">
-                    <i class="bi bi-cart"></i>
-                </a>
+               <a href="/main/cart" class="nav-link icon">
+				    <i class="bi bi-cart"></i>
+				    <span id="cart-count">${not empty cartItems ? cartItems.size() : 0}</span>
+				</a>
                 
                 <a href="#" class="nav-link icon" data-bs-toggle="modal" data-bs-target="#searchModal">
                     <i class="bi bi-search"></i>

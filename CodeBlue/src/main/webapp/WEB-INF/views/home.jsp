@@ -163,10 +163,30 @@
             }
         });
         
+     // 장바구니에 추가
+    function fn_cart(uuid) {
+	    const xhr = new XMLHttpRequest();
+	    xhr.open("POST", "/main/addToCart", true);
+	    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	    xhr.setRequestHeader("Accept-Charset", "utf-8"); // 추가된 부분
+	
+	    xhr.onload = function () {
+	        if (xhr.status === 200) {
+	            const responseMessage = xhr.responseText; // 서버에서 받은 메시지
+	            alert(responseMessage); // 메시지를 알림으로 표시
+	        }
+	    };
+	    
+	    xhr.send("uuid=" + uuid);
+	}
+
+
     </script>
 </head>
 <body>
     <jsp:include page="/common/header.jsp"></jsp:include>
+    
+    
     <!-- 배너 -->
    <div id="carouselExampleIndicators" class="carousel slide mb-3" data-bs-ride="true" style="width: 100%; margin: 0 auto;">
        <div class="carousel-indicators">
@@ -308,7 +328,7 @@
                                 <h5 class="card-title"><c:out value="${data.fileTitle}" /></h5>
                                 <p class="card-text"><c:out value="${data.genre}" /></p>
                                 <button class="btn btn-primary" type="button" onclick="fn_buy('<c:out value="${data.uuid}"></c:out>')">구매하기</button>
-                                <button class="btn btn-dark" type="button" onclick="fn_cart('<c:out value="${data.uuid}"></c:out>')">장바구니</button>
+                                <button class="btn btn-dark" type="button" onclick="fn_cart('<c:out value="${data.uuid}"></c:out>')">장바구니에 추가</button>
                             </div>
                         </div>
                     </div>
@@ -316,7 +336,9 @@
             </div>
         </form>
     </div>
+    
 
+    
     <jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 </html>
