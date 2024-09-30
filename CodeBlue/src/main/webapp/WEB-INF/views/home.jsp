@@ -211,7 +211,7 @@
            <div class="carousel-item">
                <img src="/resources/images/얼티밋 치킨.jpg" class="d-block" alt="얼티밋 치킨">
            </div><div class="carousel-item">
-               <img src="/resources/images/파티애니멀.jpg" class="d-block" alt="얼티밋 치킨">
+               <img src="/resources/images/Party Animals.jpg" class="d-block" alt="얼티밋 치킨">
            </div>
            <div class="carousel-item">
                <img src="/resources/images/스컬.jpg" class="d-block" alt="얼티밋 치킨">
