@@ -159,7 +159,7 @@
 
                <a href="/main/cart" class="nav-link icon">
                 <i class="bi bi-cart"></i>
-                <span id="cart-count">${cartCount}</span> <!-- cartCount 사용 -->
+                <span id="cartCount">${cartCount}</span> <!-- cartCount 사용 -->
             </a>
 
                 
