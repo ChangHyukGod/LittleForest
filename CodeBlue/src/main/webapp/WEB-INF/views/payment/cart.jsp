@@ -136,7 +136,7 @@
     </c:if>
     
     <c:if test="${empty cartItems}">
-        <p>dd</p>
+        <p>장바구니가 비어 있습니다.</p>
     </c:if>
     
     <a href="/">홈으로 이동</a>
