@@ -25,15 +25,13 @@ public class FaqServiceImpl implements FaqService {
     private FaqMapper faqMapper;
 
     @Override
-    public List<?> selectFaqList(Criteria searchVO) throws Exception {
-	// TODO 자동 생성된 메소드 스텁
-	return faqMapper.selectFaqlist(searchVO);
+    public List<?> selectFaqList(Criteria criteria) throws Exception {
+	return faqMapper.selectFaqlist(criteria);
     }
 
     @Override
-    public int selectFaqListTotCnt(Criteria searchVO) {
-	// TODO 자동 생성된 메소드 스텁
-	return faqMapper.selectFaqListTotCnt(searchVO);
+    public int selectFaqListTotCnt(Criteria criteria) throws Exception {
+	return faqMapper.selectFaqListTotCnt(criteria);
     }
 
 }

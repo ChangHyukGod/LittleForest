@@ -129,6 +129,10 @@
                 });
             }
         };
+        
+        window.onunload = function() {
+            sessionStorage.setItem("scrollPosition", window.scrollY);
+        }; 
 
         // AJAX로 폼 전송하기
         function submitForm(url, keyword) {
@@ -211,7 +215,7 @@
    
        <div class="carousel-inner" style="height: 400px;">
            <div class="carousel-item active">
-               <img src="/resources/images/stardewvalley.jpg" class="d-block" alt="건담">
+               <img src="/resources/images/스타튜밸리.jpg" class="d-block" alt="건담">
            </div>
            <div class="carousel-item">
                <img src="/resources/images/엘든링.jpg" class="d-block" alt="엘든링">
@@ -219,7 +223,7 @@
            <div class="carousel-item">
                <img src="/resources/images/얼티밋 치킨.jpg" class="d-block" alt="얼티밋 치킨">
            </div><div class="carousel-item">
-               <img src="/resources/images/파티애니멀.jpg" class="d-block" alt="얼티밋 치킨">
+               <img src="/resources/images/Party Animals.jpg" class="d-block" alt="얼티밋 치킨">
            </div>
            <div class="carousel-item">
                <img src="/resources/images/스컬.jpg" class="d-block" alt="얼티밋 치킨">
