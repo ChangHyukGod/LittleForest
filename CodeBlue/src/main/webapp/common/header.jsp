@@ -96,14 +96,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <c:choose>
-	   			<c:when test="${sessionScope.memberVO != null}">
-					<c:if test="${sessionScope.memberVO.admin == 1}">
-	  					<li class="nav-item">
-  							<a href="main/addition" class="nav-link">MAIN_ADD</a>
-						</li>
- 					</c:if>
-				</c:when>
-			</c:choose>
+               <c:when test="${sessionScope.memberVO != null}">
+               <c:if test="${sessionScope.memberVO.admin == 1}">
+                    <li class="nav-item">
+                       <a href="main/addition" class="nav-link">MAIN_ADD</a>
+                  </li>
+                </c:if>
+            </c:when>
+         </c:choose>
             
                 <div class="dropdown"> <!-- 고객센터 아이콘 -->
                     <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -157,9 +157,11 @@
                     </ul>
                 </div>
 
-                <a href="/shoppingbasket" class="nav-link icon">
-                    <i class="bi bi-cart"></i>
-                </a>
+               <a href="/main/cart" class="nav-link icon">
+                <i class="bi bi-cart"></i>
+                <span id="cart-count">${cartCount}</span> <!-- cartCount 사용 -->
+            </a>
+
                 
                 <a href="#" class="nav-link icon" data-bs-toggle="modal" data-bs-target="#searchModal">
                     <i class="bi bi-search"></i>

@@ -11,10 +11,20 @@
       }
       
       function fn_cart(uuid) {
-    	  document.detailForm.uuid.value = uuid;
-          document.detailForm.action = "/main/cart";
-          document.detailForm.submit();
-       }
+         const xhr = new XMLHttpRequest();
+         xhr.open("POST", "/main/addToCart", true);
+         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+         xhr.setRequestHeader("Accept-Charset", "utf-8"); // 추가된 부분
+     
+         xhr.onload = function () {
+             if (xhr.status === 200) {
+                 const responseMessage = xhr.responseText; // 서버에서 받은 메시지
+                 alert(responseMessage); // 메시지를 알림으로 표시
+             }
+         };
+         
+         xhr.send("uuid=" + uuid);
+     }
    </script>
 </head>
 <body>
@@ -23,7 +33,7 @@
 <div class="container">
   <form action="detailForm" name="detailForm" method="get">
      <!-- uuid 전송(***) -->
-   <input type="hidden" name="uuid" value="${detail.uuid}">
+   <input type="hidden" name="uuid">
 <!-- 전체 세로정렬 -->
 <div class="container" style="display:flex-direction:row; gap:20px;">
 
@@ -47,32 +57,39 @@
          <p class="card-text">${detail.price}</p>
       </div>
       <!-- 게임정보 테이블 : 장르, 배급사, 이용등급, 출시일, => 중앙/우측 정렬 -->
-      <table class="table">
-        <thead>
-          <tr>
-            <th>장르</th>
+      <table class="table mb-3">
+    <thead style="color: blue;">
+        <tr>
+            <th scope="col" style="width: 30%;">항목</th>
+            <th scope="col">내용</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">장르</th>
             <td>${detail.genre}</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>배급사</th>
+        </tr>
+        <tr>
+            <th scope="row">배급사</th>
             <td>${detail.company}</td>
-          </tr>
-          <tr>
-            <th>이용등급</th>
+        </tr>
+        <tr>
+            <th scope="row">이용등급</th>
             <td>${detail.rank}</td>
-          </tr>
-          <tr>
-            <th>출시일</th>
+        </tr>
+        <tr>
+            <th scope="row">출시일</th>
             <td>${detail.nalzza}</td>
-          </tr>
-        </tbody>
-      </table>
+        </tr>
+    </tbody>
+</table>
+
       <!-- 장바구니, 구매하기 버튼 -->
-      <div class="card-body" style="margin-left:130px;">
-         <a href="#" class="btn btn-primary" onclick="fn_cart('<c:out value="${detail.uuid}"></c:out>')">장바구니</a>
-         <a href="#" class="btn btn-success" onclick="fn_buy('<c:out value="${detail.uuid}"></c:out>')">구매하기</a>
+        <div class="card-body" style="text-align: center; margin-top: -15px;"> <!-- 가운데 정렬을 위한 스타일 추가 -->
+          <div class="d-flex justify-content-center mt-auto">
+              <a href="#" class="btn btn-outline-primary btn-sm me-2" onclick="fn_buy('<c:out value="${detail.uuid}"></c:out>')">구매하기</a>
+              <a href="#" class="btn btn-outline-dark btn-sm" onclick="fn_cart('<c:out value="${detail.uuid}"></c:out>')">장바구니에 추가</a>
+          </div>
       </div>
    </div>
 </div>

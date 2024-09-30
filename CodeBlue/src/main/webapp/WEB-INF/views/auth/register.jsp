@@ -7,22 +7,89 @@
 <title>회원가입</title>
 
 <script type="text/javascript">
- function fn_check(event){
-	    // 각각의 입력 필드에서 값을 가져오기
-	    var phonePart1 = document.getElementById("phone_part1").value;
-	    var phonePart2 = document.getElementById("phone_part2").value;
-	    var phonePart3 = document.getElementById("phone_part3").value;
+function all_check(event) {
+	event.preventDefault(); // 폼 제출 기본 동작 방지
+    // 각각의 입력 필드에서 값을 가져오기
+    var phonePart1 = document.getElementById("phone_part1").value.trim();
+    var phonePart2 = document.getElementById("phone_part2").value.trim();
+    var phonePart3 = document.getElementById("phone_part3").value.trim();
 
-	    // 전체 전화번호를 결합
-	    var fullPhoneNumber = phonePart1 + "-" + phonePart2 + "-" + phonePart3;
+    // 유효성 검사
+    if (!phonePart1 || !phonePart2 || !phonePart3) {
+        alert("모든 전화번호 필드를 입력해주세요.");
+        return false; // 폼 전송 중지
+    }
 
-	    // 숨겨진 필드에 결합된 전화번호 값을 설정
-	    document.getElementById("fullPhoneNumber").value = fullPhoneNumber;
+    if (!/^\d+$/.test(phonePart1) || !/^\d+$/.test(phonePart2) || !/^\d+$/.test(phonePart3)) {
+        alert("전화번호는 숫자만 입력할 수 있습니다.");
+        return false;
+    }
 
-	    // 폼 제출을 진행
-	    return true;
+    // 전체 전화번호를 결합
+    var fullPhoneNumber = phonePart1 + "-" + phonePart2 + "-" + phonePart3;
 
- }
+    // 숨겨진 필드에 결합된 전화번호 값을 설정
+    document.getElementById("phonenumber").value = fullPhoneNumber;
+
+    console.log("합쳐진 전화번호:", fullPhoneNumber); // 디버그 로그
+
+    document.getElementById("listForm").submit();
+}
+ 
+ document.addEventListener('DOMContentLoaded', function() {
+     function fn_check(event) {
+         var username = document.getElementById('username').value.trim();
+         if (!username) {
+             alert('아이디를 입력하세요.');
+             return;
+         }
+         console.log("Username:", username); 
+
+         // URL 작성 시 JavaScript에서 처리하도록 수정
+         fetch('/auth/check-username?username=' + encodeURIComponent(username))
+             .then(response => {
+                 if (!response.ok) {
+                     throw new Error("Network response was not ok");
+                 }
+                 return response.text();
+             })
+             .then(data => {
+            	 console.log("Received data:", data); // 데이터 출력
+                 alert(data);
+             })
+             .catch(error => {
+                 alert('이미 사용 중인 아이디입니다.');
+             });
+     }
+
+     // 메시지를 표시하는 함수
+     function showMessage(message) {
+         console.log("Show message:", message); // 추가된 로그
+         var messageDiv = document.getElementById('idCheckMessage');
+         messageDiv.innerText = message; // 서버에서 받아온 메시지로 내용 설정
+         messageDiv.style.display = 'block'; // 메시지 표시
+     }
+
+     // 버튼 클릭 이벤트 리스너 추가
+     const checkUsernameButton = document.getElementById('checkUsernameButton');
+     if (checkUsernameButton) {
+         checkUsernameButton.addEventListener('click', fn_check);
+     } else {
+         console.error("checkUsernameButton 요소를 찾을 수 없습니다.");
+     }
+
+     const passwordInput = document.getElementById('password');
+     const confirmPasswordInput = document.getElementById('confirmPassword');
+     const passwordError = document.getElementById('passwordError');
+
+     confirmPasswordInput.addEventListener('input', function() {
+         if (passwordInput.value !== confirmPasswordInput.value) {
+             passwordError.style.display = 'block';
+         } else {
+             passwordError.style.display = 'none';
+         }
+     });
+ });
 </script>
 
 
@@ -236,7 +303,7 @@ body {
 	        </div>
 
 <!-- 아이디 -->
-	<form id="listForm" name="listForm" action="/register/addition" method="post">
+	<form id="listForm" name="listForm" action="/register/addition" method="post" onsubmit="all_check(event)">
         <!-- 아이디 입력란 -->
         <div class="form-group" style="margin: 10px 0 10px 0;">  
             <label for="username"></label>
@@ -250,8 +317,16 @@ body {
                         placeholder="" 
                         required 
                         style="margin: 0;">
-						<button type="button" style="margin-left: 10px; height: 30px; display: flex; align-items: center; justify-content: center;" class="btn btn-success" onclick="fn_check(event)">중복 확인</button>
-                    	<p id="idCheckMessage" style="margin: 0 0 0 15px; font-size: 10px; color: red; display: none;"></p>
+						<button type="button"  
+								id="checkUsernameButton" 
+								style="margin-left: 10px; 
+								font-size:12px;" 
+								class="btn btn-success" 
+								onclick="fn_check(event)"
+								>중복 확인</button>
+                    <div class="tooltip">
+                        <span class="tooltiptext" id="idCheckMessage" style="display: none;"></span>
+                    </div>
                     <p style="margin: 0 0 0 15px; font-size: 12px; white-space: nowrap;">(영문소문자/숫자, 4~16자)</p>
                 </div>
             </div>
@@ -272,7 +347,8 @@ body {
                         class="form-control" 
                         placeholder="" 
                         required 
-                        style="margin: 0;">
+                        style="margin: 0;"
+                        maxlength="16">
                     <p style="margin: 0 0 0 15px; font-size: 12px; white-space: nowrap;">(8~16자의 영문 대/소문자, 숫자, 특수문자)</p>
                 </div>
             </div>
@@ -293,27 +369,13 @@ body {
                         class="form-control" 
                         placeholder="" 
                         required 
-                        style="margin: 0;"> 
+                        style="margin: 0;"
+                        maxlength="16"> 
                 </div>
             </div>
         </div>
 
         <p id="passwordError" style="color: red; display: none;">비밀번호가 일치하지 않습니다.</p>
-        
-        <script>
-            const passwordInput = document.getElementById('password');
-            const confirmPasswordInput = document.getElementById('confirmPassword');
-            const passwordError = document.getElementById('passwordError');
-            
-            confirmPasswordInput.addEventListener('input', function() {
-                if (passwordInput.value !== confirmPasswordInput.value) {
-                    passwordError.style.display = 'block';
-                } else {
-                    passwordError.style.display = 'none';
-                }
-            });
-        </script>
-    
 <!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 10px 0 10px 0;">
 
@@ -354,7 +416,7 @@ body {
     <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
         <p class="input-label" style="margin: 0;">휴대전화 (선택)</p>
         <div style="margin-left: 10px; display: flex; align-items: center;">
-            <select class="form-select form-select-sm" name="phone_part1" aria-label="번호 선택" style="width: 100px; margin-right: 5px; margin: 0;">
+            <select class="form-select form-select-sm" name="phone_part1" id="phone_part1" aria-label="번호 선택" style="width: 100px; margin-right: 5px; margin: 0;">
                 <option value="010" selected>010</option>
                 <option value="011">011</option>
                 <option value="016">016</option>
@@ -363,12 +425,30 @@ body {
                 <option value="019">019</option>
             </select>
             <span style="margin: 0 5px;">-</span>
-            <input class="form-control form-control-sm" name="phone_part2" type="text" placeholder="" aria-label="번호 입력" style="width: 100px; margin: 0;">
+            <input class="form-control form-control-sm" 
+            		name="phone_part2" 
+            		id="phone_part2" 
+            		type="text" 
+            		placeholder="" 
+            		aria-label="번호 입력" 
+            		style="width: 100px; 
+            		margin: 0;"
+            		maxlength="4">
             <span style="margin: 0 5px;">-</span>
-            <input class="form-control form-control-sm" name="phone_part3" type="text" placeholder="" aria-label="번호 입력" style="width: 100px; margin: 0;">
+            <input class="form-control form-control-sm" 
+            		name="phone_part3" 
+            		id="phone_part3" 
+            		type="text" 
+            		placeholder="" 
+            		aria-label="번호 입력" 
+            		style="width: 100px; 
+            		margin: 0;"
+            		maxlength="4">
         </div>
     </div>
 </div>
+
+ <input type="hidden" id="phonenumber" name="phonenumber">
 
 <!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 5px 0 5px 0;">

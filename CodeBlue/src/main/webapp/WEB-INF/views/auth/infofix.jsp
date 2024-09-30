@@ -6,22 +6,44 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>마이페이지</title>
+    <title>회원 정보 수정</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-            padding: 0px; /* 양옆 여백 추가 */
+    <style>
+       body {
+    font-size: 12px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    margin: 0;
+	}
+	
+	.container {
+	    width: 90%; 
+	   display: flex;
+	}
+	.main-content {
+	    flex-grow: 1; 
+	     display: flex;
+	    flex-direction: column; 
+	    align-items: center; 
+	    margin-left:-115px;
+	}
+
+	.left-align {
+		position: sticky; /* 스크롤 시 고정되는 속성 */
+	    top: 0; /
+		z-index: 100;
+     	margin: 30px 20px 0 -200px; 
+        text-align: left !important;
+        padding: 50px;
+        width: 300px;
+        align-self: flex-start; 
         }
 
-        .left-align {
-            margin: 50px 80px 100px 60px;
-            text-align: left;
-            padding: 50px;
-            width: 300px;
-            float: left;
-        }
-            
+
+
         .left-align h4 {
             margin-top: 50px; 
             margin-bottom: 20px; 
@@ -30,11 +52,43 @@
         .left-align p { 
             margin-bottom: 10px;
         }
+    .left-align-button {
+	    background-color: #4CAF50; 
+	    border: none; 
+	    text-align: center; 
+	    text-decoration: none; /
+	    display: block;
+	    margin: 5px 0; 
+	    cursor: pointer; 
+	    transition: background-color 0.3s; 
+	    margin-left: -12px; 
+	    outline: none; 
+	    box-shadow: none; 
+	}
+	
+
+	.left-align-button:focus {
+	    outline: none; 
+	    box-shadow: none; 
+	}
+	
+
+	.left-align-button:active {
+	    outline: none; 
+	    box-shadow: none;
+	}
+	
+	.left-align-button:hover {
+	    background-color: #45a049; 
+	    color: yellow;
+	    outline: none; 
+	}
         
         .card-body {
             width: 800px; 
             padding: 10px; /* 내부 여백 조정 */
-            margin-left:200px;
+            margin :0;
+
         }
             
 .title {
@@ -43,7 +97,7 @@
     margin-top: 30px;
     margin-bottom: 10px; /* 여백 조정 */
 
-    margin-left:490px;
+
 }
 
      .underline {
@@ -53,7 +107,7 @@
      }
 
 .header {
-    margin: 50px 100px 20px 200px; /* 좌우 마진을 auto로 설정하여 중앙 정렬 */
+    margin: 50px 0; /* 좌우 마진을 auto로 설정하여 중앙 정렬 */
     padding: 0;
     background-color: #bae4ae;
     color: white;
@@ -111,7 +165,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid black;
     width: 100%; 
   }
 
@@ -146,20 +199,23 @@
 <body>
 
 <jsp:include page="/common/header.jsp" />
+    <div class="container">
+<div class="left-align">
+    <h4 class="fw-medium"> 마이쇼핑 </h4>
+    <button class="btn left-align-button" onclick="location.href='주문배송조회.jsp';">주문/배송 조회</button>
+    <button class="btn left-align-button" onclick="location.href='관심상품.jsp';">관심상품</button>
+    <h4 class="fw-medium"> 나의 정보 </h4>
+    <button class="btn left-align-button" onclick="location.href='/infofix';">회원정보 수정</button>
+    <h4 class="fw-medium"> 고객센터 </h4>
+    <button class="btn left-align-button" onclick="location.href='공지사항.jsp';">공지사항</button>
+    <br>
+    <button class="btn left-align-button" onclick="location.href='/FAQ';">FAQ</button>
+    <br>
+    <button class="btn left-align-button" onclick="location.href='문의.jsp';">1:1 문의</button>
+</div>
 
-    <div class="left-align">
-        <h4 class="fw-medium"> 마이쇼핑 </h4>
-        <p class="text-success"> 주문/배송 조회 </p>
-        <p> 관심상품 </p>
-        <h4 class="fw-medium"> 나의 정보 </h4>
-        <p> 회원정보 수정 </p>
-        <h4 class="fw-medium"> 고객센터 </h4>
-        <p> 공지사항 </p>
-        <p> FAQ </p>
-        <p> 1:1 문의 </p>
-    </div> 
     
-    <div style="margin-left: 350px;">
+<div class="main-content">
         <p class="title">회원 정보 수정</p>
     
         <!-- 상단 사용자 정보 -->
@@ -185,7 +241,7 @@
                     <div style="margin-left: 10px;">
                         <b>인증됨</b>
                         <br>
-                        <div style="display: inline-flex; gap: 50px; align-items: center;">
+                        <div style="display: inline-flex; gap: 50px; align-items: center; margin-top:7px;">
                             <div>
                                   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
                                 <label class="form-check-label" for="flexRadioDefault1">이메일 인증</label>
@@ -198,22 +254,24 @@
                     </div>
                 </div>
 
-                <hr style="border: 1px solid #BDBDBD; width: 100%; margin-top: 2px;">
+                <hr style="border: 1px solid #BDBDBD; width: 100%; margin-top: 2px; margin-bottom :55px;">
 
                 <!-- 기본 정보 -->
-                <div class="basic" style="margin-bottom: -13px;"> 
+                <div class="basic"> 
                     <div class="ba">
                         <span>기본정보</span>
                     </div>
+           
                     <div class="sic">
                         <span><b class="text-danger"> *</b>필수입력사항</span>
                     </div>
                 </div>
+                
+                <hr class="underline">
 
               <!-- 아이디 -->
               
-
-<div class="form-group" style="margin: -10px 0 10px 0;">  
+<div class="form-group" style="margin: -20px 0 10px 0;">  
     <label for="username"></label>
     <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
         <p class="input-label" style="margin: 0;">아이디<b class="text-danger"> *</b></p>
@@ -348,6 +406,7 @@
 	            <span>추가정보</span>
 	        </div>
 	        </div>
+	        <hr class="underline">
 
 <div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top:10px;">
     <p style="color: black; margin: 0; width: auto; white-space: nowrap;">만 14세 이상입니다.<b class="text-danger"> *</b></p>
@@ -356,19 +415,21 @@
         <label class="form-check-label" for="flexRadioDefault1" style="margin-left: 5px;">네</label>
     </div>
 </div>
+
 <br>
 <br>
 
 <div class="text-center">
-    <button type="submit" class="btn btn-success" style="padding: 10px 40px; font-size: 14px; width: 180px; margin-bottom: 25px; margin-right:5px;">회원정보 수정</button>
-    <button type="submit" class="btn btn-outline-success" style="padding: 10px 40px; font-size: 14px; width: 180px; margin-bottom: 25px; margin-left:5px;">취소</button>
+    <button type="submit" class="btn btn-success" style="padding: 10px 40px; font-size: 14px; width: 180px; margin-bottom: 50px; margin-right:5px;">회원정보 수정</button>
+    <button type="submit" class="btn btn-outline-success" style="padding: 10px 40px; font-size: 14px; width: 180px; margin-bottom: 50px; margin-left:5px;">취소</button>
 </div>
 
-
+</div>
 	
 			</form>
 			</div>
 			</div>
+		
 
 
 <jsp:include page="/common/footer.jsp" />
