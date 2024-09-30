@@ -7,20 +7,24 @@
 	namespace="com.simplecoding.repositoryexam.mapper.basic.FaqMapper">
 
 	<!-- 키워드로 FAQ 검색 (페이징) -->
-
 	<select id="selectFaqlist" parameterType="Criteria"
 		resultType="FaqVO">
-		SELECT * FROM FAQ
-		WHERE question LIKE '%' || #{keyword} || '%'
-		OR answer LIKE '%' || #{keyword} || '%'
-		<!-- SELECT * FROM FAQ WHERE question LIKE '%'|| #{searchKeyword} ||'%' 
-			OFFSET #{firstIndex} ROWS FETCH NEXT #{recordCountPerPage} ROWS ONLY -->
+		SELECT *
+		FROM FAQ
+		WHERE (question LIKE '%' || #{searchKeyword} || '%' OR #{searchKeyword} IS
+		NULL OR #{searchKeyword} = '')
+		OR (answer LIKE '%' || #{searchKeyword} || '%' OR #{searchKeyword} IS
+		NULL OR #{searchKeyword} = '')
+		OFFSET #{firstIndex} ROWS FETCH NEXT #{recordCountPerPage} ROWS ONLY
 	</select>
+
+	<!-- FAQ 총 개수 가져오기 -->
 	<select id="selectFaqListTotCnt" parameterType="Criteria"
 		resultType="int">
-		SELECT COUNT(*) FROM FAQ
-		WHERE question LIKE '%'||
-		#{searchKeyword} ||'%'
+		SELECT COUNT(*)
+		FROM FAQ
+		WHERE question LIKE '%' ||
+		#{searchKeyword} || '%'
 	</select>
 
 </mapper>
