@@ -27,7 +27,7 @@ public class MainVO extends Criteria {
      private String fileTitle;       // 제목   
      private String fileContent;     // 내용   
      private byte[] fileData;        // 이미지파일   
-     private MultipartFile image;    // 내부적 사용(이미지파일)   
+     private MultipartFile image;    // 내부적 사용(이미지파일)  y 
      private String fileUrl;         // 다운로드 url(클릭:이미지 다운로드됨)   
      private String price;           // 가격 
      private String genre;           // 장르

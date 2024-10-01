@@ -72,105 +72,58 @@
     </style>
     
     <script type="text/javascript" defer="defer">
-        // 이미지 클릭 시 상세조회
-        function fn_select(uuid) {
-            document.listForm.uuid.value = uuid;
-            document.listForm.action = "/main/edition";
-            document.listForm.submit();
-        }
-      // 구매하기
-        function fn_buy(uuid) {
-            document.listForm.uuid.value = uuid;
-            document.listForm.action = "/main/buy";
-            document.listForm.submit();
-         }
-        // 장바구니
-        function fn_cart(uuid) {
+       // 이미지 클릭 시 상세조회
+       function fn_select(uuid) {
            document.listForm.uuid.value = uuid;
-           document.listForm.action = "/main/cart";
+           document.listForm.action = "/main/edition";
+           document.listForm.submit();
+       }
+       
+       // 구매하기
+       function fn_buy(uuid) {
+           document.listForm.uuid.value = uuid;
+           document.listForm.action = "/main/buy";
            document.listForm.submit();
         }
+       
+ 	  // 장르 선택시 스크롤 위치가 유지
+      function submitForm(url, keyword) {
+          const xhr = new XMLHttpRequest();
+          xhr.open("GET", url + "?searchKeyword=" + keyword, true);
+          xhr.onload = function () {
+              if (xhr.status === 200) {
+                  const tempDiv = document.createElement('div');
+                  tempDiv.innerHTML = xhr.responseText;
+
+                  // 새로운 콘텐츠만 업데이트
+                  const newContent = tempDiv.querySelector('.container').innerHTML;
+                  document.querySelector('.container').innerHTML = newContent;
+
+                  // 스크롤 위치 유지
+                  // 현재 스크롤 위치를 가져옵니다.
+                  const currentScrollY = window.scrollY;
+                  window.scrollTo(0, currentScrollY); // 원래 위치로 돌아갑니다.
+              }
+          };
+          xhr.send();
+      }
+     // 장르 선택 함수
+     function fn_genre_ALL() { submitForm("/", ""); }
+     function fn_genre_RPG() { submitForm("/", "RPG"); }
+     function fn_genre_INDY() { submitForm("/", "INDY"); }
+     function fn_genre_SHOOTING() { submitForm("/", "SHOOTING"); }
+     function fn_genre_JEONRYAK() { submitForm("/", "JEONRYAK"); }
+     function fn_genre_ACTION() { submitForm("/", "ACTION"); }
+     function fn_genre_SPORT() { submitForm("/", "SPORT"); }
         
-        function fn_genre_ALL() {
-            submitForm("/", "");
-        }
-
-        function fn_genre_RPG() {
-            submitForm("/", "RPG");
-        }
-
-        function fn_genre_INDY() {
-            submitForm("/", "INDY");
-        }
-
-        function fn_genre_SHOOTING() {
-            submitForm("/", "SHOOTING");
-        }
-
-        function fn_genre_JEONRYAK() {
-            submitForm("/", "JEONRYAK");
-        }
-
-        function fn_genre_ACTION() {
-            submitForm("/", "ACTION");
-        }
-
-        function fn_genre_SPORT() {
-            submitForm("/main", "SPORT");
-        }
-
-     // 페이지 로드 시 스크롤 위치 복구
-        window.onload = function() {
-            var scrollPosition = sessionStorage.getItem("scrollPosition");
-            if (scrollPosition) {
-                window.scrollTo({
-                    top: scrollPosition,
-                    behavior: 'smooth' // 부드러운 스크롤 이동
-                });
-            }
-        };
-
-        // AJAX로 폼 전송하기
-        function submitForm(url, keyword) {
-            // 스크롤 위치 저장
-            sessionStorage.setItem("scrollPosition", window.scrollY);
-
-            // AJAX 요청
-            const xhr = new XMLHttpRequest();
-            xhr.open("GET", url + "?searchKeyword=" + keyword, true);
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    // 서버에서 받은 HTML을 페이지에 적용
-                    document.body.innerHTML = xhr.responseText;
-
-                    // 스크롤 위치 복구
-                    var scrollPosition = sessionStorage.getItem("scrollPosition");
-                    if (scrollPosition) {
-                        window.scrollTo({
-                            top: scrollPosition,
-                            behavior: 'smooth' // 부드러운 스크롤 이동
-                        });
-                    }
-                }
-            };
-            xhr.send();
-        }
-        
-        window.addEventListener('load', function() {
-            if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
-                // 새로고침된 경우 최상단으로 이동
-                window.scrollTo(0, 0);
-            }
-        });
-        
-      // 실시간 장바구니에 데이터 수 계산
+     // 실시간 장바구니에 데이터 수 계산
      function updateCartCount() {
          const cartCountElement = document.getElementById('cartCount');
          const currentCount = parseInt(cartCountElement.innerText) || 0; // 현재 카운트를 가져옵니다.
          cartCountElement.innerText = currentCount + 1; // 카운트를 1 증가시킵니다.
      }
         
-     // 장바구니에 추가
+    // 장바구니에 추가
     function fn_cart(uuid) {
 	    const xhr = new XMLHttpRequest();
 	    
@@ -192,8 +145,6 @@
 	
 	    xhr.send("uuid=" + uuid);
 	}
-     
-     
     </script>
 </head>
 <body>
@@ -219,7 +170,7 @@
            <div class="carousel-item">
                <img src="/resources/images/얼티밋 치킨.jpg" class="d-block" alt="얼티밋 치킨">
            </div><div class="carousel-item">
-               <img src="/resources/images/Party Animals.jpg" class="d-block" alt="얼티밋 치킨">
+               <img src="/resources/images/파티애니멀.jpg" class="d-block" alt="얼티밋 치킨">
            </div>
            <div class="carousel-item">
                <img src="/resources/images/스컬.jpg" class="d-block" alt="얼티밋 치킨">
