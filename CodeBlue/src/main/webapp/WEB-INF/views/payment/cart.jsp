@@ -88,18 +88,6 @@ function confirmDelete(uuid) {
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
 <div class="container">
-    <div><h2>${sessionScope.memberVO.membername} 님의 장바구니</h2></div>
-    <input type="checkbox" id="select-all" checked onclick="toggleCheckboxes(this.checked)"> 전체 선택<br>
-
-    <div style="display: flex; gap:30px;">
-        <div>
-            <c:if test="${not empty cartItems}">
-                <%
-                    List<MainVO> cartItems = (List<MainVO>) request.getAttribute("cartItems");
-                %>
-                <h5>결제 예상 금액: <span id="total-price">0원</span></h5>
-
-<input type="hidden" name="uuid" value="${cart.uuid}"> --%>
 
 <div><h2 style="margin-top: 20px;">${sessionScope.memberVO.membername} 님의 장바구니</h2></div>
 <input type="checkbox" id="select-all" onclick="toggleCheckboxes(this.checked)" style="margin-bottom: 10px;"> 전체 선택<br>
