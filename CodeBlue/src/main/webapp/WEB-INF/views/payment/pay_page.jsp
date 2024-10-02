@@ -99,40 +99,7 @@
       </tbody>
    </table>
 </div>
-
-<!-- 3) 쿠폰/할인 정보 -->
-<!-- <div class="card" style="width:50rem; padding:20px 0px 0px 20px; margin-top:10px; margin-bottom:10px;"> -->
-<!--    <table class="table table-borderless" style="border-collapse: collapse;"> -->
-<!--       <thead> -->
-<!--          <tr> -->
-<!--             <th>쿠폰/할인내역</th> -->
-<!--          </tr> -->
-<!--       </thead>          -->
-      
-<!--       <tbody> -->
-<!--          <tr> -->
-<!--             <th> -->
-<!--                <select class="form-select form-select-sm" aria-label=".form-select-sm example"> -->
-<!--                  <option selected>쿠폰 선택</option> -->
-<!--                  <option value="1">신규가입 1,500원 할인쿠폰</option> -->
-<!--                  <option value="2">기프티콘/상품권 할인</option> -->
-<!--                </select> -->
-<!--             </th> -->
-<!--             <td> -->
-<!--                <button type="button" class="btn btn-primary">쿠폰적용</button> -->
-<!--             </td> -->
-<!--          </tr> -->
-<!--          <tr> -->
-<!--             <th> -->
-<!--                <label for="floatingInput">할인 금액</label> -->
-<!--                <input type="email" class="form-control" id="floatingInput"> -->
-<!--             </th> -->
-<!--          </tr> -->
-<!--       </tbody> -->
-<!--    </table> -->
-<!-- </div> -->
-
-</div>  <!-- 결제상품, 주문자 정보, 배송, 쿠폰 세로정렬 -->
+</div>  <!-- 결제상품, 주문자 정보 세로정렬 -->
 
 <!-- (2) 사이드바 -->
 <div class="container" style="display:flex-direction:row; gap:20px; margin-top:10px;">
