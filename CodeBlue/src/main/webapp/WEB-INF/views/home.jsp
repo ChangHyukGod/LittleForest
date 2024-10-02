@@ -234,11 +234,12 @@
          <!-- 비어있는 카드 4개 추가 -->
          <div class="row mb-3" style="display:flex; gap:10px;">
              <!-- 카드 1 -->
-                <div class="card mb-3" style="width: 200px; height: 250px;">
-                      <img src="path/to/your/empty-image.jpg" class="card-img-top" alt="빈 이미지" style="height: 150px; object-fit: cover;">
+                <div class="card" style="width: 200px; height: 250px;">
+                      <img src="/resources/images/Overcooked! All You Can Eat.jpg" class="card-img-top"
+                      style="height: 150px; margin: 0;">
                       <div class="card-body">
-                          <h5 class="card-title">비어있는 카드 1</h5>
-                          <p class="card-text">내용 없음</p>
+                          <h5 class="card-title">Overcooked! All You Can Eat</h5>
+                          <p class="card-text">협동 요리 게임</p>
                       </div>
                   </div>
              <!-- 카드 2 -->
