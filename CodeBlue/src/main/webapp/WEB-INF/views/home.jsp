@@ -175,44 +175,53 @@
     </script>
 </head>
 <body>
-    <jsp:include page="/common/header.jsp"></jsp:include>
-       
-    <!-- 배너 -->
-   <div id="carouselExampleIndicators" class="carousel slide mb-3" data-bs-ride="true" style="width: 100%; margin: 0 auto;">
-       <div class="carousel-indicators">
-           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3"></button>
-           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 3"></button>
-       </div>
+<jsp:include page="/common/header.jsp"></jsp:include>
+<!-- 배너 -->
+<div id="carouselExampleIndicators" class="carousel slide mb-3" data-bs-ride="true" style="width: 100%; margin: 0 auto;">
+	<div class="carousel-indicators">
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3"></button>
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 3"></button>
+	</div>
    
-       <div class="carousel-inner" style="height: 400px;">
-           <div class="carousel-item active">
-               <img src="/resources/images/스타듀밸리.jpg" class="d-block" alt="스타듀밸리">
-           </div>
-           <div class="carousel-item">
-               <img src="/resources/images/ELDEN RING.jpg" class="d-block" alt="엘든링">
-           </div>
-           <div class="carousel-item">
-               <img src="/resources/images/얼티밋 치킨 호스.jpg" class="d-block" alt="얼티밋 치킨">
-           </div><div class="carousel-item">
-               <img src="/resources/images/Party Animals.jpg" class="d-block" alt="파티애니멀즈">
-           </div>
-           <div class="carousel-item">
-               <img src="/resources/images/Skul The Hero Slayer.jpg" class="d-block" alt="스컬">
-           </div>
-       </div>
-   </div>
+	<div class="carousel-inner" style="height: 400px;">
+		<div class="carousel-item active">
+			<a href="http://localhost:8000/main/edition?uuid=fd6a6d13-5280-4d5a-9d39-8f3a33328681&searchKeyword=">
+			<img src="/resources/images/스타듀밸리.jpg" class="d-block" alt="스타듀밸리">
+			</a>
+		</div>
+		<div class="carousel-item">
+			<a href="http://localhost:8000/main/edition?uuid=e44f198b-43e1-4aaf-96d4-252eed66f266&searchKeyword=">
+			<img src="/resources/images/ELDEN RING.jpg" class="d-block" alt="엘든링">
+			</a>
+		</div>
+		<div class="carousel-item">
+			<a href="http://localhost:8000/main/edition?uuid=ae88831c-aec7-44c3-b618-b4c464d0fdc4&searchKeyword=">
+			<img src="/resources/images/얼티밋 치킨 호스.jpg" class="d-block" alt="얼티밋 치킨">
+			</a>
+		</div><div class="carousel-item">
+			<a href="http://localhost:8000/main/edition?uuid=64d83b53-ed6b-453b-a04f-ce6ec12af3a2&searchKeyword=">
+			<img src="/resources/images/Party Animals.jpg" class="d-block" alt="파티애니멀즈">
+			</a>
+		</div>
+		<div class="carousel-item">
+			<a href="http://localhost:8000/main/edition?uuid=c5297345-c176-472c-82e8-ad30a3900879&searchKeyword=">
+			<img src="/resources/images/Skul The Hero Slayer.jpg" class="d-block" alt="스컬">
+			</a>
+		</div>
+	</div>
+</div>
 
-    <%-- 본문 --%>
-    <div class="container">
+<%-- 본문 --%>
+<div class="container">
     
-        <form action="listForm" name="listForm" method="get">
-         <!-- uuid전송 (절대 삭제x) -->
-         <input type="hidden" name="uuid">
-         <!-- searchKeyword 전송 (절대 삭제x) -->
-        <input type="hidden" name="searchKeyword">
+<form action="listForm" name="listForm" method="get">
+	<!-- uuid전송 (절대 삭제x) -->
+	<input type="hidden" name="uuid">
+	<!-- searchKeyword 전송 (절대 삭제x) -->
+	<input type="hidden" name="searchKeyword">
 <!--  방법 1: 자바스크립트로 uuid 값을 동적으로 설정해서 보내는 방식. -->
 <!--  function fn_select(uuid) {  -->
 <!--     document.listForm.uuid.value = uuid;   -->
@@ -226,87 +235,94 @@
 <!--  값이 고정적이거나 미리 서버에서 설정된 값이라면 방법 2가 간단하고 효율적일 수 있습니다. -->
 <!--  따라서 상황에 따라 다르지만, 특정한 기술적인 제약이 없다면 선호도에 따라 사용할 수 있는 경우가 많습니다. -->
           
-   <!-- 추천/신작게임 가로정렬 -->
-   <div style="display:flex; gap:50px;">
-      <!-- 좌측 : 추천게임 -->
-      <div>
-         <h2 style="font-weight: bold; margin-bottom: 20px; margin-left: -13px;">추천게임</h2>
-         <!-- 카드 4개 가로정렬 -->
-         <div class="row mb-3" style="display:flex; gap:10px;">
-             <!-- 카드 1 -->
-                 <div class="card mb-3" style="width: 200px; height: 250px;">
-                 <img src="/resources/images/Overcooked! All You Can Eat.jpg" class="card-img-top"
-                 style="height: 130px; width:200px; margin-left: -13px;">
-                 <div class="card-body">
-                     <h5 class="card-title">Overcooked! All You Can Eat</h5>
-                     <p class="card-text">협동 요리 게임</p>
-                 </div>
-               </div>
-             <!-- 카드 2 -->
-                <div class="card mb-3" style="width: 200px; height: 250px;">
-                <a href="http://localhost:8000/main/edition?uuid=6edd3b56-e326-46d3-8f42-6a1ee65b6404&searchKeyword=">
-                 <img src="/resources/images/이터널 리턴.jpg" class="card-img-top"
-                 style="height: 130px; width:200px; margin-left: -13px;">
-                </a>
-                 <div class="card-body">
-                     <h5 class="card-title">이터널 리턴</h5>
-                     <br/>
-                     <p class="card-text">배틀로얄 게임</p>
-                 </div>
-               </div>
-             <!-- 카드 3 -->
-                <div class="card mb-3" style="width: 200px; height: 250px;">
-                 <img src="/resources/images/Palworld.jpg" class="card-img-top"
-                 style="height: 130px; width:200px; margin-left: -13px;">
-                 <div class="card-body">
-                     <h5 class="card-title">팰 월드</h5>
-                     <br/>
-                     <p class="card-text">유사 포켓몬</p>
-                 </div>
-               </div>
-             <!-- 카드 4 -->
-                <div class="card mb-3" style="width: 200px; height: 250px;">
-                 <img src="/resources/images/휴먼 폴 플랫.jpg" class="card-img-top"
-                 style="height: 130px; width:200px; margin-left: -13px;">
-                 <div class="card-body">
-                     <h5 class="card-title">휴먼 폴 플랫</h5>
-                     <br/>
-                     <p class="card-text">협동 탈출 게임</p>
-                 </div>
-               </div>
-         </div>  <!-- 카드 4개 가로정렬 닫는태그 -->
-      </div>  <!-- 좌측 : 추천게임 닫는 태그 -->
+	<!-- 추천/신작게임 가로정렬 -->
+	<div style="display:flex; gap:50px;">
+		<!-- 좌측 : 추천게임 -->
+		<div>
+		<h2 style="font-weight: bold; margin-bottom: 20px; margin-left: -13px;">추천게임</h2>
+			<!-- 카드 4개 가로정렬 -->
+			<div class="row mb-3" style="display:flex; gap:10px;">
+			<!-- 카드 1 -->
+			<div class="card mb-3" style="width: 200px; height: 250px;">
+				<a href="http://localhost:8000/main/edition?uuid=7896c7e9-68f6-43ec-88c0-11beb418029c&searchKeyword=">
+					<img src="/resources/images/Overcooked! All You Can Eat.jpg" class="card-img-top"
+					style="height: 130px; width:200px; margin-left: -13px;">
+				</a>
+				<div class="card-body">
+					<h5 class="card-title">Overcooked! All You Can Eat</h5>
+					<p class="card-text">협동 요리 게임</p>
+				</div>
+			</div>
+			<!-- 카드 2 -->
+			<div class="card mb-3" style="width: 200px; height: 250px;">
+				<a href="http://localhost:8000/main/edition?uuid=da0e2cb4-eb9e-4e23-a199-2b9ff7a48375&searchKeyword=">
+					<img src="/resources/images/이터널 리턴.jpg" class="card-img-top"
+					style="height: 130px; width:200px; margin-left: -13px;">
+				</a>
+				<div class="card-body">
+					<h5 class="card-title">이터널 리턴</h5>
+					<br/>
+					<p class="card-text">배틀로얄 게임</p>
+				</div>
+			</div>
+			<!-- 카드 3 -->
+			<div class="card mb-3" style="width: 200px; height: 250px;">
+				<a href="http://localhost:8000/main/edition?uuid=43d658dc-aa86-4abf-8652-6f33da56427c&searchKeyword=">
+					<img src="/resources/images/Palworld.jpg" class="card-img-top"
+					style="height: 130px; width:200px; margin-left: -13px;">
+				</a>
+				<div class="card-body">
+					<h5 class="card-title">팰 월드</h5>
+					<br/>
+					<p class="card-text">유사 포켓몬</p>
+				</div>
+			</div>
+			<!-- 카드 4 -->
+			<div class="card mb-3" style="width: 200px; height: 250px;">
+				<a href="http://localhost:8000/main/edition?uuid=00d781b9-290a-4a76-8d25-18a1eb3fdb0a&searchKeyword=">
+					<img src="/resources/images/휴먼 폴 플랫.jpg" class="card-img-top"
+					style="height: 130px; width:200px; margin-left: -13px;">
+				</a>
+				<div class="card-body">
+					<h5 class="card-title">휴먼 폴 플랫</h5>
+					<br/>
+					<p class="card-text">협동 탈출 게임</p>
+				</div>
+			</div>
+		</div>  <!-- 카드 4개 가로정렬 닫는태그 -->
+	</div>  <!-- 좌측 : 추천게임 닫는 태그 -->
+	
+		<!-- 우측 : 신작게임 -->
+		<div>
+		<h2 style="font-weight: bold; margin-bottom: 20px;">신작게임</h2>
+			<!-- 카드 5 -->
+			<div class="card mb-3" style="width: 440px; height: 250px;">
+				<!-- 빈 이미지 추가 -->
+				<a href="http://localhost:8000/main/edition?uuid=64d83b53-ed6b-453b-a04f-ce6ec12af3a2&searchKeyword=">
+				<img src="/resources/images/Party Animals.jpg" class="card-img-top" style="height: 200px; object-fit: cover;">
+				</a>
+				<div class="card-body">
+					<h5 class="card-title">파티 애니멀즈</h5>
+				</div>
+			</div>
+		</div>  <!-- 우측 : 신작게임 닫는 태그 -->
+	</div>  <!-- 추천/신작게임 가로정렬 닫는태그 -->
 
-      <!-- 우측 : 신작게임 -->
-      <div>
-         <h2 style="font-weight: bold; margin-bottom: 20px;">신작게임</h2>
-          <!-- 카드 5 -->
-            <div class="card mb-3" style="width: 440px; height: 250px;">
-              <!-- 빈 이미지 추가 -->
-              <img src="/resources/images/Party Animals.jpg" class="card-img-top" style="height: 200px; object-fit: cover;">
-              <div class="card-body">
-				  <h5 class="card-title">파티 애니멀즈</h5>
-              </div>
-            </div>
-      </div>  <!-- 우측 : 신작게임 닫는 태그 -->
-   </div>  <!-- 추천/신작게임 가로정렬 닫는태그 -->
-          
-      <!-- 전체게임 -->
-        <div class="text-left mt-4" style="margin-bottom: 20px">
-            <h2 style="font-weight: bold;">전체게임</h2>
-        </div> 
-        
-        <!-- 조회 버튼 그룹 -->
-         <div class="btn-group mb-3 gap-3" style="margin-bottom: 20px;" role="group" aria-label="Button group with links">
-             <a href="#" class="btn btn-light" onclick="fn_genre_ALL()">#전체</a>
-             <a href="#" class="btn btn-light" onclick="fn_genre_RPG()">#RPG</a>
-             <a href="#" class="btn btn-light" onclick="fn_genre_INDY()">#인디</a>
-             <a href="#" class="btn btn-light" onclick="fn_genre_SHOOTING()">#슈팅</a>
-             <a href="#" class="btn btn-light" onclick="fn_genre_JEONRYAK()">#전략</a>
-             <a href="#" class="btn btn-light" onclick="fn_genre_ACTION()">#액션</a>
-             <a href="#" class="btn btn-light" onclick="fn_genre_SPORT()">#스포츠</a>
-         </div>
-
+	<!-- 전체게임 -->
+	<div class="text-left mt-4" style="margin-bottom: 20px">
+		<h2 style="font-weight: bold;">전체게임</h2>
+	</div> 
+	        
+	<!-- 조회 버튼 그룹 -->
+	<div class="btn-group mb-3 gap-3" style="margin-bottom: 20px;" role="group" aria-label="Button group with links">
+		<a href="#" class="btn btn-light" onclick="fn_genre_ALL()">#전체</a>
+		<a href="#" class="btn btn-light" onclick="fn_genre_RPG()">#RPG</a>
+		<a href="#" class="btn btn-light" onclick="fn_genre_INDY()">#인디</a>
+		<a href="#" class="btn btn-light" onclick="fn_genre_SHOOTING()">#슈팅</a>
+		<a href="#" class="btn btn-light" onclick="fn_genre_JEONRYAK()">#전략</a>
+		<a href="#" class="btn btn-light" onclick="fn_genre_ACTION()">#액션</a>
+		<a href="#" class="btn btn-light" onclick="fn_genre_SPORT()">#스포츠</a>
+	</div>
            
          <!-- 카드 -->
             <!-- 부트스트랩 1행 -->

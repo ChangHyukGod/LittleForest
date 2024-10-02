@@ -111,39 +111,38 @@ window.addEventListener('scroll', () => {
 
 <!-- ↓ 금액 합계 수식(컨트롤러에서 받아오는 거) 삭제 X -->      
 <%-- <% List<MainVO> cartItems = (List<MainVO>) request.getAttribute("cartItems"); %> --%>
-
-      
-      <!-- 1) 상품 목록 카드 -->
-      <div class="card" style="width: 60rem; padding:10px 0px 0px 20px; margin-top:10px; margin-bottom: 10px;">
-         <!-- 체크박스 추가 -->
-         <div><input type="checkbox" class="item-checkbox" value="${item.uuid}" onchange="updateTotalPrice()" checked></div>
-         <br>
-         <!-- 카드 안 가로정렬 -->
-         <div style="display: flex; gap:50px; padding-bottom: 20px;">
-         <!-- 이미지 크기 -->
-         <div><img src="<c:out value="${item.fileUrl}"/>" alt="게임 이미지" style="width: 25rem; height: 12rem;"></div>
-            <div class="card-info">
-               <h3><c:out value="${item.fileTitle}"/></h3>
-               <p>장르: <c:out value="${item.genre}"/></p>
-               <p class="item-price" data-price="${item.price.replaceAll('[^\\d]', '')}">가격: ${item.price}</p>
-               <br/>
-               <div class="button-group" style="display: flex; gap: 20px;">
-                  <a href="/main/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
-                  <form action="/main/removeFromCart" method="post" onsubmit="return confirmDelete('${item.uuid}')">
-                     <input type="hidden" name="uuid" value="${item.uuid}">
-                     <button type="submit" class="btn btn-danger">삭제하기</button>
-                  </form>
-               </div>
-            </div>
-         </div>  <!-- 카드 닫는태그 -->
-         
-      </div>  <!-- 상품 목록 닫는태그 -->
-      </c:forEach>
-   </c:if>
-   
-   <c:if test="${empty cartItems}">
-   <p>장바구니가 비어 있습니다.</p>
-   </c:if>
+		
+		<!-- 1) 상품 목록 카드 -->
+		<div class="card" style="width: 60rem; padding:10px 0px 0px 20px; margin-top:10px; margin-bottom: 10px;">
+			<!-- 체크박스 추가 -->
+			<div><input type="checkbox" class="item-checkbox" value="${item.uuid}" onchange="updateTotalPrice()" checked></div>
+			<br>
+			<!-- 카드 안 가로정렬 -->
+			<div style="display: flex; gap:50px; padding-bottom: 20px;">
+			<!-- 이미지 크기 -->
+			<div><img src="${pageContext.request.contextPath}/resources/images/${item.fileTitle}.jpg" alt="게임 이미지" style="width: 25rem; height: 12rem;"></div>
+				<div class="card-info">
+					<h3><c:out value="${item.fileTitle}"/></h3>
+					<p>장르: <c:out value="${item.genre}"/></p>
+					<p class="item-price" data-price="${item.price.replaceAll('[^\\d]', '')}">가격: ${item.price}</p>
+					<br/>
+					<div class="button-group" style="display: flex; gap: 20px;">
+						<a href="/main/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
+						<form action="/main/removeFromCart" method="post" onsubmit="return confirmDelete('${item.uuid}')">
+							<input type="hidden" name="uuid" value="${item.uuid}">
+							<button type="submit" class="btn btn-danger">삭제하기</button>
+						</form>
+					</div>
+				</div>
+			</div>  <!-- 카드 닫는태그 -->
+			
+		</div>  <!-- 상품 목록 닫는태그 -->
+		</c:forEach>
+	</c:if>
+	
+	<c:if test="${empty cartItems}">
+	<p>장바구니가 비어 있습니다.</p>
+	</c:if>
 
 </div> <!-- (1) 우측박스 닫는태그 -->
 
@@ -155,14 +154,9 @@ transition: transform 0.3s ease; z-index: 1000;">
     <h5 style="margin: 0;"><span id="total-price">0원</span></h5>
     <br/>
     <div class="button-group" style="display: flex; gap: 15px; margin-bottom:20px;">
-
          <a href="/main/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
          <a href="/" class="btn btn-success">홈으로 이동</a>
-   </div>
-			<a href="/main/cart/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
-			<a href="/" class="btn btn-success">홈으로 이동</a>
-	</div>
-	
+   </div>	
 
 </div>  <!-- (2) 사이드바 닫는 태그 -->
 

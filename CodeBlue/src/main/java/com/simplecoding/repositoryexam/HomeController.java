@@ -224,9 +224,8 @@ public class HomeController{
 //             아이템이 성공적으로 제거되면 장바구니를 세션에 업데이트하고 성공 메시지를 반환합니다.
 //             아이템이 없으면 오류 메시지를 반환합니다.
    }
-   
-   
-   // (11) 최종 결제 페이지 생성
+
+// (11) 최종 결제 페이지 생성
    @GetMapping("/main/cart/buy")
    public String goCartPayPage() {
 
