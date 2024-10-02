@@ -58,7 +58,7 @@
    <!-- 사이드바 1 : 이미지, 게임정보 및 장바구니, 구매하기 -->
    <div class="card" style="width:30rem;">
    <!-- 게임이미지 -->
-   <img src="<c:out value="${detail.fileUrl}"/>" class="card-img-left" style="width: auto; height: 155px;">
+   <img src="${pageContext.request.contextPath}/resources/images/${detail.fileTitle}.jpg" class="card-img-left" style="width: auto; height: 155px;">
       <div class="card-body">
          <h5 class="card-title">${detail.fileTitle}</h5>
          <p class="card-text">${detail.price}</p>
