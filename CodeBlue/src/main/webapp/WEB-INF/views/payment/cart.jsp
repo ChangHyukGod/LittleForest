@@ -120,7 +120,7 @@ window.addEventListener('scroll', () => {
 			<!-- 카드 안 가로정렬 -->
 			<div style="display: flex; gap:50px; padding-bottom: 20px;">
 			<!-- 이미지 크기 -->
-			<div><img src="/resources/images/${item.fileTitle}.jpg" alt="게임 이미지" style="width: 25rem; height: 12rem;"></div>
+			<div><img src="${pageContext.request.contextPath}/resources/images/${item.fileTitle}.jpg" alt="게임 이미지" style="width: 25rem; height: 12rem;"></div>
 				<div class="card-info">
 					<h3><c:out value="${item.fileTitle}"/></h3>
 					<p>장르: <c:out value="${item.genre}"/></p>
