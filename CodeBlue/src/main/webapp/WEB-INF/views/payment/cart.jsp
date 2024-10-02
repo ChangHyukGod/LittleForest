@@ -9,7 +9,7 @@
 <head>
 <title>장바구니</title>    
 <script>
-//	장바구니에서 게임 삭제
+//   장바구니에서 게임 삭제
 function confirmDelete(uuid) {
     if (confirm("정말로 삭제하시겠습니까?")) {
         fetch('/main/removeFromCart', {
@@ -70,8 +70,8 @@ function confirmDelete(uuid) {
  }
  
  window.onload = initializeTotalPrice; // 페이지 로드 시 초기 가격 합산
-	
-//	사이드바
+   
+//   사이드바
 window.addEventListener('scroll', () => {
     const sidebar = document.getElementById('sidebar');
     const scrollY = window.scrollY;
@@ -106,12 +106,11 @@ window.addEventListener('scroll', () => {
 <div style="display: flex; gap:30px;">
 <!-- (1) 우측 박스 -->
 <div style="display: flex-direction:row;">
-	<c:if test="${not empty cartItems}">
-		<c:forEach var="item" items="${cartItems}">
+   <c:if test="${not empty cartItems}">
+      <c:forEach var="item" items="${cartItems}">
 
-<!-- ↓ 금액 합계 수식(컨트롤러에서 받아오는 거) 삭제 X -->		
+<!-- ↓ 금액 합계 수식(컨트롤러에서 받아오는 거) 삭제 X -->      
 <%-- <% List<MainVO> cartItems = (List<MainVO>) request.getAttribute("cartItems"); %> --%>
-
 		
 		<!-- 1) 상품 목록 카드 -->
 		<div class="card" style="width: 60rem; padding:10px 0px 0px 20px; margin-top:10px; margin-bottom: 10px;">
@@ -155,9 +154,10 @@ transition: transform 0.3s ease; z-index: 1000;">
     <h5 style="margin: 0;"><span id="total-price">0원</span></h5>
     <br/>
     <div class="button-group" style="display: flex; gap: 15px; margin-bottom:20px;">
-			<a href="/main/cart/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
-			<a href="/" class="btn btn-success">홈으로 이동</a>
-	</div>
+         <a href="/main/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
+         <a href="/" class="btn btn-success">홈으로 이동</a>
+   </div>	
+
 </div>  <!-- (2) 사이드바 닫는 태그 -->
 
 </div>  <!-- 전체박스 가로정렬 -->

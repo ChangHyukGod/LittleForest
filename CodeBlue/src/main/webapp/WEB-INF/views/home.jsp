@@ -86,7 +86,7 @@
            document.listForm.submit();
         }
        
-      // 장르 선택시 스크롤 위치가 유지
+ 	  // 장르 선택시 스크롤 위치가 유지
       function submitForm(url, keyword) {
           const xhr = new XMLHttpRequest();
           xhr.open("GET", url + "?searchKeyword=" + keyword, true);
@@ -116,7 +116,7 @@
      function fn_genre_ACTION() { submitForm("/", "액션"); }
      function fn_genre_SPORT() { submitForm("/", "스포츠"); }
         
-     // 실시간 장바구니에 데이터 갯수 계산
+     // 실시간 장바구니에 데이터 수 계산
      function updateCartCount() {
          const cartCountElement = document.getElementById('cartCount');
 //   설명:
@@ -323,33 +323,35 @@
 		<a href="#" class="btn btn-light" onclick="fn_genre_ACTION()">#액션</a>
 		<a href="#" class="btn btn-light" onclick="fn_genre_SPORT()">#스포츠</a>
 	</div>
+           
+         <!-- 카드 -->
+            <!-- 부트스트랩 1행 -->
+            <div class="row custom-row mb-3">
+                <!-- 부트스트랩 1열: 3칸 => 열 반복 -->
+                <c:forEach var="data" items="${main}">
+                    <div class="col-3 custom-col" style="padding-bottom: 50px;">
+                        <%-- 카드 --%>
+                        <div class="card mb-3" style="width: 100%;"> <!-- width:100%로 변경하여 유연하게 대응 -->
+                            <a href="javascript:fn_select('<c:out value="${data.uuid}"></c:out>')">
+                                <img src="${pageContext.request.contextPath}/resources/images/${data.fileTitle}.jpg" class="card-img-top" alt="이미지" style="width:100%; height:200px;">
+                            </a>
+                            <div class="card-body">
+                         <h5 class="card-title"><c:out value="${data.fileTitle}" /></h5>
+                         <p class="card-text"><c:out value="${data.genre}" /></p>
+                         <div class="d-flex justify-content-center mt-auto"> <!-- 수평 중앙 정렬 -->
+                            <button class="btn btn-outline-primary btn-sm me-2" type="button" onclick="fn_buy('<c:out value="${data.uuid}"></c:out>')">구매하기</button>
+                            <button class="btn btn-outline-dark btn-sm" type="button" onclick="fn_cart('<c:out value="${data.uuid}"></c:out>')">장바구니에 추가</button>
+                        </div>
+                     </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
+        </form>
+    </div>
+    
 
-	<!-- 카드 -->
-	<!-- 부트스트랩 1행 -->
-	<div class="row custom-row mb-3">
-		<!-- 부트스트랩 1열: 3칸 => 열 반복 -->
-		<c:forEach var="data" items="${main}">
-		<div class="col-3 custom-col" style="padding-bottom: 50px;">
-			<%-- 카드 --%>
-			<div class="card mb-3" style="width: 100%;"> <!-- width:100%로 변경하여 유연하게 대응 -->
-				<a href="javascript:fn_select('<c:out value="${data.uuid}"></c:out>')">
-				<img src="/resources/images/${data.fileTitle}.jpg" class="card-img-top" alt="이미지" style="width:100%; height:200px;">
-				</a>
-			<div class="card-body">
-				<h5 class="card-title"><c:out value="${data.fileTitle}" /></h5>
-				<p class="card-text"><c:out value="${data.genre}" /></p>
-				<div class="d-flex justify-content-center mt-auto"> <!-- 수평 중앙 정렬 -->
-					<button class="btn btn-outline-primary btn-sm me-2" type="button" onclick="fn_buy('<c:out value="${data.uuid}"></c:out>')">구매하기</button>
-					<button class="btn btn-outline-dark btn-sm" type="button" onclick="fn_cart('<c:out value="${data.uuid}"></c:out>')">장바구니에 추가</button>
-				</div>
-			</div>
-			</div>
-		</div>
-		</c:forEach>
-	</div>
-	
-</form>
-</div>
-<jsp:include page="/common/footer.jsp"></jsp:include>
+    
+    <jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 </html>

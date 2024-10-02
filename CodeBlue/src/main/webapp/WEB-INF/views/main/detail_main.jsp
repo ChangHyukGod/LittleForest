@@ -10,21 +10,28 @@
         document.detailForm.submit();
       }
       
+   	  // 장바구니에 추가
       function fn_cart(uuid) {
-         const xhr = new XMLHttpRequest();
-         xhr.open("POST", "/main/addToCart", true);
-         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-         xhr.setRequestHeader("Accept-Charset", "utf-8"); // 추가된 부분
-     
-         xhr.onload = function () {
-             if (xhr.status === 200) {
-                 const responseMessage = xhr.responseText; // 서버에서 받은 메시지
-                 alert(responseMessage); // 메시지를 알림으로 표시
-             }
-         };
-         
-         xhr.send("uuid=" + uuid);
-     }
+  	    const xhr = new XMLHttpRequest();
+  	    
+  	    xhr.open("POST", "/main/addToCart", true);
+  	    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  	    xhr.setRequestHeader("Accept-Charset", "utf-8");
+  	
+  	    xhr.onload = function () {
+  	        if (xhr.status === 200) {
+  	            const responseMessage = xhr.responseText; // 서버에서 받은 메시지
+  	            alert(responseMessage); // 메시지를 알림으로 표시
+  	
+  	            // 장바구니 카운트 업데이트
+  	            if (responseMessage === "장바구니에 추가되었습니다!") {
+  	                updateCartCount(); // 카운트 업데이트
+  	            }
+  	        }
+  	    };
+  	
+  	    xhr.send("uuid=" + uuid);
+  	}
    </script>
 </head>
 <body>
@@ -51,7 +58,7 @@
    <!-- 사이드바 1 : 이미지, 게임정보 및 장바구니, 구매하기 -->
    <div class="card" style="width:30rem;">
    <!-- 게임이미지 -->
-   <img src="/resources/images/${detail.fileTitle}.jpg" class="card-img-left" style="width: auto; height: 155px;">
+   <img src="${pageContext.request.contextPath}/resources/images/${detail.fileTitle}.jpg" class="card-img-left" style="width: auto; height: 155px;">
       <div class="card-body">
          <h5 class="card-title">${detail.fileTitle}</h5>
          <p class="card-text">${detail.price}</p>
