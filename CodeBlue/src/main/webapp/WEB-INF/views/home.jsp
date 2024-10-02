@@ -317,7 +317,7 @@
                         <%-- 카드 --%>
                         <div class="card mb-3" style="width: 100%;"> <!-- width:100%로 변경하여 유연하게 대응 -->
                             <a href="javascript:fn_select('<c:out value="${data.uuid}"></c:out>')">
-                                <img src="<c:out value="${data.fileUrl}"/>" class="card-img-top" alt="이미지" style="width:100%; height:200px;">
+                                <img src="/resources/images/${data.fileTitle}.jpg" class="card-img-top" alt="이미지" style="width:100%; height:200px;">
                             </a>
                             <div class="card-body">
                          <h5 class="card-title"><c:out value="${data.fileTitle}" /></h5>

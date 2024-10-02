@@ -57,7 +57,7 @@
       <tbody>
          <tr>
             <th rowspan="4" style="border:0;">
-               <img src="<c:out value="${buy.fileUrl}"/>" style="width:20rem;">
+               <img src="/resources/images/${buy.fileTitle}.jpg" style="width:20rem;">
             </th>
          </tr>
          <tr>
@@ -81,7 +81,7 @@
             <th>주문자 정보</th>
             <!-- 수정버튼 클릭 시, 페이지 이동 없이 화면 안에서 수정될 수 있게 구현 -->
             <th>
-               <button type="button" class="btn btn-light">수정</button>
+<!--                <button type="button" class="btn btn-light">수정</button> -->
             </th>
          </tr>
       </thead>         

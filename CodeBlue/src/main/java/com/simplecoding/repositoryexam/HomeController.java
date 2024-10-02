@@ -1,6 +1,7 @@
 package com.simplecoding.repositoryexam;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -225,12 +227,45 @@ public class HomeController{
 //             아이템이 없으면 오류 메시지를 반환합니다.
    }
    
-   
-   // (11) 최종 결제 페이지 생성
-   @GetMapping("/main/cart/buy")
-   public String goCartPayPage() {
+	// (11) 장바구니 결제 페이지 생성
+	@GetMapping("/main/cart/buy")
+	public String goCartPayPage(HttpSession session, Model model) {
+	    List<String> pay_cart = (List<String>) session.getAttribute("pay_cart");
+	    List<MainVO> selectedGames = new ArrayList<>();
+	
+	    if (pay_cart != null && !pay_cart.isEmpty()) {
+	        for (String uuid : pay_cart) {
+	            MainVO game = mainService.selectMain(uuid);
+	            if (game != null) {
+	                selectedGames.add(game);
+	            } else {
+	                System.out.println("게임 정보가 없습니다: " + uuid);
+	            }
+	        }
+	    } else {
+	        System.out.println("장바구니에 게임이 없습니다.");
+	    }
+	
+	    model.addAttribute("selectedGames", selectedGames); // 모델에 추가
+	    return "payment/cart_pay_page"; // 결제 페이지 JSP로 이동
+	}
+	
+	// (12)
+	@PostMapping(value = "/main/cart/saveSelectedItems", consumes = "application/json")
+	@ResponseBody
+	public ResponseEntity<String> saveSelectedItems(@RequestBody Map<String, List<String>> payload, HttpSession session) {
+	    List<String> uuids = payload.get("uuids");
+
+	    // UUID 출력
+	    System.out.println("Received UUIDs: " + uuids);
+
+	    if (uuids != null && !uuids.isEmpty()) {
+	        session.setAttribute("pay_cart", uuids);
+	        return ResponseEntity.ok("선택한 게임이 저장되었습니다.");
+	    }
+	    return ResponseEntity.badRequest().body("게임 선택이 실패했습니다.");
+	}
 
 
-      return "payment/cart_pay_page";
-   }
+
 }

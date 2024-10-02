@@ -1,13 +1,13 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="java.text.NumberFormat" %>
-<%@ page import="java.util.Locale" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.simplecoding.repositoryexam.vo.basic.MainVO" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.text.NumberFormat"%>
+<%@ page import="java.util.Locale"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.simplecoding.repositoryexam.vo.basic.MainVO"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>장바구니</title>    
+<title>장바구니</title>
 <script>
 //   장바구니에서 게임 삭제
 function confirmDelete(uuid) {
@@ -82,94 +82,143 @@ window.addEventListener('scroll', () => {
 
     // 스크롤 위치에 따라 사이드바 위치 조정
     if (scrollY > minY && scrollY < maxY) {
-        sidebar.style.top = `${scrollY}px`;
-    } else if (scrollY <= minY) {
-        sidebar.style.top = `${minY}px`; // 최저 위치로 고정
-    } else if (scrollY >= maxY) {
-        sidebar.style.top = `${maxY}px`; // 최대 위치로 고정
+	        sidebar.style.top = `${scrollY}px`;
+	    } else if (scrollY <= minY) {
+	        sidebar.style.top = `${minY}px`; // 최저 위치로 고정
+	    } else if (scrollY >= maxY) {
+	        sidebar.style.top = `${maxY}px`; // 최대 위치로 고정
+	    }
+	});
+ 	
+ 	// 체크된 것들만 결제페이지로 전송
+	function proceedToCheckout() {
+    const selectedItems = Array.from(document.querySelectorAll('.item-checkbox:checked')).map(checkbox => checkbox.value);
+    
+    if (selectedItems.length === 0) {
+        alert("구매할 게임을 선택하세요.");
+        return;
     }
-});
+
+    fetch('/main/cart/saveSelectedItems', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' // JSON 형식으로 전송
+        },
+        body: JSON.stringify({ uuids: selectedItems }) // UUID 목록을 JSON으로 변환
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.href = '/main/cart/buy'; // 결제 페이지로 이동
+        } else {
+            return response.text().then(text => {
+                alert('선택한 게임을 저장하는 데 실패했습니다: ' + text);
+            });
+        }
+    })
+    .catch(error => console.error('Error:', error));
+
+}
+
+
 </script>
 </head>
 <body>
-<jsp:include page="/common/header.jsp"></jsp:include>
-<div class="container">
+	<jsp:include page="/common/header.jsp"></jsp:include>
+	<div class="container">
 
-<%-- <form action="listForm" name="listForm" method="get">
+		<%-- <form action="listForm" name="listForm" method="get">
+		
+		<input type="hidden" name="uuid" value="${cart.uuid}"> --%>
 
-<input type="hidden" name="uuid" value="${cart.uuid}"> --%>
+		<div>
+			<h2 style="margin-top: 20px;">${sessionScope.memberVO.membername}
+				님의 장바구니</h2>
+		</div>
+		<input type="checkbox" id="select-all"
+			onclick="toggleCheckboxes(this.checked)" style="margin-bottom: 10px;">
+		전체 선택<br>
 
-<div><h2 style="margin-top: 20px;">${sessionScope.memberVO.membername} 님의 장바구니</h2></div>
-<input type="checkbox" id="select-all" onclick="toggleCheckboxes(this.checked)" style="margin-bottom: 10px;"> 전체 선택<br>
+		<!-- 전체박스 가로정렬 -->
+		<div style="display: flex; gap: 30px;">
+			<!-- (1) 우측 박스 -->
+			<div style="display: flex-direction:row;">
+				<c:if test="${not empty cartItems}">
+					<c:forEach var="item" items="${cartItems}">
 
-<!-- 전체박스 가로정렬 -->
-<div style="display: flex; gap:30px;">
-<!-- (1) 우측 박스 -->
-<div style="display: flex-direction:row;">
-   <c:if test="${not empty cartItems}">
-      <c:forEach var="item" items="${cartItems}">
+						<!-- ↓ 금액 합계 수식(컨트롤러에서 받아오는 거) 삭제 X -->
+						<%-- <% List<MainVO> cartItems = (List<MainVO>) request.getAttribute("cartItems"); %> --%>
 
-<!-- ↓ 금액 합계 수식(컨트롤러에서 받아오는 거) 삭제 X -->      
-<%-- <% List<MainVO> cartItems = (List<MainVO>) request.getAttribute("cartItems"); %> --%>
 
-      
-      <!-- 1) 상품 목록 카드 -->
-      <div class="card" style="width: 60rem; padding:10px 0px 0px 20px; margin-top:10px; margin-bottom: 10px;">
-         <!-- 체크박스 추가 -->
-         <div><input type="checkbox" class="item-checkbox" value="${item.uuid}" onchange="updateTotalPrice()" checked></div>
-         <br>
-         <!-- 카드 안 가로정렬 -->
-         <div style="display: flex; gap:50px; padding-bottom: 20px;">
-         <!-- 이미지 크기 -->
-         <div><img src="<c:out value="${item.fileUrl}"/>" alt="게임 이미지" style="width: 25rem; height: 12rem;"></div>
-            <div class="card-info">
-               <h3><c:out value="${item.fileTitle}"/></h3>
-               <p>장르: <c:out value="${item.genre}"/></p>
-               <p class="item-price" data-price="${item.price.replaceAll('[^\\d]', '')}">가격: ${item.price}</p>
-               <br/>
-               <div class="button-group" style="display: flex; gap: 20px;">
-                  <a href="/main/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
-                  <form action="/main/removeFromCart" method="post" onsubmit="return confirmDelete('${item.uuid}')">
-                     <input type="hidden" name="uuid" value="${item.uuid}">
-                     <button type="submit" class="btn btn-danger">삭제하기</button>
-                  </form>
-               </div>
-            </div>
-         </div>  <!-- 카드 닫는태그 -->
-         
-      </div>  <!-- 상품 목록 닫는태그 -->
-      </c:forEach>
-   </c:if>
-   
-   <c:if test="${empty cartItems}">
-   <p>장바구니가 비어 있습니다.</p>
-   </c:if>
+						<!-- 1) 상품 목록 카드 -->
+						<div class="card"
+							style="width: 60rem; padding: 10px 0px 0px 20px; margin-top: 10px; margin-bottom: 10px;">
+							<!-- 체크박스 추가 -->
+							<div>
+								<input type="checkbox" class="item-checkbox"
+									value="${item.uuid}" onchange="updateTotalPrice()" checked>
+							</div>
+							<br>
+							<!-- 카드 안 가로정렬 -->
+							<div style="display: flex; gap: 50px; padding-bottom: 20px;">
+								<!-- 이미지 크기 -->
+								<div>
+									<img src="/resources/images/${item.fileTitle}.jpg" alt="게임 이미지"
+										style="width: 25rem; height: 12rem;">
+								</div>
+								<div class="card-info">
+									<h3>
+										<c:out value="${item.fileTitle}" />
+									</h3>
+									<p>
+										장르:
+										<c:out value="${item.genre}" />
+									</p>
+									<p class="item-price"
+										data-price="${item.price.replaceAll('[^\\d]', '')}">가격:
+										${item.price}</p>
+									<br />
+									<div class="button-group" style="display: flex; gap: 20px;">
+										<a href="/main/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
+										<form action="/main/removeFromCart" method="post"
+											onsubmit="return confirmDelete('${item.uuid}')">
+											<input type="hidden" name="uuid" value="${item.uuid}">
+											<button type="submit" class="btn btn-danger">삭제하기</button>
+										</form>
+									</div>
+								</div>
+							</div>
+							<!-- 카드 닫는태그 -->
 
-</div> <!-- (1) 우측박스 닫는태그 -->
+						</div>
+						<!-- 상품 목록 닫는태그 -->
+					</c:forEach>
+				</c:if>
 
-<!-- (2) 사이드바 -->
-<div class="sidebar" id="sidebar" style="position: fixed; top: 250px; right: 100px; width: 16rem;
-background-color: white; box-shadow: 0 2px 10px rgba(250, 128, 114, 0.5); padding:20px 0px 0px 20px; margin-top:10px;
-transition: transform 0.3s ease; z-index: 1000;">
-    <h4 style="margin: 0 0 10px;">결제 예상 금액</h4>
-    <h5 style="margin: 0;"><span id="total-price">0원</span></h5>
-    <br/>
-    <div class="button-group" style="display: flex; gap: 15px; margin-bottom:20px;">
+				<c:if test="${empty cartItems}">
+					<p>장바구니가 비어 있습니다.</p>
+				</c:if>
 
-         <a href="/main/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
-         <a href="/" class="btn btn-success">홈으로 이동</a>
-   </div>
-			<a href="/main/cart/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
-			<a href="/" class="btn btn-success">홈으로 이동</a>
+			</div>
+			<!-- (1) 우측박스 닫는태그 -->
+
+			<!-- (2) 사이드바 -->
+			<div class="sidebar" id="sidebar" style="position: fixed; top: 250px; right: 100px; width: 16rem;
+			background-color: white; box-shadow: 0 2px 10px rgba(250, 128, 114, 0.5); padding:20px 0px 0px 20px; margin-top:10px;
+			transition: transform 0.3s ease; z-index: 1000;">
+			    <h4 style="margin: 0 0 10px;">결제 예상 금액</h4>
+			    <h5 style="margin: 0;"><span id="total-price">0원</span></h5>
+			    <br/>
+			    <div class="button-group" style="display: flex; gap: 15px; margin-bottom:20px;">
+			         <button type="button" class="btn btn-primary" onclick="proceedToCheckout()">구매하기</button>
+			         <a href="/" class="btn btn-success">홈으로 이동</a>
+			   </div>
+			</div>  <!-- (2) 사이드바 닫는 태그 -->
+
 	</div>
-	
+	<!-- 전체박스 가로정렬 -->
 
-</div>  <!-- (2) 사이드바 닫는 태그 -->
-
-</div>  <!-- 전체박스 가로정렬 -->
-
-<!-- </form> -->
-</div>
-<jsp:include page="/common/footer.jsp"></jsp:include>
+	<!-- </form> -->
+	</div>
+	<jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 </html>
