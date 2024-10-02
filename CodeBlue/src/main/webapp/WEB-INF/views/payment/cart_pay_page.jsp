@@ -31,6 +31,28 @@
             width: 100%; /* 카드 컨테이너의 너비 */
             align-items: center; /* 카드 중앙 정렬 */
         }
+        .card-content {
+            display: flex; /* 가로 방향으로 배치 */
+            align-items: center; /* 세로 중앙 정렬 */
+        }
+        .game-info {
+            margin-left: 20px; /* 이미지와 텍스트 사이의 간격 */
+            text-align: left; /* 텍스트 정렬 */
+            flex: 1; /* 남은 공간을 차지 */
+        }
+        .game-info p {
+            margin: 0; /* 기본 여백 제거 */
+        }
+        .centered-info {
+            display: flex;
+            flex-direction: column; /* 세로 방향으로 나열 */
+            justify-content: center; /* 세로 중앙 정렬 */
+            align-items: center; /* 가로 중앙 정렬 */
+            text-align: left; /* 텍스트 왼쪽 정렬 */
+        }
+        .payment-method-card {
+            height: 100%; /* 높이를 다른 카드와 동일하게 맞춤 */
+        }
     </style>
     <script type="text/javascript" defer="defer">
         document.addEventListener('DOMContentLoaded', function() {
@@ -70,30 +92,20 @@
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
 <div class="container">
-    <h5 style="font: bold;">결제 내역</h5>
+    <h5 style="font: bold;">주문서</h5>
 
     <!-- 결제 상품 정보 -->
     <div class="card-container">
         <c:forEach var="game" items="${selectedGames}">
             <div class="card">
-                <table class="table table-borderless">
-                    <tbody>
-                        <tr>
-                            <th rowspan="4" style="border:0;">
-                                <img src="/resources/images/${game.fileTitle}.jpg" style="width:20rem;">
-                            </th>
-                        </tr>
-                        <tr>
-                            <td style="padding-right:250px;">${game.fileTitle}</td>
-                        </tr>
-                        <tr>
-                            <td style="padding-right:250px;">수량 : 1개</td>
-                        </tr>
-                        <tr>
-                            <td class="item-price" style="padding-right:250px;">${game.price}원</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="card-content">
+                    <img src="/resources/images/${game.fileTitle}.jpg" style="width:20rem;">
+                    <div class="game-info centered-info">
+                        <p>게임명 : ${game.fileTitle}</p>
+                        <p>구매수량 : 1개</p>
+                        <p class="item-price">상품가격 : ${game.price}원</p>
+                    </div>
+                </div>
             </div>
         </c:forEach>
     </div>
@@ -104,8 +116,7 @@
             <thead>
                 <tr style="display:flex; gap:550px;">
                     <th>주문자 정보</th>
-                    <th>
-                    </th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -132,53 +143,74 @@
             </thead>
             <tbody>
                 <tr>
-                    <th style="text-align: left;">상품가격</th>
-                    <td style="text-align: right;"><span id="totalPrice">0원</span></td>
-                </tr>
-                <tr>
-                    <th style="text-align: left;">구매수량</th>
+                    <th style="text-align: left;">총 구매수량</th>
                     <td style="text-align: right;">${fn:length(selectedGames)} 개</td>
                 </tr>
                 <tr style="border-top: 1px solid black;">
-                    <th style="text-align: left;">총 결제 금액</th>
-                    <td style="text-align: right;" id="finalTotal">${totalPrice.toLocaleString()}원</td>
+                    <th style="text-align: left;">총 결제금액</th>
+                    <td style="text-align: right;"><span id="totalPrice">0원</span></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <!-- 결제 방법 -->
-    <div class="card">
+    <div class="card payment-method-card">
         <table class="table table-borderless">
             <thead>
                 <tr>
                     <th style="text-align: left;">결제 방법</th>
                 </tr>
-            </thead>
+            </thead>         
             <tbody>
                 <tr>
                     <th>
-                        <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" checked>
-                        <label class="form-check-label" for="creditCard">신용카드</label>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">신용카드</label>
+                    </th>
+                    <th>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">무통장 입금</label>
                     </th>
                 </tr>
                 <tr>
                     <th>
-                        <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransfer">
-                        <label class="form-check-label" for="bankTransfer">무통장 입금</label>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                        <label class="form-check-label" for="flexRadioDefault3">네이버페이</label>
+                    </th>
+                    <th>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+                        <label class="form-check-label" for="flexRadioDefault4">카카오페이</label>
                     </th>
                 </tr>
                 <tr>
-                    <th>
-                        <input class="form-check-input" type="radio" name="paymentMethod" id="naverPay">
-                        <label class="form-check-label" for="naverPay">네이버페이</label>
+                    <th colspan="2">
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            <option selected>은행 선택</option>
+                            <option value="1">KB국민은행</option>
+                            <option value="2">농협은행</option>
+                            <option value="3">하나은행</option>
+                            <option value="4">IBK기업은행</option>
+                            <option value="5">카카오뱅크</option>
+                        </select>
                     </th>
                 </tr>
                 <tr>
-                    <th>
-                        <input class="form-check-input" type="radio" name="paymentMethod" id="kakaoPay">
-                        <label class="form-check-label" for="kakaoPay">카카오페이</label>
+                    <th colspan="2">
+                        <input type="email" class="form-control" id="floatingInput"
+                        placeholder="예금주명(미입력시 주문자명)">
                     </th>
+                </tr>
+                <tr>
+                    <th colspan="2" style="color:light-gray; font-size:12px;">
+                    주문 후 1시간 이내 미입금시 자동 취소됩니다.</th>
+                </tr>
+                <tr>
+                    <td style="color:light-gray; font-size:12px;">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                    현금영수증 신청</label>
+                    </td>
                 </tr>
             </tbody>
         </table>

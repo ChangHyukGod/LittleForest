@@ -175,7 +175,7 @@ window.addEventListener('scroll', () => {
 									</p>
 									<p class="item-price"
 										data-price="${item.price.replaceAll('[^\\d]', '')}">가격:
-										${item.price}</p>
+										${item.price}원</p>
 									<br />
 									<div class="button-group" style="display: flex; gap: 20px;">
 										<a href="/main/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
@@ -205,7 +205,7 @@ window.addEventListener('scroll', () => {
 			<div class="sidebar" id="sidebar" style="position: fixed; top: 250px; right: 100px; width: 16rem;
 			background-color: white; box-shadow: 0 2px 10px rgba(250, 128, 114, 0.5); padding:20px 0px 0px 20px; margin-top:10px;
 			transition: transform 0.3s ease; z-index: 1000;">
-			    <h4 style="margin: 0 0 10px;">결제 예상 금액</h4>
+			    <h4 style="margin: 0 0 10px;">결제 금액</h4>
 			    <h5 style="margin: 0;"><span id="total-price">0원</span></h5>
 			    <br/>
 			    <div class="button-group" style="display: flex; gap: 15px; margin-bottom:20px;">
