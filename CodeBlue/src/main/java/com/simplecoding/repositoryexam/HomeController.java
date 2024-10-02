@@ -225,4 +225,11 @@ public class HomeController{
 //             아이템이 없으면 오류 메시지를 반환합니다.
    }
    
+// (11) 최종 결제 페이지 생성
+   @GetMapping("/main/cart/buy")
+   public String goCartPayPage() {
+
+
+      return "payment/cart_pay_page";
+   }
 }

@@ -121,7 +121,7 @@ window.addEventListener('scroll', () => {
 			<!-- 카드 안 가로정렬 -->
 			<div style="display: flex; gap:50px; padding-bottom: 20px;">
 			<!-- 이미지 크기 -->
-			<div><img src="<c:out value="${item.fileUrl}"/>" alt="게임 이미지" style="width: 25rem; height: 12rem;"></div>
+			<div><img src="/resources/images/${item.fileTitle}.jpg" alt="게임 이미지" style="width: 25rem; height: 12rem;"></div>
 				<div class="card-info">
 					<h3><c:out value="${item.fileTitle}"/></h3>
 					<p>장르: <c:out value="${item.genre}"/></p>
@@ -155,7 +155,7 @@ transition: transform 0.3s ease; z-index: 1000;">
     <h5 style="margin: 0;"><span id="total-price">0원</span></h5>
     <br/>
     <div class="button-group" style="display: flex; gap: 15px; margin-bottom:20px;">
-			<a href="/main/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
+			<a href="/main/cart/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
 			<a href="/" class="btn btn-success">홈으로 이동</a>
 	</div>
 </div>  <!-- (2) 사이드바 닫는 태그 -->
