@@ -5,29 +5,36 @@ package com.simplecoding.repositoryexam.controller.faq;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import com.simplecoding.repositoryexam.service.basic.FaqService;
+import com.simplecoding.repositoryexam.vo.basic.FaqVO;
 import com.simplecoding.repositoryexam.vo.common.Criteria;
-
-import lombok.extern.log4j.Log4j;
 
 /**
  * @fileName : GameInfoController.java
  * @author : KTE
  * @since : 2024. 9. 20. description :
  */
-@Log4j
 @Controller
 public class FaqController {
 
     @Autowired
     FaqService faqService;
+
+    @Resource(name = "beanValidator")
+    protected DefaultBeanValidator beanValidator;
 
     @GetMapping("/faq")
     public String faqmain() {
@@ -43,19 +50,16 @@ public class FaqController {
 	return "faq/faqemail";
     }
 
-    @GetMapping("/faquselimited")
-    public String faquselimited() {
-	return "faq/faquselimited";
+    @GetMapping("/faqadd")
+    public String faqadd() {
+	return "faq/faqadd";
     }
 
-    @GetMapping("/faqbuy")
-    public String faqbuy() {
-	return "faq/faqbuy";
-    }
-
-    @GetMapping("/faqsearch")
-    public String faqsearch() {
-	return "faq/faqsearch";
+    @GetMapping("/faqedit")
+    public String faqsearch(@RequestParam("id") int id, Model model) throws Exception {
+	FaqVO faqVO = faqService.selectFaqById(id);
+	model.addAttribute("faqVO", faqVO);
+	return "faq/faqedit";
     }
 
     @GetMapping("/faqlogin")
@@ -63,7 +67,7 @@ public class FaqController {
 	// 디버그용 로그 추가
 	System.out.println("Search Keyword: " + searchVO.getSearchKeyword());
 
-	searchVO.setPageUnit(40);
+	searchVO.setPageUnit(10);
 	searchVO.setPageSize(4);
 	PaginationInfo paginationInfo = new PaginationInfo();
 	paginationInfo.setCurrentPageNo(searchVO.getPageIndex());
@@ -84,5 +88,27 @@ public class FaqController {
 	model.addAttribute("paginationInfo", paginationInfo);
 
 	return "faq/faqlogin"; // JSP 파일 경로에 맞게 수정
+    }
+
+    @PostMapping("/faq/add")
+    public String AddFaq(@ModelAttribute FaqVO faqVO, BindingResult bindingResult) throws Exception {
+	beanValidator.validate(faqVO, bindingResult);
+	if (bindingResult.hasErrors()) {
+	    return "/faqadd";
+	}
+	faqService.insertFaqVO(faqVO);
+	return "redirect:/faqlogin";
+    }
+
+    @PostMapping("/faq/edit")
+    public String EditFaq(@ModelAttribute FaqVO faqVO) throws Exception {
+	faqService.updateFaq(faqVO);
+	return "redirect:/faqlogin";
+    }
+
+    @PostMapping("/faq/delete")
+    public String deleteFaq(@ModelAttribute FaqVO faqVO) throws Exception {
+	faqService.deleteFaq(faqVO);
+	return "redirect:/faqlogin";
     }
 }

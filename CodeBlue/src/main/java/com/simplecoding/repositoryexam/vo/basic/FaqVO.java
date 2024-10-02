@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.simplecoding.repositoryexam.vo.basic;
 
 import com.simplecoding.repositoryexam.vo.common.Criteria;
@@ -14,7 +11,7 @@ import lombok.ToString;
 /**
  * @fileName : FaqVO.java
  * @author : KTE
- * @since : 2024. 9. 27. description :
+ * @since : 2024. 9. 27. description : FAQ VO
  */
 @Setter
 @Getter
@@ -23,11 +20,12 @@ import lombok.ToString;
 @ToString
 @SuppressWarnings("serial")
 public class FaqVO extends Criteria {
-    private int id;
-    private String question;
-    private String answer;
-    private String createdAt; // 날짜 형식을 원하는 대로 바꿔도 됩니다.
 
-    // Getter와 Setter 추가
-    // ...
+    private int id;
+
+    private String question;
+
+    private String answer;
+
+    private String createdAt; // 날짜 형식을 원하는 대로 바꿔도 됩니다.
 }
