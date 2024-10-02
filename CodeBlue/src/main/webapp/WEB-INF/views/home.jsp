@@ -110,11 +110,11 @@
      // 장르 선택 함수
      function fn_genre_ALL() { submitForm("/", ""); }
      function fn_genre_RPG() { submitForm("/", "RPG"); }
-     function fn_genre_INDY() { submitForm("/", "INDY"); }
-     function fn_genre_SHOOTING() { submitForm("/", "SHOOTING"); }
-     function fn_genre_JEONRYAK() { submitForm("/", "JEONRYAK"); }
-     function fn_genre_ACTION() { submitForm("/", "ACTION"); }
-     function fn_genre_SPORT() { submitForm("/", "SPORT"); }
+     function fn_genre_INDY() { submitForm("/", "인디"); }
+     function fn_genre_SHOOTING() { submitForm("/", "슈팅"); }
+     function fn_genre_JEONRYAK() { submitForm("/", "전략"); }
+     function fn_genre_ACTION() { submitForm("/", "액션"); }
+     function fn_genre_SPORT() { submitForm("/", "스포츠"); }
         
      // 실시간 장바구니에 데이터 수 계산
      function updateCartCount() {
@@ -189,18 +189,18 @@
    
        <div class="carousel-inner" style="height: 400px;">
            <div class="carousel-item active">
-               <img src="/resources/images/stardewvalley.jpg" class="d-block" alt="건담">
+               <img src="/resources/images/스타듀밸리.jpg" class="d-block" alt="스타듀밸리">
            </div>
            <div class="carousel-item">
-               <img src="/resources/images/엘든링.jpg" class="d-block" alt="엘든링">
+               <img src="/resources/images/ELDEN RING.jpg" class="d-block" alt="엘든링">
            </div>
            <div class="carousel-item">
-               <img src="/resources/images/얼티밋 치킨.jpg" class="d-block" alt="얼티밋 치킨">
+               <img src="/resources/images/얼티밋 치킨 호스.jpg" class="d-block" alt="얼티밋 치킨">
            </div><div class="carousel-item">
-               <img src="/resources/images/파티애니멀.jpg" class="d-block" alt="얼티밋 치킨">
+               <img src="/resources/images/Party Animals.jpg" class="d-block" alt="파티애니멀즈">
            </div>
            <div class="carousel-item">
-               <img src="/resources/images/스컬.jpg" class="d-block" alt="얼티밋 치킨">
+               <img src="/resources/images/Skul The Hero Slayer.jpg" class="d-block" alt="스컬">
            </div>
        </div>
    </div>
