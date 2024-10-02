@@ -66,7 +66,17 @@
         .dropdown-item {
         font-size: 14px; /* 드롭다운 글자 크기를 조금 작게 조정 */
         }
+        
+       .navbar-brand {
+          cursor: pointer; /* 마우스 커서를 손가락 모양으로 변경 */
+      }
     </style>
+    
+    <script type="text/javascript" defer="defer">
+       function goHome() {
+           window.location.href = "/"; // 로고 클릭시 홈화면으로 페이지를 새로 고침
+       }
+    </script>
 </head>
 <body>
 
@@ -86,9 +96,9 @@
             </div>
 
             <!-- 로고 (정중앙) -->
-            <a class="navbar-brand" href="/">
-                <img src="/resources/images/logo1.png" alt="로고">
-            </a>
+            <a class="navbar-brand" onclick="goHome();" style="display: inline-block;">
+             <img src="/resources/images/logo1.png" alt="로고">
+         </a>
 
             <!-- 우측 아이콘 -->
             <div class="d-flex">
@@ -158,9 +168,9 @@
                 </div>
 
                <a href="/main/cart" class="nav-link icon">
-                <i class="bi bi-cart"></i>
+                  <i class="bi bi-cart"></i>
                 <span id="cartCount">${cartCount}</span> <!-- cartCount 사용 -->
-            </a>
+               </a>
 
                 
                 <a href="#" class="nav-link icon" data-bs-toggle="modal" data-bs-target="#searchModal">
