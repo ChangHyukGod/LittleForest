@@ -71,19 +71,24 @@ function confirmDelete(uuid) {
  
  window.onload = initializeTotalPrice; // 페이지 로드 시 초기 가격 합산
 	
-//	사이드바 예시
-	window.addEventListener('scroll', () => {
-        const sidebar = document.getElementById('sidebar');
-        const scrollY = window.scrollY;
+//	사이드바
+window.addEventListener('scroll', () => {
+    const sidebar = document.getElementById('sidebar');
+    const scrollY = window.scrollY;
 
-        // 스크롤에 따라 사이드바 위치 조정
-        if (scrollY > 100) {
-            sidebar.style.transform = 'translateY(' + (scrollY - 100) + 'px)';
-        } else {
-            sidebar.style.transform = 'translateY(0)';
-        }
-    });
+    // 사이드바의 이동 범위 지정
+    const minY = 250; // 사이드바의 최저 위치 (고정)
+    const maxY = 500; // 사이드바의 최대 위치 (더 아래쪽으로 이동할 수 있는 한계)
 
+    // 스크롤 위치에 따라 사이드바 위치 조정
+    if (scrollY > minY && scrollY < maxY) {
+        sidebar.style.top = `${scrollY}px`;
+    } else if (scrollY <= minY) {
+        sidebar.style.top = `${minY}px`; // 최저 위치로 고정
+    } else if (scrollY >= maxY) {
+        sidebar.style.top = `${maxY}px`; // 최대 위치로 고정
+    }
+});
 </script>
 </head>
 <body>
@@ -144,7 +149,7 @@ function confirmDelete(uuid) {
 
 <!-- (2) 사이드바 -->
 <div class="sidebar" id="sidebar" style="position: fixed; top: 250px; right: 100px; width: 16rem;
-background-color: white; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); padding:20px 0px 0px 20px; margin-top:10px;
+background-color: white; box-shadow: 0 2px 10px rgba(250, 128, 114, 0.5); padding:20px 0px 0px 20px; margin-top:10px;
 transition: transform 0.3s ease; z-index: 1000;">
     <h4 style="margin: 0 0 10px;">결제 예상 금액</h4>
     <h5 style="margin: 0;"><span id="total-price">0원</span></h5>
