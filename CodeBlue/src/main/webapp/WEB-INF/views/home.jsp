@@ -86,7 +86,7 @@
            document.listForm.submit();
         }
        
-      // 장르 선택시 스크롤 위치가 유지
+ 	  // 장르 선택시 스크롤 위치가 유지
       function submitForm(url, keyword) {
           const xhr = new XMLHttpRequest();
           xhr.open("GET", url + "?searchKeyword=" + keyword, true);
@@ -116,7 +116,7 @@
      function fn_genre_ACTION() { submitForm("/", "액션"); }
      function fn_genre_SPORT() { submitForm("/", "스포츠"); }
         
-     // 실시간 장바구니에 데이터 갯수 계산
+     // 실시간 장바구니에 데이터 수 계산
      function updateCartCount() {
          const cartCountElement = document.getElementById('cartCount');
 //   설명:
