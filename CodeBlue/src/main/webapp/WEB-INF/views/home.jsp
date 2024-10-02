@@ -324,7 +324,6 @@
 		<a href="#" class="btn btn-light" onclick="fn_genre_SPORT()">#스포츠</a>
 	</div>
 
-           
 	<!-- 카드 -->
 	<!-- 부트스트랩 1행 -->
 	<div class="row custom-row mb-3">
