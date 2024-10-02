@@ -34,6 +34,7 @@
   <form action="detailForm" name="detailForm" method="get">
      <!-- uuid 전송(***) -->
    <input type="hidden" name="uuid">
+   
 <!-- 전체 세로정렬 -->
 <div class="container" style="display:flex-direction:row; gap:20px;">
 
