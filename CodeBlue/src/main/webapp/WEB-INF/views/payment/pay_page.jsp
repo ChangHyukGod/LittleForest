@@ -57,7 +57,7 @@
       <tbody>
          <tr>
             <th rowspan="4" style="border:0;">
-               <img src="/resources/images/${buy.fileTitle}.jpg" style="width:20rem;">
+               <img src="${pageContext.request.contextPath}/resources/images/${buy.fileTitle}.jpg" style="width:20rem;">
             </th>
          </tr>
          <tr>
