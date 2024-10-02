@@ -110,12 +110,13 @@ function confirmDelete(uuid) {
 <div style="display: flex-direction:row;">
 	<c:if test="${not empty cartItems}">
 		<c:forEach var="item" items="${cartItems}">
-		
-<% List<MainVO> cartItems = (List<MainVO>) request.getAttribute("cartItems"); %>
+
+<!-- ↓ 금액 합계 수식(컨트롤러에서 받아오는 거) 삭제 X -->		
+<%-- <% List<MainVO> cartItems = (List<MainVO>) request.getAttribute("cartItems"); %> --%>
 
 		
 		<!-- 1) 상품 목록 카드 -->
-		<div class="card" style="width: 60rem; padding:10px 0px 0px 20px; margin-top:10px;">
+		<div class="card" style="width: 60rem; padding:10px 0px 0px 20px; margin-top:10px; margin-bottom: 10px;">
 			<!-- 체크박스 추가 -->
 			<div><input type="checkbox" class="item-checkbox" value="${item.uuid}" onchange="updateTotalPrice()" checked></div>
 			<br>
@@ -146,31 +147,9 @@ function confirmDelete(uuid) {
 	<p>장바구니가 비어 있습니다.</p>
 	</c:if>
 
-	<!-- 2) 버튼 -->
-<!-- 	<div style="display:flex; gap:20px; margin-top:10px; margin-bottom:10px;">
-		<button type="button" class="btn btn-light">모든 상품 제거</button>
-		<button type="button" class="btn btn-light">선택 상품 제거</button>
-	</div> -->
 </div> <!-- (1) 우측박스 닫는태그 -->
 
-<!-- (2) 좌측 박스 -->
-<%-- <div class="sidebar" style="display: flex-direction:row; position: sticky; top: 0;">
-	<!-- 3) 결제 예상 금액 -->
-	<div class="card" style="width:16rem; padding:20px 0px 0px 20px; margin-top:10px;">
-		<div>
-		<h4>결제 예상 금액</h4>
-		<h5>\16,000원</h5>
-		</div>
-		<br/>
-		<!-- 4) 버튼 -->
-		<div class="button-group" style="display: flex; gap: 15px; margin-bottom:20px;">
-			<a href="/main/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
-			<a href="/" class="btn btn-success">홈으로 이동</a>
-		</div>
-	</div>  <!-- 3) 닫는태그 -->
-</div> --%>  <!-- (2) 좌측박스 닫는태그 -->
-
-<!-- 사이드바 예시 -->
+<!-- (2) 사이드바 -->
 <div class="sidebar" id="sidebar" style="position: fixed; top: 250px; right: 100px; width: 16rem;
 background-color: white; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); padding:20px 0px 0px 20px; margin-top:10px;
 transition: transform 0.3s ease; z-index: 1000;">
@@ -181,9 +160,7 @@ transition: transform 0.3s ease; z-index: 1000;">
 			<a href="/main/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
 			<a href="/" class="btn btn-success">홈으로 이동</a>
 	</div>
-</div>
-<!-- 사이드바 예시 -->
-
+</div>  <!-- (2) 사이드바 닫는 태그 -->
 
 </div>  <!-- 전체박스 가로정렬 -->
 
