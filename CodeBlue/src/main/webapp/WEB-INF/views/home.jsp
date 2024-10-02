@@ -231,45 +231,50 @@
       <!-- 좌측 : 추천게임 -->
       <div>
          <h2 style="font-weight: bold; margin-bottom: 20px; margin-left: -13px;">추천게임</h2>
-         <!-- 비어있는 카드 4개 추가 -->
+         <!-- 카드 4개 가로정렬 -->
          <div class="row mb-3" style="display:flex; gap:10px;">
              <!-- 카드 1 -->
-                <div class="card" style="width: 200px; height: 250px;">
-                      <img src="/resources/images/Overcooked! All You Can Eat.jpg" class="card-img-top"
-                      style="height: 150px; margin: 0;">
-                      <div class="card-body">
-                          <h5 class="card-title">Overcooked! All You Can Eat</h5>
-                          <p class="card-text">협동 요리 게임</p>
-                      </div>
-                  </div>
+                 <div class="card mb-3" style="width: 200px; height: 250px;">
+                 <img src="/resources/images/Overcooked! All You Can Eat.jpg" class="card-img-top"
+                 style="height: 130px; width:200px; margin-left: -13px;">
+                 <div class="card-body">
+                     <h5 class="card-title">Overcooked! All You Can Eat</h5>
+                     <p class="card-text">협동 요리 게임</p>
+                 </div>
+               </div>
              <!-- 카드 2 -->
                 <div class="card mb-3" style="width: 200px; height: 250px;">
-                    <!-- 빈 이미지 추가 -->
-                    <img src="path/to/your/empty-image.jpg" class="card-img-top" alt="빈 이미지" style="height: 150px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">비어있는 카드 3</h5>
-                        <p class="card-text">내용 없음</p>
-                    </div>
-                </div>
+                <a href="http://localhost:8000/main/edition?uuid=6edd3b56-e326-46d3-8f42-6a1ee65b6404&searchKeyword=">
+                 <img src="/resources/images/이터널 리턴.jpg" class="card-img-top"
+                 style="height: 130px; width:200px; margin-left: -13px;">
+                </a>
+                 <div class="card-body">
+                     <h5 class="card-title">이터널 리턴</h5>
+                     <br/>
+                     <p class="card-text">배틀로얄 게임</p>
+                 </div>
+               </div>
              <!-- 카드 3 -->
                 <div class="card mb-3" style="width: 200px; height: 250px;">
-                    <!-- 빈 이미지 추가 -->
-                    <img src="path/to/your/empty-image.jpg" class="card-img-top" alt="빈 이미지" style="height: 150px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">비어있는 카드 3</h5>
-                        <p class="card-text">내용 없음</p>
-                    </div>
-                </div>
+                 <img src="/resources/images/Palworld.jpg" class="card-img-top"
+                 style="height: 130px; width:200px; margin-left: -13px;">
+                 <div class="card-body">
+                     <h5 class="card-title">팰 월드</h5>
+                     <br/>
+                     <p class="card-text">유사 포켓몬</p>
+                 </div>
+               </div>
              <!-- 카드 4 -->
                 <div class="card mb-3" style="width: 200px; height: 250px;">
-                    <!-- 빈 이미지 추가 -->
-                    <img src="path/to/your/empty-image.jpg" class="card-img-top" alt="빈 이미지" style="height: 150px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">비어있는 카드 3</h5>
-                        <p class="card-text">내용 없음</p>
-                    </div>
-                </div>
-         </div>
+                 <img src="/resources/images/휴먼 폴 플랫.jpg" class="card-img-top"
+                 style="height: 130px; width:200px; margin-left: -13px;">
+                 <div class="card-body">
+                     <h5 class="card-title">휴먼 폴 플랫</h5>
+                     <br/>
+                     <p class="card-text">협동 탈출 게임</p>
+                 </div>
+               </div>
+         </div>  <!-- 카드 4개 가로정렬 닫는태그 -->
       </div>  <!-- 좌측 : 추천게임 닫는 태그 -->
 
       <!-- 우측 : 신작게임 -->
@@ -278,12 +283,11 @@
           <!-- 카드 5 -->
             <div class="card mb-3" style="width: 440px; height: 250px;">
               <!-- 빈 이미지 추가 -->
-              <img src="path/to/your/empty-image.jpg" class="card-img-top" alt="빈 이미지" style="height: 150px; object-fit: cover;">
+              <img src="/resources/images/Party Animals.jpg" class="card-img-top" style="height: 200px; object-fit: cover;">
               <div class="card-body">
-                  <h5 class="card-title">비어있는 카드 3</h5>
-                  <p class="card-text">내용 없음</p>
+				  <h5 class="card-title">파티 애니멀즈</h5>
               </div>
-          </div>
+            </div>
       </div>  <!-- 우측 : 신작게임 닫는 태그 -->
    </div>  <!-- 추천/신작게임 가로정렬 닫는태그 -->
           
