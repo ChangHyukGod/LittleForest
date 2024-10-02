@@ -68,14 +68,14 @@
         }
         
        .navbar-brand {
-		    cursor: pointer; /* 마우스 커서를 손가락 모양으로 변경 */
-		}
+          cursor: pointer; /* 마우스 커서를 손가락 모양으로 변경 */
+      }
     </style>
     
     <script type="text/javascript" defer="defer">
-	    function goHome() {
-	    	 window.location.href = "/"; // 로고 클릭시 홈화면으로 페이지를 새로 고침
-	    }
+       function goHome() {
+           window.location.href = "/"; // 로고 클릭시 홈화면으로 페이지를 새로 고침
+       }
     </script>
 </head>
 <body>
@@ -97,8 +97,8 @@
 
             <!-- 로고 (정중앙) -->
             <a class="navbar-brand" onclick="goHome();" style="display: inline-block;">
-			    <img src="/resources/images/logo1.png" alt="로고">
-			</a>
+             <img src="/resources/images/logo1.png" alt="로고">
+         </a>
 
             <!-- 우측 아이콘 -->
             <div class="d-flex">
