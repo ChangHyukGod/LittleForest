@@ -250,7 +250,7 @@ public class HomeController{
 	    return "payment/cart_pay_page"; // 결제 페이지 JSP로 이동
 	}
 	
-	// (12)
+	// (12) 선택한 게임 UUID를 세션에 저장
 	@PostMapping(value = "/main/cart/saveSelectedItems", consumes = "application/json")
 	@ResponseBody
 	public ResponseEntity<String> saveSelectedItems(@RequestBody Map<String, List<String>> payload, HttpSession session) {
