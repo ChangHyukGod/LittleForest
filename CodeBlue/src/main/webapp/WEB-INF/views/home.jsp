@@ -119,32 +119,59 @@
      // 실시간 장바구니에 데이터 수 계산
      function updateCartCount() {
          const cartCountElement = document.getElementById('cartCount');
+//   설명:
+          // 이 부분에서 document.getElementById 메서드는 웹 페이지 내에서 특정 ID를 가진 요소를 선택합니다.
+       // 여기서 cartCount는 장바구니 아이콘 옆에 표시된 카운트를 나타내는 <span> 요소의 ID입니다.
+       // 1) 이제 cartCountElement는 id가 cartCount인 <span> 요소를 참조하게 됩니다. 그래서 이 요소의 텍스트 내용에 접근할 수 있게 되는 거죠.
          const currentCount = parseInt(cartCountElement.innerText) || 0; // 현재 카운트를 가져옵니다.
+       // 2) cartCountElement.innerText를 사용하면, 현재 <span> 안에 있는 텍스트(즉, 카운트된 값)를 가져올 수 있습니다.
          cartCountElement.innerText = currentCount + 1; // 카운트를 1 증가시킵니다.
+         // 3) cartCountElement.innerText = <span> 안에 있는 텍스트(즉, 카운트된 값) + 1
+         
+       // 처음에는 ${cartCount} 값이 <span> 안에 들어가고, 이후 JavaScript에서 이 값을 읽어와서 증가시킵니다.
+        // cartCountElement.innerText를 업데이트하는 과정에서 실제 HTML의 텍스트가 바뀌게 됩니다.
+       // 즉, JavaScript의 로직에 따라 카운트가 실시간으로 변경되며, 페이지를 새로 고치지 않고도 변경된 값을 화면에 표시할 수 있습니다.
+       
+       // 클라이언트 측의 변화는 서버의 실제 데이터와 동기화되지 않기 때문에 새로 고침 시 서버의 데이터가 우선적으로 적용됩니다.
+       // 그렇기 때문에 updateCartCount 함수로 임의로 증가시켜서 나타내는 cartCount값과 페이지를 새로고침해서 나오는 정확한 데이터의 수가 일치해야함
+      
+       // updateCartCount()로 증가시킨 카운트는 화면에만 표시되는 값이고, 서버의 실제 데이터는 변하지 않습니다.
+       // 페이지를 새로 고침하면, 클라이언트는 서버에서 현재 저장된 데이터를 다시 불러오게 되므로, 그 값이 화면에 표시됩니다.
+       // 따라서, 클라이언트에서 UI를 업데이트하는 것은 사용자 경험을 개선하기 위한 방법이고, 실제 데이터는 서버에 저장된 값을 기준으로 표시되기 때문에, 새로 고침 시에는 서버의 상태가 우선적으로 반영됩니다.
+      
+         // updateCartCount()로 증가시킨 값은 화면에만 영향을 미치고, 서버와의 동기화가 이루어지지 않기 때문에 실제 데이터와는 따로 관리된다고 생각하시면 됩니다.
+      
+       // 따라서, 웹 페이지가 로드될 때마다 cartCount는 항상 현재 세션에 저장된 장바구니 아이템의 개수를 기반으로 업데이트되며, 사용자에게 정확한 정보를 제공합니다.
+       // UI에서의 카운트 증가(예: updateCartCount()로 증가시킨 값)는 사용자 경험을 향상시키기 위한 임시적인 변경이며, 페이지를 새로 고침하면 항상 이 서버에서 가져온 정한 값으로 돌아갑니다.
+       // cartCountElement.innerText = currentCount + 1; 에 currentCount + 2; 를 해보면 바로 알수있음.
      }
         
-    // 장바구니에 추가
+    // 장바구니에 추가 => /main/addToCart
     function fn_cart(uuid) {
-	    const xhr = new XMLHttpRequest();
-	    
-	    xhr.open("POST", "/main/addToCart", true);
-	    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	    xhr.setRequestHeader("Accept-Charset", "utf-8");
-	
-	    xhr.onload = function () {
-	        if (xhr.status === 200) {
-	            const responseMessage = xhr.responseText; // 서버에서 받은 메시지
-	            alert(responseMessage); // 메시지를 알림으로 표시
-	
-	            // 장바구니 카운트 업데이트
-	            if (responseMessage === "장바구니에 추가되었습니다!") {
-	                updateCartCount(); // 카운트 업데이트
-	            }
-	        }
-	    };
-	
-	    xhr.send("uuid=" + uuid);
-	}
+       const xhr = new XMLHttpRequest();
+       
+       xhr.open("POST", "/main/addToCart", true);
+       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+       xhr.setRequestHeader("Accept-Charset", "utf-8");
+   
+       xhr.onload = function () {
+           if (xhr.status === 200) {
+               const responseMessage = xhr.responseText; // 서버에서 받은 메시지
+               alert(responseMessage); // 메시지를 알림으로 표시
+   
+               // 장바구니 카운트 업데이트
+               if (responseMessage === "장바구니에 추가되었습니다!") {
+                   updateCartCount(); // (*) 카운트 실시간 업데이트
+               // updateCartCount() 함수는 장바구니에 아이템이 실제로 추가된 후에 호출되어야 합니다.
+               // 서버의 응답 메시지를 통해 성공 여부를 확인하고, 그에 따라 카운트를 업데이트하는 방식으로 흐름을 개선해야 합니다.
+               }
+           }
+       };
+   
+       xhr.send("uuid=" + uuid);
+//        fn_cart 함수는 클라이언트 측에서 UUID를 서버로 보내는 역할을 하며, 서버의 addToCart 메서드는 이 UUID를 세션의 장바구니 리스트에 추가하는 역할을 합니다.
+//        따라서, 이 과정에서 세션에 UUID 값이 저장됩니다.
+   }
     </script>
 </head>
 <body>

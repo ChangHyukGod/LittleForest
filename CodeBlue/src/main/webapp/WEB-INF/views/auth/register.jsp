@@ -459,7 +459,12 @@ body {
     <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
         <p class="input-label" style="margin: 0;">이메일<b class="text-danger"> *</b></p>
         <div style="margin-left: 10px; display: flex; align-items: center;">
-<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" style="margin: 0;">
+<input type="email" 
+		class="form-control" 
+		id="email" 
+		name="email" 
+		placeholder="name@example.com" 
+		style="margin: 0;">
         </div>
     </div>
 </div>

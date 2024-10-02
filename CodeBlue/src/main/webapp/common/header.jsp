@@ -168,9 +168,9 @@
                 </div>
 
                <a href="/main/cart" class="nav-link icon">
-                <i class="bi bi-cart"></i>
+                  <i class="bi bi-cart"></i>
                 <span id="cartCount">${cartCount}</span> <!-- cartCount 사용 -->
-            </a>
+               </a>
 
                 
                 <a href="#" class="nav-link icon" data-bs-toggle="modal" data-bs-target="#searchModal">

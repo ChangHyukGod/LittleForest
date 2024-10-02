@@ -17,8 +17,8 @@ import com.simplecoding.repositoryexam.vo.common.Criteria;
 @Mapper
 public interface FaqMapper {
 
-    public List<?> selectFaqlist(Criteria searchVO);
+    List<?> selectFaqlist(Criteria searchVO);
 
-    public int selectFaqListTotCnt(Criteria searchVO);
+    int selectFaqListTotCnt(Criteria searchVO);
 
 }
