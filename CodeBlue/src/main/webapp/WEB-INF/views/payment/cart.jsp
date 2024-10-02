@@ -154,7 +154,7 @@ transition: transform 0.3s ease; z-index: 1000;">
     <h5 style="margin: 0;"><span id="total-price">0원</span></h5>
     <br/>
     <div class="button-group" style="display: flex; gap: 15px; margin-bottom:20px;">
-         <a href="/main/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
+         <a href="/main/cart/buy?uuid=${item.uuid}" class="btn btn-primary">구매하기</a>
          <a href="/" class="btn btn-success">홈으로 이동</a>
    </div>	
 
