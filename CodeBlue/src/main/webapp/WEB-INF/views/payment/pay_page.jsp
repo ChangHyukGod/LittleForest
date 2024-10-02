@@ -5,34 +5,52 @@
 <head>
 <meta charset="UTF-8">
 <title>payment page</title>
-<!--    </script> -->
-   <script type="text/javascript" defer="defer">
-      document.addEventListener('DOMContentLoaded', function() {
-           // 전체 동의 체크박스
-           const checkAll = document.getElementById('checkAll');
-           
-           // 개별 동의 체크박스들
-           const checkItems = document.querySelectorAll('.checkItem');
-           
-           // 전체 동의 체크박스 클릭 시
-           checkAll.addEventListener('change', function() {
-               checkItems.forEach(function(checkItem) {
-                   checkItem.checked = checkAll.checked;
-               });
-           });
-           
-           // 개별 체크박스 클릭 시
-           checkItems.forEach(function(checkItem) {
-               checkItem.addEventListener('change', function() {
-                   if (!checkItem.checked) {
-                       checkAll.checked = false;
-                   } else if (Array.from(checkItems).every(item => item.checked)) {
-                       checkAll.checked = true;
-                   }
-               });
-           });
-       });
-   </script>
+<style>
+    /* 게임명 줄 바꿈 방지 스타일 */
+    .game-title {
+        white-space: nowrap; /* 줄 바꿈 방지 */
+        overflow: hidden; /* 넘치는 내용 숨김 */
+        text-overflow: ellipsis; /* 넘치는 내용에 대해 '...' 표시 */
+    }
+</style>
+<script type="text/javascript" defer="defer">
+    document.addEventListener('DOMContentLoaded', function() {
+        // 전체 동의 체크박스
+        const checkAll = document.getElementById('checkAll');
+        
+        // 개별 동의 체크박스들
+        const checkItems = document.querySelectorAll('.checkItem');
+        
+        // 전체 동의 체크박스 클릭 시
+        checkAll.addEventListener('change', function() {
+            checkItems.forEach(function(checkItem) {
+                checkItem.checked = checkAll.checked;
+            });
+        });
+        
+        // 개별 체크박스 클릭 시
+        checkItems.forEach(function(checkItem) {
+            checkItem.addEventListener('change', function() {
+                if (!checkItem.checked) {
+                    checkAll.checked = false;
+                } else if (Array.from(checkItems).every(item => item.checked)) {
+                    checkAll.checked = true;
+                }
+            });
+        });
+    });
+
+    // 결제하기 함수 정의
+    function func_buy() {
+        const checkAll = document.getElementById('checkAll');
+        if (!checkAll.checked) {
+            alert("전체 동의를 체크해주세요.");
+        } else {
+            alert("결제하시겠습니까?");
+            // 추가적인 결제 로직을 여기에 작성할 수 있습니다.
+        }
+    }
+</script>
 </head>
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
@@ -49,7 +67,6 @@
    <table class="table table-borderless" style="border:0;">
       <thead>
          <tr>
-            <!-- style="padding:위 오른쪽 아래쪽 왼쪽;" -->
             <th style="border:0;" colspan="2">결제 상품 정보</th>
          </tr>
       </thead>         
@@ -57,17 +74,17 @@
       <tbody>
          <tr>
             <th rowspan="4" style="border:0;">
-               <img src="${pageContext.request.contextPath}/resources/images/${buy.fileTitle}.jpg" style="width:20rem;">
+               <img src="/resources/images/${buy.fileTitle}.jpg" style="width:20rem;">
             </th>
          </tr>
          <tr>
-            <td style="padding-right:250px;">${buy.fileTitle}</td>
+            <td class="game-title" style="padding-right:250px;">게임명 : ${buy.fileTitle}</td>
          </tr>
          <tr>
-            <td style="padding-right:250px;">수량 : 1개</td>
+            <td style="padding-right:250px;">구매수량 : 1개</td>
          </tr>
          <tr>
-            <td style="padding-right:250px;">${buy.price}</td>
+            <td style="padding-right:250px;">상품가격 : ${buy.price}원</td>
          </tr>
       </tbody>
    </table>
@@ -79,9 +96,7 @@
       <thead>
          <tr style="display:flex; gap:550px;">
             <th>주문자 정보</th>
-            <!-- 수정버튼 클릭 시, 페이지 이동 없이 화면 안에서 수정될 수 있게 구현 -->
             <th>
-               <button type="button" class="btn btn-light">수정</button>
             </th>
          </tr>
       </thead>         
@@ -115,12 +130,12 @@
       <tbody>
          <tr>
             <th style="text-align: left;">상품가격</th>
-            <td style="text-align: right;">${buy.price}</td>
+            <td style="text-align: right;">${buy.price}원</td>
          </tr>
          
          <tr style="border-top: 1px solid black;">
-            <th style="text-align: left;">총 결제 금액</th>
-            <td style="text-align: right;">${buy.price}</td>
+            <th style="text-align: left;">결제 금액</th>
+            <td style="text-align: right;">${buy.price}원</td>
          </tr>
       </tbody>
    </table>
@@ -142,18 +157,18 @@
                <label class="form-check-label" for="flexRadioDefault1">신용카드</label>
             </th>
             <th>
-               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-               <label class="form-check-label" for="flexRadioDefault1">무통장 입금</label>
+               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+               <label class="form-check-label" for="flexRadioDefault2">무통장 입금</label>
             </th>
          </tr>
          <tr>
             <th>
-               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-               <label class="form-check-label" for="flexRadioDefault1">네이버페이</label>
+               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+               <label class="form-check-label" for="flexRadioDefault3">네이버페이</label>
             </th>
             <th>
-               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-               <label class="form-check-label" for="flexRadioDefault1">카카오페이</label>
+               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+               <label class="form-check-label" for="flexRadioDefault4">카카오페이</label>
             </th>
          </tr>
          <tr>
@@ -206,7 +221,7 @@
           </label><br>
     </div>
    <div class="d-grid gap-2 col-6 mx-auto" style="padding-bottom:20px;">
-      <button type="button" class="btn btn-primary">결제하기</button>
+      <button type="button" class="btn btn-primary" onclick="func_buy()">결제하기</button>
    </div>
 </div>
 
