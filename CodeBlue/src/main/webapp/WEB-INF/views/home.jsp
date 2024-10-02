@@ -189,18 +189,28 @@
    
        <div class="carousel-inner" style="height: 400px;">
            <div class="carousel-item active">
+           <a href="http://localhost:8000/main/edition?uuid=fd6a6d13-5280-4d5a-9d39-8f3a33328681&searchKeyword=">
                <img src="/resources/images/스타듀밸리.jpg" class="d-block" alt="스타듀밸리">
+           </a>
            </div>
            <div class="carousel-item">
+           <a href="http://localhost:8000/main/edition?uuid=e44f198b-43e1-4aaf-96d4-252eed66f266&searchKeyword=">
                <img src="/resources/images/ELDEN RING.jpg" class="d-block" alt="엘든링">
+           </a>
            </div>
            <div class="carousel-item">
+           <a href="http://localhost:8000/main/edition?uuid=ae88831c-aec7-44c3-b618-b4c464d0fdc4&searchKeyword=">
                <img src="/resources/images/얼티밋 치킨 호스.jpg" class="d-block" alt="얼티밋 치킨">
+           </a>    
            </div><div class="carousel-item">
+           <a href="http://localhost:8000/main/edition?uuid=64d83b53-ed6b-453b-a04f-ce6ec12af3a2&searchKeyword=">
                <img src="/resources/images/Party Animals.jpg" class="d-block" alt="파티애니멀즈">
+           </a>
            </div>
            <div class="carousel-item">
+           <a href="http://localhost:8000/main/edition?uuid=c5297345-c176-472c-82e8-ad30a3900879&searchKeyword=">
                <img src="/resources/images/Skul The Hero Slayer.jpg" class="d-block" alt="스컬">
+           </a>
            </div>
        </div>
    </div>
@@ -235,8 +245,9 @@
          <div class="row mb-3" style="display:flex; gap:10px;">
              <!-- 카드 1 -->
                  <div class="card mb-3" style="width: 200px; height: 250px;">
-                 <img src="/resources/images/Overcooked! All You Can Eat.jpg" class="card-img-top"
-                 style="height: 130px; width:200px; margin-left: -13px;">
+                 <a href="http://localhost:8000/main/edition?uuid=7896c7e9-68f6-43ec-88c0-11beb418029c&searchKeyword=">
+                 <img src="/resources/images/Overcooked! All You Can Eat.jpg" class="card-img-top" style="height: 130px; width:200px; margin-left: -13px;">
+                 </a>
                  <div class="card-body">
                      <h5 class="card-title">Overcooked! All You Can Eat</h5>
                      <p class="card-text">협동 요리 게임</p>
@@ -244,9 +255,8 @@
                </div>
              <!-- 카드 2 -->
                 <div class="card mb-3" style="width: 200px; height: 250px;">
-                <a href="http://localhost:8000/main/edition?uuid=6edd3b56-e326-46d3-8f42-6a1ee65b6404&searchKeyword=">
-                 <img src="/resources/images/이터널 리턴.jpg" class="card-img-top"
-                 style="height: 130px; width:200px; margin-left: -13px;">
+                <a href="http://localhost:8000/main/edition?uuid=da0e2cb4-eb9e-4e23-a199-2b9ff7a48375&searchKeyword=">
+                <img src="/resources/images/이터널 리턴.jpg" class="card-img-top" style="height: 130px; width:200px; margin-left: -13px;">
                 </a>
                  <div class="card-body">
                      <h5 class="card-title">이터널 리턴</h5>
@@ -256,8 +266,9 @@
                </div>
              <!-- 카드 3 -->
                 <div class="card mb-3" style="width: 200px; height: 250px;">
-                 <img src="/resources/images/Palworld.jpg" class="card-img-top"
-                 style="height: 130px; width:200px; margin-left: -13px;">
+                <a href="http://localhost:8000/main/edition?uuid=43d658dc-aa86-4abf-8652-6f33da56427c&searchKeyword=">
+                 <img src="/resources/images/Palworld.jpg" class="card-img-top" style="height: 130px; width:200px; margin-left: -13px;">
+                 </a>
                  <div class="card-body">
                      <h5 class="card-title">팰 월드</h5>
                      <br/>
@@ -266,8 +277,9 @@
                </div>
              <!-- 카드 4 -->
                 <div class="card mb-3" style="width: 200px; height: 250px;">
-                 <img src="/resources/images/휴먼 폴 플랫.jpg" class="card-img-top"
-                 style="height: 130px; width:200px; margin-left: -13px;">
+                <a href="http://localhost:8000/main/edition?uuid=00d781b9-290a-4a76-8d25-18a1eb3fdb0a&searchKeyword=">
+                 <img src="/resources/images/휴먼 폴 플랫.jpg" class="card-img-top" style="height: 130px; width:200px; margin-left: -13px;">
+                 </a>
                  <div class="card-body">
                      <h5 class="card-title">휴먼 폴 플랫</h5>
                      <br/>
@@ -282,8 +294,9 @@
          <h2 style="font-weight: bold; margin-bottom: 20px;">신작게임</h2>
           <!-- 카드 5 -->
             <div class="card mb-3" style="width: 440px; height: 250px;">
-              <!-- 빈 이미지 추가 -->
+              <a href="http://localhost:8000/main/edition?uuid=64d83b53-ed6b-453b-a04f-ce6ec12af3a2&searchKeyword=">
               <img src="/resources/images/Party Animals.jpg" class="card-img-top" style="height: 200px; object-fit: cover;">
+              </a>
               <div class="card-body">
 				  <h5 class="card-title">파티 애니멀즈</h5>
               </div>
