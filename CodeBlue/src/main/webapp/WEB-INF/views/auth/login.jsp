@@ -10,6 +10,14 @@
         // 원하는 주소로 이동
         document.location.href = "/register"; // 변경하고자 하는 URL로 수정
     }
+    
+    // 페이지 로드 시 errorMessage가 있으면 alert 창을 띄움
+//     window.onload = function() {
+//         var errorMessage = "${errorMessage}";
+//         if (errorMessage && errorMessage !== "null") {
+//             alert(errorMessage);
+//         }
+//     }
     </script>
     <style>
 
@@ -65,7 +73,15 @@
 								  <a href="findId.jsp" class="small" style="color: black; margin-right: 10px;">아이디 찾기</a> |
 								  <a href="findPassword.jsp" class="small" style="color: black; margin-left: 10px;">비밀번호 찾기</a>
 							</div>
-                            <button type="submit" class="btn btn-success btn-block">로그인</button>
+							<c:if test="${not empty errorMessage}">
+                          	<div class="alert alert-danger" role="alert">
+                              ${errorMessage}
+                          	</div>
+                      		</c:if>
+							
+                            <button type="submit"
+                             class="btn btn-success btn-block"
+                             >로그인</button>
                         </form>
                         <div class="text-center">
                             <button type="button" 

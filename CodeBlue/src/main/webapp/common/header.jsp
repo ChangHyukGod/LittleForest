@@ -153,7 +153,7 @@ body {
 										<li class="nav-item"><a href="/infofix" class="dropdown-item">정보수정</a></li>
 									</c:otherwise>
 								</c:choose>
-								<li><a class="dropdown-item" href="#">주문조회</a></li>
+<!-- 								<li><a class="dropdown-item" href="#">주문조회</a></li> -->
 							</ul>
 						</div>
 
