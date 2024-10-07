@@ -208,20 +208,20 @@
                                 <div>
                                     <img src="/resources/images/${item.fileTitle}.jpg" alt="게임 이미지" style="width: 25rem; height: 12rem;">
                                 </div>
-                                <div class="card-info">
-                                    <h3>
+                                <div class="card-info" style="display: flex-direction:row; gap: 5px;">
+                                    <h3 style="margin-bottom:20px;">
                                         <c:out value="${item.fileTitle}" />
                                     </h3>
-                                    <p>장르: <c:out value="${item.genre}" /></p>
-                                    <p class="item-price" data-price="${item.price.replaceAll('[^\\d]', '')}">가격: ${item.price}원</p>
+                                    <p>장르 : <c:out value="${item.genre}" /></p>
+                                    <p class="item-price" data-price="${item.price.replaceAll('[^\\d]', '')}">가격 : ${item.price}원</p>
                                     <br />
                                     <div class="button-group" style="display: flex; gap: 20px;">
                                         <a href="/main/buy?uuid=${item.uuid}" class="btn btn-outline-primary">구매하기</a>
-                                        <form action="/main/removeFromCart" method="post" onsubmit="return confirmDelete('${item.uuid}')">
-                                 <!-- onsubmit은 폼 제출 시 어떤 동작을 수행할지를 결정하며, 이 경우에는 사용자에게 삭제 확인 대화 상자를 보여주는 역할을 합니다. -->
-                                            <input type="hidden" name="uuid" value="${item.uuid}">
-                                            <button type="submit" class="btn btn-outline-danger">삭제하기</button>
-                                        </form>
+	                                    <form action="/main/removeFromCart" method="post" onsubmit="return confirmDelete('${item.uuid}')">
+	                             <!-- onsubmit은 폼 제출 시 어떤 동작을 수행할지를 결정하며, 이 경우에는 사용자에게 삭제 확인 대화 상자를 보여주는 역할을 합니다. -->
+	                                        <input type="hidden" name="uuid" value="${item.uuid}">
+	                                        <button type="submit" class="btn btn-outline-danger">삭제하기</button>
+	                                    </form>
                               <%-- ${item.uuid}의 두 용도 --%>
                               
                               <!-- <form> 태그에서: -->            
@@ -257,7 +257,7 @@
 
             <!-- (2) 사이드바 -->
             <div class="sidebar" id="sidebar" style="position: fixed; top: 250px; right: 100px; width: 16rem;
-            background-color: white; box-shadow: 0 2px 10px rgba(250, 128, 114, 0.5); padding:20px 0px 0px 20px; margin-top:10px;
+            border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding:20px 0px 0px 20px; margin-top:10px;
             transition: transform 0.3s ease; z-index: 1000;">
                 <h4 style="margin: 0 0 10px;">결제 금액</h4>
                 <h5 style="margin: 0;"><span id="total-price">0원</span></h5>
