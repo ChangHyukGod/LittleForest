@@ -11,19 +11,13 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Gasoek+One&family=Jua&family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
     <style>
-    
-        /* 그리드 간격을 더욱 좁게 조정하기 위한 커스텀 클래스 */
-        
-        .card-title {
-	  font-family: "Noto Sans KR", sans-serif;
-	  font-optical-sizing: auto;
-	  font-weight: <weight>;
-	  font-style: normal;
-	  font-size: 18px;
-		  
-		}
-		
-		
+		.card-title {
+	  		font-family: "Noto Sans KR", sans-serif;
+	  		font-optical-sizing: auto;
+	  		font-weight: <weight>;
+	  		font-style: normal;
+	  		font-size: 18px;
+			}
 		.card-text {
 			color: gray;
 			font-size: 14px;
@@ -51,13 +45,13 @@
             transition: transform 0.2s, box-shadow 0.2s; /* 기본 전환 효과 */
         }
  
-      .btn-group .btn {
-        border-radius: 50px !important ; /* 둥글게 설정 */
-        border: 1px solid transparent; /* 기본 외곽선 */
-        transition: border-color 0.3s; /* 부드러운 전환 효과 */
+      	.btn-group .btn {
+        	border-radius: 50px !important ; /* 둥글게 설정 */
+        	border: 1px solid transparent; /* 기본 외곽선 */
+        	transition: border-color 0.3s; /* 부드러운 전환 효과 */
        }
    
-       .btn-group .btn:hover {
+       	.btn-group .btn:hover {
            border-color: black; /* 마우스 오버 시 외곽선 색상 변경 */
        }
        
@@ -358,24 +352,21 @@
                                 <img src="/resources/images/${data.fileTitle}.jpg" class="card-img-top" alt="이미지" style="width:100%; height:200px;">
                             </a>
                             <div class="card-body">
-                         <h5 class="card-title" style="font-weight: bold;" ><c:out value="${data.fileTitle}" /></h5>
-                         <p class="card-text"><c:out value="${data.genre}" /></p>
-                   	 	<div class="d-flex justify-content-between mt-auto">
-						    <p class="card-price" style="font-weight: bold;">\ <c:out value="${data.price}" /></p>
-						    <button class="btn border-0 btn-sm" style="font-size: 20px;" type="button" onclick="fn_cart('<c:out value="${data.uuid}"></c:out>')">
+                         	<h5 class="card-title" style="font-weight: bold;" ><c:out value="${data.fileTitle}" /></h5>
+                         	<p class="card-text"><c:out value="${data.genre}" /></p>
+                   	 		<div class="d-flex justify-content-between mt-auto">
+						    	<p class="card-price" style="font-weight: bold;">\ <c:out value="${data.price}" /></p>
+						    	<button class="btn border-0 btn-sm" style="font-size: 20px;" type="button" onclick="fn_cart('<c:out value="${data.uuid}"></c:out>')">
 						        <i class="bi bi-cart-plus" style="position: relative; top: -10px;"></i>
-						    </button>
-						</div>
-                     </div>
+						  	  	</button>
+							</div>
+                     		</div>
                         </div>
                     </div>
                 </c:forEach>
             </div>
         </form>
     </div>
-    
-
-    
-    <jsp:include page="/common/footer.jsp"></jsp:include>
+<jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 </html>
