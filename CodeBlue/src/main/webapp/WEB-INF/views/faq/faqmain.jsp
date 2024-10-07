@@ -182,7 +182,7 @@ function fnMovetoright() {
 	width: 115px;
 	height: auto;
 	font-size: 13px;
-	margin: 3px 60px 0 0;
+	margin: 0px 60px 0 0;
 }
 
 .card-title {
@@ -554,7 +554,7 @@ function fnMovetoright() {
 		<div class="grid-container2">
 			<div class="card" id="last-card">
 				<div class="card-body">
-					<p class="card-title" data-bs-toggle="modal" data-bs-target="#mo-last-1" id="last-card-title">
+					<p class="null" data-bs-toggle="modal" data-bs-target="<!-- #mo-last-1 -->" id="last-card-title">
 						<i class="bi bi-robot"></i> 스마트봇 문의하기
 					</p>
 					<p class="last-card-body">24시간 언제든지 궁금하신 모든 것들을 스마트봇이 알려드립니다.</p>
@@ -562,7 +562,7 @@ function fnMovetoright() {
 			</div>
 			<div class="card" id="last-card">
 				<div class="card-body">
-					<p class="card-title" data-bs-toggle="modal" data-bs-target="#mo-last-2" id="last-card-title">
+					<p class="null" data-bs-toggle="modal" data-bs-target="<!-- #mo-last-2 -->" id="last-card-title">
 						<i class="bi bi-chat-left-dots"></i> FAQ 게시판 살펴보기
 					</p>
 					<p class="last-card-body-2">좀 더 상세한 답변을 FAQ 게시판에서 찾아보세요.</p>
@@ -575,7 +575,7 @@ function fnMovetoright() {
 			</div>
 			<div class="card" id="last-card">
 				<div class="card-body">
-					<p class="card-title" data-bs-toggle="modal" data-bs-target="#mo-last-3" id="last-card-title">
+					<p class="null" data-bs-toggle="modal" data-bs-target="<!-- #mo-last-3 -->" id="last-card-title">
 						<i class="bi bi-mailbox-flag"></i> 메일을 보내 해결하기
 					</p>
 
