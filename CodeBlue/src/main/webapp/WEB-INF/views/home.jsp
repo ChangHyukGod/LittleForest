@@ -7,9 +7,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>리틀포레스트 메인 홈</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Gasoek+One&family=Jua&family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
     <style>
     
         /* 그리드 간격을 더욱 좁게 조정하기 위한 커스텀 클래스 */
+        
+        .card-title {
+	  font-family: "Noto Sans KR", sans-serif;
+	  font-optical-sizing: auto;
+	  font-weight: <weight>;
+	  font-style: normal;
+	  font-size: 18px;
+		  
+		}
+		
+		
+		.card-text {
+			color: gray;
+			font-size: 14px;
+		}
+		
         .custom-row {
             margin-left: -2px;
             margin-right: -2px;
@@ -45,9 +64,10 @@
        .carousel-item img {
           height: auto; /* 높이를 자동으로 설정하여 비율 유지 */
           max-height: 400px; /* 최대 높이 설정 */
-          width: 100%; /* 너비는 자동으로 설정 */
+          width: 1007px; /* 너비는 자동으로 설정 */
           margin: auto; /* 중앙 정렬 */
           display: block; /* 블록 요소로 설정 */
+
       }
       
       .carousel-item img {
@@ -57,6 +77,7 @@
    
       body {
           overflow-y: scroll; /* 세로 스크롤 유지 */
+          
       }
       
       .container {
@@ -248,17 +269,17 @@
          <!-- 카드 4개 가로정렬 -->
          <div class="row mb-3" style="display:flex; gap:10px;">
              <!-- 카드 1 -->
-                 <div class="card mb-3" style="width: 200px; height: 250px;">
+                 <div class="card border-0 mb-3" style="width: 200px; height: 250px;">
                  <a href="http://localhost:8000/main/edition?uuid=7896c7e9-68f6-43ec-88c0-11beb418029c&searchKeyword=">
                  <img src="/resources/images/Overcooked! All You Can Eat.jpg" class="card-img-top" style="height: 130px; width:200px; margin-left: -13px;">
                  </a>
                  <div class="card-body">
-                     <h5 class="card-title">Overcooked! All You Can Eat</h5>
+                     <h5 class="card-title" >Overcooked! All You Can Eat</h5>
                      <p class="card-text">협동 요리 게임</p>
                  </div>
                </div>
              <!-- 카드 2 -->
-                <div class="card mb-3" style="width: 200px; height: 250px;">
+                <div class="card border-0 mb-3" style="width: 200px; height: 250px;">
                 <a href="http://localhost:8000/main/edition?uuid=da0e2cb4-eb9e-4e23-a199-2b9ff7a48375&searchKeyword=">
                 <img src="/resources/images/이터널 리턴.jpg" class="card-img-top" style="height: 130px; width:200px; margin-left: -13px;">
                 </a>
@@ -269,7 +290,7 @@
                  </div>
                </div>
              <!-- 카드 3 -->
-                <div class="card mb-3" style="width: 200px; height: 250px;">
+                <div class="card border-0 mb-3" style="width: 200px; height: 250px;">
                 <a href="http://localhost:8000/main/edition?uuid=43d658dc-aa86-4abf-8652-6f33da56427c&searchKeyword=">
                  <img src="/resources/images/Palworld.jpg" class="card-img-top" style="height: 130px; width:200px; margin-left: -13px;">
                  </a>
@@ -280,7 +301,7 @@
                  </div>
                </div>
              <!-- 카드 4 -->
-                <div class="card mb-3" style="width: 200px; height: 250px;">
+                <div class="card border-0 mb-3" style="width: 200px; height: 250px;">
                 <a href="http://localhost:8000/main/edition?uuid=00d781b9-290a-4a76-8d25-18a1eb3fdb0a&searchKeyword=">
                  <img src="/resources/images/휴먼 폴 플랫.jpg" class="card-img-top" style="height: 130px; width:200px; margin-left: -13px;">
                  </a>
@@ -297,7 +318,7 @@
       <div>
          <h2 style="font-weight: bold; margin-bottom: 20px;">신작게임</h2>
           <!-- 카드 5 -->
-            <div class="card mb-3" style="width: 440px; height: 250px;">
+            <div class="card border-0 mb-3" style="width: 440px; height: 250px;">
               <a href="http://localhost:8000/main/edition?uuid=64d83b53-ed6b-453b-a04f-ce6ec12af3a2&searchKeyword=">
               <img src="/resources/images/Party Animals.jpg" class="card-img-top" style="height: 200px; object-fit: cover;">
               </a>
@@ -332,16 +353,25 @@
                 <c:forEach var="data" items="${main}">
                     <div class="col-3 custom-col" style="padding-bottom: 50px;">
                         <%-- 카드 --%>
-                        <div class="card mb-3" style="width: 100%;"> <!-- width:100%로 변경하여 유연하게 대응 -->
+                        <div class="card border-0 mb-3" style="width: 100%;"> <!-- width:100%로 변경하여 유연하게 대응 -->
                             <a href="javascript:fn_select('<c:out value="${data.uuid}"></c:out>')">
                                 <img src="/resources/images/${data.fileTitle}.jpg" class="card-img-top" alt="이미지" style="width:100%; height:200px;">
                             </a>
                             <div class="card-body">
-                         <h5 class="card-title"><c:out value="${data.fileTitle}" /></h5>
+                         <h5 class="card-title" style="font-weight: bold;" ><c:out value="${data.fileTitle}" /></h5>
                          <p class="card-text"><c:out value="${data.genre}" /></p>
-                         <div class="d-flex justify-content-center mt-auto"> <!-- 수평 중앙 정렬 -->
-                            <button class="btn btn-outline-primary btn-sm me-2" type="button" onclick="fn_buy('<c:out value="${data.uuid}"></c:out>')">구매하기</button>
-                            <button class="btn btn-outline-dark btn-sm" type="button" onclick="fn_cart('<c:out value="${data.uuid}"></c:out>')">장바구니에 추가</button>
+                                                 <div class="d-flex  mt-auto">
+                           <!-- 수평 중앙 정렬 -->
+                           <%--    <button class="btn border-0 btn-sm me-2" style="color: green; font-size: 20px;" type="button" onclick="fn_buy('<c:out value="${data.uuid}"></c:out>')">
+                              <i class="bi bi-currency-dollar"></i>
+                           </button> --%>
+                           <p class="card-text  justify-content-start" >
+                              \
+                              <c:out value="${data.price}" />
+                           </p>
+                           <button class="btn border-0 btn-sm  justify-content-end"  style="font-size: 20px;" type="button" onclick="fn_cart('<c:out value="${data.uuid}"></c:out>')">
+                              <i class="bi bi-cart-plus" "></i>
+                           </button>
                         </div>
                      </div>
                         </div>
