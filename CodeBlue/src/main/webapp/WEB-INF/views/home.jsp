@@ -360,19 +360,12 @@
                             <div class="card-body">
                          <h5 class="card-title" style="font-weight: bold;" ><c:out value="${data.fileTitle}" /></h5>
                          <p class="card-text"><c:out value="${data.genre}" /></p>
-                                                 <div class="d-flex  mt-auto">
-                           <!-- 수평 중앙 정렬 -->
-                           <%--    <button class="btn border-0 btn-sm me-2" style="color: green; font-size: 20px;" type="button" onclick="fn_buy('<c:out value="${data.uuid}"></c:out>')">
-                              <i class="bi bi-currency-dollar"></i>
-                           </button> --%>
-                           <p class="card-text  justify-content-start" >
-                              \
-                              <c:out value="${data.price}" />
-                           </p>
-                           <button class="btn border-0 btn-sm  justify-content-end"  style="font-size: 20px;" type="button" onclick="fn_cart('<c:out value="${data.uuid}"></c:out>')">
-                              <i class="bi bi-cart-plus" "></i>
-                           </button>
-                        </div>
+                   	 	<div class="d-flex justify-content-between mt-auto">
+						    <p class="card-price">\ <c:out value="${data.price}" /></p>
+						    <button class="btn border-0 btn-sm" style="font-size: 20px;" type="button" onclick="fn_cart('<c:out value="${data.uuid}"></c:out>')">
+						        <i class="bi bi-cart-plus" style="position: relative; top: -10px;"></i>
+						    </button>
+						</div>
                      </div>
                         </div>
                     </div>
