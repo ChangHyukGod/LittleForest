@@ -212,6 +212,7 @@ public class HomeController{
        List<String> cart = (List<String>) session.getAttribute("cart");
        
        if (cart != null && cart.remove(uuid)) {
+          // cart.remove(uuid) => uuid값 제거
            session.setAttribute("cart", cart); // 변경된 장바구니 저장
            return ResponseEntity.ok("장바구니에서 삭제되었습니다!"); // 성공 메시지
        } else {
@@ -227,45 +228,81 @@ public class HomeController{
 //             아이템이 없으면 오류 메시지를 반환합니다.
    }
    
-	// (11) 장바구니 결제 페이지 생성
-	@GetMapping("/main/cart/buy")
-	public String goCartPayPage(HttpSession session, Model model) {
-	    List<String> pay_cart = (List<String>) session.getAttribute("pay_cart");
-	    List<MainVO> selectedGames = new ArrayList<>();
-	
-	    if (pay_cart != null && !pay_cart.isEmpty()) {
-	        for (String uuid : pay_cart) {
-	            MainVO game = mainService.selectMain(uuid);
-	            if (game != null) {
-	                selectedGames.add(game);
-	            } else {
-	                System.out.println("게임 정보가 없습니다: " + uuid);
-	            }
-	        }
-	    } else {
-	        System.out.println("장바구니에 게임이 없습니다.");
-	    }
-	
-	    model.addAttribute("selectedGames", selectedGames); // 모델에 추가
-	    return "payment/cart_pay_page"; // 결제 페이지 JSP로 이동
-	}
-	
-	// (12) 선택한 게임 UUID를 세션에 저장
-	@PostMapping(value = "/main/cart/saveSelectedItems", consumes = "application/json")
-	@ResponseBody
-	public ResponseEntity<String> saveSelectedItems(@RequestBody Map<String, List<String>> payload, HttpSession session) {
-	    List<String> uuids = payload.get("uuids");
+   // (11) 장바구니 결제 페이지 생성 <-> (12)와 상호작용
+   @GetMapping("/main/cart/buy") // HTTP GET 요청을 처리하는 메서드
+   public String goCartPayPage(HttpSession session, Model model) {
+       // 세션에서 pay_cart 속성을 가져옴. 이 속성은 선택된 게임의 UUID 리스트입니다.
+       List<String> pay_cart = (List<String>) session.getAttribute("pay_cart"); // UUID 리스트
+       List<MainVO> selectedGames = new ArrayList<>(); // 선택된 게임 정보를 저장할 리스트(MainVO객체)
+       
+       // pay_cart가 null이 아니고 비어있지 않은 경우
+       if (pay_cart != null && !pay_cart.isEmpty()) {
+           // 각 UUID에 대해 반복
+           for (String uuid : pay_cart) {
+               // UUID를 사용하여 게임 정보를 가져옴
+               MainVO game = mainService.selectMain(uuid); 
+               // 게임 정보가 유효한 경우 리스트에 추가
+               if (game != null) {
+                   selectedGames.add(game);
+               } else {
+                   // 게임 정보가 없을 경우 콘솔에 메시지 출력
+                   System.out.println("게임 정보가 없습니다: " + uuid);
+               }
+           }
+       } else {
+           // pay_cart가 비어있을 경우 콘솔에 메시지 출력
+           System.out.println("장바구니에 게임이 없습니다.");
+       }
+   
+       // 선택된 게임 리스트를 모델에 추가
+       model.addAttribute("selectedGames", selectedGames);
+       // 결제 페이지 JSP로 이동
+       return "payment/cart_pay_page"; 
+   }
+   
+   // (12) 선택한 게임 UUID를 세션에 저장 <-> (11)과 상호작용
+   @PostMapping(value = "/main/cart/saveSelectedItems", consumes = "application/json") // HTTP POST 요청을 처리
+   @ResponseBody // 이 메서드는 JSON 응답을 반환
+   public ResponseEntity<String> saveSelectedItems(@RequestBody Map<String, List<String>> payload, HttpSession session) {
+      // payload: 서버로 보내는 데이터의 내용. 클라이언트가 요청할 때 포함된 데이터라고 생각하면 됩니다.
+       List<String> uuids = payload.get("uuids"); // payload에서 "uuids"라는 키의 값을 가져옴
+   
+       // 수신된 UUID 출력
+       System.out.println("Received UUIDs: " + uuids);
+   
+       // UUID 리스트가 null이 아니고 비어있지 않은 경우
+       if (uuids != null && !uuids.isEmpty()) {
+           // 세션에 pay_cart 속성으로 UUID 리스트 저장
+           session.setAttribute("pay_cart", uuids);
+           // 성공 메시지 반환
+           return ResponseEntity.ok("선택한 게임이 저장되었습니다.");
+       }
+       // UUID 리스트가 없을 경우 오류 메시지 반환
+       return ResponseEntity.badRequest().body("게임 선택이 실패했습니다."); 
+   }
 
-	    // UUID 출력
-	    System.out.println("Received UUIDs: " + uuids);
-
-	    if (uuids != null && !uuids.isEmpty()) {
-	        session.setAttribute("pay_cart", uuids);
-	        return ResponseEntity.ok("선택한 게임이 저장되었습니다.");
-	    }
-	    return ResponseEntity.badRequest().body("게임 선택이 실패했습니다.");
-	}
-
-
-
-}
+//   1. @ResponseBody
+//   무슨 뜻?: 이 메서드의 결과를 웹 페이지가 아니라 데이터 형식으로 바로 보내겠다는 의미예요. 즉, 클라이언트에게 반환되는 내용이 HTML이 아니라 JSON이나 텍스트라는 거죠.
+//   예: "선택한 게임이 저장되었습니다." 같은 메시지를 클라이언트에게 전달해요.
+   
+//   2. @RequestBody
+//   무슨 뜻?: 클라이언트가 보낸 데이터(주로 JSON 형식)를 이 메서드에서 사용할 수 있도록 변환해준다는 뜻이에요.
+//   예: "uuids"라는 키가 있는 JSON 데이터를 받아서 그 값을 코드에서 쉽게 사용할 수 있게 해줘요.
+   
+//   3. Map<String, List<String>> payload
+//   무슨 뜻?: 클라이언트가 보낸 데이터의 구조를 설명하는 자료형이에요.
+//   "String": 데이터의 이름, 즉 키를 의미해요. 여기선 "uuids"가 키예요.
+//   "List<String>": 그 키에 해당하는 값이 여러 개 있을 수 있어서 리스트 형태로 저장해요.
+//   예: 클라이언트가 여러 UUID를 보낼 때, 이를 리스트로 받을 수 있어요.
+   
+//   4. ResponseEntity
+//   무슨 뜻?: HTTP 응답을 표현하는 객체로, 상태 코드, 헤더, 본문 내용을 포함할 수 있어요. 즉, 응답의 상태를 더 세밀하게 조절할 수 있게 해주는 도구예요.
+//   예: 성공적으로 처리가 끝났다면 ResponseEntity.ok("메시지")를 사용해서 HTTP 200 상태와 함께 메시지를 반환할 수 있어요.
+   
+//   (*) @ResponseBody는 명시적으로 응답 형식을 지정하는 역할을 하지만, ResponseEntity만으로도 응답을 처리할 수 있습니다.
+//        ResponseEntity를 사용하는 것이 더 직관적이며, 코드가 간결해질 수 있습니다.
+//   @ResponseBody를 사용하면 메서드의 반환 값을 JSON으로 자동 변환하겠다는 것을 명시적으로 나타내는 것이고,
+//   ResponseEntity만 사용해도 Spring이 자동으로 JSON 형식으로 변환하여 응답할 수 있습니다.
+//   결국, 두 방식 모두 같은 결과를 만들어내므로, 주로 코드의 가독성이나 팀의 코딩 스타일에 따라 선택하면 됩니다.
+   
+} 
