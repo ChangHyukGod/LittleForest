@@ -43,6 +43,8 @@
         /* 카드 간 기본 스타일 */
         .card {
             transition: transform 0.2s, box-shadow 0.2s; /* 기본 전환 효과 */
+            
+            
         }
  
       	.btn-group .btn {
@@ -58,9 +60,10 @@
        .carousel-item img {
           height: auto; /* 높이를 자동으로 설정하여 비율 유지 */
           max-height: 400px; /* 최대 높이 설정 */
-          width: 1007px; /* 너비는 자동으로 설정 */
+          width: 1300px; /* 너비는 자동으로 설정 */
           margin: auto; /* 중앙 정렬 */
           display: block; /* 블록 요소로 설정 */
+          border-radius: 20px;
 
       }
       
@@ -209,7 +212,7 @@
        <div class="carousel-inner" style="height: 400px;">
            <div class="carousel-item active">
            <a href="http://localhost:8000/main/edition?uuid=fd6a6d13-5280-4d5a-9d39-8f3a33328681&searchKeyword=">
-               <img src="/resources/images/스타듀밸리.jpg" class="d-block" alt="스타듀밸리">
+               <img src="/resources/images/스타듀밸리캐러셀.jpg" class="d-block" alt="스타듀밸리캐러셀">
            </a>
            </div>
            <div class="carousel-item">
@@ -259,7 +262,7 @@
    <div style="display:flex; gap:50px;">
       <!-- 좌측 : 추천게임 -->
       <div>
-         <h2 style="font-weight: bold; margin-bottom: 20px; margin-left: -13px;">추천게임</h2>
+         <h2 style="font-weight: bold; margin-bottom: 20px; margin-left: -13px; margin-top: 30px;">추천게임</h2>
          <!-- 카드 4개 가로정렬 -->
          <div class="row mb-3" style="display:flex; gap:10px;">
              <!-- 카드 1 -->
@@ -268,7 +271,8 @@
                  <img src="/resources/images/Overcooked! All You Can Eat.jpg" class="card-img-top" style="height: 130px; width:200px; margin-left: -13px;">
                  </a>
                  <div class="card-body">
-                     <h5 class="card-title" >Overcooked! All You Can Eat</h5>
+                     <h5 class="card-title" >Overcooked! All You Can Eat </h5>
+                     <span class="badge rounded-pill text-bg-danger">Hot</span>
                      <p class="card-text">협동 요리 게임</p>
                  </div>
                </div>
@@ -279,6 +283,7 @@
                 </a>
                  <div class="card-body">
                      <h5 class="card-title">이터널 리턴</h5>
+                     <span class="badge rounded-pill text-bg-danger">Hot</span>
                      <br/>
                      <p class="card-text">배틀로얄 게임</p>
                  </div>
@@ -290,6 +295,7 @@
                  </a>
                  <div class="card-body">
                      <h5 class="card-title">팰 월드</h5>
+                     <span class="badge rounded-pill text-bg-danger">Hot</span>
                      <br/>
                      <p class="card-text">유사 포켓몬</p>
                  </div>
@@ -301,6 +307,7 @@
                  </a>
                  <div class="card-body">
                      <h5 class="card-title">휴먼 폴 플랫</h5>
+                     <span class="badge rounded-pill text-bg-danger">Hot</span>
                      <br/>
                      <p class="card-text">협동 탈출 게임</p>
                  </div>
@@ -310,14 +317,14 @@
 
       <!-- 우측 : 신작게임 -->
       <div>
-         <h2 style="font-weight: bold; margin-bottom: 20px;">신작게임</h2>
+         <h2 style="font-weight: bold; margin-bottom: 20px; margin-top: 30px;">신작게임</h2>
           <!-- 카드 5 -->
             <div class="card border-0 mb-3" style="width: 440px; height: 250px;">
               <a href="http://localhost:8000/main/edition?uuid=64d83b53-ed6b-453b-a04f-ce6ec12af3a2&searchKeyword=">
               <img src="/resources/images/Party Animals.jpg" class="card-img-top" style="height: 200px; object-fit: cover;">
               </a>
-              <div class="card-body">
-				  <h5 class="card-title">파티 애니멀즈</h5>
+              <div class="card-body" >
+				  <h5 class="card-title" >파티 애니멀즈</h5><span class="badge rounded-pill text-bg-warning">New</span>
               </div>
             </div>
       </div>  <!-- 우측 : 신작게임 닫는 태그 -->
