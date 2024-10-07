@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.simplecoding.repositoryexam.service.auth.MembersService;
 
@@ -63,14 +64,15 @@ public class MembersController {
 	// 로그인 진행 : 로그인 버튼 클릭시 실행 : 보안(post) get방식(id/password 노출)
 
 	@PostMapping("/loginProcess")
-	public String login(@ModelAttribute MembersVO loginVO,
+	public String login(@ModelAttribute MembersVO loginVO, RedirectAttributes redirectAttributes,
 			HttpServletRequest request
 	)throws Exception{
 
 		MembersVO membersVO = membersService.authenticateMembers(loginVO);
 
 		if (membersVO == null) {
-			throw new Exception("회원이 없습니다.");
+			redirectAttributes.addFlashAttribute("errorMessage", "아이디 또는 비밀번호가 다릅니다.");
+            return "redirect:/login";
 		}
 		// 2) 인증 OK(DB 에 유저가 있으면) : 세션에 email/password 넣기
 		request.getSession().setAttribute("memberVO", membersVO);
@@ -98,14 +100,6 @@ public class MembersController {
 		return "redirect:/login";
 	}
 
-	@GetMapping("/test")
-	private String test(@RequestParam String username, Model model) {
-		// TODO Auto-generated method stub
-		log.info("테스트" + username);
-
-		return "redirect:/register";
-
-	}
 
 	@GetMapping("/infofix")
 	public String infofix() {
