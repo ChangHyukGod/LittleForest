@@ -120,13 +120,13 @@
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
 <div class="container">
-    <form>
-    	<!-- (1) + (2) 전체묶음 -->
-        <div class="container" style="display:flex; gap:20px;">
+	<form>
+		<!-- (1) + (2) 전체묶음 -->
+        <div class="container" style="display:flex; gap:10px;">
         	<!-- 1 + 2 -->
             <div class="container" style="display:flex-direction:row; gap:20px; margin-top:10px;">
             	<!-- 1) 결제 상품 정보 -->
-                <div class="card" style="width:50rem; padding:10px 0px 0px 20px; margin-top:10px;">
+                <div class="card" style="width:45rem; padding:10px 0px 0px 20px; margin-top:10px;">
                     <table class="table table-borderless" style="border:0;">
                         <thead>
                             <tr>
@@ -136,70 +136,49 @@
                         <tbody>
                             <tr>
                                 <th rowspan="4" style="border:0;">
-                                    <img src="/resources/images/${buy.fileTitle}.jpg" style="width:20rem;">
+                                    <img src="/resources/images/${buy.fileTitle}.jpg" style="width:21rem;">
                                 </th>
                             </tr>
                             <tr>
-                                <td class="game-title" style="padding-right:250px;">게임명 : ${buy.fileTitle}</td>
+                                <td class="game-title" style="padding-right:200px; vertical-align : middle;">게임명 : ${buy.fileTitle}</td>
                             </tr>
                             <tr>
-                                <td style="padding-right:250px;">구매수량 : 1개</td>
+                                <td align="left" style="vertical-align : middle;">구매수량 : 1개</td>
                             </tr>
                             <tr>
-                                <td style="padding-right:250px;">상품가격 : ${buy.price}원</td>
+                                <td align="left" style="vertical-align : middle;">상품가격 : ${buy.price}원</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>  <!-- 1) 닫는 태그 -->
+			</div>  <!-- 1 닫는태그 -->
 
+			<!-- 2 + 3 + 4 + 5 -->
+            <div class="container" style="display:flex-direction:row; gap:20px; margin-top:10px;">
 				<!-- 2) 주문자 정보 -->
-                <div class="card" style="width:50rem; padding:20px 0px 0px 20px; margin-top:10px;">
+                <div class="card" style="width:25rem; padding:10px 0px 0px 10px; margin-top:10px;">
                     <table class="table table-borderless" style="border-collapse: collapse;">
                         <thead>
-                            <tr style="display:flex; gap:550px;">
+                            <tr style="display:flex; gap:10px;">
                                 <th>주문자 정보</th>
                                 <th></th>
                             </tr>
                         </thead>         
                         <tbody>
                             <tr>
-                                <th>성명 : ${sessionScope.memberVO.membername}</th>
+                                <td>성명 : ${sessionScope.memberVO.membername}</td>
                             </tr>
                             <tr>
-                                <th>주문자 전화번호 : ${sessionScope.memberVO.phonenumber}</th>
+                                <td>주문자 전화번호 : ${sessionScope.memberVO.phonenumber}</td>
                             </tr>
                             <tr>
-                                <th>주문자 이메일 주소 : ${sessionScope.memberVO.email}</th>
+                                <td>주문자 이메일 주소 : ${sessionScope.memberVO.email}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>  <!-- 2) 닫는 태그 -->
-            </div>  <!-- 1 + 2 -->
 
-			<!-- 3 + 4 + 5 -->
-            <div class="container" style="display:flex-direction:row; gap:20px; margin-top:10px;">
-            	<!-- 3) 결제정보 -->
-                <div class="card container" style="width:25rem; padding:20px 30px 0px 30px; margin-top:10px;">
-                    <table class="table table-borderless" style="border-collapse: collapse;">
-                        <thead>
-                            <tr>
-                                <th>결제 정보</th>
-                            </tr>
-                        </thead>         
-                        <tbody>
-                            <tr>
-                                <th style="text-align: left;">상품가격</th>
-                                <td style="text-align: right;">${buy.price}원</td>
-                            </tr>
-                            <tr style="border-top: 1px solid black;">
-                                <th style="text-align: left;">결제 금액</th>
-                                <td style="text-align: right;">${buy.price}원</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>  <!-- 3) 닫는 태그 -->
-
-				<!-- 4) 결제 방식 -->
+				<!-- 3) 결제 방식 -->
                 <div class="card" style="width:25rem; padding:20px 30px 0px 30px; margin-top:10px;">
                     <table class="table table-borderless" style="border-collapse: collapse;">
                         <thead>
@@ -209,27 +188,27 @@
                         </thead>         
                         <tbody>
                             <tr>
-                                <th>
+                                <td>
                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                     <label class="form-check-label" for="flexRadioDefault1">신용카드</label>
-                                </th>
-                                <th>
+                                </td>
+                                <td>
                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                     <label class="form-check-label" for="flexRadioDefault2">무통장 입금</label>
-                                </th>
+                                </td>
                             </tr>
                             <tr>
-                                <th>
+                                <td>
                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
                                     <label class="form-check-label" for="flexRadioDefault3">네이버페이</label>
-                                </th>
-                                <th>
+                                </td>
+                                <td>
                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
                                     <label class="form-check-label" for="flexRadioDefault4">카카오페이</label>
-                                </th>
+                                </td>
                             </tr>
                             <tr id="bankSelectRow" style="display:none;">
-                                <th colspan="2">
+                                <td colspan="2">
                                     <select id="bankSelect" class="form-select form-select-sm" aria-label=".form-select-sm example">
                                         <option selected>은행 선택</option>
                                         <option value="1">KB국민은행</option>
@@ -238,7 +217,7 @@
                                         <option value="4">IBK기업은행</option>
                                         <option value="5">카카오뱅크</option>
                                     </select>
-                                </th>
+                                </td>
                             </tr>
                             <tr id="depositorRow" style="display:none;">
                                 <th colspan="2">
@@ -264,28 +243,28 @@
                             </tr>                        
                         </tbody>
                     </table>
-                </div>  <!-- 4) 닫는 태그 -->
+                </div>  <!-- 3) 닫는 태그 -->
 
-				<!-- 5) 결제 동의 -->
-                <div class="card" style="width:25rem; padding:20px 30px 0px 30px; margin-top:10px;">
+				<!-- 4) 결제 동의 -->
+                <div class="card" style="width:25rem; padding:20px 30px 0px 30px; margin-top:10px; margin-bottom:10px;">
                     <div>
-                        <label style="padding-bottom:10px;">
+                        <label style="padding-bottom:10px; font-weight:bold;">
                             <input type="checkbox" id="checkAll"> 전체 동의
                         </label>
                     </div>
                     <div style="padding-left:20px;">
                         <label style="padding-bottom:10px;">
-                            <input type="checkbox" class="checkItem">구매조건 확인 및 결제진행 동의
+                            <input type="checkbox" class="checkItem"> 구매조건 확인 및 결제진행 동의
                         </label><br>
                         <label style="padding-bottom:10px;">
-                            <input type="checkbox" class="checkItem">개인정보 이용동의
+                            <input type="checkbox" class="checkItem"> 개인정보 이용동의
                         </label><br>
                     </div>
                     <div class="d-grid gap-2 col-6 mx-auto" style="padding-bottom:20px;">
                         <button type="button" class="btn btn-primary" onclick="func_buy()">결제하기</button>
                     </div>
-                </div>  <!-- 5) 닫는 태그 -->
-            </div>  <!-- 3 + 4 + 5 -->
+                </div>  <!-- 4) 닫는 태그 -->
+            </div>  <!-- 2 + 3 + 4 닫는 태그 -->
         </div>  <!-- (1), (2) 닫는 태그 -->
     </form>
 </div>

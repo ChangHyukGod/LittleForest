@@ -85,12 +85,11 @@
 		<!-- form 태그 시작 -->
 		<form id="addForm" name="addForm" method="post" action="/faq/edit">
 			<!-- 수정 URL로 변경 -->
-			<!-- 수정할 데이터의 ID 값을 hidden 필드로 전송 -->
 			<input type="hidden" id="id" name="id" value="${faqVO.id}" />
 			<div class="mb-3 t-b-box">
 				<label for="question" class="form-label">Question</label> <input value='${faqVO.question}' class="form-control" id="question" name="question" placeholder="질문 입력" oninput="toggleButtonState()" />
 			</div>
-			<div class="mb-3 t-b-box">
+			<div class="mb-3 t-b-box"><br>
 				<label for="answer" class="form-label">Answer</label>
 				<textarea class="form-control" id="answer" name="answer" rows="5" placeholder="답변 입력" oninput="toggleButtonState()">${faqVO.answer}</textarea>
 			</div>

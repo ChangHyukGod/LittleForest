@@ -203,11 +203,11 @@
 <div class="left-align">
  	<button class="btn left-align-button font-weight-bold" style="font-size: 30px;" onclick="location.href='/mypage';">마이페이지</button>
     <h4 class="fw-medium"> 마이쇼핑 </h4>
-    <button class="btn left-align-button" onclick="location.href='주문배송조회.jsp';">주문/배송 조회</button>
+    <button class="btn left-align-button" onclick="location.href='/main/cart';">장바구니</button>
     <h4 class="fw-medium"> 나의 정보 </h4>
     <button class="btn left-align-button" onclick="location.href='/infofix';">회원정보 수정</button>
     <h4 class="fw-medium"> 고객센터 </h4>
-    <button class="btn left-align-button" onclick="location.href='/FAQ';">FAQ</button>
+    <button class="btn left-align-button" onclick="location.href='/faq';">FAQ</button>
     <br>
 </div>
 
@@ -219,7 +219,7 @@
         <div class="header">
             <div class="top">
                 <img src="${pageContext.request.contextPath}/resources/images/qfqf.jpg" alt="| " style="border-radius: 50%; width: 40px; height: 40px;">
-                <span class="fw-bold">[Family] 회원 ${sessionScope.memberVO.membername}님 반갑습니다.</span>
+                <span class="fw-bold">${sessionScope.memberVO.membername}님 반갑습니다.</span>
             </div>
             <div class="bottom">
                 <span>포인트 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> P &nbsp; &nbsp;</span>
@@ -352,7 +352,7 @@
 	    <p style="color: black; margin: 0; width: 150px;">SMS 수신여부<b class="text-danger"> *</b></p>
 	    <div style="margin-left: 10px; display: flex; align-items: center;">
 	        <div style="margin-right: 20px;">
-	            <input class="form-check-input" type="radio" name="authType1" id="emailAuth1">
+	            <input class="form-check-input" type="radio" name="authType1" id="emailAuth1" checked>
 	            <label class="form-check-label" for="emailAuth">수신함</label>
 	        </div>
 	        <div>
@@ -380,38 +380,38 @@
 
 
 
-	<div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top:10px;">
-	    <p style="color: black; margin: 0; width: 150px;">SMS 수신여부<b class="text-danger"> *</b></p>
-	    <div style="margin-left: 10px; display: flex; align-items: center;">
-	        <div style="margin-right: 20px;">
-	            <input class="form-check-input" type="radio" name="authType2" id="emailAuth2">
-	            <label class="form-check-label" for="emailAuth2">수신함</label>
-	        </div>
-	        <div>
-	            <input class="form-check-input" type="radio" name="authType2" id="phoneAuth2">
-	            <label class="form-check-label" for="phoneAuth2">수신안함</label>
-			</div>
-			</div>
-			</div>
+<!-- 	<div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top:10px;"> -->
+<!-- 	    <p style="color: black; margin: 0; width: 150px;">SMS 수신여부<b class="text-danger"> *</b></p> -->
+<!-- 	    <div style="margin-left: 10px; display: flex; align-items: center;"> -->
+<!-- 	        <div style="margin-right: 20px;"> -->
+<!-- 	            <input class="form-check-input" type="radio" name="authType2" id="emailAuth2"> -->
+<!-- 	            <label class="form-check-label" for="emailAuth2">수신함</label> -->
+<!-- 	        </div> -->
+<!-- 	        <div> -->
+<!-- 	            <input class="form-check-input" type="radio" name="authType2" id="phoneAuth2"> -->
+<!-- 	            <label class="form-check-label" for="phoneAuth2">수신안함</label> -->
+<!-- 			</div> -->
+<!-- 			</div> -->
+<!-- 			</div> -->
 			
-			<!-- 실선 추가 -->
-<hr style="border: 1px solid #BDBDBD; width: 100%; margin: 0 0 35px 0;"> 
+			 <!-- 실선 추가 -->
+<!-- <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 0 0 35px 0;">  -->
 
 <!-- 추가정보 -->
-	<div class="basic">
-	        <div class="ba">
-	            <span>추가정보</span>
-	        </div>
-	        </div>
-	        <hr class="underline">
+<!-- 	<div class="basic"> -->
+<!-- 	        <div class="ba"> -->
+<!-- 	            <span>추가정보</span> -->
+<!-- 	        </div> -->
+<!-- 	        </div> -->
+<!-- 	        <hr class="underline"> -->
 
-<div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top:10px;">
-    <p style="color: black; margin: 0; width: auto; white-space: nowrap;">만 14세 이상입니다.<b class="text-danger"> *</b></p>
-    <div style="margin-left: 10px; display: flex; align-items: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input class="form-check-input" type="radio" name="memberType" id="flexRadioDefault1">
-        <label class="form-check-label" for="flexRadioDefault1" style="margin-left: 5px;">네</label>
-    </div>
-</div>
+<!-- <div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top:10px;"> -->
+<!--     <p style="color: black; margin: 0; width: auto; white-space: nowrap;">만 14세 이상입니다.<b class="text-danger"> *</b></p> -->
+<!--     <div style="margin-left: 10px; display: flex; align-items: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+<!--         <input class="form-check-input" type="radio" name="memberType" id="flexRadioDefault1"> -->
+<!--         <label class="form-check-label" for="flexRadioDefault1" style="margin-left: 5px;">네</label> -->
+<!--     </div> -->
+<!-- </div> -->
 
 <br>
 <br>
