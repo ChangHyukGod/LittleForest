@@ -121,7 +121,7 @@
 .search_bar {
 	width: 35%;
 	height: 60px;
-	margin-left: 32.5%;
+	margin-left: 31%;
 }
 
 .search_text {
@@ -148,7 +148,7 @@
 }
 
 .accordion-collapse {
-    background-color: rgb(253, 253, 253);
+	background-color: rgb(253, 253, 253);
 	border-style: solid 1px black;
 }
 
@@ -189,7 +189,13 @@
 							<div id="q-body" class="accordion-body">
 								<span style="font-size: 22px; font-weight: bold;">A.</span> ${data.answer}
 							</div>
-							<button type="button" class="btn btn-outline-info" onclick="fn_gotoedit('${data.id}')">수정</button>
+							<c:choose>
+								<c:when test="${sessionScope.memberVO != null}">
+									<c:if test="${sessionScope.memberVO.admin == 1}">
+										<button type="button" class="btn btn-outline-info" onclick="fn_gotoedit('${data.id}')">수정</button>
+									</c:if>
+								</c:when>
+							</c:choose>
 						</div>
 					</div>
 				</c:forEach>
@@ -199,7 +205,13 @@
 				<input type="hidden" id="pageIndex" name="pageIndex" />
 			</div>
 			<button type="button" class="btn btn-outline-dark" onclick="fn_gotomain()">FAQ 메인으로 돌아가기</button>
-			<button type="button" class="btn btn-outline-warning" onclick="fn_gotoadd()">FAQ 추가</button>
+			<c:choose>
+				<c:when test="${sessionScope.memberVO != null}">
+					<c:if test="${sessionScope.memberVO.admin == 1}">
+						<button type="button" class="btn btn-outline-warning" onclick="fn_gotoadd()">FAQ 추가</button>
+					</c:if>
+				</c:when>
+			</c:choose>
 		</form>
 	</div>
 	<jsp:include page="/common/footer.jsp" />
