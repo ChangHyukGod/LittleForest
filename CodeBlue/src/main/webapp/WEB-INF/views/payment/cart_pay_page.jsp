@@ -10,27 +10,6 @@
 <head>
     <meta charset="UTF-8">
     <title>장바구니 결제 페이지</title>
-    <style>
-        .card-content {
-            display: flex;
-            align-items: center;
-        }
-        .game-info {
-            margin-left: 20px;
-            text-align: left;
-            flex: 1;
-        }
-        .game-info p {
-            margin: 0;
-        }
-        .centered-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: left;
-        }
-    </style>
     <script type="text/javascript" defer="defer">
         document.addEventListener('DOMContentLoaded', function() {
             // 모든 가격 요소를 선택하고 숫자로 변환하여 배열로 만듭니다.
@@ -163,16 +142,16 @@
 <!-- (1) 상품 내역 -->
 <div class="container" style="display:flex-direction:row; gap:20px; margin-top:10px; margin-bottom:10px;">
 	<c:forEach var="game" items="${selectedGames}">
-		<div class="card">
-		    <div class="card-content">
-		        <img src="/resources/images/${game.fileTitle}.jpg" style="width:20rem;">
-		        <div class="game-info centered-info">
-		            <p>게임명 : ${game.fileTitle}</p>
-		            <p>구매수량 : 1개</p>
-		            <p class="item-price">상품가격 : ${game.price}원</p>
-		        </div>
-		    </div> 
-		</div>
+		<div class="card" style="display:flex; gap:10px; width:50rem;">
+			<div>
+				<img src="/resources/images/${game.fileTitle}.jpg" style="width:20rem;">
+			</div>
+			<div>
+				<p>게임명 : ${game.fileTitle}</p>
+				<p>구매수량 : 1개</p>
+				<p class="item-price">상품가격 : ${game.price}원</p>
+			</div>
+		</div> 
 	</c:forEach>
 </div>  <!-- (1) 닫는 태그 -->
 
