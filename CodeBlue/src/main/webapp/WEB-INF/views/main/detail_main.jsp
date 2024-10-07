@@ -10,7 +10,7 @@
         document.detailForm.submit();
       }
       
-      // 실시간 장바구니에 데이터 수 계산
+     // 실시간 장바구니에 데이터 수 계산
      function updateCartCount() {
          const cartCountElement = document.getElementById('cartCount');
          const currentCount = parseInt(cartCountElement.innerText) || 0; // 현재 카운트를 가져옵니다.   
@@ -69,7 +69,7 @@
    <img src="/resources/images/${detail.fileTitle}.jpg" class="card-img-left" style="width: auto; height: 155px;">
       <div class="card-body">
          <h5 class="card-title">${detail.fileTitle}</h5>
-         <p class="card-text">${detail.price}</p>
+         <p class="card-text">${detail.price}원</p>
       </div>
       <!-- 게임정보 테이블 : 장르, 배급사, 이용등급, 출시일, => 중앙/우측 정렬 -->
       <table class="table mb-3">

@@ -9,83 +9,171 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>결제 페이지</title>
+    <title>장바구니 결제 페이지</title>
     <style>
         .container {
             display: flex;
-            flex-direction: column; /* 세로 방향으로 나열 */
-            align-items: center; /* 중앙 정렬 */
-            padding: 20px; /* 상하 여백 */
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
         }
         .card {
-            width: 60rem; /* 카드의 너비 */
-            margin-top: 10px; /* 카드 간의 간격 */
-            padding: 20px; /* 카드 내 여백 */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 카드에 그림자 추가 */
-            border-radius: 5px; /* 카드 모서리 둥글게 */
+            width: 60rem;
+            margin-top: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
         }
         .card-container {
             display: flex;
-            flex-direction: column; /* 세로 방향으로 나열 */
-            gap: 10px; /* 카드 간의 간격 */
-            width: 100%; /* 카드 컨테이너의 너비 */
-            align-items: center; /* 카드 중앙 정렬 */
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            align-items: center;
         }
         .card-content {
-            display: flex; /* 가로 방향으로 배치 */
-            align-items: center; /* 세로 중앙 정렬 */
+            display: flex;
+            align-items: center;
         }
         .game-info {
-            margin-left: 20px; /* 이미지와 텍스트 사이의 간격 */
-            text-align: left; /* 텍스트 정렬 */
-            flex: 1; /* 남은 공간을 차지 */
+            margin-left: 20px;
+            text-align: left;
+            flex: 1;
         }
         .game-info p {
-            margin: 0; /* 기본 여백 제거 */
+            margin: 0;
         }
         .centered-info {
             display: flex;
-            flex-direction: column; /* 세로 방향으로 나열 */
-            justify-content: center; /* 세로 중앙 정렬 */
-            align-items: center; /* 가로 중앙 정렬 */
-            text-align: left; /* 텍스트 왼쪽 정렬 */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
         }
         .payment-method-card {
-            height: 100%; /* 높이를 다른 카드와 동일하게 맞춤 */
+            height: 100%;
         }
     </style>
     <script type="text/javascript" defer="defer">
         document.addEventListener('DOMContentLoaded', function() {
-            const prices = Array.from(document.querySelectorAll('.item-price')).map(priceElem => parseInt(priceElem.textContent.replace(/[^0-9]/g, ''), 10));
+            // 모든 가격 요소를 선택하고 숫자로 변환하여 배열로 만듭니다.
+            const prices = Array.from(document.querySelectorAll('.item-price')).map(priceElem => 
+                parseInt(priceElem.textContent.replace(/[^0-9]/g, ''), 10)
+            );
+
+            // 배열에 있는 모든 가격의 합을 계산합니다.
             const total = prices.reduce((acc, price) => acc + price, 0);
+
+            // 총 가격을 화면에 표시합니다. (천 단위 구분 기호 추가)
             document.getElementById('totalPrice').textContent = total.toLocaleString() + '원';
 
-            // 전체 동의 체크박스 이벤트
+            // 전체 동의 체크박스 및 개별 체크박스 요소를 선택합니다.
             const checkAll = document.getElementById('checkAll');
             const checkItems = document.querySelectorAll('.checkItem');
 
+            // 전체 동의 체크박스의 상태가 변경될 때
             checkAll.addEventListener('change', function() {
+                // 전체 체크박스가 체크되면 모든 개별 체크박스를 체크하고, 그렇지 않으면 해제합니다.
                 checkItems.forEach(item => item.checked = checkAll.checked);
             });
 
+            // 각 개별 체크박스에 대해
             checkItems.forEach(item => {
+                // 체크박스의 상태가 변경될 때
                 item.addEventListener('change', function() {
+                    // 만약 체크가 해제되면 전체 동의 체크박스도 해제합니다.
                     if (!item.checked) {
-                        checkAll.checked = false; // 하나라도 체크 해제하면 전체 해제
-                    } else if (Array.from(checkItems).every(i => i.checked)) {
-                        checkAll.checked = true; // 모두 체크되면 전체 체크
+                        checkAll.checked = false;
+                    } 
+                    // 모든 개별 체크박스가 체크되어 있다면 전체 동의 체크박스를 체크합니다.
+                    else if (Array.from(checkItems).every(i => i.checked)) {
+                        checkAll.checked = true;
+                    }
+                });
+            });
+
+            // 현금영수증 체크박스 이벤트 추가
+            const receiptCheck = document.getElementById('flexCheckDefault');
+            const receiptPhoneRow = document.getElementById('receiptPhoneRow');
+
+            // 현금영수증 체크박스의 상태가 변경될 때
+            receiptCheck.addEventListener('change', function() {
+                // 체크박스가 체크되면 전화번호 입력란을 보이고, 그렇지 않으면 숨깁니다.
+                receiptPhoneRow.style.display = this.checked ? 'table-row' : 'none';
+            });
+
+            // 결제 방법 라디오 버튼 요소 선택
+            const paymentMethods = document.querySelectorAll('input[name="flexRadioDefault"]');
+            const bankRow = document.querySelector('.form-select').parentElement.parentElement; // 은행 선택
+            const depositorRow = document.getElementById('floatingInput').parentElement.parentElement; // 예금주명 입력란
+
+            // 결제 방법 변경 시 입력란 표시 여부 제어
+            paymentMethods.forEach(method => {
+                method.addEventListener('change', function() {
+                    if (this.id === 'flexRadioDefault1' || this.id === 'flexRadioDefault2') {
+                        bankRow.style.display = 'table-row'; // 입력란 보이기
+                        depositorRow.style.display = 'table-row'; // 예금주명 보이기
+                    } else {
+                        bankRow.style.display = 'none'; // 입력란 숨기기
+                        depositorRow.style.display = 'none'; // 예금주명 숨기기
                     }
                 });
             });
         });
-        
+
+        // 결제하기 버튼 클릭
         function func_buy() {
-            const checkAll = document.getElementById('checkAll');
-            if (checkAll.checked) {
-                alert("결제하시겠습니까?");
-            } else {
-                alert("전체 동의를 체크해주세요.");
+            // 로그인 상태 확인
+            var isLoggedIn = ${sessionScope.memberVO != null}; // 로그인 상태를 JSP에서 확인
+            if (!isLoggedIn) {
+                alert("로그인 후 결제를 진행해주세요.");
+                window.location.href = '/login'; // 로그인 페이지로 리다이렉트
+                return; // 함수 종료
             }
+            
+            const checkAll = document.getElementById('checkAll');
+            const paymentMethod = document.querySelector('input[name="flexRadioDefault"]:checked');
+            const bankSelect = document.querySelector('.form-select');
+            const depositorName = document.getElementById('floatingInput').value.trim();
+            const receiptCheck = document.getElementById('flexCheckDefault');
+            const phoneNumber = document.getElementById('receiptPhoneNumber').value.trim();
+
+            // 전체 동의 체크 여부 확인
+            if (!checkAll.checked) {
+                alert("전체 동의를 체크해주세요.");
+                return; // 체크하지 않으면 함수 종료
+            }
+
+            // 결제 방법 선택 여부 확인
+            if (!paymentMethod) {
+                alert("결제 방법을 선택해주세요.");
+                return; // 체크하지 않으면 함수 종료
+            }
+
+            // 은행 선택 여부 확인
+            if ((paymentMethod.id === 'flexRadioDefault1' || paymentMethod.id === 'flexRadioDefault2') && bankSelect.selectedIndex === 0) {
+                alert("은행을 선택해주세요.");
+                return; // 체크하지 않으면 함수 종료
+            }
+
+            // 예금주명 입력 여부 확인
+            if ((paymentMethod.id === 'flexRadioDefault1' || paymentMethod.id === 'flexRadioDefault2') && depositorName === "") {
+                alert("예금주명을 입력해주세요.");
+                return; // 체크하지 않으면 함수 종료
+            }
+
+            // 현금영수증 신청 체크 시 전화번호 입력 여부 확인
+            if (receiptCheck.checked) {
+                const phonePattern = /^010\d{8}$/; // 010으로 시작하는 11자리 패턴
+                if (!phonePattern.test(phoneNumber)) {
+                    alert("전화번호는 '010'으로 시작하는 11자리 숫자를 입력해야 합니다.");
+                    return; // 체크하지 않으면 함수 종료
+                }
+            }
+
+            // 모든 조건을 만족하면 결제 진행
+            alert("결제하시겠습니까?");
+            // 추가적인 결제 로직을 여기에 작성할 수 있습니다.
         }
     </script>
 </head>
@@ -94,7 +182,6 @@
 <div class="container">
     <h5 style="font: bold;">주문서</h5>
 
-    <!-- 결제 상품 정보 -->
     <div class="card-container">
         <c:forEach var="game" items="${selectedGames}">
             <div class="card">
@@ -110,7 +197,6 @@
         </c:forEach>
     </div>
 
-    <!-- 주문자 정보 -->
     <div class="card">
         <table class="table table-borderless">
             <thead>
@@ -133,7 +219,6 @@
         </table>
     </div>
 
-    <!-- 결제 정보 -->
     <div class="card">
         <table class="table table-borderless">
             <thead>
@@ -154,7 +239,6 @@
         </table>
     </div>
 
-    <!-- 결제 방법 -->
     <div class="card payment-method-card">
         <table class="table table-borderless">
             <thead>
@@ -183,7 +267,7 @@
                         <label class="form-check-label" for="flexRadioDefault4">카카오페이</label>
                     </th>
                 </tr>
-                <tr>
+                <tr style="display:none;">
                     <th colspan="2">
                         <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                             <option selected>은행 선택</option>
@@ -195,10 +279,9 @@
                         </select>
                     </th>
                 </tr>
-                <tr>
+                <tr style="display:none;">
                     <th colspan="2">
-                        <input type="email" class="form-control" id="floatingInput"
-                        placeholder="예금주명(미입력시 주문자명)">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="예금주명(미입력시 주문자명)">
                     </th>
                 </tr>
                 <tr>
@@ -207,16 +290,19 @@
                 </tr>
                 <tr>
                     <td style="color:light-gray; font-size:12px;">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                    현금영수증 신청</label>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">현금영수증 신청</label>
+                    </td>
+                </tr>
+                <tr id="receiptPhoneRow" style="display:none;">
+                    <td colspan="2">
+                        <input type="text" class="form-control" id="receiptPhoneNumber" placeholder="전화번호 (예: 01012345678)" maxlength="11" />
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <!-- 결제 동의 -->
     <div class="card">
         <div>
             <label style="padding-bottom:10px;">
