@@ -121,8 +121,11 @@
 <jsp:include page="/common/header.jsp"></jsp:include>
 <div class="container">
     <form>
+    	<!-- (1) + (2) 전체묶음 -->
         <div class="container" style="display:flex; gap:20px;">
+        	<!-- 1 + 2 -->
             <div class="container" style="display:flex-direction:row; gap:20px; margin-top:10px;">
+            	<!-- 1) 결제 상품 정보 -->
                 <div class="card" style="width:50rem; padding:10px 0px 0px 20px; margin-top:10px;">
                     <table class="table table-borderless" style="border:0;">
                         <thead>
@@ -147,8 +150,9 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </div>  <!-- 1) 닫는 태그 -->
 
+				<!-- 2) 주문자 정보 -->
                 <div class="card" style="width:50rem; padding:20px 0px 0px 20px; margin-top:10px;">
                     <table class="table table-borderless" style="border-collapse: collapse;">
                         <thead>
@@ -169,10 +173,12 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
+                </div>  <!-- 2) 닫는 태그 -->
+            </div>  <!-- 1 + 2 -->
 
+			<!-- 3 + 4 + 5 -->
             <div class="container" style="display:flex-direction:row; gap:20px; margin-top:10px;">
+            	<!-- 3) 결제정보 -->
                 <div class="card container" style="width:25rem; padding:20px 30px 0px 30px; margin-top:10px;">
                     <table class="table table-borderless" style="border-collapse: collapse;">
                         <thead>
@@ -191,8 +197,9 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </div>  <!-- 3) 닫는 태그 -->
 
+				<!-- 4) 결제 방식 -->
                 <div class="card" style="width:25rem; padding:20px 30px 0px 30px; margin-top:10px;">
                     <table class="table table-borderless" style="border-collapse: collapse;">
                         <thead>
@@ -257,8 +264,9 @@
                             </tr>                        
                         </tbody>
                     </table>
-                </div>
+                </div>  <!-- 4) 닫는 태그 -->
 
+				<!-- 5) 결제 동의 -->
                 <div class="card" style="width:25rem; padding:20px 30px 0px 30px; margin-top:10px;">
                     <div>
                         <label style="padding-bottom:10px;">
@@ -276,9 +284,9 @@
                     <div class="d-grid gap-2 col-6 mx-auto" style="padding-bottom:20px;">
                         <button type="button" class="btn btn-primary" onclick="func_buy()">결제하기</button>
                     </div>
-                </div>
-            </div>
-        </div>
+                </div>  <!-- 5) 닫는 태그 -->
+            </div>  <!-- 3 + 4 + 5 -->
+        </div>  <!-- (1), (2) 닫는 태그 -->
     </form>
 </div>
 
