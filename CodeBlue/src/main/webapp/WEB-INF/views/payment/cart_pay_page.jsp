@@ -131,6 +131,26 @@
             alert("결제하시겠습니까?");
             // 추가적인 결제 로직을 여기에 작성할 수 있습니다.
         }
+        
+        // 사이드바 하단 위치 고정
+        window.addEventListener('scroll', function() {
+            var sidebar = document.getElementById('sidebar');
+            var footer = document.getElementById('footer');
+
+            // 윈도우 높이와 스크롤 값 계산
+            var windowHeight = window.innerHeight;
+            var footerTop = footer.getBoundingClientRect().top + window.pageYOffset;
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // footer와 사이드바가 겹치지 않도록 하는 조건
+            if (scrollTop + windowHeight >= footerTop) {
+                sidebar.style.position = 'absolute';
+                sidebar.style.top = (footerTop - sidebar.offsetHeight) + 'px';
+            } else {
+                sidebar.style.position = 'fixed';
+                sidebar.style.top = 'auto';  // 스크롤 상단에서는 기본 fixed로 유지
+            }
+        });
     </script>
 </head>
 <body>
@@ -138,27 +158,45 @@
 <div class="container">
 <h5 class="container" style="font: bold;">결제 내역</h5>
 
-<div class="container" style="display:flex; gap:10px;">
+<div class="container" style="display:flex;">
 <!-- (1) 상품 내역 -->
-<div class="card" style="display:flex-direction:row; gap:20px; padding: 20px 0px 0px 20px; margin-top:10px; margin-bottom:10px;">
+<div style="display:flex-direction:row; gap:10px; margin-bottom:10px;">
 	<c:forEach var="game" items="${selectedGames}">
-		<div style="display:flex; gap:10px; width:50rem;">
-			<div>
-				<img src="/resources/images/${game.fileTitle}.jpg" style="width:20rem;">
-			</div>
-			<div style="text-align: left; margin-top:25px;">
-				<p>게임명 : ${game.fileTitle}</p>
-				<p>구매수량 : 1개</p>
-				<p class="item-price">상품가격 : ${game.price}원</p>
-			</div>
+		<div class="card" style="width:53rem; padding:10px 0px 0px 10px; margin-top:10px;">
+			<table class="table table-borderless" style="border:0;">         
+	            <tbody>
+	                <tr>
+	                    <th rowspan="4" style="border:0;">
+	                        <img src="/resources/images/${game.fileTitle}.jpg" style="width:21rem;">
+	                    </th>
+	                </tr>
+	                <tr>
+	                    <td style="padding-right:200px; vertical-align : middle; width:100%;
+	                    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+	                    <p style="margin-top:10px; padding-left: 20px;">게임명 : ${game.fileTitle}</p>
+	                    <p style="margin-top:20px; padding-left: 20px;">구매수량 : 1개</p>
+	                    <p style="margin-top:20px; padding-left: 20px;">상품가격 : ${game.price}원</p>
+	                    </td>
+	                </tr>
+	                <%-- <tr>
+	                    <td align="left" style="vertical-align : middle;">구매수량 : 1개</td>
+	                </tr>
+	                <tr>
+	                    <td class="item-price" align="left" style="vertical-align : middle;">상품가격 : ${game.price}원</td>
+	                </tr> --%>
+	            </tbody>
+	        </table>
 		</div> 
 	</c:forEach>
 </div>  <!-- (1) 닫는 태그 -->
 
+<!-- (2) 사이드바 -->
+<div class="sidebar" id="sidebar" style="position: fixed; top: auto; right: 100px;
+transition: transform 0.3s ease; z-index: 1000;">
 <!-- (2) 결제 내역 묶음 -->
 <div style="display:flex-direction:row; gap:20px; margin-bottom:10px;">
 	<!-- 2) 주문자정보 -->
-    <div class="card" style="width:25rem; padding:10px 0px 0px 10px; margin-top:10px;">
+    <div class="card" style="width:25rem; padding:10px 0px 0px 20px; margin-top:10px;">
         <table class="table table-borderless" style="border-collapse: collapse;">
             <thead>
                 <tr style="display:flex; gap:10px;">
@@ -168,13 +206,13 @@
             </thead>
             <tbody>
                 <tr>
-                    <th>성명 : ${sessionScope.memberVO.membername}</th>
+                    <td>성명 : ${sessionScope.memberVO.membername}</td>
                 </tr>
                 <tr>
-                    <th>주문자 전화번호 : ${sessionScope.memberVO.phonenumber}</th>
+                    <td>주문자 전화번호 : ${sessionScope.memberVO.phonenumber}</td>
                 </tr>
                 <tr>
-                    <th>주문자 이메일 주소 : ${sessionScope.memberVO.email}</th>
+                    <td>주문자 이메일 주소 : ${sessionScope.memberVO.email}</td>
                 </tr>
             </tbody>
         </table>
@@ -211,27 +249,27 @@
             </thead>         
             <tbody>
                 <tr>
-                    <th>
+                    <td>
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                         <label class="form-check-label" for="flexRadioDefault1">신용카드</label>
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                         <label class="form-check-label" for="flexRadioDefault2">무통장 입금</label>
-                    </th>
+                    </td>
                 </tr>
                 <tr>
-                    <th>
+                    <td>
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
                         <label class="form-check-label" for="flexRadioDefault3">네이버페이</label>
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
                         <label class="form-check-label" for="flexRadioDefault4">카카오페이</label>
-                    </th>
+                    </td>
                 </tr>
                 <tr style="display:none;">
-                    <th colspan="2">
+                    <td colspan="2">
                         <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                             <option selected>은행 선택</option>
                             <option value="1">KB국민은행</option>
@@ -240,7 +278,7 @@
                             <option value="4">IBK기업은행</option>
                             <option value="5">카카오뱅크</option>
                         </select>
-                    </th>
+                    </td>
                 </tr>
                 <tr style="display:none;">
                     <th colspan="2">
@@ -286,9 +324,13 @@
         </div>
     </div>
 </div>  <!-- (2) 닫는 태그 -->
+</div>
 </div>  <!-- (1), (2) -->
 
 </div>
+
+<div id="footer">
 <jsp:include page="/common/footer.jsp"></jsp:include>
+</div>
 </body>
 </html>
