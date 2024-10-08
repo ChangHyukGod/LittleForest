@@ -44,6 +44,8 @@
 	    align-self: flex-start; 
 	}
 
+
+
         .left-align h4 {
             margin-top: 50px; 
             margin-bottom: 20px; 
