@@ -7,6 +7,23 @@
 <head>
     <meta charset="UTF-8">
     <title>회원 정보 수정</title>
+    <script type="text/javascript">
+    window.onload = function() {
+        var userPhone = "${sessionScope.memberVO.phonenumber}";  // "010-1234-5678"
+
+        if (userPhone) {
+            // 전화번호를 '-' 기준으로 분리합니다.
+            var phoneParts = userPhone.split("-");
+        
+            // 각 input 필드에 값을 나누어 넣습니다.
+            document.getElementById('phonePart2').value = phoneParts[1]; // phonePart2는 중간 부분
+            document.getElementById('phonePart3').value = phoneParts[2]; // phonePart3는 마지막 부분
+        }
+    };
+	function goHome() {
+		window.location.href = "/"; // 로고 클릭시 홈화면으로 페이지를 새로 고침
+	}
+    </script>
     <style>
     <style>
        body {
@@ -224,7 +241,7 @@
             <div class="bottom">
                 <span>포인트 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> P &nbsp; &nbsp;</span>
                 <span>쿠폰 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> 개 &nbsp; &nbsp;</span>
-                <span>예치금 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> 원</span>
+<!--                 <span>예치금 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> 원</span> -->
             </div>
         </div>
 <br>
@@ -232,7 +249,7 @@
             <!-- 회원 인증 -->
             <p><b>회원 인증</b></p>
             <hr class="underline">
-            <form action="/register" method="POST">
+            <form action="/" method="POST">
                 <div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top: 10px;">
                     <p style="color: black; margin: 0; width: 150px;">인증여부</p>
                     <div style="margin-left: 10px;">
@@ -289,7 +306,13 @@
     <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
         <p class="input-label" style="margin: 0;">비밀번호<b class="text-danger"> *</b></p>
         <div style="margin-left: 10px; display: flex; align-items: center;">
-            <input type="password" id="password" name="password" class="form-control" placeholder="" required style="background-color: #F6F6F6; color: #333;">
+            <input type="password" 
+            id="password" 
+            name="password" 
+            class="form-control" 
+            placeholder="" 
+            required style="background-color: #F6F6F6; color: #333;"
+            value="">
             <p style="margin: 0 0 0 15px; font-size: 12px; white-space: nowrap;">(8~16자의 영문 대/소문자, 숫자, 특수문자)</p>
         </div>
     </div>
@@ -338,9 +361,28 @@
                 <option value="019">019</option>
             </select>
             <span style="margin: 0 5px;">-</span>
-            <input class="form-control form-control-sm" type="text" placeholder="" aria-label="번호 입력" style="width: 100px; margin: 0;">
+            <input class="form-control form-control-sm"
+           	 id = "phonePart2"
+           	 name="phonePart2"
+             type="text"  
+             aria-label="번호 입력" 
+             style="width: 100px; 
+             margin: 0;"
+             maxlength="4"
+             value = ""
+             >
+             
             <span style="margin: 0 5px;">-</span>
-            <input class="form-control form-control-sm" type="text" placeholder="" aria-label="번호 입력" style="width: 100px; margin: 0;">
+            
+            <input class="form-control form-control-sm"
+             id = "phonePart3"
+           	 name="phonePart3" 
+            type="text"  
+            aria-label="번호 입력" 
+            style="width: 100px; 
+            margin: 0;"
+            maxlength="4"
+            value="">
         </div>
     </div>
 </div>
@@ -417,8 +459,20 @@
 <br>
 
 <div class="text-center">
-    <button type="submit" class="btn btn-success" style="padding: 10px 40px; font-size: 14px; width: 180px; margin-bottom: 50px; margin-right:5px;">회원정보 수정</button>
-    <button type="submit" class="btn btn-outline-success" style="padding: 10px 40px; font-size: 14px; width: 180px; margin-bottom: 50px; margin-left:5px;">취소</button>
+    <button type="submit" class="btn btn-success" 
+    style="padding: 10px 40px; 
+    font-size: 14px; 
+    width: 180px; 
+    margin-bottom: 50px; 
+    margin-right:5px;">회원정보 수정</button>
+    
+    <button type="submit" 
+    class="btn btn-outline-success" 
+    style="padding: 10px 40px; 
+    font-size: 14px; width: 180px; 
+    margin-bottom: 50px; 
+    margin-left:5px;"
+    onclick="goHome();">취소</button>
 </div>
 
 </div>
