@@ -364,7 +364,16 @@
                          	<h5 class="card-title" style="font-weight: bold;" ><c:out value="${data.fileTitle}" /></h5>
                          	<p class="card-text"><c:out value="${data.genre}" /></p>
                    	 		<div class="d-flex justify-content-between mt-auto">
-						    	<p class="card-price" style="font-weight: bold;">\ <c:out value="${data.price}" /></p>
+						    	<p class="card-price" style="font-weight: bold;">
+						    		<c:choose>
+	                                    <c:when test="${data.price == '0'}">
+	                                        무료
+	                                    </c:when>
+	                                    <c:otherwise>
+	                                        \ <c:out value="${data.price}"/>
+	                                    </c:otherwise>
+                                	</c:choose>
+								</p>
 						    	<button class="btn border-0 btn-sm" style="font-size: 20px;" type="button" onclick="fn_cart('<c:out value="${data.uuid}"></c:out>')">
 						        <i class="bi bi-cart-plus" style="position: relative; top: -10px;"></i>
 						  	  	</button>
