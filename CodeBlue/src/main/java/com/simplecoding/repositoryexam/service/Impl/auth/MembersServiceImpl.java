@@ -26,21 +26,19 @@ public class MembersServiceImpl implements MembersService{
 
 	@Autowired
 	MemberMapper memberMapper;
-
-	@Override
-	public MembersVO authenticateMembers(MembersVO loginVO) throws Exception {
-		// TODO memberMapper 
-		MembersVO membersVO = memberMapper.authenticate(loginVO);
-		if(membersVO != null) {
-			 boolean isMatchedPassword = BCrypt.checkpw(loginVO.getPassword(), membersVO.getPassword());
-			 
-			 if(isMatchedPassword == false) {
-				 throw new Exception("암호가 틀립니다.");
-			 }
-		}
-		return membersVO;
-	}
 	
+	//로그인
+	@Override
+	public MembersVO authenticateMembers(MembersVO loginVO) {
+	    MembersVO membersVO = memberMapper.authenticate(loginVO);
+
+	    if (membersVO == null || !BCrypt.checkpw(loginVO.getPassword(), membersVO.getPassword())) {
+	        return null; // 회원이 없거나 비밀번호가 틀릴 경우 null 반환
+	    }
+
+	    return membersVO; // 인증 성공 시 회원 정보 반환
+	}
+
 	//회원가입
 	@Override
 	public void registerMembers(MembersVO membersVO) throws Exception {
@@ -55,10 +53,4 @@ public class MembersServiceImpl implements MembersService{
         return memberMapper.countByUsername(username) > 0;
     }
 
-
-
-
-
-	
-	
 }
