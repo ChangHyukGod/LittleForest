@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -97,7 +98,7 @@ public class MembersController {
 	@GetMapping("/logout")
 	public String logout(HttpSession httpSession) {
 //		1) 세션에 memberVO 객체 삭제
-		httpSession.removeAttribute("membersVO");
+		httpSession.removeAttribute("memberVO");
 //		2) 세션 무효화 실행
 		httpSession.invalidate();
 		return "redirect:/login";
@@ -123,12 +124,6 @@ public class MembersController {
 		return "redirect:/register";
 
 	}
-
-	@GetMapping("/infofix")
-	public String infofix() {
-		return "auth/infofix";
-	}
-
 	@GetMapping("/auth/check-username") // 경로를 수정해야 합니다.
 	public ResponseEntity<String> checkUsernameDuplicate(@RequestParam String username) {
 		boolean isDuplicate = membersService.isUsernameDuplicate(username);
@@ -141,4 +136,32 @@ public class MembersController {
 			return new ResponseEntity<>("사용 가능한 아이디입니다.", headers, HttpStatus.OK);
 		}
 	}
+	
+	@GetMapping("/passwordCheck")
+	public String password() {
+		
+		return "auth/passwordcheck";
+	}
+	
+	@PostMapping("/passwordChecking")
+	public String passwordcheck(@ModelAttribute("password") String inputPassword, HttpSession session, Model model) {
+		MembersVO membersVO = (MembersVO) session.getAttribute("memberVO");
+		
+		// 회원이 세션에 없을 경우 null 처리
+	    if (membersVO == null) {
+	        model.addAttribute("error", "로그인이 필요합니다.");
+	        return "/auth/login";  // 로그인 페이지로 리다이렉트
+	    }
+	    String hashedPassword = membersVO.getPassword();
+		 if (!BCrypt.checkpw(inputPassword, hashedPassword)) {
+	            model.addAttribute("error", "비밀번호가 일치하지 않습니다.");
+	            return "/auth/passwordcheck";  // 비밀번호 확인 페이지로 리다이렉트
+	      }
+		
+		 return "/auth/infofix";
+	}
+	
+	@PostMapping("/infofix")
+	public 
+	
 }
