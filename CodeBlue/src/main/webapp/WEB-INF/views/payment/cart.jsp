@@ -51,6 +51,12 @@
 
 
         let totalPrice = 0;
+        
+        function updateCheckedCount() {
+            const checkboxes = document.querySelectorAll('.item-checkbox:checked');
+            const checkedCount = checkboxes.length;
+            document.getElementById('checked-count').innerText = checkedCount + '개 구매하기';
+        }
 
         function updateTotalPrice() {
             const checkboxes = document.querySelectorAll('.item-checkbox:checked');
@@ -64,6 +70,7 @@
 
             document.getElementById('total-price').innerText = totalPrice.toLocaleString('ko-KR') + '원';
             updateSelectAllCheckbox();
+            updateCheckedCount(); // 초기 체크 수 업데이트
         }
 
         function updateSelectAllCheckbox() {
@@ -92,9 +99,12 @@
 
             document.getElementById('total-price').innerText = totalPrice.toLocaleString('ko-KR') + '원';
             updateSelectAllCheckbox();
+            updateCheckedCount(); // 초기 체크 수 업데이트
         }
 
-        window.onload = initializeTotalPrice;
+        window.onload = function() {
+            initializeTotalPrice();
+        };
 
         function proceedToCheckout() {
             var isLoggedIn = ${sessionScope.memberVO != null};
@@ -198,13 +208,14 @@
          <!-- 장바구니가 비어있지 않으면(= 아이템이 하나라도 있으면) 사이드바가 보임    -->
             <c:if test="${not empty cartItems}">
                 <div class="sidebar" id="sidebar" style="position: fixed; top: auto; right: 100px; width: 18rem;
-                margin-top:10px; border: 1px solid lightgray; padding: 20px 10px 0px 20px; border-radius: 5px;
+                margin-top:10px; border: 1px solid lightgray; padding: 20px 0px 0px 20px; border-radius: 5px;
                 transition: transform 0.3s ease; z-index: 1000;">
                     <h4 style="margin: 0 0 10px;">결제 금액</h4>
                     <h5 style="margin: 0;"><span id="total-price">0원</span></h5>
                     <br/>
                     <div class="button-group" style="display: flex; gap: 15px; margin-bottom:20px;">
-                        <button type="button" class="btn btn-success" onclick="proceedToCheckout()"><span id="cartCount">${cartCount}</span>개 구매하기</button>
+                        <button type="button" class="btn btn-success" onclick="proceedToCheckout()"><p id="checked-count"></p></button>
+                        <!-- <span id="cartCount">${cartCount}</span> : 카드 개수 카운트 -->
                         <a href="/" class="btn btn-outline-dark">홈으로 이동</a>
                     </div>
                 </div>
