@@ -90,7 +90,26 @@
           height: 300px; /* 카드 높이를 고정합니다. */
       }    
       
-              
+    /* 상단으로 이동하는 버튼 스타일 */
+#scrollToTop {
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+   display: none; /* 기본적으로 숨김 */
+   background-color: #007bff;
+   color: white;
+   border: none;
+   border-radius: 50%;
+   width: 40px;
+   height: 40px;
+   font-size: 20px;
+   cursor: pointer;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#scrollToTop:hover {
+   background-color: #0056b3;
+}   
     </style>
     
     <script type="text/javascript" defer="defer">
@@ -194,6 +213,28 @@
 //        fn_cart 함수는 클라이언트 측에서 UUID를 서버로 보내는 역할을 하며, 서버의 addToCart 메서드는 이 UUID를 세션의 장바구니 리스트에 추가하는 역할을 합니다.
 //        따라서, 이 과정에서 세션에 UUID 값이 저장됩니다.
    }
+    
+ // 페이지 스크롤에 따른 버튼 표시
+    window.onscroll = function() {
+       const scrollToTopButton = document.getElementById('scrollToTop');
+       if (document.body.scrollTop > 100
+             || document.documentElement.scrollTop > 100) {
+          scrollToTopButton.style.display = "block";
+       } else {
+          scrollToTopButton.style.display = "none";
+       }
+    };
+
+    // 버튼 클릭 시 상단으로 스크롤
+    document.addEventListener('DOMContentLoaded', function() {
+       document.getElementById('scrollToTop').onclick = function() {
+          window.scrollTo({
+             top : 0,
+             behavior : 'smooth'
+          });
+       };
+    });
+
     </script>
 </head>
 <body>
@@ -385,6 +426,10 @@
             </div>
         </form>
     </div>
+    
+    <button id="scrollToTop" title="Top">↑</button>
+   <!-- 상단으로 이동하는 버튼 추가 -->
+    
 <jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 </html>
