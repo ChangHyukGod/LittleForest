@@ -123,19 +123,6 @@
         .container {
             flex: 1; /* 남은 공간을 채우기 */
         }
-
-        .sidebar {
-            position: fixed;
-            top: 250px;
-            right: 100px;
-            width: 16rem;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px 0px 0px 20px;
-            margin-top: 10px;
-            transition: transform 0.3s ease;
-            z-index: 1000;
-        }
     </style>
 </head>
 <body>
@@ -187,8 +174,8 @@
          
          <!-- 장바구니가 비어있지 않으면(= 아이템이 하나라도 있으면) 사이드바가 보임    -->
             <c:if test="${not empty cartItems}">
-                <div class="sidebar" id="sidebar" style="position: fixed; top: 250px; right: 100px; width: 16rem;
-                border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding:20px 0px 0px 20px; margin-top:10px;
+                <div class="sidebar" id="sidebar" style="position: fixed; top: auto; right: 100px; width: 18rem;
+                margin-top:10px; border: 1px solid lightgray; padding: 30px 0px 0px 30px; border-radius: 5px;
                 transition: transform 0.3s ease; z-index: 1000;">
                     <h4 style="margin: 0 0 10px;">결제 금액</h4>
                     <h5 style="margin: 0;"><span id="total-price">0원</span></h5>
