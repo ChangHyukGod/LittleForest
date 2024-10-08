@@ -213,11 +213,12 @@
                     <h4 style="margin: 0 0 10px;">결제 금액</h4>
                     <h5 style="margin: 0;"><span id="total-price">0원</span></h5>
                     <br/>
-                    <div class="button-group" style="display: flex; gap: 15px; margin-bottom:20px;">
-                        <button type="button" class="btn btn-success" onclick="proceedToCheckout()"><p id="checked-count"></p></button>
-                        <!-- <span id="cartCount">${cartCount}</span> : 카드 개수 카운트 -->
-                        <a href="/" class="btn btn-outline-dark">홈으로 이동</a>
-                    </div>
+                    <div class="button-group" style="display: flex; gap: 15px; margin-bottom: 20px;">
+					    <button type="button" class="btn btn-success" style="display: flex; justify-content: center; align-items: center; height: 50px;" onclick="proceedToCheckout()">
+					        <p id="checked-count" style="margin: 0;">장바구니 확인</p>
+					    </button>
+					    <a href="/" class="btn btn-outline-dark" style="display: flex; justify-content: center; align-items: center; height: 50px;">홈으로 이동</a>
+					</div>
                 </div>
             </c:if>
         </div>
