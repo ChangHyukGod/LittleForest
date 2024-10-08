@@ -136,17 +136,17 @@
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
 <div class="container">
-<h5 style="font: bold;">주문서</h5>
+<h5 class="container" style="font: bold;">결제 내역</h5>
 
 <div class="container" style="display:flex; gap:10px;">
 <!-- (1) 상품 내역 -->
-<div class="container" style="display:flex-direction:row; gap:20px; margin-top:10px; margin-bottom:10px;">
+<div class="card" style="display:flex-direction:row; gap:20px; padding: 20px 0px 0px 20px; margin-top:10px; margin-bottom:10px;">
 	<c:forEach var="game" items="${selectedGames}">
-		<div class="card" style="display:flex; gap:10px; width:50rem;">
+		<div style="display:flex; gap:10px; width:50rem;">
 			<div>
 				<img src="/resources/images/${game.fileTitle}.jpg" style="width:20rem;">
 			</div>
-			<div>
+			<div style="text-align: left; margin-top:25px;">
 				<p>게임명 : ${game.fileTitle}</p>
 				<p>구매수량 : 1개</p>
 				<p class="item-price">상품가격 : ${game.price}원</p>
@@ -156,7 +156,7 @@
 </div>  <!-- (1) 닫는 태그 -->
 
 <!-- (2) 결제 내역 묶음 -->
-<div class="container" style="display:flex-direction:row; gap:20px; margin-bottom:10px;">
+<div style="display:flex-direction:row; gap:20px; margin-bottom:10px;">
 	<!-- 2) 주문자정보 -->
     <div class="card" style="width:25rem; padding:10px 0px 0px 10px; margin-top:10px;">
         <table class="table table-borderless" style="border-collapse: collapse;">
