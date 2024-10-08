@@ -25,7 +25,7 @@
 	}
     function fn_save() {
 //      1) action 속성 : "/basic/dept/edit"
-     document.detailForm.action = "/basic/dept/edit";
+     document.detailForm.action = "/infofix";
 //      2) submit() 실행
      document.detailForm.submit();
   }
@@ -292,7 +292,6 @@
 		    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
 		        <p class="input-label" style="margin: 0;">아이디<b class="text-danger"> *</b></p>
 		        <div style="margin-left: 10px; display: flex; align-items: center;">
-		
 		            <input class="form-control" 
 		            		id = "username"
 		            		name = "username"
@@ -342,11 +341,33 @@
 
 <!-- 이름 -->
 		<div class="form-group" style="margin: -10px 0 10px 0;">  
-		    <label for="name"></label>
+		    <label for="membername"></label>
 		    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
 		        <p class="input-label" style="margin: 0;">이름<b class="text-danger"> *</b></p>
 		        <div style="margin-left: 10px; display: flex; align-items: center;">
-		           <input class="form-control" type="text" value="${sessionScope.memberVO.membername}" aria-label="readonly input example" readonly>
+		           <input class="form-control" 
+		           			id="membername"
+		           			name="membername"
+		           			type="text" 
+		           			value="${sessionScope.memberVO.membername}" 
+		           			aria-label="readonly input example" readonly>
+		        </div>
+		    </div>
+		</div>
+<!-- 실선 추가 -->
+<hr style="border: 1px solid #BDBDBD; width: 100%; margin: 10px 0 0 0;"> 
+<!-- 나이 -->
+		<div class="form-group" style="margin: -10px 0 10px 0;">  
+		    <label for="age"></label>
+		    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
+		        <p class="input-label" style="margin: 0;">나이<b class="text-danger"> *</b></p>
+		        <div style="margin-left: 10px; display: flex; align-items: center;">
+		           <input class="form-control" 
+		           		id = "age"
+		           		name = "age"
+		           		type="text" 
+		           		value="${sessionScope.memberVO.age}" 
+		           		aria-label="readonly input example" readonly>
 		        </div>
 		    </div>
 		</div>
@@ -359,7 +380,13 @@
 		    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
 		        <p class="input-label" style="margin: 0;">휴대전화 (선택)</p>
 		        <div style="margin-left: 10px; display: flex; align-items: center;">
-		            <select class="form-select form-select-sm" aria-label="번호 선택" style="width: 100px; margin-right: 5px; margin: 0;">
+		            <select class="form-select form-select-sm" 
+		            		id = "phonePart1"
+		           	 		name="phonePart1"
+		            		aria-label="번호 선택" 
+		            		style="width: 100px; 
+		            		margin-right: 5px; 
+		            		margin: 0;">
 		                <option value="010" selected>010</option>
 		                <option value="011">011</option>
 		                <option value="016">016</option>
@@ -395,8 +422,6 @@
 		</div>
 <!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 10px 0 0 0;"> 
-
-
 	<div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top:10px;">
 	    <p style="color: black; margin: 0; width: 150px;">SMS 수신여부<b class="text-danger"> *</b></p>
 	    <div style="margin-left: 10px; display: flex; align-items: center;">
