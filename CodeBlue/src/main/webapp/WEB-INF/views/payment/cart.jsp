@@ -112,6 +112,31 @@
             .catch(error => console.error('Error:', error));
         }
     </script>
+    
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* 전체 화면 높이 */
+        }
+
+        .container {
+            flex: 1; /* 남은 공간을 채우기 */
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 250px;
+            right: 100px;
+            width: 16rem;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 0px 0px 20px;
+            margin-top: 10px;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+    </style>
 </head>
 <body>
     <jsp:include page="/common/header.jsp"></jsp:include>
@@ -159,7 +184,8 @@
                     <p>장바구니가 비어 있습니다.</p>
                 </c:if>
             </div>
-
+         
+         <!-- 장바구니가 비어있지 않으면(= 아이템이 하나라도 있으면) 사이드바가 보임    -->
             <c:if test="${not empty cartItems}">
                 <div class="sidebar" id="sidebar" style="position: fixed; top: 250px; right: 100px; width: 16rem;
                 border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding:20px 0px 0px 20px; margin-top:10px;
