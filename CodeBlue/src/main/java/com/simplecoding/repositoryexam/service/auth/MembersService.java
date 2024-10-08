@@ -18,5 +18,6 @@ public interface MembersService {
 	public MembersVO authenticateMembers(MembersVO membersVO);
 	public void registerMembers(MembersVO membersVO) throws Exception;
 	boolean isUsernameDuplicate(String name);
+	void infofix(MembersVO membersVO) throws Exception;
 
 }
