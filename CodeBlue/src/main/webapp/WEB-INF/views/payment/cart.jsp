@@ -10,7 +10,7 @@
 <head>
     <title>장바구니</title>
     <script>
-        // 장바구니에서 게임 삭제
+        // 장바구니에서 게임 개별 삭제
         function confirmDelete(uuid) {
             if (confirm("정말로 삭제하시겠습니까?")) {
                 fetch('/main/removeFromCart', {
@@ -30,6 +30,25 @@
             }
             return false;
         }
+        
+     	// 장바구니에서 게임 전체 삭제
+        function removeAllFromCart() {
+            if (confirm("장바구니의 모든 아이템을 삭제하시겠습니까?")) {
+                fetch('/main/removeAllFromCart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                    window.location.href = '/main/cart'; // 장바구니 페이지로 리다이렉트
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+
 
         let totalPrice = 0;
 
@@ -133,6 +152,7 @@
         </div>
         <input type="checkbox" id="select-all" onclick="toggleCheckboxes(this.checked)" style="margin-bottom: 10px;">
         전체 선택<br>
+        <button type="button" class="btn btn-outline-danger" onclick="removeAllFromCart()">전체 삭제</button>
    
         <div style="display: flex; gap: 30px;">
             <div style="display: flex-direction:row;">
@@ -168,7 +188,7 @@
                 </c:if>
 
                 <c:if test="${empty cartItems}">
-                    <p>장바구니가 비어 있습니다.</p>
+                    <p style="margin: 5px 0;">장바구니가 비어 있습니다.</p>
                 </c:if>
             </div>
          
