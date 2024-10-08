@@ -326,8 +326,8 @@
                 </a>
                  <div class="card-body">
                      <h5 class="card-title">이터널 리턴</h5>
-                     <span class="badge rounded-pill text-bg-danger">Hot</span>
                      <br/>
+                     <span class="badge rounded-pill text-bg-danger">Hot</span>
                      <p class="card-text">배틀로얄 게임</p>
                  </div>
                </div>
@@ -338,8 +338,8 @@
                  </a>
                  <div class="card-body">
                      <h5 class="card-title">팰 월드</h5>
-                     <span class="badge rounded-pill text-bg-danger">Hot</span>
                      <br/>
+                     <span class="badge rounded-pill text-bg-danger">Hot</span>
                      <p class="card-text">유사 포켓몬</p>
                  </div>
                </div>
@@ -350,8 +350,8 @@
                  </a>
                  <div class="card-body">
                      <h5 class="card-title">휴먼 폴 플랫</h5>
-                     <span class="badge rounded-pill text-bg-danger">Hot</span>
                      <br/>
+                     <span class="badge rounded-pill text-bg-danger">Hot</span>
                      <p class="card-text">협동 탈출 게임</p>
                  </div>
                </div>
