@@ -23,24 +23,25 @@ style>body {
 	display: flex;
 }
 
-.main-content {
-	flex-grow: 1;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-left: -115px;
-}
-
-.left-align {
-	position: sticky; /* 스크롤 시 고정되는 속성 */
-	top: 0; /
-	z-index: 100;
-	margin: 30px 20px 0 -200px;
-	text-align: left !important;
-	padding: 50px;
-	width: 300px;
-	align-self: flex-start;
-}
+	.main-content {
+	    flex-grow: 1; 
+	    display: flex;
+	    flex-direction: column; 
+	    align-items: center; 
+	    margin-left: -80px;
+	    padding-left: 100px; 
+	}
+	
+	.left-align {
+	    position: fixed; 
+	    top: 120px; 
+	    left: 20px; 
+	    z-index: 100;
+	    padding: 50px;
+	    width: 100%; 
+	    max-width: 300px; 
+	    align-self: flex-start; 
+	}
 
 .left-align h4 {
 	margin-top: 50px;

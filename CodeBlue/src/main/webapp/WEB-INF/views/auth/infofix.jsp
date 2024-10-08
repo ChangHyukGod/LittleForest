@@ -23,35 +23,36 @@
 	    width: 90%; 
 	   display: flex;
 	}
+	
 	.main-content {
 	    flex-grow: 1; 
-	     display: flex;
+	    display: flex;
 	    flex-direction: column; 
 	    align-items: center; 
-	    margin-left:-115px;
+	    margin-left: -80px;
+	    padding-left: 100px; 
+	}
+	
+	.left-align {
+	    position: fixed; 
+	    top: 120px; 
+	    left: 20px; 
+	    z-index: 100;
+	    padding: 50px;
+	    width: 100%; 
+	    max-width: 300px; 
+	    align-self: flex-start; 
 	}
 
-	.left-align {
-		position: sticky; /* 스크롤 시 고정되는 속성 */
-	    top: 0; /
-		z-index: 100;
-     	margin: 30px 20px 0 -200px; 
-        text-align: left !important;
-        padding: 50px;
-        width: 300px;
-        align-self: flex-start; 
-        }
+     .left-align h4 {
+         margin-top: 50px; 
+         margin-bottom: 20px; 
+     }
 
-
-
-        .left-align h4 {
-            margin-top: 50px; 
-            margin-bottom: 20px; 
-        }
-
-        .left-align p { 
-            margin-bottom: 10px;
-        }
+     .left-align p { 
+         margin-bottom: 10px;
+     }
+     
     .left-align-button {
 	    background-color: #4CAF50; 
 	    border: none; 
@@ -417,8 +418,8 @@
 <br>
 
 <div class="text-center">
-    <button type="submit" class="btn btn-success" style="padding: 10px 40px; font-size: 14px; width: 180px; margin-bottom: 50px; margin-right:5px;">회원정보 수정</button>
-    <button type="submit" class="btn btn-outline-success" style="padding: 10px 40px; font-size: 14px; width: 180px; margin-bottom: 50px; margin-left:5px;">취소</button>
+    <button type="submit" class="btn btn-success" style="padding: 10px 40px; font-size: 14px; width: 180px; margin-bottom: 100px; margin-right:5px;">회원정보 수정</button>
+    <button type="submit" class="btn btn-outline-success" style="padding: 10px 40px; font-size: 14px; width: 180px; margin-bottom: 100px; margin-left:5px;">취소</button>
 </div>
 
 </div>
