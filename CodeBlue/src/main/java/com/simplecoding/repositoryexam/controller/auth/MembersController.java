@@ -161,7 +161,5 @@ public class MembersController {
 		 return "/auth/infofix";
 	}
 	
-	@PostMapping("/infofix")
-	public 
 	
 }
