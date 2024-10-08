@@ -151,7 +151,46 @@
                 sidebar.style.top = 'auto';  // 스크롤 상단에서는 기본 fixed로 유지
             }
         });
+        
+        /* window.addEventListener('scroll', function() {
+            var sidebar = document.getElementById('sidebar');
+            var footer = document.getElementById('footer');
+            
+            // 페이지 전체 높이, 사이드바 높이, 푸터의 위치를 계산
+            var contentHeight = document.body.scrollHeight;
+            var sidebarHeight = sidebar.offsetHeight;
+            var footerTop = footer.getBoundingClientRect().top + window.pageYOffset;
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            var windowHeight = window.innerHeight;
+            
+            // 만약 페이지 내용이 사이드바보다 짧다면, 사이드바를 고정
+            if (contentHeight <= sidebarHeight + windowHeight) {
+                sidebar.style.position = 'absolute';
+                sidebar.style.top = 'initial';  // 상단 고정
+            } else {
+                // footer와 겹치지 않도록 하는 로직
+                if (scrollTop + windowHeight >= footerTop) {
+                    sidebar.style.position = 'absolute';
+                    sidebar.style.top = (footerTop - sidebarHeight) + 'px';
+                } else {
+                    sidebar.style.position = 'fixed';
+                    sidebar.style.top = 'auto';  // 사이드바가 스크롤을 따라 움직일 때
+                }
+            }
+        }); */
+
     </script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 122vh; /* 전체 화면 높이 */
+        }
+
+        .container {
+            flex: 1; /* 남은 공간을 채우기 */
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
@@ -175,15 +214,9 @@
 	                    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
 	                    <p style="margin-top:10px; padding-left: 20px;">게임명 : ${game.fileTitle}</p>
 	                    <p style="margin-top:20px; padding-left: 20px;">구매수량 : 1개</p>
-	                    <p style="margin-top:20px; padding-left: 20px;">상품가격 : ${game.price}원</p>
+	                    <p class="item-price" style="margin-top:20px; padding-left: 20px;">상품가격 : ${game.price}원</p>
 	                    </td>
 	                </tr>
-	                <%-- <tr>
-	                    <td align="left" style="vertical-align : middle;">구매수량 : 1개</td>
-	                </tr>
-	                <tr>
-	                    <td class="item-price" align="left" style="vertical-align : middle;">상품가격 : ${game.price}원</td>
-	                </tr> --%>
 	            </tbody>
 	        </table>
 		</div> 
