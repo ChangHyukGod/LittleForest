@@ -51,12 +51,12 @@
         	border-radius: 50px !important ; /* 둥글게 설정 */
         	border: 1px solid transparent; /* 기본 외곽선 */
         	transition: border-color 0.3s; /* 부드러운 전환 효과 */
-        	background-color: rgb(103, 216, 103);
-        	color: white;
+        	
        }
    
        	.btn-group .btn:hover {
            background-color: rgb(65, 194, 65); /* 마우스 오버 시 외곽선 색상 변경 */
+           color: white;
        }
        
        .carousel-item img {
