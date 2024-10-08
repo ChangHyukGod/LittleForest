@@ -8,32 +8,67 @@
 <title>FAQ 이메일</title>
 </head>
 <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F4FFF4; /* 연한 초록색 배경 */
+}
+
 .title-box {
-	margin-top: 70px;
+    margin-top: 70px;
 }
 
 .title {
-	text-align: center;
-	font-size: 34px;
-	font-weight: bolder;
+    text-align: center;
+    font-size: 34px;
+    font-weight: bolder;
 }
 
 #big-box {
-	height: auto;
-	width: 50%;
-	margin-top: 70px;
-	margin-bottom: 70px;
-	margin-top: 70px;
+    height: auto;
+    width: 50%;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    background-color: #E8FFE8; /* 연한 초록색 배경 */
+    border: 2px solid #28A745; /* 진한 초록색 테두리 */
+    border-radius: 15px;
+    padding: 20px;
 }
 
 .bi-envelope-at {
-	color: rgb(34, 238, 34);
+    color: #28A745;
 }
 
-.error-message {
-	color: red;
-	font-weight: bold;
-	margin-top: 5px;
+.form-label {
+    font-weight: bold;
+    color: #28A745; /* 폼 라벨 초록색 */
+}
+
+.input-group-text, .form-select, .form-control {
+    border: 2px solid #28A745; /* 진한 초록색 테두리 */
+}
+
+.btn-primary {
+    background-color: #28A745; /* 초록색 버튼 */
+    border-color: #28A745;
+}
+
+.btn-primary:hover {
+    background-color: #218838; /* 버튼 호버 시 진한 초록색 */
+    border-color: #1E7E34;
+}
+
+.btn-outline-primary, .btn-outline-dark {
+    color: #28A745; /* 버튼 텍스트 초록색 */
+    border-color: #28A745; /* 진한 초록색 테두리 */
+}
+
+.btn-outline-primary:hover, .btn-outline-dark:hover {
+    background-color: #E8FFE8; /* 버튼 호버 시 연한 초록색 */
+    border-color: #28A745;
+}
+
+.form-text {
+    color: #218838; /* 안내 텍스트 초록색 */
 }
 </style>
 <script type="text/javascript">

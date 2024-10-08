@@ -51,15 +51,17 @@
         	border-radius: 50px !important ; /* 둥글게 설정 */
         	border: 1px solid transparent; /* 기본 외곽선 */
         	transition: border-color 0.3s; /* 부드러운 전환 효과 */
+        	background-color: rgb(103, 216, 103);
+        	color: white;
        }
    
        	.btn-group .btn:hover {
-           border-color: black; /* 마우스 오버 시 외곽선 색상 변경 */
+           background-color: rgb(65, 194, 65); /* 마우스 오버 시 외곽선 색상 변경 */
        }
        
        .carousel-item img {
           height: auto; /* 높이를 자동으로 설정하여 비율 유지 */
-          max-height: 400px; /* 최대 높이 설정 */
+          max-height: 550px; /* 최대 높이 설정 */
           width: 1300px; /* 너비는 자동으로 설정 */
           margin: auto; /* 중앙 정렬 */
           display: block; /* 블록 요소로 설정 */
@@ -209,29 +211,29 @@
        
        
    
-       <div class="carousel-inner" style="height: 400px;">
+       <div class="carousel-inner" style="height: 550px;">
            <div class="carousel-item active">
            <a href="http://localhost:8000/main/edition?uuid=fd6a6d13-5280-4d5a-9d39-8f3a33328681&searchKeyword=">
-               <img src="/resources/images/스타듀밸리캐러셀.jpg" class="d-block" alt="스타듀밸리캐러셀">
+               <img src="/resources/images/star.png" class="d-block" alt="스타듀밸리캐러셀">
            </a>
            </div>
            <div class="carousel-item">
            <a href="http://localhost:8000/main/edition?uuid=e44f198b-43e1-4aaf-96d4-252eed66f266&searchKeyword=">
-               <img src="/resources/images/ELDEN RING.jpg" class="d-block" alt="엘든링">
+               <img src="/resources/images/elden.jpg" class="d-block" alt="엘든링">
            </a>
            </div>
            <div class="carousel-item">
            <a href="http://localhost:8000/main/edition?uuid=ae88831c-aec7-44c3-b618-b4c464d0fdc4&searchKeyword=">
-               <img src="/resources/images/얼티밋 치킨 호스.jpg" class="d-block" alt="얼티밋 치킨">
+               <img src="/resources/images/horse.png" class="d-block" alt="얼티밋 치킨">
            </a>    
            </div><div class="carousel-item">
            <a href="http://localhost:8000/main/edition?uuid=64d83b53-ed6b-453b-a04f-ce6ec12af3a2&searchKeyword=">
-               <img src="/resources/images/Party Animals.jpg" class="d-block" alt="파티애니멀즈">
+               <img src="/resources/images/party.jpeg" class="d-block" alt="파티애니멀즈">
            </a>
            </div>
            <div class="carousel-item">
            <a href="http://localhost:8000/main/edition?uuid=c5297345-c176-472c-82e8-ad30a3900879&searchKeyword=">
-               <img src="/resources/images/Skul The Hero Slayer.jpg" class="d-block" alt="스컬">
+               <img src="/resources/images/skul.webp" class="d-block" alt="스컬">
            </a>
            </div>
        </div>
@@ -319,7 +321,7 @@
       <div>
          <h2 style="font-weight: bold; margin-bottom: 20px; margin-top: 30px;">신작게임</h2>
           <!-- 카드 5 -->
-            <div class="card border-0 mb-3" style="width: 440px; height: 250px;">
+            <div class="card border-0 mb-3" style="width: 440px; height: 280px;">
               <a href="http://localhost:8000/main/edition?uuid=64d83b53-ed6b-453b-a04f-ce6ec12af3a2&searchKeyword=">
               <img src="/resources/images/Party Animals.jpg" class="card-img-top" style="height: 200px; object-fit: cover;">
               </a>
