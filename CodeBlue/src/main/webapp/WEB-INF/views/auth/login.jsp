@@ -10,14 +10,6 @@
         // 원하는 주소로 이동
         document.location.href = "/register"; // 변경하고자 하는 URL로 수정
     }
-    
-    // 페이지 로드 시 errorMessage가 있으면 alert 창을 띄움
-//     window.onload = function() {
-//         var errorMessage = "${errorMessage}";
-//         if (errorMessage && errorMessage !== "null") {
-//             alert(errorMessage);
-//         }
-//     }
     </script>
     <style>
 
@@ -59,30 +51,26 @@
                     <div class="card-body">
                         <h4 class=" text-center mb-6 fw-bold fs-1">로그인</h4>
                         <p class="text-center mt-5 mb-5"> Little Forest의 회원으로 로그인 하시면<br>다양한 서비스를 이용하실 수 있습니다.</p>
+                        
                         <!-- Login Form -->
                         <form action="/loginProcess" method="POST">
-                            <div class="form-group">
-                                <label for="username"></label>
-								<input type="text" id="username" name="username" class="form-control" placeholder="아이디" required style="height: 50px; background-color: #F6F6F6; color: #333;">
-                            </div>
-                            <div class="form-group">
-                                <label for="password"></label>
-                                <input type="password" id="password" name="password" class="form-control" placeholder="비밀번호" required style="height: 50px; background-color: #F6F6F6; color: #333; margin-bottom: 30px;">
-                            </div>
-                             <div class="text-center mt-3" style=" margin-bottom: 15px;">
-								  <a href="findId.jsp" class="small" style="color: black; margin-right: 10px;">아이디 찾기</a> |
-								  <a href="findPassword.jsp" class="small" style="color: black; margin-left: 10px;">비밀번호 찾기</a>
-							</div>
-							<c:if test="${not empty errorMessage}">
-                          	<div class="alert alert-danger" role="alert">
-                              ${errorMessage}
-                          	</div>
-                      		</c:if>
-							
-                            <button type="submit"
-                             class="btn btn-success btn-block"
-                             >로그인</button>
-                        </form>
+						    <div class="form-group">
+						        <label for="username"></label>
+						        <input type="text" id="username" name="username" class="form-control" placeholder="아이디" 
+						               value="${not empty param.username ? param.username : ''}" required style="height: 50px; background-color: #F6F6F6; color: #333;">
+						    </div>
+						    <div class="form-group">
+						        <label for="password"></label>
+						        <input type="password" id="password" name="password" class="form-control" placeholder="비밀번호" required style="height: 50px; background-color: #F6F6F6; color: #333; margin-bottom: 30px;">
+						    </div>
+						    <c:if test="${not empty errorMessage}">
+						        <div class="alert alert-danger" role="alert">
+						            ${errorMessage}
+						        </div>
+						    </c:if>
+						    <button type="submit" class="btn btn-success btn-block">로그인</button>
+						</form>
+						
                         <div class="text-center">
                             <button type="button" 
                             		class="btn  btn-outline-success btn-block"

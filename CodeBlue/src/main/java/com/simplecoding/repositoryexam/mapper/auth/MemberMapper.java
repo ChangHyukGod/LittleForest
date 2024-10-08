@@ -1,3 +1,4 @@
+
 /**
  * 
  */
@@ -21,7 +22,7 @@ public interface MemberMapper {
 	
 	public MembersVO authenticate(MembersVO membersVO); //상세조회(인증)
 	
-	public void register(MembersVO membersVO);			// insert함수
+	public void register(MembersVO membersVO); // insert함수
 	
 	int countByUsername(String username);
 }
