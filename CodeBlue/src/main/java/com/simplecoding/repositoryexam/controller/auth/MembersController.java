@@ -154,7 +154,7 @@ public class MembersController {
 	    }
 	    String hashedPassword = membersVO.getPassword();
 		 if (!BCrypt.checkpw(inputPassword, hashedPassword)) {
-	            model.addAttribute("error", "비밀번호가 일치하지 않습니다.");
+	            model.addAttribute("errorMessage", "비밀번호가 일치하지 않습니다.");
 	            return "/auth/passwordcheck";  // 비밀번호 확인 페이지로 리다이렉트
 	      }
 		
