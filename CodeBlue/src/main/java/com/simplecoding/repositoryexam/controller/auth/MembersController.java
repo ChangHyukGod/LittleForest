@@ -160,6 +160,12 @@ public class MembersController {
 		
 		 return "/auth/infofix";
 	}
-	
+	@PostMapping("/infofix")
+	public String infofix(@RequestParam String membername,
+							@ModelAttribute MembersVO membersVO
+				)throws Exception{
+		membersService.infofix(membersVO);
+		return "redirect:/";
+	}
 	
 }

@@ -53,4 +53,17 @@ public class MembersServiceImpl implements MembersService{
         return memberMapper.countByUsername(username) > 0;
     }
 
+	@Override
+	public void infofix(MembersVO membersVO) throws Exception {
+		// TODO Auto-generated method stub
+		// 회원 비밀번호를 해시화
+        String rawPassword = membersVO.getPassword(); // 원본 비밀번호
+        String hashedPassword = BCrypt.hashpw(rawPassword, BCrypt.gensalt()); // 해시화된 비밀번호
+        
+        // 해시화된 비밀번호를 다시 membersVO에 설정
+        membersVO.setPassword(hashedPassword);
+		memberMapper.infofix(membersVO);
+		
+	}
+
 }
