@@ -10,7 +10,7 @@
 <head>
     <title>장바구니</title>
     <script>
-        // 장바구니에서 게임 삭제
+        // 장바구니에서 게임 개별 삭제
         function confirmDelete(uuid) {
             if (confirm("정말로 삭제하시겠습니까?")) {
                 fetch('/main/removeFromCart', {
@@ -30,6 +30,25 @@
             }
             return false;
         }
+        
+     	// 장바구니에서 게임 전체 삭제
+        function removeAllFromCart() {
+            if (confirm("장바구니의 모든 아이템을 삭제하시겠습니까?")) {
+                fetch('/main/removeAllFromCart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                    window.location.href = '/main/cart'; // 장바구니 페이지로 리다이렉트
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+
 
         let totalPrice = 0;
 
@@ -123,29 +142,20 @@
         .container {
             flex: 1; /* 남은 공간을 채우기 */
         }
-
-        .sidebar {
-            position: fixed;
-            top: 250px;
-            right: 100px;
-            width: 16rem;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px 0px 0px 20px;
-            margin-top: 10px;
-            transition: transform 0.3s ease;
-            z-index: 1000;
-        }
     </style>
 </head>
 <body>
     <jsp:include page="/common/header.jsp"></jsp:include>
     <div class="container">
         <div>
-            <h2 style="margin-top: 20px;">${sessionScope.memberVO.membername}님의 장바구니 (현재 : ${fn:length(cartItems)}개)</h2>
+            <h2 style="margin-top: 20px; margin-bottom:20px;">${sessionScope.memberVO.membername}님의 장바구니 (현재 : ${fn:length(cartItems)}개)</h2>
         </div>
+        <div style="display:flex; gap:48rem;">
+        <div>
         <input type="checkbox" id="select-all" onclick="toggleCheckboxes(this.checked)" style="margin-bottom: 10px;">
-        전체 선택<br>
+        전체 선택</div>
+        <button type="button" class="btn btn-danger" onclick="removeAllFromCart()">전체 삭제</button>
+        </div>
    
         <div style="display: flex; gap: 30px;">
             <div style="display: flex-direction:row;">
@@ -168,7 +178,7 @@
                                     <p class="item-price" data-price="${item.price.replaceAll('[^\\d]', '')}">가격 : ${item.price}원</p>
                                     <br />
                                     <div class="button-group" style="display: flex; gap: 20px;">
-                                        <a href="/main/buy?uuid=${item.uuid}" class="btn btn-outline-primary">구매하기</a>
+                                        <a href="/main/buy?uuid=${item.uuid}" class="btn btn-success">구매하기</a>
                                         <form action="/main/removeFromCart" method="post" onsubmit="return confirmDelete('${item.uuid}')">
                                             <input type="hidden" name="uuid" value="${item.uuid}">
                                             <button type="submit" class="btn btn-outline-danger">삭제하기</button>
@@ -181,21 +191,26 @@
                 </c:if>
 
                 <c:if test="${empty cartItems}">
-                    <p>장바구니가 비어 있습니다.</p>
+                    <p style="margin: 5px 0;">장바구니가 비어 있습니다.</p>
                 </c:if>
             </div>
          
          <!-- 장바구니가 비어있지 않으면(= 아이템이 하나라도 있으면) 사이드바가 보임    -->
             <c:if test="${not empty cartItems}">
-                <div class="sidebar" id="sidebar" style="position: fixed; top: 250px; right: 100px; width: 16rem;
-                border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding:20px 0px 0px 20px; margin-top:10px;
+                <div class="sidebar" id="sidebar" style="position: fixed; top: auto; right: 100px; width: 18rem;
+                margin-top:10px; border: 1px solid lightgray; padding: 20px 10px 0px 20px; border-radius: 5px;
                 transition: transform 0.3s ease; z-index: 1000;">
                     <h4 style="margin: 0 0 10px;">결제 금액</h4>
                     <h5 style="margin: 0;"><span id="total-price">0원</span></h5>
                     <br/>
                     <div class="button-group" style="display: flex; gap: 15px; margin-bottom:20px;">
-                        <button type="button" class="btn btn-outline-primary" onclick="proceedToCheckout()">구매하기</button>
-                        <a href="/" class="btn btn-outline-success">홈으로 이동</a>
+                        <button type="button" class="btn btn-success"
+						style="display: flex; justify-content: center; align-items: center; height: 50px;"
+						onclick="proceedToCheckout()">
+						<p id="checked-count" style="margin: 0;"></p></button>
+						<a href="/" class="btn btn-outline-dark"
+						style="display: flex; justify-content: center; align-items: center; height: 50px;">
+						홈으로 이동</a>
                     </div>
                 </div>
             </c:if>
