@@ -23,12 +23,32 @@
 	function goHome() {
 		window.location.href = "/"; // 로고 클릭시 홈화면으로 페이지를 새로 고침
 	}
-    function fn_save() {
-//      1) action 속성 : "/basic/dept/edit"
-     document.detailForm.action = "/infofix";
-//      2) submit() 실행
-     document.detailForm.submit();
+    function fn_save() {	
+   		// 전체 전화번호를 결합
+     	var fullPhoneNumber = phonePart1 + "-" + phonePart2 + "-" + phonePart3;
+    	// 숨겨진 필드에 결합된 전화번호 값을 설정
+        document.getElementById("phonenumber").value = fullPhoneNumber;
+     	document.detailForm.action = "/infofix";
+     	document.detailForm.submit();
   }
+    
+document.addEventListener('DOMContentLoaded', function() {
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const passwordError = document.getElementById('passwordError');
+
+        if (passwordInput && confirmPasswordInput && passwordError) {
+            confirmPasswordInput.addEventListener('input', function() {
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    passwordError.style.display = 'block';
+                } else {
+                    passwordError.style.display = 'none';
+                }
+            });
+        } else {
+            console.error("요소를 찾을 수 없습니다.");
+        }
+    });
     </script>
     <style>
     <style>
@@ -332,10 +352,15 @@
 		    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
 		        <p class="input-label" style="margin: 0;">비밀번호 확인<b class="text-danger"> *</b></p>
 		        <div style="margin-left: 10px; display: flex; align-items: center;">
-		            <input type="password" id="passwordConfirm" name="passwordConfirm" class="form-control" placeholder="" required style="background-color: #F6F6F6; color: #333;">
+		            <input type="password" 
+		            id="confirmPassword" 
+		            name="confirmPassword" 
+		            class="form-control" 
+		            placeholder="" required style="background-color: #F6F6F6; color: #333;">
 		        </div>
 		    </div>
 		</div>
+		<p id="passwordError" style="color: red; display: none;">비밀번호가 일치하지 않습니다.</p>
 <!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 10px 0 0 0;"> 
 
@@ -420,6 +445,7 @@
 		        </div>
 		    </div>
 		</div>
+		<input type="hidden" id="phonenumber" name="phonenumber">
 <!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 10px 0 0 0;"> 
 	<div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top:10px;">
