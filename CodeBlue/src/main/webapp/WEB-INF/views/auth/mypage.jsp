@@ -23,7 +23,6 @@ style>body {
 	display: flex;
 }
 
-
 	.main-content {
 	    flex-grow: 1; 
 	    display: flex;

@@ -126,7 +126,7 @@
         	<!-- 1 + 2 -->
             <div class="container" style="display:flex-direction:row; gap:20px; margin-top:10px;">
             	<!-- 1) 결제 상품 정보 -->
-                <div class="card" style="width:50rem; padding:10px 0px 0px 20px; margin-top:10px;">
+                <div class="card" style="width:45rem; padding:10px 0px 0px 20px; margin-top:10px;">
                     <table class="table table-borderless" style="border:0;">
                         <thead>
                             <tr>
@@ -156,7 +156,7 @@
 			<!-- 2 + 3 + 4 + 5 -->
             <div class="container" style="display:flex-direction:row; gap:20px; margin-top:10px;">
 				<!-- 2) 주문자 정보 -->
-                <div class="card" style="width:25rem; padding:20px 0px 0px 20px; margin-top:10px;">
+                <div class="card" style="width:25rem; padding:10px 0px 0px 10px; margin-top:10px;">
                     <table class="table table-borderless" style="border-collapse: collapse;">
                         <thead>
                             <tr style="display:flex; gap:10px;">
@@ -179,7 +179,7 @@
                 </div>  <!-- 2) 닫는 태그 -->
 
 				<!-- 3) 결제 방식 -->
-                <div class="card" style="width:25rem; padding:20px 25px 0px 25px; margin-top:10px;">
+                <div class="card" style="width:25rem; padding:20px 30px 0px 30px; margin-top:10px;">
                     <table class="table table-borderless" style="border-collapse: collapse;">
                         <thead>
                             <tr>

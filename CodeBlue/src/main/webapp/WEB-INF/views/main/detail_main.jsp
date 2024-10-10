@@ -129,8 +129,6 @@
    <!-- 게임 소개글 : 좌측정렬 -->
    <div class="card float-left" style="width: 50rem; height: 20rem;">
      <div class="card-body" style="font-weight: bold;">
-     <h3 class="card-title">게임 소개</h3>
-     <br>
          ${detail.info}
      </div>
    </div>
