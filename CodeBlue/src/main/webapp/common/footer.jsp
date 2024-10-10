@@ -51,7 +51,7 @@
 				</div>
 				<!-- 고객지원 링크 -->
 				<div class="col-lg-6 mb-3 text-end">
-					<a href="/faq">고객센터</a> | <a href="/allgame">전체게임</a> <br> <a href="/register">회원가입</a> | <a href="/mypage">마이페이지</a> | <a href="/main/cart">장바구니</a>
+					<a href="/faq">고객센터</a> | <a href="/register">회원가입</a> | <a href="/main/cart">장바구니</a>
 				</div>
 			</div>
 			<div class="row">
