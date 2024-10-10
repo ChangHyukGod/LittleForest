@@ -23,15 +23,23 @@
 	function goHome() {
 		window.location.href = "/"; // 로고 클릭시 홈화면으로 페이지를 새로 고침
 	}
-    function fn_save() {	
-   		// 전체 전화번호를 결합
-     	var fullPhoneNumber = phonePart1 + "-" + phonePart2 + "-" + phonePart3;
-    	// 숨겨진 필드에 결합된 전화번호 값을 설정
+    function fn_save() {
+    	var phonePart1 = document.getElementById('phonePart1').value; // 첫 번째 부분 (예: 010)
+    	var phonePart2 = document.getElementById('phonePart2').value; // 중간 부분 (예: 1234)
+    	var phonePart3 = document.getElementById('phonePart3').value; // 마지막 부분 (예: 5678)
+
+    	
+    	// 전체 전화번호를 결합
+        var fullPhoneNumber = phonePart1 + "-" + phonePart2 + "-" + phonePart3;
+
+     // 숨겨진 필드에 결합된 전화번호 값을 설정
         document.getElementById("phonenumber").value = fullPhoneNumber;
-     	document.detailForm.action = "/infofix";
-     	document.detailForm.submit();
-  }
-    
+    	
+//      1) action 속성 : "/basic/dept/edit"
+     document.detailForm.action = "/infofix";
+//      2) submit() 실행
+     document.detailForm.submit();
+  }   
 document.addEventListener('DOMContentLoaded', function() {
         const passwordInput = document.getElementById('password');
         const confirmPasswordInput = document.getElementById('confirmPassword');
@@ -472,7 +480,11 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
         <p class="input-label" style="margin: 0;">이메일<b class="text-danger"> *</b></p>
         <div style="margin-left: 10px; display: flex; align-items: center;">
-            <input class="form-control" type="text" value="${sessionScope.memberVO.email}" aria-label="readonly input example" readonly>
+            <input class="form-control"
+            		id="email"
+            		name="email"
+             		type="text" 
+             		value="${sessionScope.memberVO.email}" aria-label="readonly input example" readonly>
         </div>
     </div>
 </div>
