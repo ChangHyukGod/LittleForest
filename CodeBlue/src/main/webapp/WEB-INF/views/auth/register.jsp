@@ -105,7 +105,7 @@ body {
 	margin: 0; */
 }
 
-.container {
+#container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -123,7 +123,7 @@ body {
 	width: 100%;
 }
 
-.row {
+.ro1 {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -266,7 +266,7 @@ body {
 <body>
 	<jsp:include page="/common/header.jsp"></jsp:include>
 	<div class="container">
-		<div class="row justify-content-center">
+		<div class="ro1 ">
 			<div class="col-xl-6 col-lg-6 col-md-10">
 				<div class="border-0">
 					<div class="card-body">
@@ -558,6 +558,7 @@ body {
 			</script>
 						<!-- 실선 추가 -->
 						<hr style="border: 1px solid #BDBDBD;; width: 100%; margin: 2px 0 60px 0;">
+
 							<div class="text-center">
 								<button type="submit" class="btn btn-success btn-block" style="padding: 10px 40px; font-size: 16px; margin-bottom: 25px;">회원가입</button>
 							</div>

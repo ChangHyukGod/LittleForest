@@ -42,7 +42,7 @@
     margin: 0;
 	}
 	
-	.container {
+	#container {
 	    width: 90%; 
 	   display: flex;
 	}
@@ -52,7 +52,7 @@
 	    flex-direction: column; 
 	    align-items: center; 
 	    margin-left: -80px;
-	    padding-left: 100px; 
+	    padding-left: 110px; 
 	}
 	
 	.left-align {

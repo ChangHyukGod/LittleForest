@@ -11,15 +11,15 @@
     <style>
          body {
     font-size: 12px !important;
-    display: flex;
+/*     display: flex;
     flex-direction: column;
     justify-content: center; 
     align-items: center; 
     height: 100vh; 
-    margin: 0;
+    margin: 0 */;
 }
 
-.container {
+#container {
     width: 90%; 
    display: flex;
 }
