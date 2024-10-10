@@ -132,7 +132,7 @@
             // 추가적인 결제 로직을 여기에 작성할 수 있습니다.
         }
         
-        // 사이드바 하단 위치 고정
+        /* // 사이드바 하단 위치 고정
         window.addEventListener('scroll', function() {
             var sidebar = document.getElementById('sidebar');
             var footer = document.getElementById('footer');
@@ -150,35 +150,7 @@
                 sidebar.style.position = 'fixed';
                 sidebar.style.top = 'auto';  // 스크롤 상단에서는 기본 fixed로 유지
             }
-        });
-        
-        /* window.addEventListener('scroll', function() {
-            var sidebar = document.getElementById('sidebar');
-            var footer = document.getElementById('footer');
-            
-            // 페이지 전체 높이, 사이드바 높이, 푸터의 위치를 계산
-            var contentHeight = document.body.scrollHeight;
-            var sidebarHeight = sidebar.offsetHeight;
-            var footerTop = footer.getBoundingClientRect().top + window.pageYOffset;
-            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            var windowHeight = window.innerHeight;
-            
-            // 만약 페이지 내용이 사이드바보다 짧다면, 사이드바를 고정
-            if (contentHeight <= sidebarHeight + windowHeight) {
-                sidebar.style.position = 'absolute';
-                sidebar.style.top = 'initial';  // 상단 고정
-            } else {
-                // footer와 겹치지 않도록 하는 로직
-                if (scrollTop + windowHeight >= footerTop) {
-                    sidebar.style.position = 'absolute';
-                    sidebar.style.top = (footerTop - sidebarHeight) + 'px';
-                } else {
-                    sidebar.style.position = 'fixed';
-                    sidebar.style.top = 'auto';  // 사이드바가 스크롤을 따라 움직일 때
-                }
-            }
         }); */
-
     </script>
     <style>
         body {
@@ -193,11 +165,13 @@
     </style>
 </head>
 <body>
+<div style="z-index: 1000;">
 <jsp:include page="/common/header.jsp"></jsp:include>
+</div>
 <div class="container">
 <h5 class="container" style="font: bold;">결제 내역</h5>
 
-<div class="container" style="display:flex;">
+<div class="container" style="display:flex; gap:20px;">
 <!-- (1) 상품 내역 -->
 <div style="display:flex-direction:row; gap:10px; margin-bottom:10px;">
 	<c:forEach var="game" items="${selectedGames}">
@@ -224,8 +198,8 @@
 </div>  <!-- (1) 닫는 태그 -->
 
 <!-- (2) 사이드바 -->
-<div class="sidebar" id="sidebar" style="position: fixed; top: auto; right: 100px;
-transition: transform 0.3s ease; z-index: 1000;">
+<!-- <div class="sidebar" id="sidebar" style="position: fixed; top: auto; right: 100px;
+transition: transform 0.3s ease; z-index: 500;"> -->
 <!-- (2) 결제 내역 묶음 -->
 <div style="display:flex-direction:row; gap:20px; margin-bottom:10px;">
 	<!-- 2) 주문자정보 -->
@@ -357,7 +331,7 @@ transition: transform 0.3s ease; z-index: 1000;">
         </div>
     </div>
 </div>  <!-- (2) 닫는 태그 -->
-</div>
+<!-- </div> -->
 </div>  <!-- (1), (2) -->
 
 </div>
