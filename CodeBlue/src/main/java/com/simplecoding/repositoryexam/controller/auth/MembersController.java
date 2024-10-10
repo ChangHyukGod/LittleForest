@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -45,7 +46,7 @@ public class MembersController {
 
 	@GetMapping("/login")
 	public String loginView() {
-		return "/auth/login";
+		return "auth/login";
 	}
 
 //	회원가입 화면
@@ -59,28 +60,45 @@ public class MembersController {
 	public String myPage() {
 		return "auth/mypage";
 	}
-
-	// 로그인 진행 : 로그인 버튼 클릭시 실행 : 보안(post) get방식(id/password 노출)
-
+   
+	// 로그인
 	@PostMapping("/loginProcess")
-	public String login(@ModelAttribute MembersVO loginVO,
-			HttpServletRequest request
-	)throws Exception{
+	public String login(@ModelAttribute MembersVO loginVO, Model model, HttpServletRequest request) {
+	    MembersVO membersVO = membersService.authenticateMembers(loginVO);
 
-		MembersVO membersVO = membersService.authenticateMembers(loginVO);
-
-		if (membersVO == null) {
-			throw new Exception("회원이 없습니다.");
-		}
-		// 2) 인증 OK(DB 에 유저가 있으면) : 세션에 email/password 넣기
-		request.getSession().setAttribute("memberVO", membersVO);
+	    if (membersVO == null) {
+	        model.addAttribute("errorMessage", "ID가 존재하지 않거나 비밀번호가 틀립니다.");
+	        return "auth/login"; // 로그인 페이지로 포워딩
+	    }
+	    
+	    // 로그인 성공 시 세션에 사용자 정보 저장
+	    request.getSession().setAttribute("memberVO", membersVO);
+    	// request.getSession()이 먼저 호출되고, 그 다음에 setAttribute("memberVO", membersVO)가 실행됩니다.
+	    // 1단계: 세션을 가져오거나 새로 생성합니다.
+	    // 2단계: 그 세션에 사용자 정보를 저장합니다.
 		return "redirect:/";
+		
+//		요약:
+//			getSession():
+//			현재의 세션 객체를 가져오거나, 세션이 없다면 새로 생성합니다.
+		
+//			setAttribute(String name, Object value):
+//			세션 객체에 데이터를 저장하는 메서드입니다. 특정 키(name)와 값을(value) 쌍으로 저장합니다.
+		
+//			getAttribute(String name):
+//			세션 객체에서 특정 키에 해당하는 데이터를 가져오는 메서드입니다.
+		
+//			<중요한 점>
+//			**setSession**이라는 메서드는 존재하지 않습니다. 세션에 데이터를 저장하고 관리하는 것은 항상 setAttribute와 getAttribute를 사용하여 이루어집니다.
+//			이 세 가지 메서드가 세션을 다루는 기본적인 방법이니, 이 점을 기억하시면 좋습니다!
 	}
+
+
 
 	@GetMapping("/logout")
 	public String logout(HttpSession httpSession) {
 //		1) 세션에 memberVO 객체 삭제
-		httpSession.removeAttribute("membersVO");
+		httpSession.removeAttribute("memberVO");
 //		2) 세션 무효화 실행
 		httpSession.invalidate();
 		return "redirect:/login";
@@ -106,12 +124,6 @@ public class MembersController {
 		return "redirect:/register";
 
 	}
-
-	@GetMapping("/infofix")
-	public String infofix() {
-		return "auth/infofix";
-	}
-
 	@GetMapping("/auth/check-username") // 경로를 수정해야 합니다.
 	public ResponseEntity<String> checkUsernameDuplicate(@RequestParam String username) {
 		boolean isDuplicate = membersService.isUsernameDuplicate(username);
@@ -124,4 +136,36 @@ public class MembersController {
 			return new ResponseEntity<>("사용 가능한 아이디입니다.", headers, HttpStatus.OK);
 		}
 	}
+	
+	@GetMapping("/passwordCheck")
+	public String password() {
+		
+		return "auth/passwordcheck";
+	}
+	
+	@PostMapping("/passwordChecking")
+	public String passwordcheck(@ModelAttribute("password") String inputPassword, HttpSession session, Model model) {
+		MembersVO membersVO = (MembersVO) session.getAttribute("memberVO");
+		
+		// 회원이 세션에 없을 경우 null 처리
+	    if (membersVO == null) {
+	        model.addAttribute("error", "로그인이 필요합니다.");
+	        return "/auth/login";  // 로그인 페이지로 리다이렉트
+	    }
+	    String hashedPassword = membersVO.getPassword();
+		 if (!BCrypt.checkpw(inputPassword, hashedPassword)) {
+	            model.addAttribute("errorMessage", "비밀번호가 일치하지 않습니다.");
+	            return "/auth/passwordcheck";  // 비밀번호 확인 페이지로 리다이렉트
+	      }
+		
+		 return "/auth/infofix";
+	}
+	@PostMapping("/infofix")
+	public String infofix(@RequestParam String membername,
+							@ModelAttribute MembersVO membersVO
+				)throws Exception{
+		membersService.infofix(membersVO);
+		return "redirect:/";
+	}
+	
 }

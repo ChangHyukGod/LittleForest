@@ -1,28 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>마이페이지</title>
-    <style>
-    <style>
-         body {
-    font-size: 12px !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    height: 100vh; 
-    margin: 0;
+<meta charset="UTF-8">
+<title>마이페이지</title>
+<style>
+<
+style>body {
+	font-size: 12px !important;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
 }
 
 .container {
-    width: 90%; 
-   display: flex;
+	width: 90%;
+	display: flex;
 }
+
 
 	.main-content {
 	    flex-grow: 1; 
@@ -225,97 +225,93 @@
 </head>
 <body>
 
-<jsp:include page="/common/header.jsp" />
-    <div class="container">
-<div class="left-align">
-<button class="btn left-align-button font-weight-bold" style="font-size: 30px;" onclick="location.href='/mypage';">마이페이지</button>
-    <h4 class="fw-medium"> 마이쇼핑 </h4>
-    <button class="btn left-align-button" onclick="location.href='주문배송조회.jsp';">주문/배송 조회</button>
-    <button class="btn left-align-button" onclick="location.href='관심상품.jsp';">관심상품</button>
-    <h4 class="fw-medium"> 나의 정보 </h4>
-    <button class="btn left-align-button" onclick="location.href='/infofix';">회원정보 수정</button>
-    <h4 class="fw-medium"> 고객센터 </h4>
-    <button class="btn left-align-button" onclick="location.href='공지사항.jsp';">공지사항</button>
-    <br>
-    <button class="btn left-align-button" onclick="location.href='/FAQ';">FAQ</button>
-    <br>
-    <button class="btn left-align-button" onclick="location.href='문의.jsp';">1:1 문의</button>
-</div>
+	<jsp:include page="/common/header.jsp" />
+	<div class="container">
+		<div class="left-align">
+			<button class="btn left-align-button font-weight-bold" style="font-size: 30px;" onclick="location.href='/mypage';">마이페이지</button>
+			<h4 class="fw-medium">마이쇼핑</h4>
+			<button class="btn left-align-button" onclick="location.href='주문배송조회.jsp';">주문/배송 조회</button>
+			<h4 class="fw-medium">나의 정보</h4>
+			<button class="btn left-align-button" onclick="location.href='/infofix';">회원정보 수정</button>
+			<h4 class="fw-medium">고객센터</h4>
+			<button class="btn left-align-button" onclick="location.href='/faq';">FAQ</button>
+			<br>
+		</div>
 
-    
-    
-<div class="main-content">
-        <p class="title">마이페이지</p>
-    
-   
-        <!-- 상단 사용자 정보 -->
-        <div class="header">
-            <div class="top">
-                <img src="${pageContext.request.contextPath}/resources/images/qfqf.jpg" alt="| " style="border-radius: 50%; width: 40px; height: 40px;">
-                <span class="fw-bold">[Family] 회원 ${sessionScope.memberVO.membername}님 반갑습니다.</span>
-            </div>
-            <div class="bottom">
-                <span>포인트 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> P &nbsp; &nbsp;</span>
-                <span>쿠폰 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> 개 &nbsp; &nbsp;</span>
-                <span>예치금 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> 원</span>
-            </div>
-        </div>
-<br>
-         <!-- 주문/배송 조회 -->
-    <div class="order-status">
-        <div class="search">주문/배송 조회</div>
-        <div class="status-container">
-            <div class="status-box">
-                <h3>0</h3>
-                <span>주문접수</span>
-            </div>
-            <div>
-                <h1>></h1>
-            </div>
-            <div class="status-box">
-                <h3>0</h3>
-                <span>결제완료</span>
-            </div>
-            <div>
-                <h1>></h1>
-            </div>
-            <div class="status-box">
-                <h3>0</h3>
-                <span>배송준비중</span>
-            </div>
-             <div>
-                <h1>></h1>
-             </div>
-            <div class="status-box">
-                <h3>0</h3>
-                <span>배송중</span>
-            </div>
-            <div>
-                <h1>></h1>
-            </div>
-            <div class="status-box">
-                <h3>0</h3>
-                <span>배송완료</span>
-            </div>
-            </div>
-            
-            <div class="interest">
-        <div class="inter">
-            <span>관심상품</span>
-        </div>
-        <div class="est">
-            <span> 더보기 > </span>
-        </div>
-        </div>
-        <div class="circle">
-        <div class="exclamation">!</div>
-        </div>
-   		<div class="text">관심 상품이 없습니다.</div>
-   		<div class="underline"></div>
-    </div>
-  </div>
-  </div>
 
-<jsp:include page="/common/footer.jsp" />
+
+		<div class="main-content">
+			<p class="title">마이페이지</p>
+
+
+			<!-- 상단 사용자 정보 -->
+			<div class="header">
+				<div class="top">
+					<img src="${pageContext.request.contextPath}/resources/images/qfqf.jpg" alt="| " style="border-radius: 50%; width: 40px; height: 40px;"> <span class="fw-bold">[Family] 회원 ${sessionScope.memberVO.membername}님 반갑습니다.</span>
+				</div>
+				<div class="bottom">
+					<span>포인트 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> P &nbsp; &nbsp;
+					</span> <span>쿠폰 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> 개 &nbsp; &nbsp;
+					</span> <span>예치금 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> 원
+					</span>
+				</div>
+			</div>
+			<br>
+			<!-- 주문/배송 조회 -->
+			<div class="order-status">
+				<div class="search">주문/배송 조회</div>
+				<div class="status-container">
+					<div class="status-box">
+						<h3>0</h3>
+						<span>주문접수</span>
+					</div>
+					<div>
+						<h1>></h1>
+					</div>
+					<div class="status-box">
+						<h3>0</h3>
+						<span>결제완료</span>
+					</div>
+					<div>
+						<h1>></h1>
+					</div>
+					<div class="status-box">
+						<h3>0</h3>
+						<span>배송준비중</span>
+					</div>
+					<div>
+						<h1>></h1>
+					</div>
+					<div class="status-box">
+						<h3>0</h3>
+						<span>배송중</span>
+					</div>
+					<div>
+						<h1>></h1>
+					</div>
+					<div class="status-box">
+						<h3>0</h3>
+						<span>배송완료</span>
+					</div>
+				</div>
+
+				<div class="interest">
+					<div class="inter">
+						<span>관심상품</span>
+					</div>
+					<div class="est">
+						<span> 더보기 > </span>
+					</div>
+				</div>
+				<div class="circle">
+					<div class="exclamation">!</div>
+				</div>
+				<div class="text">관심 상품이 없습니다.</div>
+				<div class="underline"></div>
+			</div>
+		</div>
+	</div>
+
+	<jsp:include page="/common/footer.jsp" />
 </body>
 </html>
