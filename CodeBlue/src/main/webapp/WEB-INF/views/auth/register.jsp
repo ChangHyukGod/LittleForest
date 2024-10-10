@@ -32,9 +32,21 @@ function all_check(event) {
     document.getElementById("phonenumber").value = fullPhoneNumber;
 
     console.log("합쳐진 전화번호:", fullPhoneNumber); // 디버그 로그
+    
+ 	// 체크박스 유효성 검사
+    var checkbox1 = document.getElementById("checkbox1").checked; // 전체 동의 체크박스
+    var checkbox2 = document.getElementById("checkbox2").checked; // 필수 체크박스 1
+    var checkbox3 = document.getElementById("checkbox3").checked; // 필수 체크박스 2
+
+    if (!checkbox1 && (!checkbox2 || !checkbox3)) {
+        alert("회원가입을 위해 두 개의 필수 체크박스를 모두 선택해야 합니다.");
+        return false; // 폼 전송 중지
+    }
+    
 
     document.getElementById("listForm").submit();
 }
+ 
  
  document.addEventListener('DOMContentLoaded', function() {
      function fn_check(event) {
