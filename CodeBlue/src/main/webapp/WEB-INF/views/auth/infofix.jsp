@@ -222,14 +222,7 @@
 <body>
 <jsp:include page="/common/header.jsp" />
 <div class="container">
-   <div class="left-align">
-       <h4 class="fw-medium"> 마이쇼핑 </h4>
 
-       <button class="btn left-align-button" onclick="location.href='/main/cart';">장바구니</button>
-       <h4 class="fw-medium"> 고객센터 </h4>
-       <button class="btn left-align-button" onclick="location.href='/faq';">FAQ</button>
-<br>
-   </div>
 
     
    <div class="main-content">
@@ -240,11 +233,11 @@
                 <img src="${pageContext.request.contextPath}/resources/images/qfqf.jpg" alt="| " style="border-radius: 50%; width: 40px; height: 40px;">
                 <span class="fw-bold">${sessionScope.memberVO.membername}님 반갑습니다.</span>
             </div>
-            <div class="bottom">
+<!--             <div class="bottom">
                 <span>포인트 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> P &nbsp; &nbsp;</span>
                 <span>쿠폰 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> 개 &nbsp; &nbsp;</span>
-<!--            <span>예치금 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> 원</span> -->
-            </div>
+           <span>예치금 &nbsp; <strong class="custom-success">&nbsp; 0 &nbsp;</strong> 원</span>
+            </div> -->
         </div>
 <br>
 		<div class="card-body">

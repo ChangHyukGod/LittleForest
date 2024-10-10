@@ -236,11 +236,11 @@ transition: transform 0.3s ease; z-index: 500;"> -->
             <tbody>
                 <tr>
                     <th style="text-align: left;">총 구매수량</th>
-                    <td style="text-align: right;">${fn:length(selectedGames)} 개</td>
+                    <td style="text-align: right;">${fn:length(selectedGames)}개</td>
                 </tr>
                 <tr style="border-top: 1px solid black;">
                     <th style="text-align: left;">총 결제금액</th>
-                    <td style="text-align: right;"><span id="totalPrice">0원</span></td>
+                    <td style="text-align: right;"><span id="totalPrice">\0</span></td>
                 </tr>
             </tbody>
         </table>
@@ -289,7 +289,7 @@ transition: transform 0.3s ease; z-index: 500;"> -->
                 </tr>
                 <tr style="display:none;">
                     <th colspan="2">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="예금주명(미입력시 주문자명)">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="예금주명">
                     </th>
                 </tr>
                 <tr>

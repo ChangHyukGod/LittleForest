@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html lang="ko">
 <head>
@@ -51,7 +52,16 @@
 				</div>
 				<!-- 고객지원 링크 -->
 				<div class="col-lg-6 mb-3 text-end">
-					<a href="/faq">고객센터</a> | <a href="/register">회원가입</a> | <a href="/main/cart">장바구니</a>
+				    <a href="/faq">고객센터</a> | 
+				    <c:choose>
+				        <c:when test="${sessionScope.memberVO == null}">
+				            <a href="/register">회원가입</a>
+				        </c:when>
+				    </c:choose>
+				    <c:if test="${sessionScope.memberVO == null}">
+				        |
+				    </c:if>
+				    <a href="/main/cart">장바구니</a>
 				</div>
 			</div>
 			<div class="row">

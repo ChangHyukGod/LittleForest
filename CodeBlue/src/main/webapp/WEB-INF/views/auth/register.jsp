@@ -273,6 +273,7 @@ body {
 </style>
 </head>
 <body>
+
    <jsp:include page="/common/header.jsp"></jsp:include>
    <div id="container">
       <div class="ro1">
