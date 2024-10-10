@@ -70,10 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
     margin: 0;
    }
    
-   .container {
-       width: 90%; 
-      display: flex;
-   }
    
    .main-content {
        flex-grow: 1; 

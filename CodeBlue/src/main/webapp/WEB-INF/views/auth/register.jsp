@@ -94,17 +94,17 @@ function all_check(event) {
 
 
 <style>
-<
-style>body {
+<style>
+body {
 	font-size: 12px !important;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	margin: 0;
+/* 	display: flex; */
+/* 	justify-content: center; */
+/* 	align-items: center; */
+/* 	height: 100vh; */
+/* 	margin: 0; */
 }
 
-.container {
+#container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -113,7 +113,7 @@ style>body {
 	max-width: 1500px;
 }
 
-.container h4 {
+#container h4 {
 	margin-top: 80px;
 	margin-bottom: 50px;
 }
@@ -122,7 +122,7 @@ style>body {
 	width: 100%;
 }
 
-.row {
+.ro1 {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -262,39 +262,12 @@ style>body {
 </head>
 <body>
 	<jsp:include page="/common/header.jsp"></jsp:include>
-	<div class="container">
-		<div class="row justify-content-center">
+	<div id="container">
+		<div class="ro1">
 			<div class="col-xl-6 col-lg-6 col-md-10">
 				<div class="border-0">
 					<div class="card-body">
 						<h4 class="text-center mb-6 fw-bold fs-2">회원가입</h4>
-						<hr class="underline">
-						<div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px;">
-							<p style="color: black; margin: 0; width: 150px;">
-								회원구분<b class="text-danger"> *</b>
-							</p>
-							<div style="margin-left: 10px;">
-								<input class="form-check-input" type="radio" name="memberType" id="flexRadioDefault1"> <label class="form-check-label" for="flexRadioDefault1">개인회원</label>
-							</div>
-						</div>
-						<!-- 실선 추가 -->
-						<hr style="border: 1px solid #BDBDBD;; width: 100%; margin-top: 2px;">
-
-						<div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px;">
-							<p style="color: black; margin: 0; width: 150px;">
-								회원인증<b class="text-danger"> *</b>
-							</p>
-							<div style="margin-left: 10px; display: flex; align-items: center;">
-								<div style="margin-right: 20px;">
-									<input class="form-check-input" type="radio" name="authType" id="emailAuth"> <label class="form-check-label" for="emailAuth">이메일 인증</label>
-								</div>
-								<div>
-									<input class="form-check-input" type="radio" name="authType" id="phoneAuth"> <label class="form-check-label" for="phoneAuth">휴대폰 인증</label>
-								</div>
-							</div>
-						</div>
-						<!-- 실선 추가 -->
-						<hr style="border: 1px solid #BDBDBD;; width: 100%; margin-top: 2px;">
 						<div class="basic">
 							<div class="ba">
 								<span>기본정보</span>
@@ -432,28 +405,6 @@ style>body {
 							<!-- 실선 추가 -->
 							<hr style="border: 1px solid #BDBDBD;; width: 100%; margin-top: 0px;">
 
-
-							<!-- 추가정보 -->
-							<div class="basic">
-								<div class="ba">
-									<span>추가정보</span>
-								</div>
-							</div>
-
-							<div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top: 10px;">
-								<p style="color: black; margin: 0; width: auto; white-space: nowrap;">
-									만 14세 이상입니다.<b class="text-danger"> *</b>
-								</p>
-								<div style="margin-left: 10px; display: flex; align-items: center;">
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input class="form-check-input" type="radio" name="memberType" id="flexRadioDefault1"> <label class="form-check-label" for="flexRadioDefault1" style="margin-left: 5px;">네</label>
-								</div>
-							</div>
-
-							<!-- 실선 추가 -->
-							<hr style="border: 1px solid #BDBDBD;; width: 100%; margin: 2px 0 60px 0;">
-
-
-
 							<h4 class="text-center mb-3">약관 동의</h4>
 							<hr class="underline">
 
@@ -535,6 +486,23 @@ style>body {
 									</div>
 								</div>
 							</div>
+							<script>
+			    document.getElementById('checkbox1').addEventListener('change', function() {
+			        let checkboxes = document.querySelectorAll('.custom-checkbox input[type="checkbox"]');
+			        for (let i = 1; i < checkboxes.length; i++) {
+			            checkboxes[i].checked = this.checked;
+			        }
+			    });
+			
+			
+			    let individualCheckboxes = document.querySelectorAll('.custom-checkbox input[type="checkbox"]:not(#checkbox1)');
+			    individualCheckboxes.forEach(function(checkbox) {
+			        checkbox.addEventListener('change', function() {
+			            let allChecked = Array.from(individualCheckboxes).every(c => c.checked);
+			            document.getElementById('checkbox1').checked = allChecked;
+			        });
+			    });
+			</script>
 							<!-- 실선 추가 -->
 							<hr style="border: 1px solid #BDBDBD;; width: 100%; margin: 2px 0 60px 0;">
 
