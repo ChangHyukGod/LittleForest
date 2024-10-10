@@ -40,31 +40,29 @@
     align-items: center; 
     height: 100vh; 
     margin: 0;
-	}
-	
-	#container {
-	    width: 90%; 
-	   display: flex;
-	}
-	.main-content {
-	    flex-grow: 1; 
-	    display: flex;
-	    flex-direction: column; 
-	    align-items: center; 
-	    margin-left: -80px;
-	    padding-left: 110px; 
-	}
-	
-	.left-align {
-	    position: fixed; 
-	    top: 120px; 
-	    left: 20px; 
-	    z-index: 100;
-	    padding: 50px;
-	    width: 100%; 
-	    max-width: 300px; 
-	    align-self: flex-start; 
-	}
+   }
+   
+
+   
+   .main-content {
+       flex-grow: 1; 
+       display: flex;
+       flex-direction: column; 
+       align-items: center; 
+       margin-left: -80px;
+       padding-left: 100px; 
+   }
+   
+   .left-align {
+       position: fixed; 
+       top: 120px; 
+       left: 20px; 
+       z-index: 100;
+       padding: 50px;
+       width: 100%; 
+       max-width: 300px; 
+       align-self: flex-start; 
+   }
 
 
         .left-align h4 {
@@ -216,27 +214,28 @@
             width: 150px; 
             white-space: nowrap;
         }
+        
+
 
     </style>
 </head>
 <body>
 <jsp:include page="/common/header.jsp" />
-    <div class="container">
-<div class="left-align">
- 	<button class="btn left-align-button font-weight-bold" style="font-size: 30px;" onclick="location.href='/mypage';">마이페이지</button>
-	   <h4 class="fw-medium"> 마이쇼핑 </h4>
-	    <p>주문/배송 조회</p>
-	    <p>관심상품</p>
-	    <h4 class="fw-medium"> 나의 정보 </h4>
-	    <button class="btn left-align-button" onclick="location.href='/infofix';">회원정보 수정</button>
-	    <h4 class="fw-medium"> 고객센터 </h4>
-	    <p>공지사항</p>
-	    <p>FAQ</p>
-	    <p>1:1 문의</p>
-</div>
-   
-	<div class="main-content">
-		<p class="title">회원 정보 수정</p>
+<div class="container">
+   <div class="left-align">
+       <button class="btn left-align-button font-weight-bold" style="font-size: 30px;" onclick="location.href='/mypage';">마이페이지</button>
+       <h4 class="fw-medium" > 마이쇼핑 </h4>
+       <button class="btn left-align-button" onclick="location.href='/main/cart';">장바구니</button>
+       <h4 class="fw-medium"> 나의 정보 </h4>
+       <button class="btn left-align-button" onclick="location.href='/passwordChecking">회원정보 수정</button>
+       <h4 class="fw-medium"> 고객센터 </h4>
+       <button class="btn left-align-button" onclick="location.href='/faq';">FAQ</button>
+<br>
+   </div>
+
+    
+   <div class="main-content">
+      <p class="title">회원 정보 수정</p>
         <!-- 상단 사용자 정보 -->
         <div class="header">
             <div class="top">
