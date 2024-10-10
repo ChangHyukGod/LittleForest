@@ -150,7 +150,7 @@ body {
 										<li><a class="dropdown-item" href="/register">회원가입</a></li>
 									</c:when>
 									<c:otherwise>
-										<li class="nav-item"><a href="/infofix" class="dropdown-item">정보수정</a></li>
+										<li class="nav-item"><a href="/passwordCheck" class="dropdown-item">정보수정</a></li>
 									</c:otherwise>
 								</c:choose>
 <!-- 								<li><a class="dropdown-item" href="#">주문조회</a></li> -->

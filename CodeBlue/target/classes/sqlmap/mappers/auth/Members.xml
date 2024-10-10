@@ -32,5 +32,14 @@
     FROM MEMBERS
     WHERE USERNAME = #{username}
 </select>
+<update id="infofix" parameterType="MembersVO">
+UPDATE MEMBERS 
+  			SET MEMBERNAME = #{membername},
+  				PASSWORD = #{password},
+                AGE = #{age},
+                PHONENUMBER = #{phonenumber},
+                EMAIL = #{email}	
+		WHERE USERNAME = #{username}
+</update>
 
 </mapper>

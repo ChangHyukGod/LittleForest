@@ -25,4 +25,6 @@ public interface MemberMapper {
 	public void register(MembersVO membersVO); // insert함수
 	
 	int countByUsername(String username);
+	
+	public int infofix(MembersVO membersVO);
 }
