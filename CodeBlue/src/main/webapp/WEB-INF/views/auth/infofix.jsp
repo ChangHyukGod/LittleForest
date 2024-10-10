@@ -70,10 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     margin: 0;
    }
    
-   .container {
-       width: 90%; 
-      display: flex;
-   }
+
    
    .main-content {
        flex-grow: 1; 
@@ -245,6 +242,8 @@ document.addEventListener('DOMContentLoaded', function() {
             width: 150px; 
             white-space: nowrap;
         }
+        
+
 
     </style>
 </head>
@@ -253,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="container">
    <div class="left-align">
        <button class="btn left-align-button font-weight-bold" style="font-size: 30px;" onclick="location.href='/mypage';">마이페이지</button>
-       <h4 class="fw-medium"> 마이쇼핑 </h4>
+       <h4 class="fw-medium" > 마이쇼핑 </h4>
        <button class="btn left-align-button" onclick="location.href='/main/cart';">장바구니</button>
        <h4 class="fw-medium"> 나의 정보 </h4>
        <button class="btn left-align-button" onclick="location.href='/infofix';">회원정보 수정</button>
