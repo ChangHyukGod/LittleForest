@@ -20,43 +20,15 @@
             document.getElementById('phonePart3').value = phoneParts[2]; // phonePart3는 마지막 부분
         }
     };
-   function goHome() {
-      window.location.href = "/"; // 로고 클릭시 홈화면으로 페이지를 새로 고침
-   }
+	function goHome() {
+		window.location.href = "/"; // 로고 클릭시 홈화면으로 페이지를 새로 고침
+	}
     function fn_save() {
-       var phonePart1 = document.getElementById('phonePart1').value; // 첫 번째 부분 (예: 010)
-       var phonePart2 = document.getElementById('phonePart2').value; // 중간 부분 (예: 1234)
-       var phonePart3 = document.getElementById('phonePart3').value; // 마지막 부분 (예: 5678)
-
-       
-       // 전체 전화번호를 결합
-
-        var fullPhoneNumber = phonePart1 + "-" + phonePart2 + "-" + phonePart3;
-
-     // 숨겨진 필드에 결합된 전화번호 값을 설정
-        document.getElementById("phonenumber").value = fullPhoneNumber;
 //      1) action 속성 : "/basic/dept/edit"
      document.detailForm.action = "/infofix";
 //      2) submit() 실행
      document.detailForm.submit();
-  }   
-document.addEventListener('DOMContentLoaded', function() {
-        const passwordInput = document.getElementById('password');
-        const confirmPasswordInput = document.getElementById('confirmPassword');
-        const passwordError = document.getElementById('passwordError');
-
-        if (passwordInput && confirmPasswordInput && passwordError) {
-            confirmPasswordInput.addEventListener('input', function() {
-                if (passwordInput.value !== confirmPasswordInput.value) {
-                    passwordError.style.display = 'block';
-                } else {
-                    passwordError.style.display = 'none';
-                }
-            });
-        } else {
-            console.error("요소를 찾을 수 없습니다.");
-        }
-    });
+  }
     </script>
     <style>
     <style>
@@ -70,10 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     margin: 0;
    }
    
-   .container {
-       width: 90%; 
-      display: flex;
-   }
+
    
    .main-content {
        flex-grow: 1; 
@@ -105,36 +74,36 @@ document.addEventListener('DOMContentLoaded', function() {
             margin-bottom: 10px;
         }
     .left-align-button {
-       background-color: #4CAF50; 
-       border: none; 
-       text-align: center; 
-       text-decoration: none; /
-       display: block;
-       margin: 5px 0; 
-       cursor: pointer; 
-       transition: background-color 0.3s; 
-       margin-left: -12px; 
-       outline: none; 
-       box-shadow: none; 
-   }
-   
+	    background-color: #4CAF50; 
+	    border: none; 
+	    text-align: center; 
+	    text-decoration: none; /
+	    display: block;
+	    margin: 5px 0; 
+	    cursor: pointer; 
+	    transition: background-color 0.3s; 
+	    margin-left: -12px; 
+	    outline: none; 
+	    box-shadow: none; 
+	}
+	
 
-   .left-align-button:focus {
-       outline: none; 
-       box-shadow: none; 
-   }
-   
+	.left-align-button:focus {
+	    outline: none; 
+	    box-shadow: none; 
+	}
+	
 
-   .left-align-button:active {
-       outline: none; 
-       box-shadow: none;
-   }
-   
-   .left-align-button:hover {
-       background-color: #45a049; 
-       color: yellow;
-       outline: none; 
-   }
+	.left-align-button:active {
+	    outline: none; 
+	    box-shadow: none;
+	}
+	
+	.left-align-button:hover {
+	    background-color: #45a049; 
+	    color: yellow;
+	    outline: none; 
+	}
         
         .card-body {
             width: 800px; 
@@ -245,6 +214,8 @@ document.addEventListener('DOMContentLoaded', function() {
             width: 150px; 
             white-space: nowrap;
         }
+        
+
 
     </style>
 </head>
@@ -253,6 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="container">
    <div class="left-align">
        <h4 class="fw-medium"> 마이쇼핑 </h4>
+
        <button class="btn left-align-button" onclick="location.href='/main/cart';">장바구니</button>
        <h4 class="fw-medium"> 고객센터 </h4>
        <button class="btn left-align-button" onclick="location.href='/faq';">FAQ</button>
@@ -275,11 +247,11 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>
 <br>
-      <div class="card-body">
+		<div class="card-body">
             <!-- 회원 인증 -->
             <p><b>회원 인증</b></p>
             <hr class="underline">
-         <form id = "detailForm" name="detailForm" method="POST">
+			<form id = "detailForm" name="detailForm" method="POST">
                 <div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top: 10px;">
                     <p style="color: black; margin: 0; width: 150px;">인증여부</p>
                     <div style="margin-left: 10px;">
@@ -291,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <label class="form-check-label" for="flexRadioDefault1">이메일 인증</label>
                             </div>
                             <div>
-                       <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" disabled>
+  							<input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" disabled>
                                 <label class="form-check-label" for="phoneAuth" >휴대폰 인증</label>
                             </div>
                         </div>
@@ -313,161 +285,155 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 <hr class="underline">
               <!-- 아이디 -->
-      <div class="form-group" style="margin: -20px 0 10px 0;">  
-          <label for="username"></label>
-          <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
-              <p class="input-label" style="margin: 0;">아이디<b class="text-danger"> *</b></p>
-              <div style="margin-left: 10px; display: flex; align-items: center;">
-                  <input class="form-control" 
-                        id = "username"
-                        name = "username"
-                        type="text" 
-                        value="<c:out value="${sessionScope.memberVO.username}"/>" 
-                        aria-label="readonly input example" readonly>
-                  <p style="margin: 0 0 0 15px; font-size: 12px; white-space: nowrap;">(영문소문자/숫자, 4~16자)</p>
-              </div>
-          </div>
-      </div>
+		<div class="form-group" style="margin: -20px 0 10px 0;">  
+		    <label for="username"></label>
+		    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
+		        <p class="input-label" style="margin: 0;">아이디<b class="text-danger"> *</b></p>
+		        <div style="margin-left: 10px; display: flex; align-items: center;">
+		            <input class="form-control" 
+		            		id = "username"
+		            		name = "username"
+		            		type="text" 
+		            		value="<c:out value="${sessionScope.memberVO.username}"/>" 
+		            		aria-label="readonly input example" readonly>
+		            <p style="margin: 0 0 0 15px; font-size: 12px; white-space: nowrap;">(영문소문자/숫자, 4~16자)</p>
+		        </div>
+		    </div>
+		</div>
 
 <!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 10px 0 0 0;"> 
 
 <!-- 비밀번호 -->
-      <div class="form-group" style="margin: -10px 0 10px 0;">  
-          <label for="password"></label>
-          <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
-              <p class="input-label" style="margin: 0;">비밀번호<b class="text-danger"> *</b></p>
-              <div style="margin-left: 10px; display: flex; align-items: center;">
-                  <input type="password" 
-                  id="password" 
-                  name="password" 
-                  class="form-control" 
-                  placeholder="" 
-                  required style="background-color: #F6F6F6; color: #333;"
-                  value="">
-                  <p style="margin: 0 0 0 15px; font-size: 12px; white-space: nowrap;">(8~16자의 영문 대/소문자, 숫자, 특수문자)</p>
-              </div>
-          </div>
-      </div>
+		<div class="form-group" style="margin: -10px 0 10px 0;">  
+		    <label for="password"></label>
+		    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
+		        <p class="input-label" style="margin: 0;">비밀번호<b class="text-danger"> *</b></p>
+		        <div style="margin-left: 10px; display: flex; align-items: center;">
+		            <input type="password" 
+		            id="password" 
+		            name="password" 
+		            class="form-control" 
+		            placeholder="" 
+		            required style="background-color: #F6F6F6; color: #333;"
+		            value="">
+		            <p style="margin: 0 0 0 15px; font-size: 12px; white-space: nowrap;">(8~16자의 영문 대/소문자, 숫자, 특수문자)</p>
+		        </div>
+		    </div>
+		</div>
 <!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 0 ;"> 
 
 <!-- 비밀번호 확인 -->
-      <div class="form-group" style="margin: -10px 0 10px 0;"> 
-          <label for="passwordConfirm"></label>
-          <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
-              <p class="input-label" style="margin: 0;">비밀번호 확인<b class="text-danger"> *</b></p>
-              <div style="margin-left: 10px; display: flex; align-items: center;">
-                  <input type="password" 
-                  id="confirmPassword" 
-                  name="confirmPassword" 
-                  class="form-control" 
-                  placeholder="" required style="background-color: #F6F6F6; color: #333;">
-              </div>
-          </div>
-      </div>
-      <p id="passwordError" style="color: red; display: none;">비밀번호가 일치하지 않습니다.</p>
+		<div class="form-group" style="margin: -10px 0 10px 0;"> 
+		    <label for="passwordConfirm"></label>
+		    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
+		        <p class="input-label" style="margin: 0;">비밀번호 확인<b class="text-danger"> *</b></p>
+		        <div style="margin-left: 10px; display: flex; align-items: center;">
+		            <input type="password" id="passwordConfirm" name="passwordConfirm" class="form-control" placeholder="" required style="background-color: #F6F6F6; color: #333;">
+		        </div>
+		    </div>
+		</div>
 <!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 10px 0 0 0;"> 
 
 <!-- 이름 -->
-      <div class="form-group" style="margin: -10px 0 10px 0;">  
-          <label for="membername"></label>
-          <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
-              <p class="input-label" style="margin: 0;">이름<b class="text-danger"> *</b></p>
-              <div style="margin-left: 10px; display: flex; align-items: center;">
-                 <input class="form-control" 
-                          id="membername"
-                          name="membername"
-                          type="text" 
-                          value="${sessionScope.memberVO.membername}" 
-                          aria-label="readonly input example" readonly>
-              </div>
-          </div>
-      </div>
+		<div class="form-group" style="margin: -10px 0 10px 0;">  
+		    <label for="membername"></label>
+		    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
+		        <p class="input-label" style="margin: 0;">이름<b class="text-danger"> *</b></p>
+		        <div style="margin-left: 10px; display: flex; align-items: center;">
+		           <input class="form-control" 
+		           			id="membername"
+		           			name="membername"
+		           			type="text" 
+		           			value="${sessionScope.memberVO.membername}" 
+		           			aria-label="readonly input example" readonly>
+		        </div>
+		    </div>
+		</div>
 <!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 10px 0 0 0;"> 
 <!-- 나이 -->
-      <div class="form-group" style="margin: -10px 0 10px 0;">  
-          <label for="age"></label>
-          <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
-              <p class="input-label" style="margin: 0;">나이<b class="text-danger"> *</b></p>
-              <div style="margin-left: 10px; display: flex; align-items: center;">
-                 <input class="form-control" 
-                       id = "age"
-                       name = "age"
-                       type="text" 
-                       value="${sessionScope.memberVO.age}" 
-                       aria-label="readonly input example" readonly>
-              </div>
-          </div>
-      </div>
+		<div class="form-group" style="margin: -10px 0 10px 0;">  
+		    <label for="age"></label>
+		    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
+		        <p class="input-label" style="margin: 0;">나이<b class="text-danger"> *</b></p>
+		        <div style="margin-left: 10px; display: flex; align-items: center;">
+		           <input class="form-control" 
+		           		id = "age"
+		           		name = "age"
+		           		type="text" 
+		           		value="${sessionScope.memberVO.age}" 
+		           		aria-label="readonly input example" readonly>
+		        </div>
+		    </div>
+		</div>
 <!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 10px 0 0 0;"> 
 
 <!-- 휴대전화 -->
-      <div class="form-group" style="margin: -10px 0 10px 0;">  
-          <label for="phone"></label>
-          <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
-              <p class="input-label" style="margin: 0;">휴대전화 (선택)</p>
-              <div style="margin-left: 10px; display: flex; align-items: center;">
-                  <select class="form-select form-select-sm" 
-                        id = "phonePart1"
-                           name="phonePart1"
-                        aria-label="번호 선택" 
-                        style="width: 100px; 
-                        margin-right: 5px; 
-                        margin: 0;">
-                      <option value="010" selected>010</option>
-                      <option value="011">011</option>
-                      <option value="016">016</option>
-                      <option value="017">017</option>
-                      <option value="018">018</option>
-                      <option value="019">019</option>
-                  </select>
-                  <span style="margin: 0 5px;">-</span>
-                  <input class="form-control form-control-sm"
-                     id = "phonePart2"
-                     name="phonePart2"
-                   type="text"  
-                   aria-label="번호 입력" 
-                   style="width: 100px; 
-                   margin: 0;"
-                   maxlength="4"
-                   value = ""
-                   >
-                   
-                  <span style="margin: 0 5px;">-</span>
-                  
-                  <input class="form-control form-control-sm"
-                   id = "phonePart3"
-                     name="phonePart3" 
-                  type="text"  
-                  aria-label="번호 입력" 
-                  style="width: 100px; 
-                  margin: 0;"
-                  maxlength="4"
-                  value="">
-              </div>
-          </div>
-      </div>
-      <input type="hidden" id="phonenumber" name="phonenumber">
+		<div class="form-group" style="margin: -10px 0 10px 0;">  
+		    <label for="phone"></label>
+		    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
+		        <p class="input-label" style="margin: 0;">휴대전화 (선택)</p>
+		        <div style="margin-left: 10px; display: flex; align-items: center;">
+		            <select class="form-select form-select-sm" 
+		            		id = "phonePart1"
+		           	 		name="phonePart1"
+		            		aria-label="번호 선택" 
+		            		style="width: 100px; 
+		            		margin-right: 5px; 
+		            		margin: 0;">
+		                <option value="010" selected>010</option>
+		                <option value="011">011</option>
+		                <option value="016">016</option>
+		                <option value="017">017</option>
+		                <option value="018">018</option>
+		                <option value="019">019</option>
+		            </select>
+		            <span style="margin: 0 5px;">-</span>
+		            <input class="form-control form-control-sm"
+		           	 id = "phonePart2"
+		           	 name="phonePart2"
+		             type="text"  
+		             aria-label="번호 입력" 
+		             style="width: 100px; 
+		             margin: 0;"
+		             maxlength="4"
+		             value = ""
+		             >
+		             
+		            <span style="margin: 0 5px;">-</span>
+		            
+		            <input class="form-control form-control-sm"
+		             id = "phonePart3"
+		           	 name="phonePart3" 
+		            type="text"  
+		            aria-label="번호 입력" 
+		            style="width: 100px; 
+		            margin: 0;"
+		            maxlength="4"
+		            value="">
+		        </div>
+		    </div>
+		</div>
 <!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 10px 0 0 0;"> 
-   <div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top:10px;">
-       <p style="color: black; margin: 0; width: 150px;">SMS 수신여부<b class="text-danger"> *</b></p>
-       <div style="margin-left: 10px; display: flex; align-items: center;">
-           <div style="margin-right: 20px;">
-               <input class="form-check-input" type="radio" name="authType1" id="emailAuth1" checked>
-               <label class="form-check-label" for="emailAuth">수신함</label>
-           </div>
-           <div>
-               <input class="form-check-input" type="radio" name="authType1" id="phoneAuth1">
-               <label class="form-check-label" for="phoneAuth">수신안함</label>
-         </div>
-         </div>
-         </div>
-         <!-- 실선 추가 -->
+	<div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top:10px;">
+	    <p style="color: black; margin: 0; width: 150px;">SMS 수신여부<b class="text-danger"> *</b></p>
+	    <div style="margin-left: 10px; display: flex; align-items: center;">
+	        <div style="margin-right: 20px;">
+	            <input class="form-check-input" type="radio" name="authType1" id="emailAuth1" checked>
+	            <label class="form-check-label" for="emailAuth">수신함</label>
+	        </div>
+	        <div>
+	            <input class="form-check-input" type="radio" name="authType1" id="phoneAuth1">
+	            <label class="form-check-label" for="phoneAuth">수신안함</label>
+			</div>
+			</div>
+			</div>
+			<!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin:0;"> 
 
 
@@ -477,13 +443,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
         <p class="input-label" style="margin: 0;">이메일<b class="text-danger"> *</b></p>
         <div style="margin-left: 10px; display: flex; align-items: center;">
-            <input class="form-control"
-
-                  id="email"
-                  name="email"
-                   type="text" 
-                   value="${sessionScope.memberVO.email}" aria-label="readonly input example" readonly>
-
+            <input class="form-control" type="text" value="${sessionScope.memberVO.email}" aria-label="readonly input example" readonly>
         </div>
     </div>
 </div>
@@ -492,30 +452,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-<!--    <div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top:10px;"> -->
-<!--        <p style="color: black; margin: 0; width: 150px;">SMS 수신여부<b class="text-danger"> *</b></p> -->
-<!--        <div style="margin-left: 10px; display: flex; align-items: center;"> -->
-<!--            <div style="margin-right: 20px;"> -->
-<!--                <input class="form-check-input" type="radio" name="authType2" id="emailAuth2"> -->
-<!--                <label class="form-check-label" for="emailAuth2">수신함</label> -->
-<!--            </div> -->
-<!--            <div> -->
-<!--                <input class="form-check-input" type="radio" name="authType2" id="phoneAuth2"> -->
-<!--                <label class="form-check-label" for="phoneAuth2">수신안함</label> -->
-<!--          </div> -->
-<!--          </div> -->
-<!--          </div> -->
-         
-          <!-- 실선 추가 -->
+<!-- 	<div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top:10px;"> -->
+<!-- 	    <p style="color: black; margin: 0; width: 150px;">SMS 수신여부<b class="text-danger"> *</b></p> -->
+<!-- 	    <div style="margin-left: 10px; display: flex; align-items: center;"> -->
+<!-- 	        <div style="margin-right: 20px;"> -->
+<!-- 	            <input class="form-check-input" type="radio" name="authType2" id="emailAuth2"> -->
+<!-- 	            <label class="form-check-label" for="emailAuth2">수신함</label> -->
+<!-- 	        </div> -->
+<!-- 	        <div> -->
+<!-- 	            <input class="form-check-input" type="radio" name="authType2" id="phoneAuth2"> -->
+<!-- 	            <label class="form-check-label" for="phoneAuth2">수신안함</label> -->
+<!-- 			</div> -->
+<!-- 			</div> -->
+<!-- 			</div> -->
+			
+			 <!-- 실선 추가 -->
 <!-- <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 0 0 35px 0;">  -->
 
 <!-- 추가정보 -->
-<!--    <div class="basic"> -->
-<!--            <div class="ba"> -->
-<!--                <span>추가정보</span> -->
-<!--            </div> -->
-<!--            </div> -->
-<!--            <hr class="underline"> -->
+<!-- 	<div class="basic"> -->
+<!-- 	        <div class="ba"> -->
+<!-- 	            <span>추가정보</span> -->
+<!-- 	        </div> -->
+<!-- 	        </div> -->
+<!-- 	        <hr class="underline"> -->
 
 <!-- <div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top:10px;"> -->
 <!--     <p style="color: black; margin: 0; width: auto; white-space: nowrap;">만 14세 이상입니다.<b class="text-danger"> *</b></p> -->
@@ -547,12 +507,12 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 </form>
 </div>
-   
+	
 
-         </div>
-         
-         </div>
-      
+			</div>
+			
+			</div>
+		
 
 
 <jsp:include page="/common/footer.jsp" />
