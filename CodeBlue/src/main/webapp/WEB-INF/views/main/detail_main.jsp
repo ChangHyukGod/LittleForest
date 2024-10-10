@@ -3,6 +3,9 @@
 <html>
 <head>
    <title>gameinfo</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Gasoek+One&family=Jua&family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
    <script type="text/javascript" defer="defer">
       function fn_buy(uuid) {
         document.detailForm.uuid.value = uuid;
@@ -10,22 +13,47 @@
         document.detailForm.submit();
       }
       
-      function fn_cart(uuid) {
-         const xhr = new XMLHttpRequest();
-         xhr.open("POST", "/main/addToCart", true);
-         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-         xhr.setRequestHeader("Accept-Charset", "utf-8"); // 추가된 부분
-     
-         xhr.onload = function () {
-             if (xhr.status === 200) {
-                 const responseMessage = xhr.responseText; // 서버에서 받은 메시지
-                 alert(responseMessage); // 메시지를 알림으로 표시
-             }
-         };
-         
-         xhr.send("uuid=" + uuid);
+     // 실시간 장바구니에 데이터 수 계산
+     function updateCartCount() {
+         const cartCountElement = document.getElementById('cartCount');
+         const currentCount = parseInt(cartCountElement.innerText) || 0; // 현재 카운트를 가져옵니다.   
+         cartCountElement.innerText = currentCount + 1; // 카운트를 1 증가시킵니다.
      }
-   </script>
+        
+    // 장바구니에 추가 => /main/addToCart
+    function fn_cart(uuid) {
+       const xhr = new XMLHttpRequest();
+       
+       xhr.open("POST", "/main/addToCart", true);
+       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+       xhr.setRequestHeader("Accept-Charset", "utf-8");
+   
+       xhr.onload = function () {
+           if (xhr.status === 200) {
+               const responseMessage = xhr.responseText; // 서버에서 받은 메시지
+               alert(responseMessage); // 메시지를 알림으로 표시
+   
+               // 장바구니 카운트 업데이트
+               if (responseMessage === "장바구니에 추가되었습니다!") {
+                   updateCartCount(); // (*) 카운트 실시간 업데이트
+               }
+           }
+       };
+   
+       xhr.send("uuid=" + uuid);
+   }
+    </script>
+    
+        <style>
+		.card-title {
+	  		font-family: "Noto Sans KR", sans-serif;
+	  		font-optical-sizing: auto;
+	  		font-weight: <weight>;
+	  		font-style: normal;
+	  		font-size: 18px;
+			}
+		</style>
+
 </head>
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
@@ -34,6 +62,7 @@
   <form action="detailForm" name="detailForm" method="get">
      <!-- uuid 전송(***) -->
    <input type="hidden" name="uuid">
+   
 <!-- 전체 세로정렬 -->
 <div class="container" style="display:flex-direction:row; gap:20px;">
 
@@ -50,15 +79,14 @@
    <!-- 사이드바 1 : 이미지, 게임정보 및 장바구니, 구매하기 -->
    <div class="card" style="width:30rem;">
    <!-- 게임이미지 -->
-   <img src="<c:out value="${detail.fileUrl}"/>" class="card-img-left"
-   style="width: auto; height: 155px;">
+   <img src="/resources/images/${detail.fileTitle}.jpg" class="card-img-left" style="width: auto; height: 155px;">
       <div class="card-body">
          <h5 class="card-title">${detail.fileTitle}</h5>
-         <p class="card-text">${detail.price}</p>
+         <p class="card-text" style="font-weight: bold;">\ <c:out value="${detail.price}"/></p>
       </div>
       <!-- 게임정보 테이블 : 장르, 배급사, 이용등급, 출시일, => 중앙/우측 정렬 -->
       <table class="table mb-3">
-    <thead style="color: blue;">
+    <thead style="color: ;">
         <tr>
             <th scope="col" style="width: 30%;">항목</th>
             <th scope="col">내용</th>
@@ -87,7 +115,7 @@
       <!-- 장바구니, 구매하기 버튼 -->
         <div class="card-body" style="text-align: center; margin-top: -15px;"> <!-- 가운데 정렬을 위한 스타일 추가 -->
           <div class="d-flex justify-content-center mt-auto">
-              <a href="#" class="btn btn-outline-primary btn-sm me-2" onclick="fn_buy('<c:out value="${detail.uuid}"></c:out>')">구매하기</a>
+              <a href="#" class="btn btn-success btn-sm me-2" onclick="fn_buy('<c:out value="${detail.uuid}"></c:out>')">구매하기</a>
               <a href="#" class="btn btn-outline-dark btn-sm" onclick="fn_cart('<c:out value="${detail.uuid}"></c:out>')">장바구니에 추가</a>
           </div>
       </div>
@@ -100,7 +128,9 @@
 
    <!-- 게임 소개글 : 좌측정렬 -->
    <div class="card float-left" style="width: 50rem; height: 20rem;">
-     <div class="card-body">
+     <div class="card-body" style="font-weight: bold;">
+     <h3 class="card-title">게임 소개</h3>
+     <br>
          ${detail.info}
      </div>
    </div>

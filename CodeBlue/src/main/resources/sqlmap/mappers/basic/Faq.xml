@@ -11,11 +11,15 @@
 		resultType="FaqVO">
 		SELECT *
 		FROM FAQ
-		WHERE (question LIKE '%' || #{searchKeyword} || '%' OR #{searchKeyword} IS
+		WHERE (question LIKE '%' ||
+		#{searchKeyword} || '%' OR #{searchKeyword} IS
+		NULL OR #{searchKeyword}
+		= '')
+		OR (answer LIKE '%' || #{searchKeyword} || '%' OR
+		#{searchKeyword} IS
 		NULL OR #{searchKeyword} = '')
-		OR (answer LIKE '%' || #{searchKeyword} || '%' OR #{searchKeyword} IS
-		NULL OR #{searchKeyword} = '')
-		OFFSET #{firstIndex} ROWS FETCH NEXT #{recordCountPerPage} ROWS ONLY
+		OFFSET #{firstIndex}
+		ROWS FETCH NEXT #{recordCountPerPage} ROWS ONLY
 	</select>
 
 	<!-- FAQ 총 개수 가져오기 -->
@@ -27,4 +31,35 @@
 		#{searchKeyword} || '%'
 	</select>
 
+	<insert id="insert" parameterType="FaqVO">
+		INSERT INTO FAQ (
+		QUESTION,
+		ANSWER
+		) VALUES (
+		#{question},
+		#{answer}
+		)
+	</insert>
+
+	<select id="selectFaqById" parameterType="int"
+		resultType="FaqVO">
+		SELECT * FROM FAQ WHERE id = #{id}
+	</select>
+
+	<update id="update" parameterType="FaqVO">
+		UPDATE FAQ
+		SET
+		QUESTION =
+		#{question},
+		ANSWER = #{answer}
+		WHERE
+		id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="FaqVO">
+		DELETE FAQ
+		WHERE
+		ID =
+		#{id}
+	</delete>
 </mapper>
