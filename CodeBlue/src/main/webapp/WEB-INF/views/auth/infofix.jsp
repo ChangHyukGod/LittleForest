@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
        <h4 class="fw-medium"> 마이쇼핑 </h4>
        <button class="btn left-align-button" onclick="location.href='/main/cart';">장바구니</button>
        <h4 class="fw-medium"> 나의 정보 </h4>
-       <button class="btn left-align-button" onclick="location.href='/infofix';">회원정보 수정</button>
+       <button class="btn left-align-button" onclick="location.href='/passwordChecking">회원정보 수정</button>
        <h4 class="fw-medium"> 고객센터 </h4>
        <button class="btn left-align-button" onclick="location.href='/faq';">FAQ</button>
 <br>
