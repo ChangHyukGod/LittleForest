@@ -45,3 +45,4 @@ CodeBlue/src/main/webapp/WEB-INF/views/auth/infofix.jsp
 CodeBlue/target/m2e-wtp/web-resources/META-INF/maven/com.simpleconding.repositoryexam/RepositoryExam/pom.properties
 CodeBlue/target/m2e-wtp/web-resources/META-INF/maven/com.simpleconding.repositoryexam/RepositoryExam/pom.properties
 CodeBlue/target/m2e-wtp/web-resources/META-INF/maven/com.simpleconding.repositoryexam/RepositoryExam/pom.properties
+CodeBlue/target/classes/com/simplecoding/repositoryexam/controller/auth/MembersController.class

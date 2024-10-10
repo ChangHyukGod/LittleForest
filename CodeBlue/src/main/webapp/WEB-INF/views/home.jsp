@@ -51,12 +51,12 @@
         	border-radius: 50px !important ; /* 둥글게 설정 */
         	border: 1px solid transparent; /* 기본 외곽선 */
         	transition: border-color 0.3s; /* 부드러운 전환 효과 */
-        	background-color: rgb(103, 216, 103);
-        	color: white;
+        	
        }
    
        	.btn-group .btn:hover {
            background-color: rgb(65, 194, 65); /* 마우스 오버 시 외곽선 색상 변경 */
+           color: white;
        }
        
        .carousel-item img {
@@ -90,7 +90,26 @@
           height: 300px; /* 카드 높이를 고정합니다. */
       }    
       
-              
+    /* 상단으로 이동하는 버튼 스타일 */
+	#scrollToTop {
+	   position: fixed;
+	   bottom: 20px;
+	   right: 20px;
+	   display: none; /* 기본적으로 숨김 */
+	   background-color: #007bff;
+	   color: white;
+	   border: none;
+	   border-radius: 50%;
+	   width: 40px;
+	   height: 40px;
+	   font-size: 20px;
+	   cursor: pointer;
+	   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+	}
+	
+	#scrollToTop:hover {
+	   background-color: #0056b3;
+	}   
     </style>
     
     <script type="text/javascript" defer="defer">
@@ -194,6 +213,28 @@
 //        fn_cart 함수는 클라이언트 측에서 UUID를 서버로 보내는 역할을 하며, 서버의 addToCart 메서드는 이 UUID를 세션의 장바구니 리스트에 추가하는 역할을 합니다.
 //        따라서, 이 과정에서 세션에 UUID 값이 저장됩니다.
    }
+    
+ // 페이지 스크롤에 따른 상단이동 버튼 표시
+    window.onscroll = function() {
+       const scrollToTopButton = document.getElementById('scrollToTop');
+       if (document.body.scrollTop > 100
+             || document.documentElement.scrollTop > 100) {
+          scrollToTopButton.style.display = "block";
+       } else {
+          scrollToTopButton.style.display = "none";
+       }
+    };
+
+    // 상단이동 버튼 클릭 시 상단으로 스크롤
+    document.addEventListener('DOMContentLoaded', function() {
+       document.getElementById('scrollToTop').onclick = function() {
+          window.scrollTo({
+             top : 0,
+             behavior : 'smooth'
+          });
+       };
+    });
+
     </script>
 </head>
 <body>
@@ -285,8 +326,8 @@
                 </a>
                  <div class="card-body">
                      <h5 class="card-title">이터널 리턴</h5>
-                     <span class="badge rounded-pill text-bg-danger">Hot</span>
                      <br/>
+                     <span class="badge rounded-pill text-bg-danger">Hot</span>
                      <p class="card-text">배틀로얄 게임</p>
                  </div>
                </div>
@@ -297,8 +338,8 @@
                  </a>
                  <div class="card-body">
                      <h5 class="card-title">팰 월드</h5>
-                     <span class="badge rounded-pill text-bg-danger">Hot</span>
                      <br/>
+                     <span class="badge rounded-pill text-bg-danger">Hot</span>
                      <p class="card-text">유사 포켓몬</p>
                  </div>
                </div>
@@ -309,8 +350,8 @@
                  </a>
                  <div class="card-body">
                      <h5 class="card-title">휴먼 폴 플랫</h5>
-                     <span class="badge rounded-pill text-bg-danger">Hot</span>
                      <br/>
+                     <span class="badge rounded-pill text-bg-danger">Hot</span>
                      <p class="card-text">협동 탈출 게임</p>
                  </div>
                </div>
@@ -364,7 +405,16 @@
                          	<h5 class="card-title" style="font-weight: bold;" ><c:out value="${data.fileTitle}" /></h5>
                          	<p class="card-text"><c:out value="${data.genre}" /></p>
                    	 		<div class="d-flex justify-content-between mt-auto">
-						    	<p class="card-price" style="font-weight: bold;">\ <c:out value="${data.price}" /></p>
+						    	<p class="card-price" style="font-weight: bold;">
+						    		<c:choose>
+	                                    <c:when test="${data.price == '0'}">
+	                                        무료
+	                                    </c:when>
+	                                    <c:otherwise>
+	                                        \ <c:out value="${data.price}"/>
+	                                    </c:otherwise>
+                                	</c:choose>
+								</p>
 						    	<button class="btn border-0 btn-sm" style="font-size: 20px;" type="button" onclick="fn_cart('<c:out value="${data.uuid}"></c:out>')">
 						        <i class="bi bi-cart-plus" style="position: relative; top: -10px;"></i>
 						  	  	</button>
@@ -376,6 +426,10 @@
             </div>
         </form>
     </div>
+    
+    <button id="scrollToTop" title="Top" style="background-color: green;"><i class="bi bi-arrow-up"></i></button>
+   <!-- 상단으로 이동하는 버튼 추가 -->
+    
 <jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 </html>
