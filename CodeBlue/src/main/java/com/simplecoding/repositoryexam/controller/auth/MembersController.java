@@ -168,4 +168,11 @@ public class MembersController {
 		return "redirect:/";
 	}
 	
+//  헤더 장바구니 카운터
+    @ModelAttribute
+    public void addCartItems(Model model, HttpSession session) {
+        List<String> cart = (List<String>) session.getAttribute("cart");
+        int cartCount = (cart != null) ? cart.size() : 0;
+        model.addAttribute("cartCount", cartCount);
+    }	
 }
