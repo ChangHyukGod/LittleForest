@@ -28,7 +28,7 @@ body {
     width: 50%;
     margin-top: 70px;
     margin-bottom: 70px;
-    background-color: #E8FFE8; /* 연한 초록색 배경 */
+    background-color: white; /* 연한 초록색 배경 */
     border: 2px solid #28A745; /* 진한 초록색 테두리 */
     border-radius: 15px;
     padding: 20px;
