@@ -369,7 +369,7 @@ body {
 							<div class="form-group" style="margin: 0;">
 								<label for="phone"></label>
 								<div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;">
-									<p class="input-label" style="margin: 0;">휴대전화 (선택)</p>
+									<p class="input-label" style="margin: 0;">휴대전화<b class="text-danger"> *</b> </p>
 									<div style="margin-left: 10px; display: flex; align-items: center;">
 										<select class="form-select form-select-sm" name="phone_part1" id="phone_part1" aria-label="번호 선택" style="width: 100px; margin-right: 5px; margin: 0;">
 											<option value="010" selected>010</option>
