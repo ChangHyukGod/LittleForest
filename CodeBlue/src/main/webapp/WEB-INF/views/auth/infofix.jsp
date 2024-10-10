@@ -202,17 +202,15 @@
     <div class="container">
 <div class="left-align">
  	<button class="btn left-align-button font-weight-bold" style="font-size: 30px;" onclick="location.href='/mypage';">마이페이지</button>
-    <h4 class="fw-medium"> 마이쇼핑 </h4>
-    <button class="btn left-align-button" onclick="location.href='주문배송조회.jsp';">주문/배송 조회</button>
-    <button class="btn left-align-button" onclick="location.href='관심상품.jsp';">관심상품</button>
-    <h4 class="fw-medium"> 나의 정보 </h4>
-    <button class="btn left-align-button" onclick="location.href='/infofix';">회원정보 수정</button>
-    <h4 class="fw-medium"> 고객센터 </h4>
-    <button class="btn left-align-button" onclick="location.href='공지사항.jsp';">공지사항</button>
-    <br>
-    <button class="btn left-align-button" onclick="location.href='/FAQ';">FAQ</button>
-    <br>
-    <button class="btn left-align-button" onclick="location.href='문의.jsp';">1:1 문의</button>
+	   <h4 class="fw-medium"> 마이쇼핑 </h4>
+	    <p>주문/배송 조회</p>
+	    <p>관심상품</p>
+	    <h4 class="fw-medium"> 나의 정보 </h4>
+	    <button class="btn left-align-button" onclick="location.href='/infofix';">회원정보 수정</button>
+	    <h4 class="fw-medium"> 고객센터 </h4>
+	    <p>공지사항</p>
+	    <p>FAQ</p>
+	    <p>1:1 문의</p>
 </div>
 
     
