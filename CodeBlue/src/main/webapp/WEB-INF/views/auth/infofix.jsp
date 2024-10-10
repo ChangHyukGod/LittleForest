@@ -30,11 +30,11 @@
 
        
        // 전체 전화번호를 결합
+
         var fullPhoneNumber = phonePart1 + "-" + phonePart2 + "-" + phonePart3;
 
      // 숨겨진 필드에 결합된 전화번호 값을 설정
         document.getElementById("phonenumber").value = fullPhoneNumber;
-       
 //      1) action 속성 : "/basic/dept/edit"
      document.detailForm.action = "/infofix";
 //      2) submit() 실행
@@ -481,10 +481,12 @@ document.addEventListener('DOMContentLoaded', function() {
         <p class="input-label" style="margin: 0;">이메일<b class="text-danger"> *</b></p>
         <div style="margin-left: 10px; display: flex; align-items: center;">
             <input class="form-control"
+
                   id="email"
                   name="email"
                    type="text" 
                    value="${sessionScope.memberVO.email}" aria-label="readonly input example" readonly>
+
         </div>
     </div>
 </div>
