@@ -165,7 +165,7 @@ public class MembersController {
 							@ModelAttribute MembersVO membersVO
 				)throws Exception{
 		membersService.infofix(membersVO);
-		return "redirect:/home";
+		return "redirect:/";
 	}
 	
 }
