@@ -91,25 +91,25 @@
       }    
       
     /* 상단으로 이동하는 버튼 스타일 */
-	#scrollToTop {
-	   position: fixed;
-	   bottom: 20px;
-	   right: 20px;
-	   display: none; /* 기본적으로 숨김 */
-	   background-color: #007bff;
-	   color: white;
-	   border: none;
-	   border-radius: 50%;
-	   width: 40px;
-	   height: 40px;
-	   font-size: 20px;
-	   cursor: pointer;
-	   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-	}
-	
-	#scrollToTop:hover {
-	   background-color: #0056b3;
-	}   
+#scrollToTop {
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+   display: none; /* 기본적으로 숨김 */
+   background-color: #007bff;
+   color: white;
+   border: none;
+   border-radius: 50%;
+   width: 40px;
+   height: 40px;
+   font-size: 20px;
+   cursor: pointer;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#scrollToTop:hover {
+   background-color: #0056b3;
+}   
     </style>
     
     <script type="text/javascript" defer="defer">
@@ -214,7 +214,7 @@
 //        따라서, 이 과정에서 세션에 UUID 값이 저장됩니다.
    }
     
- // 페이지 스크롤에 따른 상단이동 버튼 표시
+ // 페이지 스크롤에 따른 버튼 표시
     window.onscroll = function() {
        const scrollToTopButton = document.getElementById('scrollToTop');
        if (document.body.scrollTop > 100
@@ -225,7 +225,7 @@
        }
     };
 
-    // 상단이동 버튼 클릭 시 상단으로 스크롤
+    // 버튼 클릭 시 상단으로 스크롤
     document.addEventListener('DOMContentLoaded', function() {
        document.getElementById('scrollToTop').onclick = function() {
           window.scrollTo({
@@ -326,8 +326,8 @@
                 </a>
                  <div class="card-body">
                      <h5 class="card-title">이터널 리턴</h5>
-                     <br/>
                      <span class="badge rounded-pill text-bg-danger">Hot</span>
+                     <br/>
                      <p class="card-text">배틀로얄 게임</p>
                  </div>
                </div>
@@ -338,8 +338,8 @@
                  </a>
                  <div class="card-body">
                      <h5 class="card-title">팰 월드</h5>
-                     <br/>
                      <span class="badge rounded-pill text-bg-danger">Hot</span>
+                     <br/>
                      <p class="card-text">유사 포켓몬</p>
                  </div>
                </div>
@@ -350,8 +350,8 @@
                  </a>
                  <div class="card-body">
                      <h5 class="card-title">휴먼 폴 플랫</h5>
-                     <br/>
                      <span class="badge rounded-pill text-bg-danger">Hot</span>
+                     <br/>
                      <p class="card-text">협동 탈출 게임</p>
                  </div>
                </div>

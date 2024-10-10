@@ -38,7 +38,7 @@ UPDATE MEMBERS
   				PASSWORD = #{password},
                 AGE = #{age},
                 PHONENUMBER = #{phonenumber},
-                EMAIL = #{email}	
+                EMAIL = #{email}			
 		WHERE USERNAME = #{username}
 </update>
 

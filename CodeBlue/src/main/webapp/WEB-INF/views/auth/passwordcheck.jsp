@@ -5,6 +5,12 @@
     <title>로그인 페이지</title>
     <!-- 부트스트랩 CSS 링크 필요 -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript">
+    function go_register() {
+        // 원하는 주소로 이동
+        document.location.href = "/register"; // 변경하고자 하는 URL로 수정
+    }
+    </script>
     <style>
 
  	body {
@@ -45,7 +51,8 @@
                     <div class="card-body">
                         <h4 class=" text-center mb-6 fw-bold fs-1">비밀 번호 확인</h4>
                         <p class="text-center mt-5 mb-5">회원 정보를 수정하기 위해 비밀번호를 입력해주세요.</p>
-                    
+                        
+                        <!-- Login Form -->
                         <form action="/passwordChecking" method="POST">
 						    <div class="form-group">
 						        <label for="passwordcheck"></label>
