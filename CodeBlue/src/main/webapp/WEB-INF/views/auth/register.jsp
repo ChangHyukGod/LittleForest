@@ -94,14 +94,15 @@ function all_check(event) {
 
 
 <style>
-<
-style>body {
+<style>
+
+body {
 	font-size: 12px !important;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	margin: 0;
+	/* display: flex; */
+	/* justify-content: center;
+	align-items: center; */
+/* 	height: 100vh;
+	margin: 0; */
 }
 
 .container {
@@ -258,6 +259,8 @@ style>body {
 .ee {
 	margin-left: auto;
 }
+
+
 </style>
 </head>
 <body>
@@ -535,22 +538,37 @@ style>body {
 									</div>
 								</div>
 							</div>
-							<!-- 실선 추가 -->
-							<hr style="border: 1px solid #BDBDBD;; width: 100%; margin: 2px 0 60px 0;">
-
-
+							
+			<script>
+			    document.getElementById('checkbox1').addEventListener('change', function() {
+			        let checkboxes = document.querySelectorAll('.custom-checkbox input[type="checkbox"]');
+			        for (let i = 1; i < checkboxes.length; i++) {
+			            checkboxes[i].checked = this.checked;
+			        }
+			    });
+			
+			
+			    let individualCheckboxes = document.querySelectorAll('.custom-checkbox input[type="checkbox"]:not(#checkbox1)');
+			    individualCheckboxes.forEach(function(checkbox) {
+			        checkbox.addEventListener('change', function() {
+			            let allChecked = Array.from(individualCheckboxes).every(c => c.checked);
+			            document.getElementById('checkbox1').checked = allChecked;
+			        });
+			    });
+			</script>
+						<!-- 실선 추가 -->
+						<hr style="border: 1px solid #BDBDBD;; width: 100%; margin: 2px 0 60px 0;">
 							<div class="text-center">
 								<button type="submit" class="btn btn-success btn-block" style="padding: 10px 40px; font-size: 16px; margin-bottom: 25px;">회원가입</button>
 							</div>
 						</form>
 					</div>
-
 				</div>
-
 			</div>
-
 		</div>
 	</div>
-	<jsp:include page="/common/footer.jsp"></jsp:include>
+	
+	
+<jsp:include page="/common/footer.jsp" />
 </body>
 </html>

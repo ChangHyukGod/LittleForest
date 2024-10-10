@@ -217,8 +217,7 @@
    		border-bottom: 1px solid black;
    		margin-bottom:100px;
         }
-        
-        
+                
         
 
     </style>
@@ -314,6 +313,6 @@
   </div>
   </div>
 
-<jsp:include page="/common/footer.jsp" />
+    <jsp:include page="/common/footer.jsp" />
 </body>
 </html>
