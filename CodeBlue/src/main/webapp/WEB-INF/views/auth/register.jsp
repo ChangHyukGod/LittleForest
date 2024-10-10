@@ -518,7 +518,8 @@ body {
 							<!-- 실선 추가 -->
 							<hr style="border: 1px solid #BDBDBD;; width: 100%; margin: 2px 0 60px 0;">
 
-
+ 
+ 
 							<div class="text-center">
 								<button type="submit" class="btn btn-success btn-block" style="padding: 10px 40px; font-size: 16px; margin-bottom: 25px;">회원가입</button>
 							</div>
