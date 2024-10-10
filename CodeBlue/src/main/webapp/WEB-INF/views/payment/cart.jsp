@@ -178,12 +178,16 @@
             <h2 style="margin-top: 20px; margin-bottom:20px;">${sessionScope.memberVO.membername}님의 장바구니 (현재 : ${fn:length(cartItems)}개)</h2>
         </div>
         <div style="display:flex; gap:48rem;">
-        <div>
-        <input type="checkbox" id="select-all" onclick="toggleCheckboxes(this.checked)" style="margin-bottom: 10px;">
-        전체 선택</div>
-        <button type="button" class="btn btn-danger" onclick="removeAllFromCart()">전체 삭제</button>
-        </div>
-   
+          <div>
+              <c:if test="${not empty cartItems}">
+                  <input type="checkbox" id="select-all" onclick="toggleCheckboxes(this.checked)" style="margin-bottom: 10px;">
+                  전체 선택
+              </c:if>
+          </div>
+          <c:if test="${not empty cartItems}">
+              <button type="button" class="btn btn-danger" onclick="removeAllFromCart()">전체 삭제</button>
+          </c:if>
+      </div>
         <div style="display: flex; gap: 30px;">
             <div style="display: flex-direction:row;">
                 <c:if test="${not empty cartItems}">

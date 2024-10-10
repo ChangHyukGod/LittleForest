@@ -289,7 +289,7 @@ transition: transform 0.3s ease; z-index: 500;"> -->
                 </tr>
                 <tr style="display:none;">
                     <th colspan="2">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="예금주명(미입력시 주문자명)">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="예금주명">
                     </th>
                 </tr>
                 <tr>
