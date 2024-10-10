@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	    width: 90%; 
 	   display: flex;
 	}
+	
 	.main-content {
 	    flex-grow: 1; 
 	    display: flex;
