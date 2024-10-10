@@ -132,7 +132,7 @@ public class HomeController{
        List<String> cart = (List<String>) session.getAttribute("cart");
        int cartCount = (cart != null) ? cart.size() : 0;
        model.addAttribute("cartCount", cartCount);
-//  설명:
+      // 설명:
       // @ModelAttribute 메서드를 사용하면, 요청을 처리하는 컨트롤러 메서드가 호출될 때마다 모델에 데이터를 추가할 수 있습니다.
       // 이렇게 추가된 데이터는 해당 요청을 처리하는 뷰에서 자유롭게 사용할 수 있어, 사용자 경험을 더욱 향상시킬 수 있습니다.
         // ${cartCount}에 addCartItems메소드의 cartCount를 통해서 장바구니 속의 실제 데이터의 갯수가 나타남
@@ -206,7 +206,7 @@ public class HomeController{
    }
 
    
-   // (10) 장바구니 페이지에서 담아놓은 게임 삭제
+   // (10) 장바구니 페이지에서 담아놓은 게임 개별 삭제
    @PostMapping(value = "/main/removeFromCart", produces = "text/plain;charset=UTF-8")
    public ResponseEntity<String> removeFromCart(@RequestParam String uuid, HttpSession session) {
        List<String> cart = (List<String>) session.getAttribute("cart");
@@ -228,7 +228,26 @@ public class HomeController{
 //             아이템이 없으면 오류 메시지를 반환합니다.
    }
    
-   // (11) 장바구니 결제 페이지 생성 <-> (12)와 상호작용
+    // 11) 장바구니 페이지에서 담아놓은 게임 전체 삭제
+    @PostMapping(value = "/main/removeAllFromCart", produces = "text/plain;charset=UTF-8")
+   public ResponseEntity<String> removeAllFromCart(HttpSession session) {
+       // 세션에서 장바구니 정보를 가져옴
+       List<String> cart = (List<String>) session.getAttribute("cart");
+       
+       // 장바구니가 존재하는 경우
+       if (cart != null) {
+           cart.clear(); // 장바구니의 모든 아이템을 삭제
+           session.setAttribute("cart", cart); // 빈 장바구니를 세션에 저장
+           // 성공 메시지를 포함한 200 OK 응답을 반환
+           return ResponseEntity.ok("장바구니의 모든 아이템이 삭제되었습니다!"); 
+       } else {
+           // 장바구니가 비어 있는 경우, 적절한 메시지를 반환
+           return ResponseEntity.ok("장바구니가 비어 있습니다."); 
+       }
+   }
+
+   
+   // (12) 장바구니 결제 페이지 생성 <-> (13)과 상호작용
    @GetMapping("/main/cart/buy") // HTTP GET 요청을 처리하는 메서드
    public String goCartPayPage(HttpSession session, Model model) {
        // 세션에서 pay_cart 속성을 가져옴. 이 속성은 선택된 게임의 UUID 리스트입니다.
@@ -260,7 +279,7 @@ public class HomeController{
        return "payment/cart_pay_page"; 
    }
    
-   // (12) 선택한 게임 UUID를 세션에 저장 <-> (11)과 상호작용
+   // (13) 선택한 게임 UUID를 세션에 저장 <-> (12)와 상호작용
    @PostMapping(value = "/main/cart/saveSelectedItems", consumes = "application/json") // HTTP POST 요청을 처리
    @ResponseBody // 이 메서드는 JSON 응답을 반환
    public ResponseEntity<String> saveSelectedItems(@RequestBody Map<String, List<String>> payload, HttpSession session) {
@@ -304,5 +323,6 @@ public class HomeController{
 //   @ResponseBody를 사용하면 메서드의 반환 값을 JSON으로 자동 변환하겠다는 것을 명시적으로 나타내는 것이고,
 //   ResponseEntity만 사용해도 Spring이 자동으로 JSON 형식으로 변환하여 응답할 수 있습니다.
 //   결국, 두 방식 모두 같은 결과를 만들어내므로, 주로 코드의 가독성이나 팀의 코딩 스타일에 따라 선택하면 됩니다.
+   
    
 } 
