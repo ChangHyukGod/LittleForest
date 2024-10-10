@@ -252,11 +252,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <jsp:include page="/common/header.jsp" />
 <div class="container">
    <div class="left-align">
-       <button class="btn left-align-button font-weight-bold" style="font-size: 30px;" onclick="location.href='/mypage';">마이페이지</button>
        <h4 class="fw-medium"> 마이쇼핑 </h4>
        <button class="btn left-align-button" onclick="location.href='/main/cart';">장바구니</button>
-       <h4 class="fw-medium"> 나의 정보 </h4>
-       <button class="btn left-align-button" onclick="location.href='/passwordChecking">회원정보 수정</button>
        <h4 class="fw-medium"> 고객센터 </h4>
        <button class="btn left-align-button" onclick="location.href='/faq';">FAQ</button>
 <br>
