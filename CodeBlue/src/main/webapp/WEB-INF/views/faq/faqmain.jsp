@@ -109,12 +109,9 @@ function fnMovetoright() {
 	margin: 6px auto;
 }
 
-.page-line {
-	margin: 60px 0 30px 0;
-}
-
 .page-line1 {
-	margin: 56px 0 30px 0;
+	margin: 56px 0 30px 20%;
+	width: 60%;
 }
 
 [class^="key"] { /* 키워드 */
@@ -231,10 +228,6 @@ function fnMovetoright() {
 	margin-bottom: 20px;
 }
 
-#carouselExampleControls {
-	
-}
-
 #category {
 	margin: 5px 0 5px 485px;
 }
@@ -310,7 +303,7 @@ function fnMovetoright() {
 		<!-- 첫 번째 배너 -->
 		<div class="banner-box">
 			<div class="banner position-relative">
-				<img class="bannerimage" src="${pageContext.request.contextPath}/resources/images/banner5.png" alt="FaqBanner">
+				<a href="/faq"><img class="bannerimage" src="${pageContext.request.contextPath}/resources/images/banner5.png" alt="FaqBanner"></a>
 				<div class="bannertitle">고객센터</div>
 				<div class="secondtitle">검색을 통해 빠르게 문제를 찾아보세요</div>
 				<!-- 검색창 -->
@@ -548,7 +541,7 @@ function fnMovetoright() {
 			</form>
 		</div>
 		<!-- 마지막 도움창 -->
-		<hr>
+		<hr class="page-line1">
 		<h1 class="last-body-title">다른 도움이 필요한가요?</h1>
 		<!-- 마지막 카드 -->
 		<div class="grid-container2">
