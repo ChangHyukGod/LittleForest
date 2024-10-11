@@ -21,5 +21,4 @@
    <select id="selectMain" parameterType="String" resultType="MainVO">
       SELECT * FROM MAIN_TABLE WHERE UUID = #{uuid}
    </select>
-   
 </mapper>
