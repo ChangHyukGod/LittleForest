@@ -7,6 +7,7 @@
 <title>회원가입</title>
 
 <script type="text/javascript">
+
         function all_check(event) {
             event.preventDefault(); // 폼 제출 기본 동작 방지
             var phonePart1 = document.getElementById("phone_part1").value.trim();
@@ -148,16 +149,25 @@
       }
     </script>
 
-
 <style>
 <
 style>body {
+<<<<<<< HEAD
    font-size: 12px !important;
    /*    display: flex; */
    /*    justify-content: center; */
    /*    align-items: center; */
    /*    height: 100vh; */
    /*    margin: 0; */
+=======
+	font-size: 12px !important;
+	/*    display: flex; */
+	/*    justify-content: center; */
+	/*    align-items: center; */
+	/*    height: 100vh; */
+	/*    margin: 0; */
+=======
+>>>>>>> d1716ea37d3760563f3ea9be0f18037f19e18435
 }
 
 #container {
@@ -318,6 +328,7 @@ style>body {
 </head>
 <body>
 
+<<<<<<< HEAD
    <jsp:include page="/common/header.jsp"></jsp:include>
    <div id="container">
       <div class="ro1">
@@ -333,6 +344,24 @@ style>body {
                         <span><b class="text-danger"> *</b>필수입력사항</span>
                      </div>
                   </div>
+=======
+
+	<jsp:include page="/common/header.jsp"></jsp:include>
+	<div id="container">
+		<div class="ro1">
+			<div class="col-xl-6 col-lg-6 col-md-10">
+				<div class="border-0">
+					<div class="card-body">
+						<h4 class="text-center mb-6 fw-bold fs-2">회원가입</h4>
+						<div class="basic">
+							<div class="ba">
+								<span>기본정보</span>
+							</div>
+							<div class="sic">
+								<span><b class="text-danger"> *</b>필수입력사항</span>
+							</div>
+						</div>
+>>>>>>> d1716ea37d3760563f3ea9be0f18037f19e18435
 
                   <!-- 아이디 -->
                   <form id="listForm" name="listForm" action="/register/addition"
@@ -593,6 +622,7 @@ style>body {
                      </div>
 
 
+<<<<<<< HEAD
                      <div class="custom-checkbox">
                         <input type="checkbox" id="checkbox6"> <label
                            for="checkbox6"></label>
@@ -606,6 +636,22 @@ style>body {
                         </div>
                      </div>
                      <script>
+=======
+							<div class="custom-checkbox">
+								<input type="checkbox" id="checkbox6"> <label
+									for="checkbox6"></label>
+								<div class="agree">
+									<div class="agr">
+										<span> &nbsp; [선택] 광고·마케팅 수신 동의(이메일)</span>
+									</div>
+									<div class="ee">
+										<span><b> ∨ </b></span>
+									</div>
+								</div>
+							</div>
+							<script>
+=======
+>>>>>>> d1716ea37d3760563f3ea9be0f18037f19e18435
              document.getElementById('checkbox1').addEventListener('change', function() {
                  let checkboxes = document.querySelectorAll('.custom-checkbox input[type="checkbox"]');
                  for (let i = 1; i < checkboxes.length; i++) {
@@ -622,9 +668,16 @@ style>body {
                  });
              });
          </script>
+<<<<<<< HEAD
                      <!-- 실선 추가 -->
                      <hr
                         style="border: 1px solid #BDBDBD;; width: 100%; margin: 2px 0 60px 0;">
+=======
+
+							<!-- 실선 추가 -->
+							<hr
+								style="border: 1px solid #BDBDBD;; width: 100%; margin: 2px 0 60px 0;">
+>>>>>>> d1716ea37d3760563f3ea9be0f18037f19e18435
 
                      <c:if test="${not empty errorMessage}">
                            <div class="alert alert-danger" role="alert">
@@ -641,8 +694,15 @@ style>body {
 
          </div>
 
+<<<<<<< HEAD
       </div>
    </div>
    <jsp:include page="/common/footer.jsp"></jsp:include>
+=======
+		</div>
+	</div>
+	<jsp:include page="/common/footer.jsp"></jsp:include>
+
+>>>>>>> d1716ea37d3760563f3ea9be0f18037f19e18435
 </body>
 </html>
