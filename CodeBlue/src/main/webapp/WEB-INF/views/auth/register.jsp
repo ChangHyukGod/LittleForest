@@ -7,6 +7,7 @@
 <title>회원가입</title>
 
 <script type="text/javascript">
+
         function all_check(event) {
             event.preventDefault(); // 폼 제출 기본 동작 방지
             var phonePart1 = document.getElementById("phone_part1").value.trim();
@@ -148,7 +149,6 @@
 		}
     </script>
 
-
 <style>
 <
 style>body {
@@ -158,165 +158,167 @@ style>body {
 	/*    align-items: center; */
 	/*    height: 100vh; */
 	/*    margin: 0; */
+=======
 }
 
 #container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin: 0 auto;
-	width: 90%;
-	max-width: 1500px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin: 0 auto;
+   width: 90%;
+   max-width: 1500px;
 }
 
 #container h4 {
-	margin-top: 80px;
-	margin-bottom: 50px;
+   margin-top: 80px;
+   margin-bottom: 50px;
 }
 
 .card-body {
-	width: 100%;
+   width: 100%;
 }
 
 .ro1 {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
 }
 
 .underline {
-	border: 1px solid black;
-	width: 100%;
-	margin: 20px 0;
+   border: 1px solid black;
+   width: 100%;
+   margin: 20px 0;
 }
 
 .form-check {
-	margin-bottom: 15px;
+   margin-bottom: 15px;
 }
 
 .basic {
-	margin-top: 30px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	border-bottom: 1px solid black;
-	width: 100%;
+   margin-top: 30px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-bottom: 1px solid black;
+   width: 100%;
 }
 
 .ba {
-	font-weight: bold;
+   font-weight: bold;
 }
 
 .sic {
-	font-size: 12px;
+   font-size: 12px;
 }
 
 .form-group {
-	margin-bottom: 15px;
-	width: 100%;
+   margin-bottom: 15px;
+   width: 100%;
 }
 
 .form-control {
-	height: 30px;
-	width: 100%;
-	max-width: 200px;
+   height: 30px;
+   width: 100%;
+   max-width: 200px;
 }
 
 .input-label {
-	color: black;
-	margin-top: 10px;
-	width: 150px;
-	white-space: nowrap;
+   color: black;
+   margin-top: 10px;
+   width: 150px;
+   white-space: nowrap;
 }
 
 .custom-checkbox {
-	display: flex;
-	align-items: center;
-	margin-bottom: 10px;
-	width: 100%;
+   display: flex;
+   align-items: center;
+   margin-bottom: 10px;
+   width: 100%;
 }
 
 .custom-checkbox input[type="checkbox"] {
-	display: none;
+   display: none;
 }
 
 .custom-checkbox label {
-	width: 24px;
-	height: 24px;
-	border: 2px solid #ccc;
-	border-radius: 50%;
-	display: inline-block;
-	position: relative;
-	cursor: pointer;
-	background-color: #fff;
-	transition: background-color 0.3s, border-color 0.3s;
+   width: 24px;
+   height: 24px;
+   border: 2px solid #ccc;
+   border-radius: 50%;
+   display: inline-block;
+   position: relative;
+   cursor: pointer;
+   background-color: #fff;
+   transition: background-color 0.3s, border-color 0.3s;
 }
 
 .custom-checkbox input[type="checkbox"]:checked+label {
-	border-color: #4CAF50;
+   border-color: #4CAF50;
 }
 
 .custom-checkbox label::before {
-	content: '';
-	position: absolute;
-	top: 50%;
-	left: 27%;
-	width: 12px;
-	height: 18px;
-	border: solid green;
-	border-width: 0 3px 3px 0;
-	transform: rotate(45deg) translate(-50%, -50%);
-	display: none;
+   content: '';
+   position: absolute;
+   top: 50%;
+   left: 27%;
+   width: 12px;
+   height: 18px;
+   border: solid green;
+   border-width: 0 3px 3px 0;
+   transform: rotate(45deg) translate(-50%, -50%);
+   display: none;
 }
 
 .custom-checkbox input[type="checkbox"]:checked+label::before {
-	display: block;
+   display: block;
 }
 
 .custom-checkbox span {
-	font-size: 16px;
-	color: #333;
+   font-size: 16px;
+   color: #333;
 }
 
 .more {
-	font-weight: bold;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
+   font-weight: bold;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
 }
 
 .more .mo {
-	font-size: 20px;
+   font-size: 20px;
 }
 
 .more .re {
-	font-size: 14px;
+   font-size: 14px;
 }
 
 .agree {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
 }
 
 .agree .agr {
-	font-size: 28px;
+   font-size: 28px;
 }
 
 .agree .ee {
-	font-size: 14px;
+   font-size: 14px;
 }
 
 .ee {
-	margin-left: auto;
+   margin-left: auto;
 }
 </style>
 </head>
 <body>
+
 
 	<jsp:include page="/common/header.jsp"></jsp:include>
 	<div id="container">
@@ -606,6 +608,7 @@ style>body {
 								</div>
 							</div>
 							<script>
+=======
              document.getElementById('checkbox1').addEventListener('change', function() {
                  let checkboxes = document.querySelectorAll('.custom-checkbox input[type="checkbox"]');
                  for (let i = 1; i < checkboxes.length; i++) {
@@ -622,6 +625,7 @@ style>body {
                  });
              });
          </script>
+
 							<!-- 실선 추가 -->
 							<hr
 								style="border: 1px solid #BDBDBD;; width: 100%; margin: 2px 0 60px 0;">
@@ -644,5 +648,6 @@ style>body {
 		</div>
 	</div>
 	<jsp:include page="/common/footer.jsp"></jsp:include>
+
 </body>
 </html>
