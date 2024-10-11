@@ -608,7 +608,6 @@ style>body {
 								</div>
 							</div>
 							<script>
-=======
              document.getElementById('checkbox1').addEventListener('change', function() {
                  let checkboxes = document.querySelectorAll('.custom-checkbox input[type="checkbox"]');
                  for (let i = 1; i < checkboxes.length; i++) {
