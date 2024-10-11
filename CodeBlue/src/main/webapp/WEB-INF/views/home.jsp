@@ -8,21 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>리틀포레스트 메인 홈</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Gasoek+One&family=Jua&family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Gasoek+One&family=Jua&family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
     <style>
-      .card-title {
-           font-family: "Noto Sans KR", sans-serif;
-           font-optical-sizing: auto;
-           font-weight: <weight>;
-           font-style: normal;
-           font-size: 18px;
-         }
-      .card-text {
-         color: gray;
-         font-size: 14px;
-      }
-      
+		.card-title {
+	  		font-family: "Noto Sans KR", sans-serif;
+	  		font-optical-sizing: auto;
+	  		font-weight: <weight>;
+	  		font-style: normal;
+	  		font-size: 18px;
+			}
+		.card-text {
+			color: gray;
+			font-size: 14px;
+		}
+		
         .custom-row {
             margin-left: -2px;
             margin-right: -2px;
@@ -47,14 +47,14 @@
             
         }
  
-         .btn-group .btn {
-           border-radius: 50px !important ; /* 둥글게 설정 */
-           border: 1px solid transparent; /* 기본 외곽선 */
-           transition: border-color 0.3s; /* 부드러운 전환 효과 */
-           
+      	.btn-group .btn {
+        	border-radius: 50px !important ; /* 둥글게 설정 */
+        	border: 1px solid transparent; /* 기본 외곽선 */
+        	transition: border-color 0.3s; /* 부드러운 전환 효과 */
+        	
        }
    
-          .btn-group .btn:hover {
+       	.btn-group .btn:hover {
            background-color: rgb(65, 194, 65); /* 마우스 오버 시 외곽선 색상 변경 */
            color: white;
        }
@@ -127,7 +127,7 @@
            document.listForm.submit();
         }
        
-      // 장르 선택시 스크롤 위치가 유지
+ 	  // 장르 선택시 스크롤 위치가 유지
       function submitForm(url, keyword) {
           const xhr = new XMLHttpRequest();
           xhr.open("GET", url + "?searchKeyword=" + keyword, true);
@@ -203,8 +203,8 @@
                // 장바구니 카운트 업데이트
                if (responseMessage === "장바구니에 추가되었습니다!") {
                    updateCartCount(); // (*) 카운트 실시간 업데이트
-                  // updateCartCount() 함수는 장바구니에 아이템이 실제로 추가된 후에 호출되어야 합니다.
-                  // 서버의 응답 메시지를 통해 성공 여부를 확인하고, 그에 따라 카운트를 업데이트하는 방식으로 흐름을 개선해야 합니다.
+	               // updateCartCount() 함수는 장바구니에 아이템이 실제로 추가된 후에 호출되어야 합니다.
+	               // 서버의 응답 메시지를 통해 성공 여부를 확인하고, 그에 따라 카운트를 업데이트하는 방식으로 흐름을 개선해야 합니다.
                    updateCartButton(uuid); // 아이콘 업데이트
                }
            }
@@ -235,16 +235,16 @@
           });
        };
     });
-   
+	
    // 장바구니에 추가시, 장바구니 아이콘 변경: bi bi-bag-check-fill
    function updateCartButton(uuid) {
-       const buttons = document.querySelectorAll('button[onclick]');
-       buttons.forEach(button => {
-           if (button.getAttribute('onclick').includes(uuid)) {
-               button.innerHTML = '<i class="bi bi-bag-check-fill" style="position: relative; top: -10px;"></i>';
-           }
-       });
-   }
+	    const buttons = document.querySelectorAll('button[onclick]');
+	    buttons.forEach(button => {
+	        if (button.getAttribute('onclick').includes(uuid)) {
+	            button.innerHTML = '<i class="bi bi-bag-check-fill" style="position: relative; top: -10px;"></i>';
+	        }
+	    });
+	}
     </script>
 </head>
 <body>
@@ -377,7 +377,7 @@
               <img src="/resources/images/Party Animals.jpg" class="card-img-top" style="height: 200px; object-fit: cover;">
               </a>
               <div class="card-body" >
-              <h5 class="card-title" >파티 애니멀즈</h5><span class="badge rounded-pill text-bg-warning">New</span>
+				  <h5 class="card-title" >파티 애니멀즈</h5><span class="badge rounded-pill text-bg-warning">New</span>
               </div>
             </div>
       </div>  <!-- 우측 : 신작게임 닫는 태그 -->
@@ -412,29 +412,29 @@
                                 <img src="/resources/images/${data.fileTitle}.jpg" class="card-img-top" alt="이미지" style="width:100%; height:200px;">
                             </a>
                             <div class="card-body">
-                            <h5 class="card-title" style="font-weight: bold;" ><c:out value="${data.fileTitle}" /></h5>
-                            <p class="card-text"><c:out value="${data.genre}" /></p>
-                             <div class="d-flex justify-content-between mt-auto">
-                         <p class="card-price" style="font-weight: bold;">
-                            <c:choose>
-                                       <c:when test="${data.price == '0'}">
-                                           무료
-                                       </c:when>
-                                       <c:otherwise>
-                                           \ <c:out value="${data.price}"/>
-                                       </c:otherwise>
-                                   </c:choose>
-                        </p>
-                         <button class="btn border-0 btn-sm" style="font-size: 20px;" type="button" onclick="fn_cart('<c:out value="${data.uuid}"/>')">
-                             <c:if test="${sessionScope.cart.contains(data.uuid)}">
-                                 <i class="bi bi-bag-check-fill" style="position: relative; top: -10px;"></i>
-                             </c:if>
-                             <c:if test="${!sessionScope.cart.contains(data.uuid)}">
-                                 <i class="bi bi-cart-plus" style="position: relative; top: -10px;"></i>
-                             </c:if>
-                            </button>
-                     </div>
-                           </div>
+                         	<h5 class="card-title" style="font-weight: bold;" ><c:out value="${data.fileTitle}" /></h5>
+                         	<p class="card-text"><c:out value="${data.genre}" /></p>
+                   	 		<div class="d-flex justify-content-between mt-auto">
+						    	<p class="card-price" style="font-weight: bold;">
+						    		<c:choose>
+	                                    <c:when test="${data.price == '0'}">
+	                                        무료
+	                                    </c:when>
+	                                    <c:otherwise>
+	                                        \ <c:out value="${data.price}"/>
+	                                    </c:otherwise>
+                                	</c:choose>
+								</p>
+						    	<button class="btn border-0 btn-sm" style="font-size: 20px;" type="button" onclick="fn_cart('<c:out value="${data.uuid}"/>')">
+						        	<c:if test="${sessionScope.cart.contains(data.uuid)}">
+							            <i class="bi bi-bag-check-fill" style="position: relative; top: -10px;"></i>
+							        </c:if>
+							        <c:if test="${!sessionScope.cart.contains(data.uuid)}">
+							            <i class="bi bi-cart-plus" style="position: relative; top: -10px;"></i>
+							        </c:if>
+						  	  	</button>
+							</div>
+                     		</div>
                         </div>
                     </div>
                 </c:forEach>
