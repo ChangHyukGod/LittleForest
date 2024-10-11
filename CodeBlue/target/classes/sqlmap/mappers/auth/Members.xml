@@ -6,7 +6,7 @@
 
 	<select id="authenticate" parameterType="MembersVO" resultType="MembersVO">
 		SELECT * FROM MEMBERS  
-		WHERE USERNAME= #{username}
+		WHERE USERNAME = #{username} OR EMAIL = #{email}
 	</select>
 
 	<insert id="register" parameterType="MembersVO">

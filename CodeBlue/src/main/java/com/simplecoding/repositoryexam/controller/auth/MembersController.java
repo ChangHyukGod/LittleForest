@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.annotations.Mapper;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -106,18 +107,28 @@ public class MembersController {
 	// 회원가입 버튼 클릭
 	@PostMapping("/register/addition")
 	public String register(@ModelAttribute MembersVO membersVO, Model model) {
+	    try {
+	        // 중복 사용자 체크
+	        MembersVO memberVO2 = membersService.authenticateMembers(membersVO);
+	        if (memberVO2 != null) {
+	            model.addAttribute("errorMessage", "이미 가입된 사용자가 있습니다.");
+	            return "auth/register"; 
+	        }
 
-		MembersVO memberVO2 = membersService.authenticateMembers(membersVO);
+	        // 회원 등록
+	        membersService.registerMembers(membersVO);
+	        
+	        return "redirect:/login";
 
-		if (memberVO2 != null) {
-			model.addAttribute("errorMessage", "ID가 존재하지 않거나 비밀번호가 틀립니다.");
-			return "redirect:/register"; // 로그인 페이지로 포워딩
-		}
-		
-		membersService.registerMembers(membersVO);
-		
-		return "redirect:/login";
+	    } catch (DuplicateKeyException e) {
+	        model.addAttribute("errorMessage", "이미 가입된 사용자가 있습니다.");
+	        return "auth/register"; 
+	    } catch (Exception e) {
+	        model.addAttribute("errorMessage", "이미 가입된 사용자가 있습니다.");
+	        return "auth/register"; 
+	    }
 	}
+
 
 	@GetMapping("/test")
 	private String test(@RequestParam String username, Model model) {
