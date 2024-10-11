@@ -7,29 +7,77 @@
 <head>
     <meta charset="UTF-8">
     <title>회원 정보 수정</title>
-    <script type="text/javascript">
-    window.onload = function() {
-        var userPhone = "${sessionScope.memberVO.phonenumber}";  // "010-1234-5678"
+<script type="text/javascript">
+   window.onload = function() {
+      var userPhone = "${sessionScope.memberVO.phonenumber}"; // "010-1234-5678"
 
-        if (userPhone) {
-            // 전화번호를 '-' 기준으로 분리합니다.
-            var phoneParts = userPhone.split("-");
-        
-            // 각 input 필드에 값을 나누어 넣습니다.
-            document.getElementById('phonePart2').value = phoneParts[1]; // phonePart2는 중간 부분
-            document.getElementById('phonePart3').value = phoneParts[2]; // phonePart3는 마지막 부분
-        }
-    };
-	function goHome() {
-		window.location.href = "/"; // 로고 클릭시 홈화면으로 페이지를 새로 고침
-	}
-    function fn_save() {
-//      1) action 속성 : "/basic/dept/edit"
-     document.detailForm.action = "/infofix";
-//      2) submit() 실행
-     document.detailForm.submit();
-  }
-    </script>
+      if (userPhone) {
+         // 전화번호를 '-' 기준으로 분리합니다.
+         var phoneParts = userPhone.split("-");
+
+         // 각 input 필드에 값을 나누어 넣습니다.
+         document.getElementById('phonePart2').value = phoneParts[1]; // phonePart2는 중간 부분
+         document.getElementById('phonePart3').value = phoneParts[2]; // phonePart3는 마지막 부분
+      }
+
+      validatePassword();
+   };
+
+   function goHome() {
+      window.location.href = "/"; // 로고 클릭시 홈화면으로 페이지를 새로 고침
+   }
+
+   function fn_save() {
+      var phonePart1 = document.getElementById('phonePart1').value; // 첫 번째 부분 (예: 010)
+      var phonePart2 = document.getElementById('phonePart2').value; // 중간 부분 (예: 1234)
+      var phonePart3 = document.getElementById('phonePart3').value; // 마지막 부분 (예: 5678)
+
+      // 전체 전화번호를 결합
+      var fullPhoneNumber = phonePart1 + "-" + phonePart2 + "-" + phonePart3;
+
+      // 숨겨진 필드에 결합된 전화번호 값을 설정
+      document.getElementById("phonenumber").value = fullPhoneNumber;
+
+      // 1) action 속성 : "/basic/dept/edit"
+      document.detailForm.action = "/infofix";
+      // 2) submit() 실행
+      document.detailForm.submit();
+   }
+
+   function validatePassword() {
+      const passwordInput = document.getElementById('password');
+      const confirmPasswordInput = document.getElementById('confirmPassword');
+      const saveButton = document.getElementById('saveButton');
+      const passwordError = document.getElementById('passwordError');
+
+      function checkPasswordValidity() {
+         const password = passwordInput.value;
+         const confirmPassword = confirmPasswordInput.value;
+         const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[\W_]).{8,16}$/;
+
+         if (!regex.test(password)) {
+            // 비밀번호가 조건을 만족하지 않으면
+            saveButton.disabled = true; // 버튼 비활성화
+            passwordError.style.display = 'block'; // 오류 메시지 표시
+            passwordError.textContent = '비밀번호는 8~16자, 대／소문자, 숫자 및 특수문자를 포함해야 합니다.';
+         } else {
+            // 모든 조건을 만족하면
+            if (password === confirmPassword) {
+               saveButton.disabled = false; // 버튼 활성화
+               passwordError.style.display = 'none'; // 오류 메시지 숨김
+            } else {
+               saveButton.disabled = true; // 버튼 비활성화
+               passwordError.style.display = 'block'; // 오류 메시지 표시
+               passwordError.textContent = '비밀번호가 일치하지 않습니다.';
+            }
+         }
+      }
+      passwordInput.addEventListener('input', checkPasswordValidity);
+      confirmPasswordInput.addEventListener('input', checkPasswordValidity);
+   }
+</script>
+
+
     <style>
     <style>
        body {
@@ -230,7 +278,7 @@
         <!-- 상단 사용자 정보 -->
         <div class="header">
             <div class="top">
-                <img src="${pageContext.request.contextPath}/resources/images/qfqf.jpg" alt="| " style="border-radius: 50%; width: 40px; height: 40px;">
+<%--                 <img src="${pageContext.request.contextPath}/resources/images/qfqf.jpg" alt="| " style="border-radius: 50%; width: 40px; height: 40px;"> --%>
                 <span class="fw-bold">${sessionScope.memberVO.membername}님 반갑습니다.</span>
             </div>
 <!--             <div class="bottom">
@@ -241,29 +289,7 @@
         </div>
 <br>
 		<div class="card-body">
-            <!-- 회원 인증 -->
-            <p><b>회원 인증</b></p>
-            <hr class="underline">
-			<form id = "detailForm" name="detailForm" method="POST">
-                <div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top: 10px;">
-                    <p style="color: black; margin: 0; width: 150px;">인증여부</p>
-                    <div style="margin-left: 10px;">
-                        <b>인증됨</b>
-                        <br>
-                        <div style="display: inline-flex; gap: 50px; align-items: center; margin-top:7px;">
-                            <div>
-                                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="flexRadioDefault1">이메일 인증</label>
-                            </div>
-                            <div>
-  							<input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" disabled>
-                                <label class="form-check-label" for="phoneAuth" >휴대폰 인증</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <hr style="border: 1px solid #BDBDBD; width: 100%; margin-top: 2px; margin-bottom :55px;">
+            
 
                 <!-- 기본 정보 -->
                 <div class="basic"> 
@@ -309,24 +335,33 @@
 		            class="form-control" 
 		            placeholder="" 
 		            required style="background-color: #F6F6F6; color: #333;"
-		            value="">
+		            value=""
+		         	>
 		            <p style="margin: 0 0 0 15px; font-size: 12px; white-space: nowrap;">(8~16자의 영문 대/소문자, 숫자, 특수문자)</p>
 		        </div>
 		    </div>
 		</div>
+
 <!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 0 ;"> 
 
 <!-- 비밀번호 확인 -->
-		<div class="form-group" style="margin: -10px 0 10px 0;"> 
-		    <label for="passwordConfirm"></label>
-		    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
-		        <p class="input-label" style="margin: 0;">비밀번호 확인<b class="text-danger"> *</b></p>
-		        <div style="margin-left: 10px; display: flex; align-items: center;">
-		            <input type="password" id="passwordConfirm" name="passwordConfirm" class="form-control" placeholder="" required style="background-color: #F6F6F6; color: #333;">
-		        </div>
-		    </div>
-		</div>
+      <div class="form-group" style="margin: -10px 0 10px 0;"> 
+          <label for="passwordConfirm"></label>
+          <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;"> 
+              <p class="input-label" style="margin: 0;">비밀번호 확인<b class="text-danger"> *</b></p>
+              <div style="margin-left: 10px; display: flex; align-items: center;">
+                  <input type="password" 
+                  id="confirmPassword" 
+                  name="confirmPassword" 
+                  class="form-control" 
+
+                  placeholder="" required style="background-color: #F6F6F6; color: #333;">
+              </div>
+          </div>
+      </div>
+
+		 <p id="passwordError" style="color: red; display: none;">비밀번호가 일치하지 않습니다.</p>
 <!-- 실선 추가 -->
 <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 10px 0 0 0;"> 
 
@@ -483,6 +518,8 @@
 
 <div class="text-center">
     <button type="submit" class="btn btn-success" 
+    id="saveButton"
+    name="saveButton"
     style="padding: 10px 40px; 
     font-size: 14px; 
     width: 180px; 
