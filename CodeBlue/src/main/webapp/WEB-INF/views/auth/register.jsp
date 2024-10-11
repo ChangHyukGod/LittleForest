@@ -7,7 +7,7 @@
 <title>회원가입</title>
 
 <script type="text/javascript">
-
+ 
         function all_check(event) {
             event.preventDefault(); // 폼 제출 기본 동작 방지
             var phonePart1 = document.getElementById("phone_part1").value.trim();

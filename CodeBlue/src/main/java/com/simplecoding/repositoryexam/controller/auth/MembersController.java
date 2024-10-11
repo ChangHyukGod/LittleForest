@@ -129,7 +129,7 @@ public class MembersController {
 	    }
 	}
 
-
+ 
 	@GetMapping("/test")
 	private String test(@RequestParam String username, Model model) {
 		// TODO Auto-generated method stub

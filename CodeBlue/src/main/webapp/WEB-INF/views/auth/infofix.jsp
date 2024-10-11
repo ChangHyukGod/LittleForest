@@ -22,7 +22,7 @@
 
 		validatePassword();
 	};
-
+ 
 	function goHome() {
 		window.location.href = "/"; // 로고 클릭시 홈화면으로 페이지를 새로 고침
 	}

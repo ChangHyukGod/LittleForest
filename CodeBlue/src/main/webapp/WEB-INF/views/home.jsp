@@ -444,7 +444,7 @@
        
     <button id="scrollToTop" title="Top" style="background-color: green;">↑</button>
    <!-- 상단으로 이동하는 버튼 추가 -->
-    
+     
 <jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 </html>
