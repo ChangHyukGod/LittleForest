@@ -203,8 +203,9 @@
                // 장바구니 카운트 업데이트
                if (responseMessage === "장바구니에 추가되었습니다!") {
                    updateCartCount(); // (*) 카운트 실시간 업데이트
-               // updateCartCount() 함수는 장바구니에 아이템이 실제로 추가된 후에 호출되어야 합니다.
-               // 서버의 응답 메시지를 통해 성공 여부를 확인하고, 그에 따라 카운트를 업데이트하는 방식으로 흐름을 개선해야 합니다.
+	               // updateCartCount() 함수는 장바구니에 아이템이 실제로 추가된 후에 호출되어야 합니다.
+	               // 서버의 응답 메시지를 통해 성공 여부를 확인하고, 그에 따라 카운트를 업데이트하는 방식으로 흐름을 개선해야 합니다.
+                   updateCartButton(uuid); // 아이콘 업데이트
                }
            }
        };
@@ -234,7 +235,16 @@
           });
        };
     });
-
+	
+   // 장바구니에 추가시, 장바구니 아이콘 변경: bi bi-bag-check-fill
+   function updateCartButton(uuid) {
+	    const buttons = document.querySelectorAll('button[onclick]');
+	    buttons.forEach(button => {
+	        if (button.getAttribute('onclick').includes(uuid)) {
+	            button.innerHTML = '<i class="bi bi-bag-check-fill" style="position: relative; top: -10px;"></i>';
+	        }
+	    });
+	}
     </script>
 </head>
 <body>
@@ -415,8 +425,13 @@
 	                                    </c:otherwise>
                                 	</c:choose>
 								</p>
-						    	<button class="btn border-0 btn-sm" style="font-size: 20px;" type="button" onclick="fn_cart('<c:out value="${data.uuid}"></c:out>')">
-						        <i class="bi bi-cart-plus" style="position: relative; top: -10px;"></i>
+						    	<button class="btn border-0 btn-sm" style="font-size: 20px;" type="button" onclick="fn_cart('<c:out value="${data.uuid}"/>')">
+						        	<c:if test="${sessionScope.cart.contains(data.uuid)}">
+							            <i class="bi bi-bag-check-fill" style="position: relative; top: -10px;"></i>
+							        </c:if>
+							        <c:if test="${!sessionScope.cart.contains(data.uuid)}">
+							            <i class="bi bi-cart-plus" style="position: relative; top: -10px;"></i>
+							        </c:if>
 						  	  	</button>
 							</div>
                      		</div>
