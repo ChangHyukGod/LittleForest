@@ -107,29 +107,28 @@ public class MembersController {
 	// 회원가입 버튼 클릭
 	@PostMapping("/register/addition")
 	public String register(@ModelAttribute MembersVO membersVO, Model model) {
-	    try {
-	        // 중복 사용자 체크
-	        MembersVO memberVO2 = membersService.authenticateMembers(membersVO);
-	        if (memberVO2 != null) {
-	            model.addAttribute("errorMessage", "이미 가입된 사용자가 있습니다.");
-	            return "auth/register"; 
-	        }
+		try {
+			// 중복 사용자 체크
+			MembersVO memberVO2 = membersService.authenticateMembers(membersVO);
+			if (memberVO2 != null) {
+				model.addAttribute("errorMessage", "이미 가입된 사용자가 있습니다.");
+				return "auth/register";
+			}
 
-	        // 회원 등록
-	        membersService.registerMembers(membersVO);
-	        
-	        return "redirect:/login";
+			// 회원 등록
+			membersService.registerMembers(membersVO);
 
-	    } catch (DuplicateKeyException e) {
-	        model.addAttribute("errorMessage", "이미 가입된 사용자가 있습니다.");
-	        return "auth/register"; 
-	    } catch (Exception e) {
-	        model.addAttribute("errorMessage", "이미 가입된 사용자가 있습니다.");
-	        return "auth/register"; 
-	    }
+			return "redirect:/login";
+
+		} catch (DuplicateKeyException e) {
+			model.addAttribute("errorMessage", "이미 가입된 사용자가 있습니다.");
+			return "auth/register";
+		} catch (Exception e) {
+			model.addAttribute("errorMessage", "이미 가입된 사용자가 있습니다.");
+			return "auth/register";
+		}
 	}
 
- 
 	@GetMapping("/test")
 	private String test(@RequestParam String username, Model model) {
 		// TODO Auto-generated method stub
@@ -138,16 +137,16 @@ public class MembersController {
 		return "redirect:/register";
 
 	}
-	
+
 	// id 중복 확인
-	@GetMapping("/auth/check-username") 
+	@GetMapping("/auth/check-username")
 	public ResponseEntity<String> checkUsernameDuplicate(@RequestParam String username) {
 		boolean isDuplicate = membersService.isUsernameDuplicate(username);
 		// boolean isDuplicate엔 1또는0이 들어오고, 1이면 참, 0이면 거짓임
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.TEXT_PLAIN);
 		headers.set("Content-Type", "text/plain; charset=UTF-8");
-		
+
 		// 1이면 즉, 이미 db에 id가있으면
 		if (isDuplicate) {
 			return new ResponseEntity<>("중복된 아이디입니다.", headers, HttpStatus.CONFLICT);
@@ -157,16 +156,16 @@ public class MembersController {
 			return new ResponseEntity<>("사용 가능한 아이디입니다.", headers, HttpStatus.OK);
 		}
 	}
-	
+
 	// email 중복 확인
-	@GetMapping("/auth/check-email") 
+	@GetMapping("/auth/check-email")
 	public ResponseEntity<String> checkUseremailDuplicate(@RequestParam String email) {
 		boolean isDuplicate = membersService.isUseremailDuplicate(email);
 		// boolean isDuplicate엔 1또는0이 들어오고, 1이면 참, 0이면 거짓임
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.TEXT_PLAIN);
 		headers.set("Content-Type", "text/plain; charset=UTF-8");
-		
+
 		// 1이면 즉, 이미 db에 id가있으면
 		if (isDuplicate) {
 			return new ResponseEntity<>("이미 존재하는 이메일입니다.", headers, HttpStatus.CONFLICT);
@@ -200,7 +199,7 @@ public class MembersController {
 
 		return "/auth/infofix";
 	}
-	
+
 	// 회원 정보 수정
 	@PostMapping("/infofix")
 	public String infofix(@RequestParam String membername, @ModelAttribute MembersVO membersVO) throws Exception {
@@ -208,7 +207,7 @@ public class MembersController {
 		return "redirect:/";
 	}
 
-	//  헤더 장바구니 카운터
+	// 헤더 장바구니 카운터
 	@ModelAttribute
 	public void addCartItems(Model model, HttpSession session) {
 		List<String> cart = (List<String>) session.getAttribute("cart");

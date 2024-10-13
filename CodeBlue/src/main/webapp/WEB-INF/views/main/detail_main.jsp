@@ -7,10 +7,19 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Gasoek+One&family=Jua&family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
    <script type="text/javascript" defer="defer">
-      function fn_buy(uuid) {
-        document.detailForm.uuid.value = uuid;
-        document.detailForm.action = "/main/buy";
-        document.detailForm.submit();
+      function fn_buy(uuid, event) {
+    	  event.preventDefault(); // 기본 동작 방지 => 구매하기 버튼 클릭시, 페이지 상단으로 강제이동 되는것 방지.
+    	  
+	   	  // 로그인 상태 확인
+	      var isLoggedIn = ${sessionScope.memberVO != null}; // 로그인 상태를 JSP에서 확인
+	      if (!isLoggedIn) {
+	          alert("로그인 후 결제를 진행해주세요.");
+	          return; // 함수 종료
+	      }
+        
+          document.detailForm.uuid.value = uuid;
+          document.detailForm.action = "/main/buy";
+          document.detailForm.submit();
       }
       
      // 실시간 장바구니에 데이터 수 계산
@@ -21,7 +30,10 @@
      }
         
     // 장바구니에 추가 => /main/addToCart
-    function fn_cart(uuid) {
+    function fn_cart(uuid, event) {
+       event.preventDefault(); // 기본 동작 방지 => 장비구니에 추가 버튼 클릭시, 페이지 상단으로 강제이동 되는것 방지.
+       
+    	
        const xhr = new XMLHttpRequest();
        
        xhr.open("POST", "/main/addToCart", true);
@@ -115,10 +127,10 @@
       <!-- 장바구니, 구매하기 버튼 -->
         <div class="card-body" style="text-align: center; margin-top: -15px;"> <!-- 가운데 정렬을 위한 스타일 추가 -->
           <div class="d-flex justify-content-center mt-auto">
-              <a href="#" class="btn btn-success btn-sm me-2" onclick="fn_buy('<c:out value="${detail.uuid}"></c:out>')">구매하기</a>
-              <a href="#" class="btn btn-outline-dark btn-sm" onclick="fn_cart('<c:out value="${detail.uuid}"></c:out>')">장바구니에 추가</a>
+              <a href="#" class="btn btn-success btn-sm me-2" onclick="fn_buy('<c:out value="${detail.uuid}"></c:out>', event)">구매하기</a>
+              <button class="btn btn-outline-dark btn-sm" onclick="fn_cart('<c:out value="${detail.uuid}"></c:out>', event)">장바구니에 추가</button>
           </div>
-      </div>
+        </div>
    </div>
 </div>
 

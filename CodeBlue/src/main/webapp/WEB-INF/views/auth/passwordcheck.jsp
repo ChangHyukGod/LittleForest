@@ -13,14 +13,15 @@
     </script>
     <style>
 
- 	body {
+ 		body {
        	 font-size: 18px; /* 기본 폰트 크기 */
   	  }
 
-  .login-container {
+.login-container {
 	        margin-top: 100px; 
-	        margin-bottom: 200px;
-	    } 
+	        
+	        		margin-bottom: 200px;
+	    		}	 
 	    
 
 

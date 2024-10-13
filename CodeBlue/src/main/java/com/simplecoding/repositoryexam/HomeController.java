@@ -152,7 +152,7 @@ public class HomeController{
                cartItems.add(item);
            }
        }
- 
+
        model.addAttribute("cartItems", cartItems); // cartItems를 모델에 추가
        
        return "payment/cart"; // 장바구니 페이지로 이동

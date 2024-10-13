@@ -22,7 +22,7 @@
 
 		validatePassword();
 	};
- 
+
 	function goHome() {
 		window.location.href = "/"; // 로고 클릭시 홈화면으로 페이지를 새로 고침
 	}
@@ -31,6 +31,12 @@
 		var phonePart1 = document.getElementById('phonePart1').value; // 첫 번째 부분 (예: 010)
 		var phonePart2 = document.getElementById('phonePart2').value; // 중간 부분 (예: 1234)
 		var phonePart3 = document.getElementById('phonePart3').value; // 마지막 부분 (예: 5678)
+
+		// 중간 번호와 마지막 번호가 각각 4자리인지 검사
+		if (phonePart2.length !== 4 || phonePart3.length !== 4) {
+			alert("중간 번호와 마지막 번호는 각각 4자리여야 합니다.");
+			return; // 함수 종료
+		}
 
 		// 전체 전화번호를 결합
 		var fullPhoneNumber = phonePart1 + "-" + phonePart2 + "-" + phonePart3;
@@ -80,9 +86,7 @@
 
 <style>
 <
-style>
-
-.container {
+style>.container {
 	width: 90%;
 	display: flex;
 }
@@ -252,32 +256,18 @@ style>
 	width: 150px;
 	white-space: nowrap;
 }
-
-
 }
 </style>
 </head>
 <body>
 	<jsp:include page="/common/header.jsp" />
-	<!-- <div class="container"> -->
-	<!--    <div class="left-align"> -->
-	<!--        <button class="btn left-align-button font-weight-bold" style="font-size: 30px;" onclick="location.href='/mypage';">마이페이지</button> -->
-	<!--        <h4 class="fw-medium"> 마이쇼핑 </h4> -->
-	<!--        <button class="btn left-align-button" onclick="location.href='/main/cart';">장바구니</button> -->
-	<!--        <h4 class="fw-medium"> 나의 정보 </h4> -->
-	<!--        <button class="btn left-align-button" onclick="location.href='/infofix';">회원정보 수정</button> -->
-	<!--        <h4 class="fw-medium"> 고객센터 </h4> -->
-	<!--        <button class="btn left-align-button" onclick="location.href='/faq';">FAQ</button> -->
-	<!-- <br> -->
-	<!--    </div> -->
-
 
 	<div class="main-content">
 		<p class="title">회원 정보 수정</p>
 		<!-- 상단 사용자 정보 -->
 		<div class="header">
 			<div class="top">
-				
+
 				<span class="fw-bold">${sessionScope.memberVO.membername}님
 					반갑습니다.</span>
 			</div>
@@ -428,7 +418,7 @@ style>
 							style="margin-left: 10px; display: flex; align-items: center;">
 							<input class="form-control" id="age" name="age" type="text"
 								value="${sessionScope.memberVO.age}"
-								aria-label="readonly input example" readonly>
+								aria-label="readonly input example">
 						</div>
 					</div>
 				</div>
@@ -444,20 +434,13 @@ style>
 						<p class="input-label" style="margin: 0;">휴대전화 (선택)</p>
 						<div
 							style="margin-left: 10px; display: flex; align-items: center;">
-							<select class="form-select form-select-sm" id="phonePart1"
-								name="phonePart1" aria-label="번호 선택"
-								style="width: 100px; margin-right: 5px; margin: 0;">
-								<option value="010" selected>010</option>
-								<option value="011">011</option>
-								<option value="016">016</option>
-								<option value="017">017</option>
-								<option value="018">018</option>
-								<option value="019">019</option>
-							</select> <span style="margin: 0 5px;">-</span> <input
+							<input class="form-control form-control-sm" id="phonePart1"
+								name="phonePart1" type="text" aria-label="번호 선택"
+								style="width: 100px; margin-right: 5px;" value="010" readonly>
+							<span style="margin: 0 5px;">-</span> <input
 								class="form-control form-control-sm" id="phonePart2"
 								name="phonePart2" type="text" aria-label="번호 입력"
 								style="width: 100px; margin: 0;" maxlength="4" value="">
-
 							<span style="margin: 0 5px;">-</span> <input
 								class="form-control form-control-sm" id="phonePart3"
 								name="phonePart3" type="text" aria-label="번호 입력"
@@ -466,6 +449,7 @@ style>
 					</div>
 				</div>
 				<input type="hidden" id="phonenumber" name="phonenumber">
+
 				<!-- 실선 추가 -->
 				<hr
 					style="border: 1px solid #BDBDBD; width: 100%; margin: 10px 0 0 0;">
@@ -509,42 +493,6 @@ style>
 				</div>
 				<!-- 실선 추가 -->
 				<hr style="border: 1px solid #BDBDBD; width: 100%; margin: 0;">
-
-
-
-				<!--    <div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top:10px;"> -->
-				<!--        <p style="color: black; margin: 0; width: 150px;">SMS 수신여부<b class="text-danger"> *</b></p> -->
-				<!--        <div style="margin-left: 10px; display: flex; align-items: center;"> -->
-				<!--            <div style="margin-right: 20px;"> -->
-				<!--                <input class="form-check-input" type="radio" name="authType2" id="emailAuth2"> -->
-				<!--                <label class="form-check-label" for="emailAuth2">수신함</label> -->
-				<!--            </div> -->
-				<!--            <div> -->
-				<!--                <input class="form-check-input" type="radio" name="authType2" id="phoneAuth2"> -->
-				<!--                <label class="form-check-label" for="phoneAuth2">수신안함</label> -->
-				<!--          </div> -->
-				<!--          </div> -->
-				<!--          </div> -->
-
-				<!-- 실선 추가 -->
-				<!-- <hr style="border: 1px solid #BDBDBD; width: 100%; margin: 0 0 35px 0;">  -->
-
-				<!-- 추가정보 -->
-				<!--    <div class="basic"> -->
-				<!--            <div class="ba"> -->
-				<!--                <span>추가정보</span> -->
-				<!--            </div> -->
-				<!--            </div> -->
-				<!--            <hr class="underline"> -->
-
-				<!-- <div class="flex-grow-3" style="display: flex; align-items: center; margin-bottom: 15px; margin-top:10px;"> -->
-				<!--     <p style="color: black; margin: 0; width: auto; white-space: nowrap;">만 14세 이상입니다.<b class="text-danger"> *</b></p> -->
-				<!--     <div style="margin-left: 10px; display: flex; align-items: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-				<!--         <input class="form-check-input" type="radio" name="memberType" id="flexRadioDefault1"> -->
-				<!--         <label class="form-check-label" for="flexRadioDefault1" style="margin-left: 5px;">네</label> -->
-				<!--     </div> -->
-				<!-- </div> -->
-
 				<br> <br>
 
 				<div class="text-center">
