@@ -285,6 +285,7 @@ style>
 		</div>
 		<br>
 		<div class="card-body">
+
 			<!-- 회원 인증 -->
 <!-- 			<p> -->
 <!-- 				<b>회원 인증</b> -->
@@ -315,6 +316,7 @@ style>
 
 <!-- 				<hr -->
 <!-- 					style="border: 1px solid #BDBDBD; width: 100%; margin-top: 2px; margin-bottom: 55px;"> -->
+
 
 				<!-- 기본 정보 -->
 				<div class="basic">
