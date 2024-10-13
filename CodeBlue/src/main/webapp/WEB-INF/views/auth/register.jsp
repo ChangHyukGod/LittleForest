@@ -224,169 +224,169 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <style>
-body {
-	font-size: 12px !important;
-	/*    display: flex; */
-	/*    justify-content: center; */
-	/*    align-items: center; */
-	/*    height: 100vh; */
-	/*    margin: 0; */
-}
-
-#container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin: 0 auto;
-	width: 90%;
-	max-width: 1500px;
-}
-
-#container h4 {
-	margin-top: 80px;
-	margin-bottom: 50px;
-}
-
-.card-body {
-	width: 100%;
-}
-
-.ro1 {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-}
-
-.underline {
-	border: 1px solid black;
-	width: 100%;
-	margin: 20px 0;
-}
-
-.form-check {
-	margin-bottom: 15px;
-}
-
-.basic {
-	margin-top: 30px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	border-bottom: 1px solid black;
-	width: 100%;
-}
-
-.ba {
-	font-weight: bold;
-}
-
-.sic {
-	font-size: 12px;
-}
-
-.form-group {
-	margin-bottom: 15px;
-	width: 100%;
-}
-
-.form-control {
-	height: 30px;
-	width: 100%;
-	max-width: 200px;
-}
-
-.input-label {
-	color: black;
-	margin-top: 10px;
-	width: 150px;
-	white-space: nowrap;
-}
-
-.custom-checkbox {
-	display: flex;
-	align-items: center;
-	margin-bottom: 10px;
-	width: 100%;
-}
-
-.custom-checkbox input[type="checkbox"] {
-	display: none;
-}
-
-.custom-checkbox label {
-	width: 24px;
-	height: 24px;
-	border: 2px solid #ccc;
-	border-radius: 50%;
-	display: inline-block;
-	position: relative;
-	cursor: pointer;
-	background-color: #fff;
-	transition: background-color 0.3s, border-color 0.3s;
-}
-
-.custom-checkbox input[type="checkbox"]:checked+label {
-	border-color: #4CAF50;
-}
-
-.custom-checkbox label::before {
-	content: '';
-	position: absolute;
-	top: 50%;
-	left: 27%;
-	width: 12px;
-	height: 18px;
-	border: solid green;
-	border-width: 0 3px 3px 0;
-	transform: rotate(45deg) translate(-50%, -50%);
-	display: none;
-}
-
-.custom-checkbox input[type="checkbox"]:checked+label::before {
-	display: block;
-}
-
-.custom-checkbox span {
-	font-size: 16px;
-	color: #333;
-}
-
-.more {
-	font-weight: bold;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-}
-
-.more .mo {
-	font-size: 20px;
-}
-
-.more .re {
-	font-size: 14px;
-}
-
-.agree {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-}
-
-.agree .agr {
-	font-size: 28px;
-}
-
-.agree .ee {
-	font-size: 14px;
-}
-
-.ee {
-	margin-left: auto;
-}
+	body {
+		font-size: 12px !important;
+		/*    display: flex; */
+		/*    justify-content: center; */
+		/*    align-items: center; */
+		/*    height: 100vh; */
+		/*    margin: 0; */
+	}
+	
+	#container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 0 auto;
+		width: 90%;
+		max-width: 1500px;
+	}
+	
+	#container h4 {
+		margin-top: 80px;
+		margin-bottom: 50px;
+	}
+	
+	.card-body {
+		width: 100%;
+	}
+	
+	.ro1 {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+	}
+	
+	.underline {
+		border: 1px solid black;
+		width: 100%;
+		margin: 20px 0;
+	}
+	
+	.form-check {
+		margin-bottom: 15px;
+	}
+	
+	.basic {
+		margin-top: 30px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 1px solid black;
+		width: 100%;
+	}
+	
+	.ba {
+		font-weight: bold;
+	}
+	
+	.sic {
+		font-size: 12px;
+	}
+	
+	.form-group {
+		margin-bottom: 15px;
+		width: 100%;
+	}
+	
+	.form-control {
+		height: 30px;
+		width: 100%;
+		max-width: 200px;
+	}
+	
+	.input-label {
+		color: black;
+		margin-top: 10px;
+		width: 150px;
+		white-space: nowrap;
+	}
+	
+	.custom-checkbox {
+		display: flex;
+		align-items: center;
+		margin-bottom: 10px;
+		width: 100%;
+	}
+	
+	.custom-checkbox input[type="checkbox"] {
+		display: none;
+	}
+	
+	.custom-checkbox label {
+		width: 24px;
+		height: 24px;
+		border: 2px solid #ccc;
+		border-radius: 50%;
+		display: inline-block;
+		position: relative;
+		cursor: pointer;
+		background-color: #fff;
+		transition: background-color 0.3s, border-color 0.3s;
+	}
+	
+	.custom-checkbox input[type="checkbox"]:checked+label {
+		border-color: #4CAF50;
+	}
+	
+	.custom-checkbox label::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 27%;
+		width: 12px;
+		height: 18px;
+		border: solid green;
+		border-width: 0 3px 3px 0;
+		transform: rotate(45deg) translate(-50%, -50%);
+		display: none;
+	}
+	
+	.custom-checkbox input[type="checkbox"]:checked+label::before {
+		display: block;
+	}
+	
+	.custom-checkbox span {
+		font-size: 16px;
+		color: #333;
+	}
+	
+	.more {
+		font-weight: bold;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+	}
+	
+	.more .mo {
+		font-size: 20px;
+	}
+	
+	.more .re {
+		font-size: 14px;
+	}
+	
+	.agree {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+	}
+	
+	.agree .agr {
+		font-size: 28px;
+	}
+	
+	.agree .ee {
+		font-size: 14px;
+	}
+	
+	.ee {
+		margin-left: auto;
+	}
 </style>
 </head>
 <body>
@@ -410,7 +410,7 @@ body {
 						<!-- 회원가입 form -->
 						<form id="listForm" name="listForm" action="/register/addition"
 							method="post" onsubmit="all_check(event)">
-
+							
 							<!-- 아이디 입력란 -->
 							<div class="form-group" style="margin: 10px 0 10px 0;">
 								<label for="username"></label>
@@ -507,8 +507,8 @@ body {
 									<div
 										style="margin-left: 10px; display: flex; align-items: center;">
 										<input type="text" id="membername" name="membername"
-											class="form-control" placeholder="" style="margin: 0;"
-											required>
+											class="form-control" placeholder=""
+											style="margin: 0;" required>
 									</div>
 								</div>
 							</div>
@@ -538,29 +538,19 @@ body {
 
 							<!-- 휴대전화 -->
 							<div class="form-group" style="margin: 0;">
-								<label for="phone"></label>
-								<div class="flex-grow-3"
-									style="display: flex; align-items: center; margin: 0;">
-									<p class="input-label" style="margin: 0;">
-										휴대전화<b class="text-danger"> *</b>
-									</p>
-									<div
-										style="margin-left: 10px; display: flex; align-items: center;">
-										<input type="text" id="phone_part1" name="phone_part1"
-											class="form-control form-control-sm" value="010"
-											maxlength="3"
-											style="width: 100px; margin-right: 5px; margin: 0;" readonly>
-										<span style="margin: 0 5px;">-</span> <input
-											class="form-control form-control-sm" name="phone_part2"
-											id="phone_part2" type="text" placeholder="숫자 입력"
-											aria-label="번호 입력" style="width: 100px; margin: 0;"
-											maxlength="4" required> <span style="margin: 0 5px;">-</span>
-										<input class="form-control form-control-sm" name="phone_part3"
-											id="phone_part3" type="text" placeholder="숫자 입력"
-											aria-label="번호 입력" style="width: 100px; margin: 0;"
-											maxlength="4" required>
-									</div>
-								</div>
+							    <label for="phone"></label>
+							    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;">
+							        <p class="input-label" style="margin: 0;">
+							            휴대전화<b class="text-danger"> *</b>
+							        </p>
+							        <div style="margin-left: 10px; display: flex; align-items: center;">
+							            <input type="text" id="phone_part1" name="phone_part1" class="form-control form-control-sm" value="010" maxlength="3" style="width: 100px; margin-right: 5px; margin: 0;" readonly>
+							            <span style="margin: 0 5px;">-</span>
+							            <input class="form-control form-control-sm" name="phone_part2" id="phone_part2" type="text" placeholder="숫자 입력" aria-label="번호 입력" style="width: 100px; margin: 0;" maxlength="4" required>
+							            <span style="margin: 0 5px;">-</span>
+							            <input class="form-control form-control-sm" name="phone_part3" id="phone_part3" type="text" placeholder="숫자 입력" aria-label="번호 입력" style="width: 100px; margin: 0;" maxlength="4" required>
+							        </div>
+							    </div>
 							</div>
 
 							<input type="hidden" id="phonenumber" name="phonenumber">
@@ -571,29 +561,25 @@ body {
 
 							<!-- 이메일 -->
 							<div class="form-group" style="margin: 10px 0 10px 0;">
-								<label for="email"></label>
-								<div class="flex-grow-3"
-									style="display: flex; align-items: center; margin: 0;">
-									<p class="input-label" style="margin: 0;">
-										이메일<b class="text-danger"> *</b>
-									</p>
-									<div
-										style="margin-left: 10px; display: flex; align-items: center;">
-										<input type="email" class="form-control" id="email"
-											name="email" placeholder="name@example.com"
-											style="margin: 0;" oninput="validateEmail()">
-										<button type="button" id="checkEmailButton"
-											style="margin-left: 10px; font-size: 12px;"
-											class="btn btn-success" onclick="fn_checkEmail(event)">중복
-											확인</button>
-										<div class="tooltip">
-											<span class="tooltiptext" id="emailCheckMessage"
-												style="display: none;"></span>
-										</div>
-									</div>
-								</div>
-								<div id="emailError" style="color: red; display: none;">유효한
-									이메일 주소를 입력하세요.</div>
+							    <label for="email"></label>
+							    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;">
+							        <p class="input-label" style="margin: 0;">
+							            이메일<b class="text-danger"> *</b>
+							        </p>
+							        <div style="margin-left: 10px; display: flex; align-items: center;">
+							            <input type="email" class="form-control" id="email"
+							                name="email" placeholder="name@example.com"
+							                style="margin: 0;" oninput="validateEmail()">
+							            <button type="button" id="checkEmailButton"
+							                style="margin-left: 10px; font-size: 12px;"
+							                class="btn btn-success" onclick="fn_checkEmail(event)">중복 확인</button>
+							            <div class="tooltip">
+							                <span class="tooltiptext" id="emailCheckMessage"
+							                    style="display: none;"></span>
+							            </div>
+							        </div>
+							    </div>
+							    <div id="emailError" style="color: red; display: none;">유효한 이메일 주소를 입력하세요.</div>
 							</div>
 
 
@@ -728,7 +714,8 @@ body {
 							<button id="submit-button" type="submit"
 								class="btn btn-success btn-block"
 								style="padding: 10px 40px; font-size: 16px; margin-bottom: 25px;"
-								disabled onclick="signup()">회원가입</button>
+								disabled onclick="signup()">회원가입
+							</button>
 						</form>
 					</div>
 

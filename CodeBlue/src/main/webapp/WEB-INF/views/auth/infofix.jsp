@@ -22,7 +22,7 @@
 
 		validatePassword();
 	};
-
+ 
 	function goHome() {
 		window.location.href = "/"; // 로고 클릭시 홈화면으로 페이지를 새로 고침
 	}
@@ -275,36 +275,6 @@ style>.container {
 		</div>
 		<br>
 		<div class="card-body">
-			<!-- 회원 인증 -->
-			<p>
-				<b>회원 인증</b>
-			</p>
-			<hr class="underline">
-			<form id="detailForm" name="detailForm" method="POST">
-				<div class="flex-grow-3"
-					style="display: flex; align-items: center; margin-bottom: 15px; margin-top: 10px;">
-					<p style="color: black; margin: 0; width: 150px;">인증여부</p>
-					<div style="margin-left: 10px;">
-						<b>인증됨</b> <br>
-						<div
-							style="display: inline-flex; gap: 50px; align-items: center; margin-top: 7px;">
-							<div>
-								<input class="form-check-input" type="radio"
-									name="flexRadioDefault" id="flexRadioDefault2" checked>
-								<label class="form-check-label" for="flexRadioDefault1">이메일
-									인증</label>
-							</div>
-							<div>
-								<input class="form-check-input" type="radio"
-									name="flexRadioDisabled" id="flexRadioDisabled" disabled>
-								<label class="form-check-label" for="phoneAuth">휴대폰 인증</label>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<hr
-					style="border: 1px solid #BDBDBD; width: 100%; margin-top: 2px; margin-bottom: 55px;">
 
 				<!-- 기본 정보 -->
 				<div class="basic">
