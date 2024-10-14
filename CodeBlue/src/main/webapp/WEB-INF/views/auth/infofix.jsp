@@ -276,7 +276,8 @@ style>.container {
 		</div>
 		<br>
 		<div class="card-body">
-			
+			<form id="detailForm" name="detailForm" method="POST">
+		<div class="card-body">
 				<!-- 기본 정보 -->
 				<div class="basic">
 					<div class="ba">
@@ -401,7 +402,7 @@ style>.container {
 				<div class="form-group" style="margin: -10px 0 10px 0;">
 				    <label for="phone"></label>
 				    <div class="flex-grow-3" style="display: flex; align-items: center; margin: 0;">
-				        <p class="input-label" style="margin: 0;">휴대전화 (선택)</p>
+				        <p class="input-label" style="margin: 0;">휴대전화<b class="text-danger"> *</b></p>
 				        <div style="margin-left: 10px; display: flex; align-items: center;">
 				            <input class="form-control form-control-sm" id="phonePart1" name="phonePart1" type="text"
 				                aria-label="번호 선택" style="width: 100px; margin-right: 5px;" value="010" readonly>
@@ -469,10 +470,13 @@ style>.container {
 
 					<button type="submit" class="btn btn-outline-success"
 						style="padding: 10px 40px; font-size: 14px; width: 180px; margin-bottom: 50px; margin-left: 5px;"
-						onclick="goHome();">취소</button>
+						onclick="goHome()">취소</button>
+				</div>
 				</div>
 			</form>
+			
 		</div>
+		
 	</div>
 
 
