@@ -14,14 +14,15 @@ import com.simplecoding.repositoryexam.vo.common.Criteria;
  * @since : 2024. 9. 23. description :
  */
 public interface MembersService {
-	public MembersVO authenticateMembers(MembersVO membersVO);
+   
+   public MembersVO authenticateMembers(MembersVO membersVO);
 
-	public void registerMembers(MembersVO membersVO) ;
+   public void registerMembers(MembersVO membersVO) ;
 
-	boolean isUsernameDuplicate(String username); // id 중복
-	
-	boolean isUseremailDuplicate(String email); // email 중복
+   boolean isUsernameDuplicate(String username); // id 중복
+   
+   boolean isUseremailDuplicate(String email); // email 중복
 
-	void infofix(MembersVO membersVO) throws Exception;
-	
+   String infofix(MembersVO membersVO) throws Exception;
+   
 }

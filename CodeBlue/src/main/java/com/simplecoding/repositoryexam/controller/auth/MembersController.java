@@ -202,9 +202,26 @@ public class MembersController {
 
    // 회원 정보 수정
    @PostMapping("/infofix")
-   public String infofix(@RequestParam String membername, @ModelAttribute MembersVO membersVO) throws Exception {
-      membersService.infofix(membersVO);
-      return "redirect:/";
+   public String infofix(@RequestParam String membername, @ModelAttribute MembersVO membersVO, HttpSession session) throws Exception {
+       // 비밀번호 수정 및 해시화된 비밀번호 반환
+       String hashedPassword = membersService.infofix(membersVO);
+       
+       // 세션에서 현재 로그인된 회원 정보 가져오기
+       MembersVO loggedInMember = (MembersVO) session.getAttribute("memberVO");
+       
+       // 세션의 회원 정보를 업데이트
+       if (loggedInMember != null) {
+           // 해시화된 비밀번호로 업데이트
+           loggedInMember.setPassword(hashedPassword); // 해시화된 비밀번호로 업데이트
+           
+           // 필요한 다른 정보도 업데이트
+           loggedInMember.setPhonenumber(membersVO.getPhonenumber()); // 예: 전화번호 업데이트
+
+           // 세션에 업데이트된 회원 정보 다시 설정
+           session.setAttribute("memberVO", loggedInMember);
+       }
+
+       return "redirect:/";
    }
 
    // 헤더 장바구니 카운터
