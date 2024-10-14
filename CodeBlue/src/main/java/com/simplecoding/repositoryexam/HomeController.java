@@ -206,7 +206,7 @@ public class HomeController{
    }
 
    
-   // (10) 장바구니 페이지에서 담아놓은 게임 개별 삭제
+   // (10) 장바구니 페이지에서 담아놓은 게임 삭제
    @PostMapping(value = "/main/removeFromCart", produces = "text/plain;charset=UTF-8")
    public ResponseEntity<String> removeFromCart(@RequestParam String uuid, HttpSession session) {
        List<String> cart = (List<String>) session.getAttribute("cart");
@@ -228,22 +228,7 @@ public class HomeController{
 //             아이템이 없으면 오류 메시지를 반환합니다.
    }
    
-   // 11) 장바구니 페이지에서 담아놓은 게임 전체 삭제
-   @PostMapping(value = "/main/removeAllFromCart", produces = "text/plain;charset=UTF-8")
-   public ResponseEntity<String> removeAllFromCart(HttpSession session) {
-       // 세션에서 장바구니 정보 가져오기
-       List<String> cart = (List<String>) session.getAttribute("cart");
-       
-       if (cart != null) {
-           cart.clear(); // 모든 아이템 삭제
-           session.setAttribute("cart", cart); // 빈 장바구니 저장
-           return ResponseEntity.ok("장바구니의 모든 아이템이 삭제되었습니다!"); // 성공 메시지
-       } else {
-           return ResponseEntity.ok("장바구니가 비어 있습니다."); // 오류 메시지
-       }
-   }
-   
-   // (12) 장바구니 결제 페이지 생성 <-> (13)과 상호작용
+   // (11) 장바구니 결제 페이지 생성 <-> (12)와 상호작용
    @GetMapping("/main/cart/buy") // HTTP GET 요청을 처리하는 메서드
    public String goCartPayPage(HttpSession session, Model model) {
        // 세션에서 pay_cart 속성을 가져옴. 이 속성은 선택된 게임의 UUID 리스트입니다.
@@ -275,7 +260,7 @@ public class HomeController{
        return "payment/cart_pay_page"; 
    }
    
-   // (13) 선택한 게임 UUID를 세션에 저장 <-> (12)와 상호작용
+   // (12) 선택한 게임 UUID를 세션에 저장 <-> (11)과 상호작용
    @PostMapping(value = "/main/cart/saveSelectedItems", consumes = "application/json") // HTTP POST 요청을 처리
    @ResponseBody // 이 메서드는 JSON 응답을 반환
    public ResponseEntity<String> saveSelectedItems(@RequestBody Map<String, List<String>> payload, HttpSession session) {

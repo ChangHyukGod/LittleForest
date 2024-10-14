@@ -6,6 +6,7 @@ package com.simplecoding.repositoryexam.controller.faq;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,5 +111,13 @@ public class FaqController {
     public String deleteFaq(@ModelAttribute FaqVO faqVO) throws Exception {
 	faqService.deleteFaq(faqVO);
 	return "redirect:/faqlogin";
+    }
+    
+//  헤더 장바구니 카운터
+    @ModelAttribute
+    public void addCartItems(Model model, HttpSession session) {
+        List<String> cart = (List<String>) session.getAttribute("cart");
+        int cartCount = (cart != null) ? cart.size() : 0;
+        model.addAttribute("cartCount", cartCount);
     }
 }
