@@ -1,10 +1,6 @@
 
 CodeBlue/.classpath
 CodeBlue/target/m2e-wtp/web-resources/META-INF/maven/com.simpleconding.repositoryexam/RepositoryExam/pom.properties
-CodeBlue/target/classes/com/simplecoding/repositoryexam/controller/auth/MembersController.class
-CodeBlue/target/classes/com/simplecoding/repositoryexam/controller/auth/MembersController.class
-CodeBlue/target/classes/com/simplecoding/repositoryexam/HomeController.class
-CodeBlue/target/classes/com/simplecoding/repositoryexam/controller/auth/MembersController.class
 # Directories #
 /build/
 /bin/
