@@ -390,7 +390,7 @@ style>.container {
 							style="margin-left: 10px; display: flex; align-items: center;">
 							<input class="form-control" id="age" name="age" type="text"
 								value="${sessionScope.memberVO.age}"
-								aria-label="readonly input example">
+								aria-label="readonly input example" readonly>
 						</div>
 					</div>
 				</div>

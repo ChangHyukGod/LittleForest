@@ -45,7 +45,7 @@ body {
 						<div class="card-body">
 							<h4 class=" text-center mb-6 fw-bold fs-1">로그인</h4>
 							<p class="text-center mt-5 mb-5">
-								Little Forest의 회원으로 로그인 하시면<br>다양한 서비스를 이용하실 수 있습니다.
+								Little Forrest의 회원으로 로그인 하시면<br>다양한 서비스를 이용하실 수 있습니다.
 							</p>
 
 							<!-- Login Form -->
