@@ -48,7 +48,7 @@ public class MembersController {
    public String loginView() {
       return "auth/login";
    }
-
+  
    // 회원가입 화면
    @GetMapping("/register")
    public String registerView() {
